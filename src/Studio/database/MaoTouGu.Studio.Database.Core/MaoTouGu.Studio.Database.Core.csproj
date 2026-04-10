@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+        <RootNamespace>MaoTouGu.Studio.Database</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\Foundation\src\MaoTouGu.Foundation\MaoTouGu.Foundation.csproj"/>
+        <ProjectReference Include="..\..\share\MaoTouGu.JuXiaoYou.Attributes\MaoTouGu.JuXiaoYou.Attributes.csproj" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.4"/>
+        <PackageReference Include="MaoTouGu.LiteDB" Version="5.0.29" />
+    </ItemGroup>
+
+</Project>

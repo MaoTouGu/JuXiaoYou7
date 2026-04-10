@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net9.0-windows</TargetFramework>
+        <Nullable>disable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UseWPF>true</UseWPF>
+        <AssemblyName>MaoTouGu.JuXiaoYou</AssemblyName>
+        <RootNamespace>MaoTouGu.JuXiaoYou</RootNamespace>
+        <ApplicationIcon>..\..\..\..\assets\icon\JuXiaoYou4.ico</ApplicationIcon>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\MaoTouGu.JuXiaoYou.Domain\MaoTouGu.JuXiaoYou.Domain.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="H.NotifyIcon.Wpf" Version="2.4.1"/>
+        <PackageReference Include="MaoTouGu.Shells.Generators" Version="1.0.4"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Resource Include="..\..\..\..\assets\icon\JuXiaoYou4.ico">
+            <Link>JuXiaoYou4.ico</Link>
+        </Resource>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="..\..\..\..\scaffolds\Usings\ApiRef_Shells.cs">
+          <Link>Properties\ApiRef_Shells.cs</Link>
+        </Compile>
+        <Compile Include="..\..\..\..\scaffolds\Usings\Usings_Foundation.cs">
+            <Link>Properties\Usings_Foundation.cs</Link>
+        </Compile>
+    </ItemGroup>
+
+</Project>

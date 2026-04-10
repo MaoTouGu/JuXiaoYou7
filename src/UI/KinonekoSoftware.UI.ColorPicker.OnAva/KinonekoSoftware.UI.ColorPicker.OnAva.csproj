@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageId>KinonekoSoftware.UI.ColorPicker.OnAva</PackageId>
+        <Title>KinonekoSoftware.Foundation.ColorPicker.Avalonia</Title>
+        <Description>基础ColorPicker设施库（适用于Avalonia）。</Description>
+        <Copyright>All copyright reserved by luoyisi</Copyright>
+        <PackageProjectUrl>https://gitee.com/kinonekosoftware/kinoneko-software-new</PackageProjectUrl>
+        <RepositoryUrl>https://gitee.com/kinonekosoftware/kinoneko-software-new</RepositoryUrl>
+        <PackageTags>Foundation</PackageTags>
+        <Version>5.0.1</Version>
+        <AssemblyVersion>5.0.1</AssemblyVersion>
+        <FileVersion>5.0.1.0</FileVersion>
+        <RootNamespace>KinonekoSoftware.Foundation.ColorPicker.Avalonia</RootNamespace>
+    </PropertyGroup>
+    
+    <ItemGroup>
+      <AvaloniaResource Include="Images\CircularHueGradient.png" />
+      <AvaloniaResource Include="Images\transparentbg_mini.png" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\KinonekoSoftware.UI.OnAva\KinonekoSoftware.UI.OnAva.csproj" />
+      <ProjectReference Include="..\KinonekoSoftware.UI\KinonekoSoftware.UI.csproj" />
+    </ItemGroup>
+</Project>

@@ -1,0 +1,162 @@
+﻿using JetBrains.Annotations;
+using QuikGraph;
+
+namespace GraphShape.Algorithms.Layout
+{
+    /// <summary>
+    /// Circular layout algorithm.
+    /// </summary>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    /// <typeparam name="TEdge">Edge type.</typeparam>
+    /// <typeparam name="TGraph">Graph type</typeparam>
+    public class CircularLayoutAlgorithm<TVertex, TEdge, TGraph>
+        : DefaultParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, CircularLayoutParameters>
+        where TEdge : IEdge<TVertex>
+        where TGraph : IBidirectionalGraph<TVertex, TEdge>
+    {
+        
+        private readonly IDictionary<TVertex, Size> _verticesSizes;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CircularLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
+        /// </summary>
+        /// <param name="visitedGraph">Graph to layout.</param>
+        /// <param name="verticesSizes">Vertices sizes.</param>
+        /// <param name="parameters">Optional algorithm parameters.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="verticesSizes"/> is <see langword="null"/>.</exception>
+        public CircularLayoutAlgorithm(
+             TGraph visitedGraph,
+             IDictionary<TVertex, Size> verticesSizes,
+            [CanBeNull] CircularLayoutParameters parameters = null)
+            : this(visitedGraph, null, verticesSizes, parameters)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CircularLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
+        /// </summary>
+        /// <param name="visitedGraph">Graph to layout.</param>
+        /// <param name="verticesPositions">Vertices positions.</param>
+        /// <param name="verticesSizes">Vertices sizes.</param>
+        /// <param name="parameters">Optional algorithm parameters.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="verticesSizes"/> is <see langword="null"/>.</exception>
+        public CircularLayoutAlgorithm(
+             TGraph visitedGraph,
+            [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
+             IDictionary<TVertex, Size> verticesSizes,
+            [CanBeNull] CircularLayoutParameters parameters = null)
+            : base(visitedGraph, verticesPositions, parameters)
+        {
+            _verticesSizes = new Dictionary<TVertex, Size>(verticesSizes);
+        }
+
+        #region AlgorithmBase
+
+        /// <inheritdoc />
+        protected override void InternalCompute()
+        {
+            switch (VisitedGraph.VertexCount)
+            {
+                case 2:
+                    TwoVerticesCircularLayout();
+                    break;
+                case 3:
+                    ThreeVerticesCircularLayout();
+                    break;
+                default:
+                    CircularLayout();
+                    break;
+            }
+
+            #region Local functions
+
+            void TwoVerticesCircularLayout()
+            {
+                var vertices = VisitedGraph.Vertices.ToArray();
+                VerticesPositions[vertices[0]] = default(Point);
+                VerticesPositions[vertices[1]] = new Point(_verticesSizes[vertices[0]].Width * 1.3, 0);
+            }
+
+            void ThreeVerticesCircularLayout()
+            {
+                var maxWidth = _verticesSizes.Values.Max(size => size.Width);
+                var maxHeight = _verticesSizes.Values.Max(size => size.Height);
+                var radius = Math.Max(maxWidth, maxHeight) * 1.3;
+
+                double angle = 0;
+                foreach (var vertex in VisitedGraph.Vertices)
+                {
+                    VerticesPositions[vertex] = new Point(
+                        Math.Cos(angle) * radius + radius,
+                        Math.Sin(angle) * radius + radius);
+                    angle += 2 * Math.PI / 3;   // 120°
+                }
+            }
+
+            void CircularLayout()
+            {
+                // Calculate the size of the circle
+                double perimeter = 0;
+                var halfSize = new double[VisitedGraph.VertexCount];
+                var i = 0;
+                foreach (var vertex in VisitedGraph.Vertices)
+                {
+                    ThrowIfCancellationRequested();
+
+                    var size = _verticesSizes[vertex];
+                    halfSize[i] = Math.Sqrt(size.Width * size.Width + size.Height * size.Height) * 0.5;
+                    perimeter += halfSize[i] * 2;
+                    ++i;
+                }
+
+                var radius = perimeter / (2 * Math.PI);
+
+                // Pre-calculation
+                double angle = 0;
+                double a;
+                i = 0;
+                foreach (var vertex in VisitedGraph.Vertices)
+                {
+                    ThrowIfCancellationRequested();
+
+                    a = Math.Sin(halfSize[i] * 0.5 / radius) * 2;
+                    angle += a;
+                    if (ReportOnIterationEndNeeded)
+                    {
+                        VerticesPositions[vertex] = new Point(
+                            Math.Cos(angle) * radius + radius,
+                            Math.Sin(angle) * radius + radius);
+                    }
+                    angle += a;
+                }
+
+                if (ReportOnIterationEndNeeded)
+                    OnIterationEnded(0, 50, "Pre-calculation done.", false);
+
+                // Recalculate radius
+                radius = angle / (2 * Math.PI) * radius;
+
+                // Calculation
+                angle = 0;
+                i = 0;
+                foreach (var vertex in VisitedGraph.Vertices)
+                {
+                    ThrowIfCancellationRequested();
+
+                    a = Math.Sin(halfSize[i] * 0.5 / radius) * 2;
+                    angle += a;
+                    VerticesPositions[vertex] = new Point(
+                        Math.Cos(angle) * radius + radius,
+                        Math.Sin(angle) * radius + radius);
+                    angle += a;
+                }
+            }
+
+            #endregion
+        }
+
+        #endregion
+    }
+}

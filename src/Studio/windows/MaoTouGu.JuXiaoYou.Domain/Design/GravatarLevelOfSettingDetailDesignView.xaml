@@ -1,0 +1,61 @@
+﻿<ForestPage x:Class="MaoTouGu.JuXiaoYou.Design.GravatarLevelOfSettingDetailDesignView"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:ui="urn:KinonekoSoftware/ui"
+            xmlns:this="clr-namespace:MaoTouGu.JuXiaoYou.Design"
+            xmlns:thisVM="clr-namespace:MaoTouGu.JuXiaoYou.Design"
+            mc:Ignorable="d"
+            d:DesignWidth="800" d:DesignHeight="450"
+            d:DataContext="{d:DesignInstance Type={x:Type thisVM:GravatarLevelOfSettingDetailDesignViewModel}, IsDesignTimeCreatable=True}"
+            Padding="8">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="320"/>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0"
+                    Margin="16 0">
+            
+            <Border Background="Gray"
+                    Height="192"
+                    Width="192"/>
+
+            <TextBlock Margin="0 16"
+                       Text="角色"
+                       TextAlignment="Center"
+                       TextWrapping="Wrap"/>
+
+            <ui:GhostButton Content="更改头像"/>
+            <ui:GhostButton Content="清除头像"/>
+            <ui:GhostButton Content="保存更改"/>
+        </StackPanel>
+
+        <ui:ListBox Grid.Column="1">
+            <ui:ListBoxItem Content="角色1"/>
+            <ui:ListBoxItem Content="角色1"/>
+            <ui:ListBoxItem Content="角色1"/>
+            <ui:ListBoxItem Content="角色1"/>
+            <ui:ListBoxItem Content="角色1"/>
+            <ui:ListBoxItem Content="角色1"/>
+            <ui:ListBoxItem Content="角色1"/>
+            <ui:ListBoxItem Content="角色1"/>
+            <ui:ListBoxItem Content="角色1"/>
+            <ui:ListBoxItem Content="角色1"/>
+        </ui:ListBox>
+
+        <StackPanel Grid.Column="2"
+                    Margin="16 0">
+
+            <ui:GhostButton Content="工作流1"/>
+            <ui:GhostButton Content="工作流2"/>
+            <ui:GhostButton Content="工作流3"/>
+            <ui:GhostButton Content="工作流4"/>
+            
+            <ui:GhostButton Content="返回大厅"/>
+        </StackPanel>
+    </Grid>
+</ForestPage>

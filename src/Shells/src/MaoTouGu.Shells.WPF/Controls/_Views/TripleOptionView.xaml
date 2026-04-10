@@ -1,0 +1,82 @@
+﻿<shells:ForestDialog x:Class="MaoTouGu.Shells.Controls.TripleOptionView"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:ui="urn:KinonekoSoftware/ui"
+                    xmlns:this="clr-namespace:MaoTouGu.Shells"
+                    xmlns:shells="clr-namespace:MaoTouGu.Shells.Controls"
+                    xmlns:thisVM="clr-namespace:MaoTouGu.Shells.Core"
+                    mc:Ignorable="d"
+                    d:DesignWidth="800" d:DesignHeight="450"
+                    d:DataContext="{d:DesignInstance Type={x:Type thisVM:TripleOptionRoot}, IsDesignTimeCreatable=True}">
+
+    <Border Background="{DynamicResource Brush.Background.Level3}"
+            BorderBrush="{DynamicResource Brush.SlateGray100}"
+            BorderThickness="0 4 0 0"
+            CornerRadius="8"
+            Padding="32 16"
+            Height="384"
+            Width="320">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="32" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <ScrollViewer Grid.Row="1">
+                <TextBlock FontSize="16"
+                           HorizontalAlignment="Left"
+                           LineHeight="28"
+                           TextWrapping="Wrap"
+                           Text="{Binding Description,Mode=OneWay}"
+                           VerticalAlignment="Top" />
+            </ScrollViewer>
+
+            <ui:MainButton Grid.Row="2"
+                           ui:ControlAssist.CornerRadius="18"
+                           Content="{Binding Option1ButtonText,Mode=OneWay}"
+                           Command="{Binding UseOption1Command}"
+                           IconMode="Text"
+                           Style="{StaticResource MainButton.HighlightB}"
+                           HorizontalContentAlignment="Center"
+                           FontSize="13"
+                           Height="36" />
+
+
+            <ui:MainButton Grid.Row="3"
+                           ui:ControlAssist.CornerRadius="18"
+                           Content="{Binding Option2ButtonText,Mode=OneWay}"
+                           Command="{Binding UseOption2Command}"
+                           Margin="0 8 0 0"
+                           IconMode="Text"
+                           Style="{StaticResource MainButton.HighlightB}"
+                           HorizontalContentAlignment="Center"
+                           FontSize="13"
+                           Height="36">
+            </ui:MainButton>
+
+            <ui:GhostButton Grid.Row="4"
+                            ui:ControlAssist.CornerRadius="18"
+                            ui:ControlAssist.IconSize="13"
+                            Content="{Binding NoButtonText,Mode=OneWay}"
+                            Command="{Binding CancelCommand}"
+                            Margin="0 8 0 0"
+                            IconMode="Text"
+                            FontSize="13"
+                            Height="36">
+                <ui:ControlAssist.Icon>
+                    <GeometryGroup>
+                        <GeometryGroup.Children>
+                            <LineGeometry StartPoint="18,6" EndPoint="6,18" />
+                            <LineGeometry StartPoint="6,6" EndPoint="18,18" />
+                        </GeometryGroup.Children>
+                    </GeometryGroup>
+                </ui:ControlAssist.Icon>
+            </ui:GhostButton>
+        </Grid>
+    </Border>
+</shells:ForestDialog>

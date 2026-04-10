@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0-windows</TargetFramework>
+        <Nullable>disable</Nullable>
+        <UseWPF>true</UseWPF>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <GeneratePackageOnBuild Condition="$(Configuration)== 'Release'">True</GeneratePackageOnBuild>
+        <PackageId>KinonekoSoftware.UI.ColorPicker.OnWPF</PackageId>
+        <Title>KinonekoSoftware.Foundation.ColorPicker.OnWPF</Title>
+        <Description>ColorPicker基础设施库（适用于Windows）。</Description>
+        <Copyright>All copyright reserved by luoyisi</Copyright>
+        <PackageTags>Foundation</PackageTags>
+        <Version>7.0.0</Version>
+        <AssemblyVersion>7.0.0</AssemblyVersion>
+        <FileVersion>7.0.0.0</FileVersion>
+        <RootNamespace>KinonekoSoftware.UI.ColorPicker.OnWPF</RootNamespace>
+        <OutputPath>../../../builds/nuget</OutputPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Remove="Images\CircularHueGradient.png"/>
+        <Resource Include="Images\CircularHueGradient.png"/>
+        <None Remove="Images\transparentbg_mini.png"/>
+        <Resource Include="Images\transparentbg_mini.png"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\KinonekoSoftware.UI.OnWPF\KinonekoSoftware.UI.OnWPF.csproj" />
+    </ItemGroup>
+
+</Project>

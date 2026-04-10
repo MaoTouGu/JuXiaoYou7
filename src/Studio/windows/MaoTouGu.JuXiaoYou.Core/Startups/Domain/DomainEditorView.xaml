@@ -1,0 +1,58 @@
+﻿<ForestDialog x:Class="MaoTouGu.JuXiaoYou.Startups.DomainEditorView"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              xmlns:ui="urn:KinonekoSoftware/ui"
+              xmlns:this="clr-namespace:MaoTouGu.JuXiaoYou.Startups"
+              xmlns:thisVM="clr-namespace:MaoTouGu.JuXiaoYou.Startups"
+            xmlns:controls="clr-namespace:MaoTouGu.JuXiaoYou.Controls"
+              mc:Ignorable="d"
+              d:DesignWidth="800" d:DesignHeight="450"
+              d:DataContext="{d:DesignInstance Type={x:Type thisVM:DomainEditorViewModel}, IsDesignTimeCreatable=True}">
+    <Border Background="{DynamicResource Brush.Background.Level3}"
+            Padding="24"
+            Width="720">
+        <DockPanel>
+            <!---->
+            <!---->
+            <!---->
+            <ui:MainButton DockPanel.Dock="Bottom"
+                           Content="确定"
+                           Command="{Binding CompleteCommand}"
+                           HorizontalAlignment="Center"
+                           IconMode="Text"
+                           Margin="0 0 8 0"
+                           Height="32"
+                           Width="240" />
+
+            <controls:ImageEX DockPanel.Dock="Left"
+                              ImageSystem.Source="{Binding Image, Mode=OneWay}" 
+                              ImageSystem.Thumbnail="Of360p"
+                              ImageSystem.Type="Image"
+                              ImageSystem.Fallback="Image"
+                              EnableCropped="True"
+                              Height="270"
+                              Width="480"
+                              X="{Binding X, Mode=TwoWay}"
+                              Y="{Binding Y, Mode=TwoWay}">
+                
+            </controls:ImageEX>
+
+            <StackPanel DockPanel.Dock="Right">
+                <ui:HeaderedSingleLine Header="名字"
+                                       Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Delay=100}"/>
+
+                <ui:MainButton DockPanel.Dock="Bottom"
+                               Content="选择图片"
+                               Command="{Binding Select}"
+                               CommandParameter="{Binding Domain}"
+                               HorizontalAlignment="Center"
+                               IconMode="Text"
+                               Margin="0 0 8 0"
+                               Height="36"/>
+            </StackPanel>
+
+        </DockPanel>
+    </Border>
+</ForestDialog>

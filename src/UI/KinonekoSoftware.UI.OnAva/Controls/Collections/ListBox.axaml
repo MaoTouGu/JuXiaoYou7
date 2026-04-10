@@ -1,0 +1,260 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:r="clr-namespace:KinonekoSoftware.UI.Controls"
+                    xmlns:p="clr-namespace:KinonekoSoftware.UI.Controls.Panels"
+                    xmlns:this="clr-namespace:KinonekoSoftware.UI.Controls.Collections">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://KinonekoSoftware.UI.OnAva/Themes/Dark.axaml" />
+    </ResourceDictionary.MergedDictionaries>
+    
+    <Geometry x:Key="Checked">M2.5 8.25L6 11.75L13.5 4.25</Geometry>
+    
+    <ControlTheme x:Key="{x:Type this:ListBox}" TargetType="{x:Type this:ListBox}">
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.Level3}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="True" />
+        <Setter Property="ScrollViewer.IsScrollInertiaEnabled" Value="True" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border x:Name="border"
+                        ClipToBounds="{TemplateBinding ClipToBounds}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                    <ScrollViewer x:Name="PART_ScrollViewer"
+                                  VerticalSnapPointsType="{TemplateBinding (ScrollViewer.VerticalSnapPointsType)}"
+                                  HorizontalSnapPointsType="{TemplateBinding (ScrollViewer.HorizontalSnapPointsType)}"
+                                  HorizontalScrollBarVisibility="{TemplateBinding (ScrollViewer.HorizontalScrollBarVisibility)}"
+                                  VerticalScrollBarVisibility="{TemplateBinding (ScrollViewer.VerticalScrollBarVisibility)}"
+                                  IsScrollChainingEnabled="{TemplateBinding (ScrollViewer.IsScrollChainingEnabled)}"
+                                  IsScrollInertiaEnabled="{TemplateBinding (ScrollViewer.IsScrollInertiaEnabled)}"
+                                  IsDeferredScrollingEnabled="{TemplateBinding (ScrollViewer.IsDeferredScrollingEnabled)}"
+                                  AllowAutoHide="{TemplateBinding (ScrollViewer.AllowAutoHide)}"
+                                  BringIntoViewOnFocusChange="{TemplateBinding (ScrollViewer.BringIntoViewOnFocusChange)}">
+                        <ItemsPresenter x:Name="PART_ItemsPresenter"
+                                        ItemsPanel="{TemplateBinding ItemsPanel}"
+                                        Margin="{TemplateBinding Padding}" />
+                    </ScrollViewer>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+    
+    
+    <ControlTheme x:Key="ListBox.Direct" TargetType="{x:Type this:ListBox}">
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.Level3}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="True" />
+        <Setter Property="ScrollViewer.IsScrollInertiaEnabled" Value="True" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border x:Name="border"
+                        ClipToBounds="{TemplateBinding ClipToBounds}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                    <ItemsPresenter x:Name="PART_ItemsPresenter"
+                                    ItemsPanel="{TemplateBinding ItemsPanel}"
+                                    Margin="{TemplateBinding Padding}" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+    
+    <ControlTheme x:Key="{x:Type this:OptionListBox}" TargetType="{x:Type this:OptionListBox}">
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.Level3}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="True" />
+        <Setter Property="ScrollViewer.IsScrollInertiaEnabled" Value="True" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border x:Name="border"
+                        ClipToBounds="{TemplateBinding ClipToBounds}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                    <ScrollViewer x:Name="PART_ScrollViewer"
+                                  VerticalSnapPointsType="{TemplateBinding (ScrollViewer.VerticalSnapPointsType)}"
+                                  HorizontalSnapPointsType="{TemplateBinding (ScrollViewer.HorizontalSnapPointsType)}"
+                                  HorizontalScrollBarVisibility="{TemplateBinding (ScrollViewer.HorizontalScrollBarVisibility)}"
+                                  VerticalScrollBarVisibility="{TemplateBinding (ScrollViewer.VerticalScrollBarVisibility)}"
+                                  IsScrollChainingEnabled="{TemplateBinding (ScrollViewer.IsScrollChainingEnabled)}"
+                                  IsScrollInertiaEnabled="{TemplateBinding (ScrollViewer.IsScrollInertiaEnabled)}"
+                                  IsDeferredScrollingEnabled="{TemplateBinding (ScrollViewer.IsDeferredScrollingEnabled)}"
+                                  AllowAutoHide="{TemplateBinding (ScrollViewer.AllowAutoHide)}"
+                                  BringIntoViewOnFocusChange="{TemplateBinding (ScrollViewer.BringIntoViewOnFocusChange)}">
+                        <ItemsPresenter x:Name="PART_ItemsPresenter"
+                                        ItemsPanel="{TemplateBinding ItemsPanel}"
+                                        Margin="{TemplateBinding Padding}" />
+                    </ScrollViewer>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <ControlTheme x:Key="{x:Type this:ListBoxItem}" TargetType="{x:Type this:ListBoxItem}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <ContentPresenter x:Name="PART_ContentPresenter"
+                                  Background="{TemplateBinding Background}"
+                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                  BorderThickness="{TemplateBinding BorderThickness}"
+                                  CornerRadius="{TemplateBinding CornerRadius}"
+                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                  Content="{TemplateBinding Content}"
+                                  Padding="{TemplateBinding Padding}"
+                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" />
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:disabled /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Disabled}" />
+        </Style>
+
+        <!--  PointerOver State  -->
+        <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource Brush.Overlay100}" />
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+        </Style>
+
+        <!--  Pressed State  -->
+        <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource Brush.Overlay200}" />
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+        </Style>
+
+        <!--  Selected State  -->
+        <Style Selector="^:selected">
+
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource Brush.Overlay200}" />
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+            </Style>
+
+            <!--  Selected Unfocused State  -->
+            <Style Selector="^:not(:focus) /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource Brush.Overlay200}" />
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+            </Style>
+
+            <!--  Selected PointerOver State  -->
+            <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource Brush.Overlay200}" />
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+            </Style>
+
+            <!--  Selected Pressed State  -->
+            <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource Brush.Overlay200}" />
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+            </Style>
+        </Style>
+    </ControlTheme>
+    
+    <ControlTheme x:Key="{x:Type this:OptionListBoxItem}" TargetType="{x:Type this:OptionListBoxItem}">
+        <Setter Property="r:ControlAssist.CornerRadius" Value="3" />
+        <Setter Property="r:ControlAssist.Icon" Value="{x:Null}" />
+        <Setter Property="r:ControlAssist.IconSize" Value="19" />
+        <Setter Property="r:ControlAssist.IsFilled" Value="False" />
+        <Setter Property="r:ControlAssist.IconDock" Value="Left" />
+        <Setter Property="r:ControlAssist.IconMargin" Value="0" />
+        <Setter Property="r:ControlAssist.StrokeThickness" Value="2" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.Level3}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Background.Level3}" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="Margin" Value="2 4 2 0" />
+        <Setter Property="Padding" Value="12" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type this:OptionListBoxItem}">
+                    <p:TilePanel Margin="0">
+                        <Border x:Name="PART_Border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{Binding (r:ControlAssist.CornerRadius), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}">
+                            <ContentPresenter x:Name="PART_Content"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              Margin="{TemplateBinding Padding}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Border>
+
+                        <Border x:Name="PART_Mark"
+                                DockPanel.Dock="Top"
+                                Background="Transparent"
+                                CornerRadius="16"
+                                Padding="4"
+                                Margin="6"
+                                Height="{Binding (r:ControlAssist.IconSize), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                Width="{Binding (r:ControlAssist.IconSize), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                IsVisible="False">
+                            <Path x:Name="PART_Icon"
+                                  Data="{StaticResource Checked}"
+                                  Stroke="White"
+                                  StrokeThickness="{Binding (r:ControlAssist.StrokeThickness), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                  Stretch="Uniform"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                        </Border>
+                    </p:TilePanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+
+        <!--  PointerOver State  -->
+        <Style Selector="^:pointerover /template/ Border#PART_Border">
+            <Setter Property="BorderBrush" Value="{DynamicResource Brush.HighlightC2}" />
+        </Style>
+        
+        <Style Selector="^:pointerover /template/ Border#PART_Mark">
+            <Setter Property="Background" Value="{DynamicResource Brush.HighlightC2}" />
+        </Style>
+        
+        <!--  Selected State  -->
+        <Style Selector="^:selected">
+
+            <Style Selector="^ /template/ Border#PART_Border">
+                <Setter Property="BorderBrush" Value="{DynamicResource Brush.HighlightC3}" />
+            </Style>
+            
+            <Style Selector="^ /template/ Border#PART_Mark">
+                <Setter Property="Background" Value="{DynamicResource Brush.HighlightC3}" />
+                <Setter Property="IsVisible" Value="True" />
+            </Style>
+        </Style>
+        
+        <Style Selector="^:disabled">
+
+            <Style Selector="^ /template/ Border#PART_Border">
+                <Setter Property="BorderBrush" Value="{DynamicResource Brush.HighlightC3}" />
+            </Style>
+            
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Disabled}" />
+            </Style>
+            
+            <Style Selector="^ /template/ Border#PART_Mark">
+                <Setter Property="Background" Value="{DynamicResource Brush.Background.Disabled}" />
+                <Setter Property="IsVisible" Value="False" />
+            </Style>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

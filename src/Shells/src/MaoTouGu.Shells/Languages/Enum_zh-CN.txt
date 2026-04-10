@@ -1,0 +1,32 @@
+﻿Enum.ButtonText.Ok = 确定
+Enum.ButtonText.Yes = 对的
+Enum.ButtonText.Cancel = 取消
+Enum.ButtonText.NextStep = 下一步
+
+Enum.AppTheme.Custom = 自定义
+Enum.AppTheme.Dark = 夜色主题
+Enum.AppTheme.Light = 亮色主题
+
+
+txt.Title.Success = 成功
+txt.Title.Info = 提示
+txt.Title.Danger = 危险
+txt.Title.Warning = 警告
+txt.Title.Processing = 正在处理...
+txt.Title.New = 新建
+txt.Title.Rename = 重命名
+txt.Title.Remove = 删除
+txt.Title.Edit = 编辑
+txt.Title.SaveFile = 保存文件
+txt.EmptyState = (空白)
+txt.Named = 取个名字吧！
+txt.Deleted = (已删除)
+txt.Removing = 你确定删除这个数据？删除之后将无法恢复！
+txt.Unselected = （不选择）
+
+txt.Image.NotSupportFormat = 您要编辑的不是图片文件或者是不支持的图片文件！
+txt.Image.Icon.RequireSquare = 所选择的图必须是等比例大小的图片，且带有透明度通道!
+txt.Image.Icon.RequireSmall = 所选择的图片大小必须小于513x513!
+txt.Image.ScaleOrEdit = 这是一个等比例的图片，是直接使用还是需要编辑图片呢？
+txt.Image.ScaleOrEdit.Edit = 直接使用
+txt.Image.ScaleOrEdit.Scale = 编辑

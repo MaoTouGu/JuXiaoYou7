@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="src/MaoTouGu.Foundation/MaoTouGu.Foundation.csproj" />
+  <Project Path="tests/MaoTouGu.Foundation.Tests/MaoTouGu.Foundation.Tests.csproj" />
+</Solution>

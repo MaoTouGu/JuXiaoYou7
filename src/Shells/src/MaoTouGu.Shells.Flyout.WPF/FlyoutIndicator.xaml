@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="MaoTouGu.Shells.Controls.FlyoutIndicator"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:MaoTouGu.Shells.Controls"
+             xmlns:obj="clr-namespace:MaoTouGu.Shells.Core;assembly=MaoTouGu.Shells.Flyout"
+             xmlns:ui="urn:KinonekoSoftware/ui"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300"
+             d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True, Type={x:Type obj:FlyoutObject}}">
+    <local:FlyoutBorder x:Name="Border"
+                       Placement="{Binding ComputedPlacement, Mode=OneWay}"
+                       Background="{Binding Color, Mode=OneWay}"
+                       MinWidth="300"
+                       MaxWidth="480"
+                       VerticalAlignment="Top">
+        <StackPanel>
+            <TextBlock DockPanel.Dock="Top"
+                       FontSize="20"
+                       FontFamily="{StaticResource SongTi}"
+                       Foreground="White"
+                       Text="{Binding Title, Mode=OneWay}" />
+
+            <Separator Background="White"
+                       Margin="0 8" />
+
+            <TextBlock Foreground="White"
+                       Text="{Binding Content, Mode=OneWay}"
+                       TextWrapping="Wrap" />
+
+            <ui:GhostButton DockPanel.Dock="Bottom"
+                            Background="{Binding Color, Mode=OneWay}"
+                            Content="{Binding ButtonText}"
+                            Click="Button_NextStep"
+                            Margin="0 8 0 0"
+                            Padding="10 6"
+                            HorizontalAlignment="Right" />
+        </StackPanel>
+    </local:FlyoutBorder>
+</UserControl>

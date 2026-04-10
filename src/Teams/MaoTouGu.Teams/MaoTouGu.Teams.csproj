@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net9.0-windows</TargetFramework>
+        <Nullable>disable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UseWPF>true</UseWPF>
+        <OutDir>../../../../builds/teams/x64</OutDir>
+        <ApplicationIcon>..\..\..\assets\icon\JuXiaoYou4.ico</ApplicationIcon>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Shells\src\MaoTouGu.Shells.WPF\MaoTouGu.Shells.WPF.csproj" />
+      <ProjectReference Include="..\..\Studio\windows\MaoTouGu.JuXiaoYou.Domain.IM\MaoTouGu.JuXiaoYou.Domain.IM.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="H.NotifyIcon.Wpf" Version="2.4.1"/>
+        <PackageReference Include="MaoTouGu.Shells.Generators" Version="1.0.4"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="..\..\..\scaffolds\Usings\ApiRef_Shells.cs">
+            <Link>Properties\ApiRef_Shells.cs</Link>
+        </Compile>
+        <Compile Include="..\..\..\scaffolds\Usings\Usings_Foundation.cs">
+            <Link>Properties\Usings_Foundation.cs</Link>
+        </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Resource Include="..\..\..\assets\icon\JuXiaoYou4.ico">
+        <Link>Assets\JuXiaoYou4.ico</Link>
+      </Resource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\..\..\assets\images\Sprite.png">
+        <Link>Assets\Sprite.png</Link>
+      </Content>
+    </ItemGroup>
+
+</Project>

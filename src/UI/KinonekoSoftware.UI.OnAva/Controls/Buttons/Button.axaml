@@ -1,0 +1,1075 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:this="clr-namespace:KinonekoSoftware.UI.Controls"
+                    xmlns:p="clr-namespace:KinonekoSoftware.UI.Controls.Panels"
+                    xmlns:b="clr-namespace:KinonekoSoftware.UI.Controls.Buttons">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://KinonekoSoftware.UI.OnAva/Themes/Dark.axaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Geometry x:Key="Checked">M2.5 8.25L6 11.75L13.5 4.25</Geometry>
+    <Geometry x:Key="Minus">F0 M24,24z M0,0z M21,12A1,1,0,0,1,20,13L4,13A1,1,0,1,1,4,11L20,11A1,1,0,0,1,21,12</Geometry>
+
+    <!-- GhostButton -->
+    <ControlTheme x:Key="GhostButton.Base" TargetType="{x:Type b:GhostButton}">
+        <Setter Property="this:ControlAssist.CornerRadius" Value="3" />
+        <Setter Property="this:ControlAssist.Icon" Value="{x:Null}" />
+        <Setter Property="this:ControlAssist.IconSize" Value="19" />
+        <Setter Property="this:ControlAssist.IsFilled" Value="False" />
+        <Setter Property="this:ControlAssist.IconDock" Value="Left" />
+        <Setter Property="this:ControlAssist.IconMargin" Value="0" />
+        <Setter Property="this:ControlAssist.StrokeThickness" Value="1" />
+        <Setter Property="IconMode" Value="Text" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Padding" Value="8 4" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type b:GhostButton}">
+                    <Border x:Name="PART_Border"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{Binding (this:ControlAssist.CornerRadius), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter x:Name="PART_Content"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <!-- text:PointerOver -->
+        <Style Selector="^:pointerover /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.Overlay100}" />
+        </Style>
+
+        <!-- text:Pressed -->
+        <Style Selector="^:pressed /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.Overlay200}" />
+        </Style>
+
+        <!-- text:Disabled  -->
+        <Style Selector="^:disabled /template/ ContentPresenter#PART_Content">
+            <Setter Property="TextElement.Foreground" Value="{DynamicResource Brush.Foreground.Disabled}" />
+        </Style>
+
+
+        <!-- IconMode=Icon Trigger  -->
+        <Style Selector="^[IconMode=Icon]">
+            <Setter Property="this:ControlAssist.StrokeThickness" Value="1" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type b:GhostButton}">
+                        <Border x:Name="PART_Border"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="{Binding (this:ControlAssist.CornerRadius), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                Padding="{TemplateBinding Padding}">
+                            <this:Iconify x:Name="PART_Icon"
+                                          Foreground="{TemplateBinding Foreground}"
+                                          Margin="{Binding (this:ControlAssist.IconMargin), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                          Icon="{Binding (this:ControlAssist.Icon), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                          IconSize="{Binding (this:ControlAssist.IconSize), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                          IsFilled="{Binding (this:ControlAssist.IsFilled), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                          StrokeThickness="{Binding (this:ControlAssist.StrokeThickness), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <!-- PointerOver -->
+            <Style Selector="^:pointerover /template/ Border#PART_Border">
+                <Setter Property="Background" Value="{DynamicResource Brush.Overlay100}" />
+            </Style>
+
+            <!-- Pressed -->
+            <Style Selector="^:pressed /template/ Border#PART_Border">
+                <Setter Property="Background" Value="{DynamicResource Brush.Overlay200}" />
+            </Style>
+
+            <!-- Disabled  -->
+            <Style Selector="^:disabled /template/ this|Iconify#PART_Icon">
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Disabled}" />
+            </Style>
+        </Style>
+
+        <!-- IconMode=Both Trigger  -->
+        <Style Selector="^[IconMode=Both]">
+            <Setter Property="this:ControlAssist.IconMargin" Value="0 0 8 0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type b:GhostButton}">
+                        <Border x:Name="PART_Border"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="{Binding (this:ControlAssist.CornerRadius), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                Padding="{TemplateBinding Padding}">
+                            <DockPanel VerticalAlignment="Center">
+                                <this:Iconify x:Name="PART_Icon"
+                                              DockPanel.Dock="{Binding (this:ControlAssist.IconDock), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                              Foreground="{TemplateBinding Foreground}"
+                                              Margin="{Binding (this:ControlAssist.IconMargin), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                              Icon="{Binding (this:ControlAssist.Icon), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                              IconSize="{Binding (this:ControlAssist.IconSize), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                              IsFilled="{Binding (this:ControlAssist.IsFilled), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                              StrokeThickness="{Binding (this:ControlAssist.StrokeThickness), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}" />
+
+                                <ContentPresenter x:Name="PART_Content"
+                                                  Content="{TemplateBinding Content}"
+                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                  Margin="0 0 0 0 "
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            </DockPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <!-- PointerOver -->
+            <Style Selector="^:pointerover /template/ Border#PART_Border">
+                <Setter Property="Background" Value="{DynamicResource Brush.Overlay100}" />
+            </Style>
+
+            <!-- Pressed -->
+            <Style Selector="^:pressed /template/ Border#PART_Border">
+                <Setter Property="Background" Value="{DynamicResource Brush.Overlay200}" />
+            </Style>
+
+            <!-- Disabled  -->
+            <Style Selector="^:disabled /template/ ContentPresenter#PART_Content">
+                <Setter Property="TextElement.Foreground" Value="{DynamicResource Brush.Foreground.Disabled}" />
+            </Style>
+            <Style Selector="^:disabled /template/ this|Iconify#PART_Icon">
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Disabled}" />
+            </Style>
+        </Style>
+    </ControlTheme>
+    
+    
+    <!-- GhostButton -->
+    <ControlTheme x:Key="MainButton.Overlay" TargetType="{x:Type b:MainButton}">
+        <Setter Property="this:ControlAssist.CornerRadius" Value="3" />
+        <Setter Property="this:ControlAssist.Icon" Value="{x:Null}" />
+        <Setter Property="this:ControlAssist.IconSize" Value="19" />
+        <Setter Property="this:ControlAssist.IsFilled" Value="False" />
+        <Setter Property="this:ControlAssist.IconDock" Value="Left" />
+        <Setter Property="this:ControlAssist.IconMargin" Value="0" />
+        <Setter Property="this:ControlAssist.StrokeThickness" Value="1" />
+        <Setter Property="IconMode" Value="Text" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Padding" Value="8 4" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type b:MainButton}">
+                    <Border x:Name="PART_Background"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding this:ControlAssist.CornerRadius}">
+                        
+                        <Border x:Name="PART_Border"
+                                Background="Transparent"
+                                CornerRadius="{TemplateBinding this:ControlAssist.CornerRadius}">
+                            <this:Iconify x:Name="PART_Icon"
+                                          Foreground="White"
+                                          Margin="{TemplateBinding this:ControlAssist.IconMargin}"
+                                          Icon="{TemplateBinding this:ControlAssist.Icon}"
+                                          IconSize="{TemplateBinding this:ControlAssist.IconSize}"
+                                          IsFilled="{TemplateBinding this:ControlAssist.IsFilled}"
+                                          StrokeThickness="{TemplateBinding this:ControlAssist.StrokeThickness}"
+                                          IsVisible="False"
+                                          Opacity="0"  />
+                        </Border>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <!-- text:PointerOver -->
+        <Style Selector="^:pointerover /template/ Border#PART_Border">
+            <Setter Property="Background" Value="#A8000000"/>
+        </Style>
+        
+        <Style Selector="^:pointerover /template/ Border#PART_Background">
+            <Setter Property="Background" Value="{DynamicResource Brush.Overlay100}" />
+        </Style>
+        
+        <Style Selector="^:pointerover /template/ this|Iconify#PART_Icon">
+            <Setter Property="Background" Value="{DynamicResource Brush.Overlay100}" />
+            <Setter Property="IsVisible" Value="True"/>
+            <Setter Property="Opacity" Value="1"/>
+        </Style>
+
+        <!-- text:Pressed -->
+        <Style Selector="^:pressed /template/ Border#PART_Border">
+            <Setter Property="Background" Value="#B8000000" />
+        </Style>
+
+        <!-- text:Disabled  -->
+        <Style Selector="^:disabled /template/ ContentPresenter#PART_Content">
+            <Setter Property="TextElement.Foreground" Value="{DynamicResource Brush.Foreground.Disabled}" />
+        </Style>
+        
+        <Style Selector="^:disabled /template/ this|Iconify#PART_Icon">
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Disabled}" />
+        </Style>
+    </ControlTheme>
+    
+    <!-- MainButton -->
+    <ControlTheme x:Key="MainButton.Base" TargetType="{x:Type b:MainButton}">
+        <Setter Property="this:ControlAssist.CornerRadius" Value="3" />
+        <Setter Property="this:ControlAssist.Icon" Value="{x:Null}" />
+        <Setter Property="this:ControlAssist.IconSize" Value="19" />
+        <Setter Property="this:ControlAssist.IsFilled" Value="False" />
+        <Setter Property="this:ControlAssist.IconDock" Value="Left" />
+        <Setter Property="this:ControlAssist.IconMargin" Value="0" />
+        <Setter Property="this:ControlAssist.StrokeThickness" Value="1" />
+        <Setter Property="IconMode" Value="Text" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Padding" Value="8 4" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type b:MainButton}">
+                    <Border x:Name="PART_Border"
+                            Background="{DynamicResource Brush.HighlightA4}"
+                            CornerRadius="{Binding (this:ControlAssist.CornerRadius), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter x:Name="PART_Content"
+                                          Foreground="{DynamicResource Brush.Foreground.Level1}"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+
+        <!-- IconMode=Icon Trigger  -->
+        <Style Selector="^[IconMode=Icon]">
+            <Setter Property="this:ControlAssist.StrokeThickness" Value="1" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type b:MainButton}">
+                        <Border x:Name="PART_Border"
+                                Background="{DynamicResource Brush.HighlightA4}"
+                                CornerRadius="{Binding (this:ControlAssist.CornerRadius), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                Padding="{TemplateBinding Padding}">
+                            <this:Iconify x:Name="PART_Icon"
+                                          Foreground="{DynamicResource Brush.Foreground.Level1}"
+                                          Margin="{Binding (this:ControlAssist.IconMargin), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                          Icon="{Binding (this:ControlAssist.Icon), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                          IconSize="{Binding (this:ControlAssist.IconSize), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                          IsFilled="{Binding (this:ControlAssist.IsFilled), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                          StrokeThickness="{Binding (this:ControlAssist.StrokeThickness), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- IconMode=Both Trigger  -->
+        <Style Selector="^[IconMode=Both]">
+            <Setter Property="this:ControlAssist.IconMargin" Value="0 0 8 0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type b:MainButton}">
+                        <Border x:Name="PART_Border"
+                                Background="{DynamicResource Brush.HighlightA4}"
+                                CornerRadius="{Binding (this:ControlAssist.CornerRadius), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                Padding="{TemplateBinding Padding}">
+                            <DockPanel VerticalAlignment="Center">
+                                <this:Iconify x:Name="PART_Icon"
+                                              DockPanel.Dock="{Binding (this:ControlAssist.IconDock), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                              Foreground="{DynamicResource Brush.Foreground.Level1}"
+                                              Margin="{Binding (this:ControlAssist.IconMargin), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                              Icon="{Binding (this:ControlAssist.Icon), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                              IconSize="{Binding (this:ControlAssist.IconSize), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                              IsFilled="{Binding (this:ControlAssist.IsFilled), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                              StrokeThickness="{Binding (this:ControlAssist.StrokeThickness), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}" />
+
+                                <ContentPresenter x:Name="PART_Content"
+                                                  Foreground="{DynamicResource Brush.Foreground.Level1}"
+                                                  Content="{TemplateBinding Content}"
+                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                  Margin="0 0 0 0 "
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            </DockPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <!-- text:PointerOver -->
+        <Style Selector="^:pointerover /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.HighlightA2}" />
+        </Style>
+
+        <!-- text:Pressed -->
+        <Style Selector="^:pressed /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.HighlightA5}" />
+        </Style>
+
+        <!-- Disabled  -->
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="0.2" />
+        </Style>
+    </ControlTheme>
+    
+    <!-- TextButton -->
+    <ControlTheme x:Key="TextButton.Base" TargetType="{x:Type b:TextButton}">
+        <Setter Property="this:ControlAssist.CornerRadius" Value="3" />
+        <Setter Property="this:ControlAssist.Icon" Value="{x:Null}" />
+        <Setter Property="this:ControlAssist.IconSize" Value="19" />
+        <Setter Property="this:ControlAssist.IsFilled" Value="False" />
+        <Setter Property="this:ControlAssist.IconDock" Value="Left" />
+        <Setter Property="this:ControlAssist.IconMargin" Value="0" />
+        <Setter Property="this:ControlAssist.StrokeThickness" Value="1" />
+        <Setter Property="IconMode" Value="Text" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="HighlightState" Value="{DynamicResource Brush.HighlightA4}" />
+        <Setter Property="HoverState" Value="{DynamicResource Brush.HighlightA2}" />
+        <Setter Property="DisabledState" Value="{DynamicResource Brush.Foreground.Disabled}" />
+        <Setter Property="Padding" Value="8 4" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type b:TextButton}">
+                    <Border x:Name="PART_Border"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{Binding (this:ControlAssist.CornerRadius), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter x:Name="PART_Content"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <!-- text:PointerOver -->
+        <Style Selector="^:pointerover /template/ ContentPresenter#PART_Content">
+            <Setter Property="TextElement.Foreground" Value="{Binding HoverState, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+        </Style>
+
+        <!-- text:Pressed -->
+        <Style Selector="^:pressed /template/ ContentPresenter#PART_Content">
+            <Setter Property="TextElement.Foreground" Value="{Binding HighlightState, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+        </Style>
+
+        <!-- text:Disabled  -->
+        <Style Selector="^:disabled /template/ ContentPresenter#PART_Content">
+            <Setter Property="TextElement.Foreground" Value="{Binding DisabledState, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+        </Style>
+
+
+        <!-- IconMode=Icon Trigger  -->
+        <Style Selector="^[IconMode=Icon]">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type b:TextButton}">
+                        <Border x:Name="PART_Border"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="{Binding (this:ControlAssist.CornerRadius), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                Padding="{TemplateBinding Padding}">
+                            <this:Iconify x:Name="PART_Icon"
+                                          Foreground="{TemplateBinding Foreground}"
+                                          Margin="{Binding (this:ControlAssist.IconMargin), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                          Icon="{Binding (this:ControlAssist.Icon), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                          IconSize="{Binding (this:ControlAssist.IconSize), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                          IsFilled="{Binding (this:ControlAssist.IsFilled), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                          StrokeThickness="{Binding (this:ControlAssist.StrokeThickness), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            
+            <!-- text:PointerOver -->
+            <Style Selector="^:pointerover /template/ this|Iconify#PART_Icon">
+                <Setter Property="Foreground" Value="{Binding HoverState, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+            </Style>
+
+            <!-- text:Pressed -->
+            <Style Selector="^:pressed /template/ this|Iconify#PART_Icon">
+                <Setter Property="Foreground" Value="{Binding HighlightState, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+            </Style>
+
+            <!-- text:Disabled  -->
+            <Style Selector="^:disabled /template/ this|Iconify#PART_Icon">
+                <Setter Property="Foreground" Value="{Binding DisabledState, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+            </Style>
+        </Style>
+
+        <!-- IconMode=Both Trigger  -->
+        <Style Selector="^[IconMode=Both]">
+            <Setter Property="this:ControlAssist.IconMargin" Value="0 0 8 0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type b:TextButton}">
+                        <Border x:Name="PART_Border"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="{Binding (this:ControlAssist.CornerRadius), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                Padding="{TemplateBinding Padding}">
+                            <DockPanel VerticalAlignment="Center">
+                                <this:Iconify x:Name="PART_Icon"
+                                              DockPanel.Dock="{Binding (this:ControlAssist.IconDock), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                              Foreground="{TemplateBinding Foreground}"
+                                              Margin="{Binding (this:ControlAssist.IconMargin), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                              Icon="{Binding (this:ControlAssist.Icon), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                              IconSize="{Binding (this:ControlAssist.IconSize), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                              IsFilled="{Binding (this:ControlAssist.IsFilled), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                              StrokeThickness="{Binding (this:ControlAssist.StrokeThickness), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}" />
+
+                                <ContentPresenter x:Name="PART_Content"
+                                                  Content="{TemplateBinding Content}"
+                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                  Margin="0 0 0 0 "
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            </DockPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <!-- PointerOver -->
+            <Style Selector="^:pointerover">
+                
+                <Style Selector="^ /template/ this|Iconify#PART_Icon">
+                    <Setter Property="Foreground" Value="{Binding HoverState, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                </Style>
+                
+                <Style Selector="^ /template/ ContentPresenter#PART_Content">
+                    <Setter Property="TextElement.Foreground" Value="{Binding HoverState, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                </Style>
+            </Style>
+
+            <!-- Pressed -->
+            <Style Selector="^:pressed">
+                <Style Selector="^ /template/ this|Iconify#PART_Icon">
+                    <Setter Property="Foreground" Value="{Binding HighlightState, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                </Style>
+                
+                <Style Selector="^ /template/ ContentPresenter#PART_Content">
+                    <Setter Property="TextElement.Foreground" Value="{Binding HighlightState, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                </Style>
+            </Style>
+
+            <!-- Disabled  -->
+            <Style Selector="^:disabled">
+                <Style Selector="^ /template/ this|Iconify#PART_Icon">
+                    <Setter Property="Foreground" Value="{Binding DisabledState, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                </Style>
+                
+                <Style Selector="^ /template/ ContentPresenter#PART_Content">
+                    <Setter Property="TextElement.Foreground" Value="{Binding DisabledState, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                </Style>
+            </Style>
+        </Style>
+    </ControlTheme>
+    
+    <!-- OptionButton -->
+    <ControlTheme x:Key="OptionButton.Base" TargetType="{x:Type b:OptionButton}">
+        <Setter Property="this:ControlAssist.CornerRadius" Value="3" />
+        <Setter Property="this:ControlAssist.Icon" Value="{x:Null}" />
+        <Setter Property="this:ControlAssist.IconSize" Value="19" />
+        <Setter Property="this:ControlAssist.IsFilled" Value="False" />
+        <Setter Property="this:ControlAssist.IconDock" Value="Left" />
+        <Setter Property="this:ControlAssist.IconMargin" Value="0" />
+        <Setter Property="this:ControlAssist.StrokeThickness" Value="2" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.Level2}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Background.Level2}" />
+        <Setter Property="HighlightState" Value="{DynamicResource Brush.HighlightA4}" />
+        <Setter Property="HoverState" Value="{DynamicResource Brush.HighlightA2}" />
+        <Setter Property="DisabledState" Value="{DynamicResource Brush.HighlightA1}" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="Padding" Value="8 4" />
+        <Setter Property="MinHeight" Value="36" />
+        <Setter Property="MinWidth" Value="84" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type b:OptionButton}">
+                    <p:TilePanel Margin="0">
+                        <Border x:Name="PART_Border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{Binding (this:ControlAssist.CornerRadius), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}">
+                            <ContentPresenter x:Name="PART_Content"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              Margin="{TemplateBinding Padding}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Border>
+
+                        <Border x:Name="PART_Mark"
+                                DockPanel.Dock="Top"
+                                Background="Transparent"
+                                CornerRadius="16"
+                                Padding="4"
+                                Margin="6"
+                                Height="{Binding (this:ControlAssist.IconSize), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                Width="{Binding (this:ControlAssist.IconSize), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                IsVisible="False">
+                            <Path x:Name="PART_Icon"
+                                  Data="{StaticResource Checked}"
+                                  Stroke="White"
+                                  StrokeThickness="{Binding (this:ControlAssist.StrokeThickness), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                  Stretch="Uniform"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                        </Border>
+                    </p:TilePanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style Selector="^:pointerover">
+            <Style Selector="^ /template/ Border#PART_Border">
+                <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=HoverState}"/>
+            </Style>
+            <Style Selector="^ /template/ Border#PART_Mark">
+                <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=HoverState}"/>
+            </Style>
+        </Style>
+        <Style Selector="^:pressed">
+            <Style Selector="^ /template/ Border#PART_Border">
+                <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=HighlightState}"/>
+            </Style>
+            <Style Selector="^ /template/ Border#PART_Mark">
+                <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=HighlightState}"/>
+                <Setter Property="IsVisible" Value="True"/>
+            </Style>
+        </Style>
+        <Style Selector="^:checked">
+            <Style Selector="^ /template/ Border#PART_Border">
+                <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=HighlightState}"/>
+            </Style>
+            <Style Selector="^ /template/ Border#PART_Mark">
+                <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=HighlightState}"/>
+                <Setter Property="IsVisible" Value="True"/>
+            </Style>
+        </Style>
+        <Style Selector="^:indeterminate">
+            <Style Selector="^ /template/ Border#PART_Border">
+                <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=HighlightState}"/>
+            </Style>
+            <Style Selector="^ /template/ Border#PART_Mark">
+                <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=HighlightState}"/>
+                <Setter Property="IsVisible" Value="True"/>
+            </Style>
+            <Style Selector="^ /template/ Path#PART_Icon">
+                <Setter Property="Data" Value="{StaticResource Minus}"/>
+            </Style>
+        </Style>
+        <Style Selector="^:disabled">
+            <Style Selector="^ /template/ ContentPresenter#PART_Content">
+                <Setter Property="TextElement.Foreground" Value="{DynamicResource Brush.Foreground.Disabled}"/>
+            </Style>
+            <Style Selector="^ /template/ Border#PART_Mark">
+                <Setter Property="IsVisible" Value="False"/>
+            </Style>
+        </Style>
+    </ControlTheme>
+    
+    <!-- ToggleSwitch -->
+    <ControlTheme x:Key="{x:Type b:ToggleSwitch}" TargetType="{x:Type b:ToggleSwitch}">
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.Level3}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Padding" Value="8 6 0 0" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type b:ToggleSwitch}">
+                    <Grid Background="Transparent" ColumnDefinitions="*,Auto">
+                        <Grid Grid.Column="1"
+                              Width="40"
+                              Height="20">
+                            <Rectangle x:Name="ToggleRectangle"
+                                       Width="40"
+                                       Height="20"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Fill="Transparent"
+                                       RadiusX="10"
+                                       RadiusY="10"
+                                       StrokeThickness="1"
+                                       Stroke="{DynamicResource Brush.AdaptiveLevel2}">
+                                <Rectangle.Transitions>
+                                    <Transitions>
+                                        <DoubleTransition Property="Opacity" Duration="0:0:0.167"/>
+                                    </Transitions>
+                                </Rectangle.Transitions>
+                            </Rectangle>
+                            <Rectangle x:Name="ActiveToggleRectangle"
+                                       Width="40"
+                                       Height="20"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Fill="{DynamicResource Brush.HighlightA4}"
+                                       Opacity="0.0"
+                                       RadiusX="10"
+                                       RadiusY="10"
+                                       StrokeThickness="0">
+                                <Rectangle.Transitions>
+                                    <Transitions>
+                                        <DoubleTransition Property="Opacity" Duration="0:0:0.167" />
+                                    </Transitions>
+                                </Rectangle.Transitions>
+                            </Rectangle>
+                            <Ellipse x:Name="ToggleEllipse"
+                                     Width="12"
+                                     Height="12"
+                                     Margin="0"
+                                     HorizontalAlignment="Center"
+                                     VerticalAlignment="Center"
+                                     RenderTransformOrigin="0.5, 0.5"
+                                     Fill="{DynamicResource Brush.AdaptiveLevel2}">
+                                <Ellipse.RenderTransform>
+                                    <TranslateTransform X="-9" />
+                                </Ellipse.RenderTransform>
+                                <Ellipse.Transitions>
+                                    <Transitions>
+                                        <DoubleTransition Property="Opacity" Duration="0:0:0.167" />
+                                    </Transitions>
+                                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.167" Easing="LinearEasing"/>
+                                </Ellipse.Transitions>
+                            </Ellipse>
+                            <Ellipse x:Name="ActiveToggleEllipse"
+                                     Width="12" Height="12"
+                                     Margin="0"
+                                     HorizontalAlignment="Center"
+                                     VerticalAlignment="Center"
+                                     Opacity="0.0"
+                                     RenderTransformOrigin="0.5, 0.5"
+                                     Fill="White">
+                                <Ellipse.RenderTransform>
+                                    <TranslateTransform X="-9" />
+                                </Ellipse.RenderTransform>
+                                <Ellipse.Transitions>
+                                    <Transitions>
+                                        <DoubleTransition Property="Opacity" Duration="0:0:0.167" />
+                                    </Transitions>
+                                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.167" Easing="LinearEasing"/>
+                                </Ellipse.Transitions>
+                            </Ellipse>
+                        </Grid>
+
+                        <ContentPresenter x:Name="ContentPresenter"
+                                          Grid.Column="0"
+                                          Margin="0 0 16 0"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Content="{TemplateBinding Content}"
+                                          TextElement.FontSize="{TemplateBinding FontSize}"
+                                          TextElement.Foreground="{TemplateBinding Foreground}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style Selector="^:pointerover">
+            <Style Selector="^ /template/ Rectangle#ToggleRectangle">
+                <Setter Property="Fill" Value="{DynamicResource Brush.Background.Level4}" />
+            </Style>
+            <Style Selector="^ /template/ Ellipse#ToggleEllipse">
+                <Setter Property="Fill" Value="{DynamicResource Brush.AdaptiveLevel1}" />
+            </Style>
+        </Style>
+
+
+        <Style Selector="^:disabled:checked">
+            <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
+                <Setter Value="{DynamicResource Brush.Foreground.Disabled}" Property="TextElement.Foreground" />
+            </Style>
+            <Style Selector="^ /template/ Rectangle#ActiveToggleRectangle">
+                <Setter Property="Fill" Value="{DynamicResource Brush.HighlightA1}" />
+            </Style>
+            <Style Selector="^ /template/ Ellipse#ActiveToggleEllipse">
+                <Setter Property="Fill" Value="{DynamicResource Brush.HighlightA2}" />
+            </Style>
+        </Style>
+
+
+        <Style Selector="^:disabled">
+            <Setter Value="{DynamicResource Brush.Foreground.Disabled}" Property="Foreground" />
+
+            <Style Selector="^ /template/ Rectangle#ToggleRectangle">
+                <Setter Property="Stroke" Value="{DynamicResource Brush.AdaptiveLevel1}" />
+                <Setter Property="Fill" Value="{DynamicResource Brush.AdaptiveLevel1}" />
+            </Style>
+            <Style Selector="^ /template/ Ellipse#ToggleEllipse">
+                <Setter Property="Fill" Value="{DynamicResource Brush.Background.Disabled}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^:checked /template/ Rectangle#ToggleRectangle">
+            <Setter Property="Opacity" Value="0"></Setter>
+        </Style>
+
+        <Style Selector="^:checked /template/ Rectangle#ActiveToggleRectangle">
+            <Setter Property="Opacity" Value="1"></Setter>
+        </Style>
+
+        <Style Selector="^:checked /template/ Ellipse#ToggleEllipse">
+            <Setter Property="Opacity" Value="0"></Setter>
+        </Style>
+
+        <Style Selector="^:checked /template/ Ellipse#ActiveToggleEllipse">
+            <Setter Property="Opacity" Value="1"></Setter>
+        </Style>
+
+        <Style Selector="^:checked /template/ Ellipse#ToggleEllipse">
+            <Setter Property="RenderTransform" Value="translateX( 9px )"></Setter>
+        </Style>
+
+        <Style Selector="^:checked /template/ Ellipse#ActiveToggleEllipse">
+            <Setter Property="RenderTransform" Value="translateX( 9px )"></Setter>
+        </Style>
+    </ControlTheme>
+    
+    <!-- RadioButton -->
+    <ControlTheme x:Key="RadioButton.Base" TargetType="{x:Type b:RadioButton}">
+        <Setter Property="this:ControlAssist.CornerRadius" Value="3" />
+        <Setter Property="this:ControlAssist.Icon" Value="{x:Null}" />
+        <Setter Property="this:ControlAssist.IconSize" Value="12" />
+        <Setter Property="this:ControlAssist.IsFilled" Value="False" />
+        <Setter Property="this:ControlAssist.IconDock" Value="Left" />
+        <Setter Property="this:ControlAssist.IconMargin" Value="0 0 8 0" />
+        <Setter Property="this:ControlAssist.StrokeThickness" Value="2" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.Level2}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Background.Level2}" />
+        <Setter Property="HighlightState" Value="{DynamicResource Brush.HighlightA4}" />
+        <Setter Property="HoverState" Value="{DynamicResource Brush.HighlightA2}" />
+        <Setter Property="DisabledState" Value="{DynamicResource Brush.HighlightA1}" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="Padding" Value="8 4" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type b:RadioButton}">
+                        <Border x:Name="PART_Border"
+                                Background="Transparent"
+                                CornerRadius="0"
+                                Padding="{TemplateBinding Padding}">
+                            <DockPanel>
+                                <Border x:Name="PART_Outer"
+                                        Background="{DynamicResource Brush.Background.Level1}"
+                                        CornerRadius="18"
+                                        Height="20"
+                                        Width="20"
+                                        Padding="4">
+                                    <Border x:Name="PART_Inner"
+                                            Background="{DynamicResource Brush.Background.Level3}"
+                                            CornerRadius="18" />
+                                </Border>
+
+                                <ContentPresenter x:Name="PART_Content"
+                                                  Content="{TemplateBinding Content}"
+                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                  Margin="8 0 0 0"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            </DockPanel>
+                        </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style Selector="^:pointerover /template/ Border#PART_Inner">
+            <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=HoverState}"/>
+        </Style>
+        
+        <Style Selector="^:checked /template/ Border#PART_Inner">
+            <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=HighlightState}"/>
+        </Style>
+        <Style Selector="^:indeterminate /template/ Border#PART_Inner">
+            <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=HighlightState}"/>
+        </Style>
+        <Style Selector="^:disabled">
+            <Style Selector="^ /template/ ContentPresenter#PART_Content">
+                <Setter Property="TextElement.Foreground" Value="{DynamicResource Brush.Foreground.Disabled}"/>
+            </Style>
+            <Style Selector="^ /template/ Border#PART_Outer">
+                <Setter Property="Background" Value="{DynamicResource Brush.Background.Disabled}"/>
+            </Style>
+        </Style>
+    </ControlTheme>
+    
+    <!-- CheckBox -->
+    <ControlTheme x:Key="CheckBox.Base" TargetType="{x:Type b:CheckBox}">
+        <Setter Property="this:ControlAssist.CornerRadius" Value="3" />
+        <Setter Property="this:ControlAssist.Icon" Value="{x:Null}" />
+        <Setter Property="this:ControlAssist.IconSize" Value="19" />
+        <Setter Property="this:ControlAssist.IsFilled" Value="False" />
+        <Setter Property="this:ControlAssist.IconDock" Value="Left" />
+        <Setter Property="this:ControlAssist.IconMargin" Value="0 0 8 0" />
+        <Setter Property="this:ControlAssist.StrokeThickness" Value="2" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Background.Level2}" />
+        <Setter Property="Highlight" Value="{DynamicResource Brush.HighlightA4}"/>
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="Padding" Value="8 4" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type b:CheckBox}">
+                    <Border x:Name="PART_Border"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{Binding (this:ControlAssist.CornerRadius), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                            Padding="{TemplateBinding Padding}">
+                        <DockPanel>
+                            <Border x:Name="PART_Mark"
+                                    DockPanel.Dock="Left"
+                                    Background="{DynamicResource Brush.Background.Level2}"
+                                    CornerRadius="16"
+                                    Padding="4"
+                                    Height="{Binding (this:ControlAssist.IconSize), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                    Width="{Binding (this:ControlAssist.IconSize), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}" 
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                                <Path x:Name="PART_Icon"
+                                      Data="{StaticResource Checked}"
+                                      Stroke="{DynamicResource Brush.Foreground.Disabled}"
+                                      StrokeThickness="{Binding (this:ControlAssist.StrokeThickness), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                      Stretch="Uniform"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                            </Border>
+
+                            <ContentPresenter x:Name="PART_Content"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              Margin="{TemplateBinding Padding}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+
+                        </DockPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        
+        <!-- MouseOver -->
+        <Style Selector="^:pointerover">
+            <Style Selector="^ /template/ Border#PART_Border">
+                <Setter Property="BorderBrush" Value="{DynamicResource Brush.Overlay100}"/>
+            </Style>
+            <Style Selector="^ /template/ Border#PART_Mark">
+                <Setter Property="Background" Value="{DynamicResource Brush.Overlay100}"/>
+            </Style>
+            <Style Selector="^ /template/ Path#PART_Icon">
+                <Setter Property="Stroke" Value="{DynamicResource Brush.Foreground.Level1}"/>
+            </Style>
+        </Style>
+        
+        <!-- IsChecked : true -->
+        <Style Selector="^:checked">
+            <Style Selector="^ /template/ Border#PART_Mark">
+                <Setter Property="Background" Value="{Binding Highlight, RelativeSource={RelativeSource Mode=TemplatedParent}}"/>
+                <Setter Property="Padding" Value="4"/>
+            </Style>
+            <Style Selector="^ /template/ Path#PART_Icon">
+                <Setter Property="Stroke" Value="{DynamicResource Brush.Foreground.Level1}"/>
+                <Setter Property="Data" Value="{StaticResource Checked}"/>
+            </Style>
+        </Style>
+        
+        <!-- IsChecked : null -->
+        <Style Selector="^:indeterminate">
+            <Style Selector="^ /template/ Border#PART_Mark">
+                <Setter Property="Background" Value="{Binding Highlight, RelativeSource={RelativeSource Mode=TemplatedParent}}"/>
+                <Setter Property="Padding" Value="3"/>
+            </Style>
+            <Style Selector="^ /template/ Path#PART_Icon">
+                <Setter Property="Stroke" Value="{DynamicResource Brush.Foreground.Level1}"/>
+                <Setter Property="Data" Value="{StaticResource Minus}"/>
+            </Style>
+        </Style>
+        
+
+        
+        <!-- IsEnabled = false & IsChecked = null -->
+        <Style Selector="^:disabled">
+            <Style Selector="^ /template/ ContentPresenter#PART_Content">
+                <Setter Property="TextElement.Foreground" Value="{DynamicResource Brush.Foreground.Disabled}"/>
+            </Style>
+            <Style Selector="^ /template/ Border#PART_Mark">
+                <Setter Property="Background" Value="{DynamicResource Brush.Background.Disabled}"/>
+            </Style>
+        </Style>
+    </ControlTheme>
+    
+    <!-- ToggleButton -->
+    <ControlTheme x:Key="ToggleButton.Base" TargetType="{x:Type b:ToggleButton}">
+        <Setter Property="this:ControlAssist.CornerRadius" Value="3" />
+        <Setter Property="this:ControlAssist.Icon" Value="{x:Null}" />
+        <Setter Property="this:ControlAssist.IconSize" Value="12" />
+        <Setter Property="this:ControlAssist.IsFilled" Value="False" />
+        <Setter Property="this:ControlAssist.IconDock" Value="Left" />
+        <Setter Property="this:ControlAssist.IconMargin" Value="0" />
+        <Setter Property="this:ControlAssist.StrokeThickness" Value="2" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.Level3}" />
+        <Setter Property="HighlightState" Value="{DynamicResource Brush.HighlightA4}" />
+        <Setter Property="HoverState" Value="{DynamicResource Brush.HighlightA2}" />
+        <Setter Property="DisabledState" Value="{DynamicResource Brush.HighlightA1}" />
+        <Setter Property="Padding" Value="8 4" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type b:ToggleButton}">
+                    <Border x:Name="PART_Border"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{Binding (this:ControlAssist.CornerRadius), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter x:Name="PART_Content"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+       
+
+        <Style Selector="^:pointerover /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=HoverState}"/>
+        </Style>
+        
+        <Style Selector="^:checked /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=HighlightState}"/>
+        </Style>
+        <Style Selector="^:indeterminate /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=HighlightState}"/>
+        </Style>
+        <Style Selector="^:disabled /template/ ContentPresenter#PART_Content">
+            <Setter Property="TextElement.Foreground" Value="{DynamicResource Brush.Foreground.Disabled}"/>
+        </Style>
+
+
+        <!-- IconMode=Icon Trigger  -->
+        <Style Selector="^[IconMode=Icon]">
+            <Setter Property="this:ControlAssist.StrokeThickness" Value="1" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type b:ToggleButton}">
+                        <Border x:Name="PART_Border"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="{Binding (this:ControlAssist.CornerRadius), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                Padding="{TemplateBinding Padding}">
+                            <this:Iconify x:Name="PART_Icon"
+                                          Foreground="{TemplateBinding Foreground}"
+                                          Margin="{Binding (this:ControlAssist.IconMargin), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                          Icon="{Binding (this:ControlAssist.Icon), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                          IconSize="{Binding (this:ControlAssist.IconSize), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                          IsFilled="{Binding (this:ControlAssist.IsFilled), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                          StrokeThickness="{Binding (this:ControlAssist.StrokeThickness), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style Selector="^:pointerover /template/ Border#PART_Border">
+                <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=HoverState}"/>
+            </Style>
+        
+            <Style Selector="^:checked /template/ Border#PART_Border">
+                <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=HighlightState}"/>
+            </Style>
+            <Style Selector="^:indeterminate /template/ Border#PART_Border">
+                <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=HighlightState}"/>
+            </Style>
+            <Style Selector="^:disabled /template/ ContentPresenter#PART_Content">
+                <Setter Property="TextElement.Foreground" Value="{DynamicResource Brush.Foreground.Disabled}"/>
+            </Style>
+        </Style>
+
+        <!-- IconMode=Both Trigger  -->
+        <Style Selector="^[IconMode=Both]">
+            <Setter Property="this:ControlAssist.IconMargin" Value="0 0 8 0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type b:ToggleButton}">
+                        <Border x:Name="PART_Border"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="{Binding (this:ControlAssist.CornerRadius), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                Padding="{TemplateBinding Padding}">
+                            <DockPanel VerticalAlignment="Center">
+                                <this:Iconify x:Name="PART_Icon"
+                                              DockPanel.Dock="{Binding (this:ControlAssist.IconDock), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                              Foreground="{TemplateBinding Foreground}"
+                                              Margin="{Binding (this:ControlAssist.IconMargin), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                              Icon="{Binding (this:ControlAssist.Icon), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                              IconSize="{Binding (this:ControlAssist.IconSize), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                              IsFilled="{Binding (this:ControlAssist.IsFilled), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                              StrokeThickness="{Binding (this:ControlAssist.StrokeThickness), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}" />
+
+                                <ContentPresenter x:Name="PART_Content"
+                                                  Content="{TemplateBinding Content}"
+                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                  Margin="0 0 0 0 "
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            </DockPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style Selector="^:pointerover /template/ Border#PART_Border">
+                <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=HoverState}"/>
+            </Style>
+        
+            <Style Selector="^:checked /template/ Border#PART_Border">
+                <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=HighlightState}"/>
+            </Style>
+            <Style Selector="^:indeterminate /template/ Border#PART_Border">
+                <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=HighlightState}"/>
+            </Style>
+            <Style Selector="^:disabled /template/ ContentPresenter#PART_Content">
+                <Setter Property="TextElement.Foreground" Value="{DynamicResource Brush.Foreground.Disabled}"/>
+            </Style>
+        </Style>
+        
+        
+    </ControlTheme>
+
+    <!-- Reference: GhostButton -->
+    <ControlTheme x:Key="{x:Type b:GhostButton}" TargetType="{x:Type b:GhostButton}" BasedOn="{StaticResource GhostButton.Base}" />
+    <ControlTheme x:Key="{x:Type b:MainButton}" TargetType="{x:Type b:MainButton}" BasedOn="{StaticResource MainButton.Base}" />
+    <ControlTheme x:Key="{x:Type b:TextButton}" TargetType="{x:Type b:TextButton}" BasedOn="{StaticResource TextButton.Base}" />
+    <ControlTheme x:Key="{x:Type b:OptionButton}" TargetType="{x:Type b:OptionButton}" BasedOn="{StaticResource OptionButton.Base}" />
+    <ControlTheme x:Key="{x:Type b:RadioButton}" TargetType="{x:Type b:RadioButton}" BasedOn="{StaticResource RadioButton.Base}" />
+    <ControlTheme x:Key="{x:Type b:ToggleButton}" TargetType="{x:Type b:ToggleButton}" BasedOn="{StaticResource ToggleButton.Base}" />
+    <ControlTheme x:Key="{x:Type b:CheckBox}" TargetType="{x:Type b:CheckBox}" BasedOn="{StaticResource CheckBox.Base}" />
+
+</ResourceDictionary>

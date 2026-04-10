@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>AvalonDock.Themes</RootNamespace>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <OutputPath>../../../builds/nuget</OutputPath>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>AvalonDock.Themes.VS2013</PackageId>
+    <Title>AvalonDock.Themes.VS2013</Title>
+    <Description>猫头菇工作室的基础设施库，提供了基于4.72.1的AvalonDock.Themes.VS2013的封装。</Description>
+    <Copyright>All copyright reserved by luoyisi</Copyright>
+    <PackageTags>Foundation</PackageTags>
+    <Version>6.0.1</Version>
+    <AssemblyVersion>6.0.1</AssemblyVersion>
+    <FileVersion>6.0.1.0</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="**\*.png" />
+  </ItemGroup>
+
+  <!-- NuGet Packaging -->
+  <ItemGroup>
+    <None Include="LICENSE" Pack="true" PackagePath="" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AvalonDock\AvalonDock.csproj" />
+  </ItemGroup>
+</Project>

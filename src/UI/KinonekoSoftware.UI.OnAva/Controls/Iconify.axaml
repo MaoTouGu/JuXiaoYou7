@@ -1,0 +1,30 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:this="clr-namespace:KinonekoSoftware.UI.Controls">
+    
+    <!-- Iconify -->
+    <ControlTheme x:Key="{x:Type this:Iconify}" TargetType="{x:Type this:Iconify}">
+        <Setter Property="StrokeThickness" Value="1"/>
+        <Setter Property="IconSize" Value="17" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type this:Iconify}">
+                    <Path x:Name="PART_Icon"
+                          Margin="{TemplateBinding Padding}"
+                          Data="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Icon,Mode=OneWay}"
+                          Stroke="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Foreground,Mode=OneWay}"
+                          StrokeThickness="{TemplateBinding StrokeThickness}"
+                          Height="{Binding RelativeSource={RelativeSource TemplatedParent},Path=IconSize,Mode=OneWay}"
+                          Width="{Binding RelativeSource={RelativeSource TemplatedParent},Path=IconSize,Mode=OneWay}"
+                          Stretch="Uniform" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style Selector="^[IsFilled=True] /template/ Path#PART_Icon">
+            <Setter Property="Fill" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Foreground,Mode=OneWay}" />
+            <Setter Property="Stroke" Value="{x:Null}" />
+            <Setter Property="StrokeThickness" Value="0"/>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

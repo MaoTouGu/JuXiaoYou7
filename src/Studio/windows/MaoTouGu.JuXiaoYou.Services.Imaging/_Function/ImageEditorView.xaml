@@ -1,0 +1,111 @@
+﻿<ForestDialog x:Class="MaoTouGu.JuXiaoYou.Services.Imaging.ImageEditorView"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              xmlns:shells="urn:KinonekoSoftware/shells"
+              xmlns:ui="urn:KinonekoSoftware/ui"
+              xmlns:this="clr-namespace:MaoTouGu.JuXiaoYou.Services.Imaging"
+              xmlns:thisVM="clr-namespace:MaoTouGu.JuXiaoYou.Services.Imaging"
+              mc:Ignorable="d"
+              d:DesignWidth="800" d:DesignHeight="450"
+              d:DataContext="{d:DesignInstance Type={x:Type thisVM:ImageEditorViewModel}, IsDesignTimeCreatable=True}">
+    <Border Background="{DynamicResource Brush.Background.Level3}"
+            Height="384"
+            Width="640">
+        <Grid ShowGridLines="False">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="280" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="64" />
+                <RowDefinition Height="200" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="0"
+                       FontSize="24"
+                       Text="预览"
+                       Margin="32 16" />
+
+            <Border Grid.Column="0"
+                    Grid.Row="1"
+                    Grid.RowSpan="2"
+                    Background="Transparent">
+                <Image x:Name="Image"
+                       Stretch="Uniform"
+                       Height="256"
+                       Width="256"
+                       MouseLeftButtonDown="OnMouseLeftButtonDown"
+                       MouseLeftButtonUp="OnMouseLeftButtonUp"
+                       MouseMove="OnMouseMove"
+                       LostMouseCapture="Button_LostMouseCapture"
+                       MouseLeave="OnMouseRelease" />
+            </Border>
+
+
+            <this:MiniMap x:Name="MiniMap"
+                          Grid.Column="1"
+                          Grid.Row="1"
+                          Height="200"
+                          Width="200"
+                          VerticalAlignment="Top">
+
+            </this:MiniMap>
+
+            <DockPanel Grid.Column="1"
+                       Grid.Row="0"
+                       HorizontalAlignment="Center"
+                       Margin="8">
+                <ui:GhostButton DockPanel.Dock="Left"
+                                ui:ControlAssist.Icon="{StaticResource FeatherIcon.PlusCircle}"
+                                Click="Button_Plus"
+                                IconMode="Icon"
+                                Height="36"
+                                Width="36">
+
+                </ui:GhostButton>
+
+                <ui:GhostButton DockPanel.Dock="Right"
+                                ui:ControlAssist.Icon="{StaticResource FeatherIcon.MinusCircle}"
+                                Click="Button_Minus"
+                                IconMode="Icon"
+                                Height="36"
+                                Width="36" />
+
+                <TextBlock x:Name="Scale"
+                           Text="1.0x"
+                           TextAlignment="Center"
+                           Margin="16 0"
+                           Width="64"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+            </DockPanel>
+
+
+            <ui:MainButton Grid.Column="1"
+                           Grid.Row="2"
+                           ui:ControlAssist.CornerRadius="21"
+                           Click="Button_ClearFocus"
+                           Content="确定"
+                           Command="{Binding CompleteCommand}"
+                           Height="36"
+                           Margin="32 0 32 16"
+                           IconMode="Text"
+                           FontSize="13" />
+            <ui:GhostButton Grid.Column="1"
+                            Grid.Row="3"
+                            ui:ControlAssist.CornerRadius="21"
+                            Click="Button_ClearFocus"
+                            Content="取消"
+                            Command="{Binding CancelCommand}"
+                            Height="36"
+                            Margin="32 0"
+                            IconMode="Text"
+                            FontSize="13" />
+        </Grid>
+    </Border>
+</ForestDialog>

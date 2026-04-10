@@ -1,0 +1,123 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0-windows</TargetFramework>
+        <Nullable>disable</Nullable>
+        <UseWPF>true</UseWPF>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>MaoTouGu.JuXiaoYou</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\GraphShape\KinonekoSoftware.GraphShape.Windows\KinonekoSoftware.GraphShape.Windows.csproj" />
+      <ProjectReference Include="..\..\..\Resources\MaoTouGu.Resources.Fonts.WPF\MaoTouGu.Resources.Fonts.WPF.csproj" />
+      <ProjectReference Include="..\..\..\Shells\src\MaoTouGu.Shells.WPF\MaoTouGu.Shells.WPF.csproj" />
+      <ProjectReference Include="..\..\..\UI\AvalonDock.Themes.VS2013\AvalonDock.Themes.VS2013.csproj" />
+      <ProjectReference Include="..\..\..\UI\AvalonDock\AvalonDock.csproj" />
+      <ProjectReference Include="..\..\..\UX\KinonekoSoftware.UX.OnWPF\KinonekoSoftware.UX.OnWPF.csproj" />
+      <ProjectReference Include="..\..\database\MaoTouGu.Studio.Database\MaoTouGu.Studio.Database.csproj" />
+      <ProjectReference Include="..\..\share\MaoTouGu.JuXiaoYou.Workspaces\MaoTouGu.JuXiaoYou.Workspaces.csproj" />
+      <ProjectReference Include="..\..\share\MaoTouGu.JuXiaoYou.Services.Plugins\MaoTouGu.JuXiaoYou.Services.Plugins.csproj" />
+      <ProjectReference Include="..\..\share\MaoTouGu.Studio.ORM\MaoTouGu.Studio.ORM.csproj" />
+      <ProjectReference Include="..\MaoTouGu.JuXiaoYou.Services.Forms\MaoTouGu.JuXiaoYou.Services.Forms.csproj" />
+      <ProjectReference Include="..\MaoTouGu.JuXiaoYou.Services.Imaging\MaoTouGu.JuXiaoYou.Services.Imaging.csproj" />
+      <ProjectReference Include="..\MaoTouGu.JuXiaoYou.Services.Networks\MaoTouGu.JuXiaoYou.Services.Networks.csproj" />
+      <ProjectReference Include="..\MaoTouGu.JuXiaoYou.Services.TextEditor\MaoTouGu.JuXiaoYou.Services.TextEditor.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MaoTouGu.Shells.Generators" Version="1.0.4"/>
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <Compile Include="..\..\..\..\scaffolds\Usings\ApiRef_BCL.cs">
+        <Link>Properties\ApiRef_BCL.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\..\scaffolds\Usings\ApiRef_Foundation.cs">
+        <Link>Properties\ApiRef_Foundation.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\..\scaffolds\Usings\ApiRef_LiteDB.cs">
+        <Link>Properties\ApiRef_LiteDB.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\..\scaffolds\Usings\ApiRef_Shells.cs">
+        <Link>Properties\ApiRef_Shells.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\..\scaffolds\Usings\ApiRef_WPF.cs">
+        <Link>Properties\ApiRef_WPF.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\..\scaffolds\Usings\Usings_GraphShape.cs">
+        <Link>Properties\Usings_GraphShape.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\..\scaffolds\Usings\Usings_System.cs">
+        <Link>Properties\Usings_System.cs</Link>
+      </Compile>
+    </ItemGroup>
+    
+    <ItemGroup>
+        <Compile Remove="Services\CFE\**" />
+        <Compile Remove="Indexing\Commands\**" />
+        <Compile Remove="Indexing\Core\**" />
+        <Compile Remove="Indexing\Extensions\**" />
+        <Compile Remove="Indexing\Primitives\**" />
+        <Compile Remove="Indexing\Templates\**" />
+        <Compile Remove="Indexing\IndexSystem.cs" />
+        <Compile Remove="Indexing\_List\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Page Remove="Indexing\Commands\**" />
+        <Page Remove="Indexing\Core\**" />
+        <Page Remove="Indexing\Extensions\**" />
+        <Page Remove="Indexing\Primitives\**" />
+        <Page Remove="Indexing\Templates\**" />
+        <Page Remove="Indexing\_List\**" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <None Remove="Languages\en-US.txt" />
+      <EmbeddedResource Include="Languages\en-US.txt" />
+      <None Remove="Languages\Enum_zh-CN.txt" />
+      <EmbeddedResource Include="Languages\Enum_zh-CN.txt" />
+      <None Remove="Languages\zh-CN.txt" />
+      <EmbeddedResource Include="Languages\zh-CN.txt" />
+      <EmbeddedResource Remove="Services\CFE\**" />
+      <None Remove="Services\CFE\**" />
+      <EmbeddedResource Remove="Indexing\Commands\**" />
+      <None Remove="Indexing\Commands\**" />
+      <EmbeddedResource Remove="Indexing\Core\**" />
+      <None Remove="Indexing\Core\**" />
+      <EmbeddedResource Remove="Indexing\Extensions\**" />
+      <None Remove="Indexing\Extensions\**" />
+      <EmbeddedResource Remove="Indexing\Primitives\**" />
+      <None Remove="Indexing\Primitives\**" />
+      <EmbeddedResource Remove="Indexing\Templates\**" />
+      <None Remove="Indexing\Templates\**" />
+      <EmbeddedResource Remove="Indexing\_List\**" />
+      <None Remove="Indexing\_List\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Common\Behaviors\" />
+      <Folder Include="Common\Converters\" />
+      <Folder Include="Controls\" />
+      <Folder Include="Managements\_FamilyTree\" />
+      <Folder Include="Managements\_Label\" />
+      <Folder Include="Managements\_\" />
+      <Folder Include="Startups\Features\" />
+      <Folder Include="Pages\_Pickers\" />
+      <Folder Include="Visualizers\Expressions\" />
+      <Folder Include="Workspaces\Composing\" />
+      <Folder Include="Workspaces\Core\" />
+      <Folder Include="Workspaces\Properties\" />
+      <Folder Include="Workspaces\Timelines\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Assets\gravatar.png" />
+      <Resource Include="Assets\gravatar.png" />
+      <None Remove="Assets\bg_7.png" />
+      <Resource Include="Assets\bg_7.png" />
+    </ItemGroup>
+
+</Project>

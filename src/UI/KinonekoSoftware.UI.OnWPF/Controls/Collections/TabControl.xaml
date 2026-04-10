@@ -1,0 +1,492 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ui="clr-namespace:KinonekoSoftware.UI.Controls"
+                    xmlns:this="clr-namespace:KinonekoSoftware.UI.Controls.Collections">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/KinonekoSoftware.UI.OnWPF;component/Themes/Dark.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="TabControl.Iconify" TargetType="{x:Type this:IconifyTabControl}">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type this:IconifyTabControl}">
+                    <DockPanel KeyboardNavigation.TabNavigation="Local">
+
+                        <Border x:Name="TabPanel"
+                                BorderBrush="{DynamicResource Brush.Foreground.Level1}">
+                            <TabPanel x:Name="HeaderPanel"
+                                      Panel.ZIndex="1"
+                                      IsItemsHost="True"
+                                      KeyboardNavigation.TabIndex="1"
+                                      Background="Transparent" />
+                        </Border>
+
+                        <Border x:Name="Border"
+                                Grid.Row="1"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                KeyboardNavigation.TabNavigation="Local"
+                                KeyboardNavigation.DirectionalNavigation="Contained"
+                                KeyboardNavigation.TabIndex="2"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter x:Name="PART_SelectedContentHost"
+                                              TextElement.FontSize="{TemplateBinding FontSize}"
+                                              TextElement.Foreground="{TemplateBinding Foreground}"
+                                              ContentSource="SelectedContent"
+                                              HorizontalAlignment="Stretch"
+                                              VerticalAlignment="Stretch" />
+                        </Border>
+                    </DockPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="TabStripPlacement" Value="Left">
+                            <Setter Property="DockPanel.Dock" Value="Left" TargetName="TabPanel"/>
+                        </Trigger>
+
+                        <Trigger Property="TabStripPlacement" Value="Right">
+                            <Setter Property="DockPanel.Dock" Value="Right" TargetName="TabPanel"/>
+                        </Trigger>
+
+                        <Trigger Property="TabStripPlacement" Value="Top">
+                            <Setter Property="DockPanel.Dock" Value="Top" TargetName="TabPanel"/>
+                        </Trigger>
+
+                        <Trigger Property="TabStripPlacement" Value="Bottom">
+                            <Setter Property="DockPanel.Dock" Value="Bottom" TargetName="TabPanel"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TabControl.Sink" TargetType="{x:Type this:SinkTabControl}">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Padding" Value="0 8" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type this:SinkTabControl}">
+                    <DockPanel KeyboardNavigation.TabNavigation="Local">
+
+                        <Border x:Name="TabPanel"
+                                BorderBrush="{DynamicResource Brush.HighlightB4}"
+                                BorderThickness="0 0 0 2"
+                                Padding="0">
+                            <TabPanel x:Name="HeaderPanel"
+                                      Panel.ZIndex="1"
+                                      IsItemsHost="True"
+                                      KeyboardNavigation.TabIndex="1"
+                                      Background="Transparent" />
+                        </Border>
+
+                        <Border x:Name="Border"
+                                Grid.Row="1"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                KeyboardNavigation.TabNavigation="Local"
+                                KeyboardNavigation.DirectionalNavigation="Contained"
+                                KeyboardNavigation.TabIndex="2"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter x:Name="PART_SelectedContentHost"
+                                              TextElement.FontSize="{TemplateBinding FontSize}"
+                                              TextElement.Foreground="{TemplateBinding Foreground}"
+                                              ContentSource="SelectedContent"
+                                              HorizontalAlignment="Stretch"
+                                              VerticalAlignment="Stretch" />
+                        </Border>
+                    </DockPanel>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="TabStripPlacement" Value="Left">
+                            <Setter Property="DockPanel.Dock" Value="Left" TargetName="TabPanel"/>
+                            <Setter Property="BorderThickness" Value="0 0 2 0" TargetName="TabPanel"/>
+                            <Setter Property="Padding" Value="16 0" />
+                        </Trigger>
+
+                        <Trigger Property="TabStripPlacement" Value="Right">
+                            <Setter Property="DockPanel.Dock" Value="Right" TargetName="TabPanel"/>
+                            <Setter Property="BorderThickness" Value="2 0 0 0" TargetName="TabPanel"/>
+                            <Setter Property="Padding" Value="0 0 16 0" />
+                        </Trigger>
+
+                        <Trigger Property="TabStripPlacement" Value="Top">
+                            <Setter Property="DockPanel.Dock" Value="Top" TargetName="TabPanel"/>
+                            <Setter Property="BorderThickness" Value="0 0 0 2" TargetName="TabPanel"/>
+                        </Trigger>
+
+
+                        <Trigger Property="TabStripPlacement" Value="Bottom">
+                            <Setter Property="DockPanel.Dock" Value="Bottom" TargetName="TabPanel"/>
+                            <Setter Property="BorderThickness" Value="0 2 0 0" TargetName="TabPanel"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    
+    <Style x:Key="TabControl.Sink.Advanced" TargetType="{x:Type this:AdvancedSinkTabControl}">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Padding" Value="8 0" />
+        <Setter Property="ToolBarMargin" Value="8 0 0 0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type this:AdvancedSinkTabControl}">
+                    <Grid KeyboardNavigation.TabNavigation="Local">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Border Grid.Row="0"
+                                BorderBrush="{DynamicResource Brush.HighlightB4}"
+                                BorderThickness="0 0 0 2"
+                                Padding="16 0 0 0">
+                            <DockPanel>
+                                <ContentPresenter x:Name="PART_ToolBar"
+                                                  DockPanel.Dock="Right"
+                                                  Content="{TemplateBinding ToolBar}"
+                                                  ContentTemplate="{TemplateBinding ToolBarTemplate}"
+                                                  ContentTemplateSelector="{TemplateBinding ToolBarTemplateSelector}"
+                                                  ContentStringFormat="{TemplateBinding ToolBarTemplateString}"
+                                                  Margin="{TemplateBinding ToolBarMargin}"
+                                                  HorizontalAlignment="Stretch"
+                                                  VerticalAlignment="Stretch" />
+
+                                <TabPanel x:Name="HeaderPanel"
+                                          Panel.ZIndex="1"
+                                          IsItemsHost="True"
+                                          KeyboardNavigation.TabIndex="1"
+                                          Background="Transparent" />
+                            </DockPanel>
+                        </Border>
+                        <Border x:Name="Border"
+                                Grid.Row="1"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                KeyboardNavigation.TabNavigation="Local"
+                                KeyboardNavigation.DirectionalNavigation="Contained"
+                                KeyboardNavigation.TabIndex="2"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter x:Name="PART_SelectedContentHost"
+                                              TextElement.FontSize="{TemplateBinding FontSize}"
+                                              TextElement.Foreground="{TemplateBinding Foreground}"
+                                              ContentSource="SelectedContent"
+                                              HorizontalAlignment="Stretch"
+                                              VerticalAlignment="Stretch" />
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="TabControl.Strike.Advanced" TargetType="{x:Type this:AdvancedStrikeTabControl}">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Padding" Value="8 0" />
+        <Setter Property="ToolBarMargin" Value="8 0 0 0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type this:AdvancedStrikeTabControl}">
+                    <Grid KeyboardNavigation.TabNavigation="Local">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        
+                        <DockPanel Margin="0 0 0 16">
+                            <ContentPresenter x:Name="PART_ToolBar"
+                                              DockPanel.Dock="Right"
+                                              Content="{TemplateBinding ToolBar}"
+                                              ContentTemplate="{TemplateBinding ToolBarTemplate}"
+                                              ContentTemplateSelector="{TemplateBinding ToolBarTemplateSelector}"
+                                              ContentStringFormat="{TemplateBinding ToolBarTemplateString}"
+                                              Margin="{TemplateBinding ToolBarMargin}"
+                                              HorizontalAlignment="Stretch"
+                                              VerticalAlignment="Stretch" />
+
+                            <TabPanel x:Name="HeaderPanel"
+                                      Panel.ZIndex="1"
+                                      IsItemsHost="True"
+                                      KeyboardNavigation.TabIndex="1"
+                                      Background="Transparent" />
+                        </DockPanel>
+                        
+                        <Border x:Name="Border"
+                                Grid.Row="1"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                KeyboardNavigation.TabNavigation="Local"
+                                KeyboardNavigation.DirectionalNavigation="Contained"
+                                KeyboardNavigation.TabIndex="2"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter x:Name="PART_SelectedContentHost"
+                                              TextElement.FontSize="{TemplateBinding FontSize}"
+                                              TextElement.Foreground="{TemplateBinding Foreground}"
+                                              ContentSource="SelectedContent"
+                                              HorizontalAlignment="Stretch"
+                                              VerticalAlignment="Stretch" />
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TabControl.Strike" TargetType="{x:Type this:StrikeTabControl}">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Padding" Value="8 0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type this:StrikeTabControl}">
+                    <DockPanel KeyboardNavigation.TabNavigation="Local">
+                        <Border x:Name="TabPanel"
+                                BorderBrush="{DynamicResource Brush.Foreground.Level1}"
+                                Padding="0 8">
+                            <TabPanel x:Name="HeaderPanel"
+                                      Panel.ZIndex="1"
+                                      IsItemsHost="True"
+                                      KeyboardNavigation.TabIndex="1"
+                                      Background="Transparent" />
+                        </Border>
+
+                        <Border x:Name="Border"
+                                Grid.Row="1"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                KeyboardNavigation.TabNavigation="Local"
+                                KeyboardNavigation.DirectionalNavigation="Contained"
+                                KeyboardNavigation.TabIndex="2"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter x:Name="PART_SelectedContentHost"
+                                              TextElement.FontSize="{TemplateBinding FontSize}"
+                                              TextElement.Foreground="{TemplateBinding Foreground}"
+                                              ContentSource="SelectedContent"
+                                              HorizontalAlignment="Stretch"
+                                              VerticalAlignment="Stretch" />
+                        </Border>
+                    </DockPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="TabStripPlacement" Value="Left">
+                            <Setter Property="DockPanel.Dock" Value="Left" TargetName="TabPanel"/>
+                        </Trigger>
+
+                        <Trigger Property="TabStripPlacement" Value="Right">
+                            <Setter Property="DockPanel.Dock" Value="Right" TargetName="TabPanel"/>
+                        </Trigger>
+
+                        <Trigger Property="TabStripPlacement" Value="Top">
+                            <Setter Property="DockPanel.Dock" Value="Top" TargetName="TabPanel"/>
+                        </Trigger>
+
+
+                        <Trigger Property="TabStripPlacement" Value="Bottom">
+                            <Setter Property="DockPanel.Dock" Value="Bottom" TargetName="TabPanel"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TabItem.Iconify" TargetType="{x:Type this:IconifyTabItem}">
+        <Setter Property="ui:ControlAssist.CornerRadius" Value="0" />
+        <Setter Property="ui:ControlAssist.Icon" Value="{x:Null}" />
+        <Setter Property="ui:ControlAssist.IconSize" Value="19" />
+        <Setter Property="ui:ControlAssist.IsFilled" Value="False" />
+        <Setter Property="ui:ControlAssist.IconDock" Value="Left" />
+        <Setter Property="ui:ControlAssist.IconMargin" Value="0 0 0 0" />
+        <Setter Property="ui:ControlAssist.StrokeThickness" Value="1" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="MinHeight" Value="48" />
+        <Setter Property="MinWidth" Value="48" />
+        <Setter Property="Padding" Value="8 4" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type this:IconifyTabItem}">
+                    <Border x:Name="PART_Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding ui:ControlAssist.CornerRadius}"
+                            Padding="{TemplateBinding Padding}"
+                            SnapsToDevicePixels="True"
+                            UseLayoutRounding="True">
+                        <ui:Iconify x:Name="PART_Icon"
+                                    Margin="{TemplateBinding ui:ControlAssist.IconMargin}"
+                                    Icon="{TemplateBinding ui:ControlAssist.Icon}"
+                                    IconSize="{TemplateBinding ui:ControlAssist.IconSize}"
+                                    IsFilled="{TemplateBinding ui:ControlAssist.IsFilled}"
+                                    StrokeThickness="{TemplateBinding ui:ControlAssist.StrokeThickness}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                                <Condition Property="IsSelected" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" Value="{DynamicResource Brush.HighlightC2}" TargetName="PART_Border" />
+                        </MultiTrigger>
+
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource Brush.HighlightC4}" TargetName="PART_Border" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Disabled}" TargetName="PART_Icon" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style x:Key="TabItem.Strike" TargetType="{x:Type this:StrikeTabItem}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="ui:ControlAssist.FontSize" Value="18" />
+        <Setter Property="MinHeight" Value="28" />
+        <Setter Property="MinWidth" Value="28" />
+        <Setter Property="Padding" Value="8 4" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type this:StrikeTabItem}">
+                    <Border x:Name="PART_Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="3"
+                            Padding="{TemplateBinding Padding}"
+                            SnapsToDevicePixels="True"
+                            UseLayoutRounding="True">
+                        <ContentPresenter x:Name="PART_Content"
+                                          TextElement.FontSize="{TemplateBinding ui:ControlAssist.FontSize}"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          Content="{TemplateBinding Header}"
+                                          ContentStringFormat="{TemplateBinding HeaderStringFormat}"
+                                          ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                          ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                          Focusable="False"
+                                          Margin="0 0 0 0"
+                                          RecognizesAccessKey="True"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                                <Condition Property="IsSelected" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="TextElement.Foreground" Value="{DynamicResource Brush.HighlightB1}" TargetName="PART_Content" />
+                        </MultiTrigger>
+
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="TextElement.Foreground" Value="{DynamicResource Brush.HighlightB3}" TargetName="PART_Content" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="TextElement.Foreground" Value="{DynamicResource Brush.Foreground.Disabled}" TargetName="PART_Content" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    
+    <Style x:Key="TabItem.Sink" TargetType="{x:Type this:SinkTabItem}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="MinHeight" Value="30" />
+        <Setter Property="MinWidth" Value="30" />
+        <Setter Property="Padding" Value="16 7" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type this:SinkTabItem}">
+                    <Border x:Name="PART_Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="0"
+                            Padding="{TemplateBinding Padding}"
+                            SnapsToDevicePixels="True"
+                            UseLayoutRounding="True">
+                        <ContentPresenter x:Name="PART_Content"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          Content="{TemplateBinding Header}"
+                                          ContentStringFormat="{TemplateBinding HeaderStringFormat}"
+                                          ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                          ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                          Focusable="False"
+                                          Margin="0"
+                                          RecognizesAccessKey="True"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                                <Condition Property="IsSelected" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" Value="{DynamicResource Brush.HighlightB5}" TargetName="PART_Border" />
+                        </MultiTrigger>
+
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource Brush.HighlightB4}" TargetName="PART_Border" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="TextElement.Foreground" Value="{DynamicResource Brush.Foreground.Disabled}" TargetName="PART_Content" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="{x:Type this:SinkTabControl}" BasedOn="{StaticResource TabControl.Sink}"/>
+    <Style TargetType="{x:Type this:AdvancedSinkTabControl}" BasedOn="{StaticResource TabControl.Sink.Advanced}"/>
+    <Style TargetType="{x:Type this:AdvancedStrikeTabControl}" BasedOn="{StaticResource TabControl.Strike.Advanced}"/>
+    <Style TargetType="{x:Type this:StrikeTabControl}" BasedOn="{StaticResource TabControl.Strike}"/>
+    <Style TargetType="{x:Type this:IconifyTabControl}" BasedOn="{StaticResource TabControl.Iconify}"/>
+    <Style TargetType="{x:Type this:SinkTabItem}" BasedOn="{StaticResource TabItem.Sink}"/>
+    <Style TargetType="{x:Type this:StrikeTabItem}" BasedOn="{StaticResource TabItem.Strike}"/>
+    <Style TargetType="{x:Type this:IconifyTabItem}" BasedOn="{StaticResource TabItem.Iconify}"/>
+</ResourceDictionary>

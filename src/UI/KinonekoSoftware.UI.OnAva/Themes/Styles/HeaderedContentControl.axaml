@@ -1,0 +1,187 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ui="clr-namespace:KinonekoSoftware.UI.Controls">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://KinonekoSoftware.UI.OnAva/Themes/Dark.axaml" />
+    </ResourceDictionary.MergedDictionaries>
+    
+
+
+    <ControlTheme x:Key="HeaderedContentControl.Decorated" TargetType="HeaderedContentControl">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="HeaderedContentControl">
+                    <DockPanel Background="{TemplateBinding Background}">
+                        <Border DockPanel.Dock="Top"
+                                BorderThickness="4 0 0 0"
+                                BorderBrush="{DynamicResource Brush.Border}"
+                                Margin="0 0 0 32"
+                                Padding="16 0 0 0">
+                            <ContentPresenter TextElement.FontSize="32"
+                                              Content="{TemplateBinding Header}"
+                                              ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                              Margin="{TemplateBinding Padding}"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Stretch" />
+                        </Border>
+
+
+                        <ContentPresenter DockPanel.Dock="Bottom"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </ControlTheme>
+
+    <ControlTheme x:Key="PropertyItem" TargetType="HeaderedContentControl">
+        <Setter Property="BorderThickness" Value="0 0 0 1" />
+        <Setter Property="Padding" Value="8" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="HeaderedContentControl">
+                    <Border BorderBrush="{DynamicResource Brush.Border}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Padding="{TemplateBinding Padding}">
+                        <DockPanel>
+
+                            <ContentPresenter DockPanel.Dock="Left"
+                                              TextElement.FontSize="15"
+                                              Content="{TemplateBinding Header}"
+                                              ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              MinWidth="64" />
+
+                            <ContentPresenter Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              Margin="16 0 0 0"
+											  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+
+                        </DockPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </ControlTheme>
+
+    <ControlTheme x:Key="HeaderedContentControl.DecoratedControlTheme2" TargetType="HeaderedContentControl">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Background.Level4}" />
+        <Setter Property="BorderThickness" Value="0 0 0 4" />
+        <Setter Property="Margin" Value="0 0 0 32" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="HeaderedContentControl">
+                    <DockPanel Background="{TemplateBinding Background}">
+                        <Border DockPanel.Dock="Top"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                HorizontalAlignment="Center"
+                                Margin="0 0 0 32"
+                                Padding="80 0">
+                            <Border Background="{TemplateBinding BorderBrush}"
+                                    Padding="24 8">
+
+                                <ContentPresenter TextElement.FontSize="24"
+                                                  TextElement.Foreground="{DynamicResource Brush.Foreground.Level1}"
+                                                  Content="{TemplateBinding Header}"
+                                                  ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                                  Margin="{TemplateBinding Padding}"
+                                                  VerticalAlignment="Center"
+                                                  HorizontalAlignment="Stretch" />
+                            </Border>
+                        </Border>
+
+
+                        <ContentPresenter DockPanel.Dock="Bottom"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          TextElement.Foreground="{DynamicResource Brush.Foreground.Level1}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </ControlTheme>
+
+
+    <ControlTheme x:Key="HeaderedContentControl.DecoratedControlTheme3" TargetType="HeaderedContentControl">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Background.Level4}" />
+        <Setter Property="BorderThickness" Value="0 0 0 6" />
+        <Setter Property="Margin" Value="0 0 0 32" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="HeaderedContentControl">
+                    <DockPanel Background="{TemplateBinding Background}">
+                        <Border DockPanel.Dock="Top"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                HorizontalAlignment="Left"
+                                Margin="0 0 0 16"
+                                Padding="24 8">
+
+                            <ContentPresenter TextElement.FontSize="24"
+                                              TextElement.Foreground="{DynamicResource Brush.Foreground.Level1}"
+                                              Content="{TemplateBinding Header}"
+                                              ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Stretch" />
+                        </Border>
+
+
+                        <ContentPresenter DockPanel.Dock="Bottom"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          Margin="{TemplateBinding Padding}"
+                                          TextElement.Foreground="{DynamicResource Brush.Foreground.Level1}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </ControlTheme>
+
+
+    <ControlTheme x:Key="{x:Type HeaderedContentControl}" TargetType="HeaderedContentControl">
+        <Setter Property="ui:ControlAssist.Foreground" Value="{DynamicResource Brush.Foreground.Level1}"/>
+        <Setter Property="ui:ControlAssist.FontSize" Value="16"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="HeaderedContentControl">
+                    <DockPanel Background="{TemplateBinding Background}">
+                        <ContentPresenter DockPanel.Dock="Top"
+                                          TextElement.FontSize="{Binding (ui:ControlAssist.FontSize), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                          TextElement.Foreground="{Binding (ui:ControlAssist.Foreground), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                          Content="{TemplateBinding Header}"
+                                          ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                          VerticalAlignment="Stretch"
+                                          HorizontalAlignment="Stretch" />
+
+                        <ContentPresenter DockPanel.Dock="Bottom"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          Margin="{TemplateBinding Padding}"
+                                          TextElement.Foreground="{DynamicResource Brush.Foreground.Level1}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

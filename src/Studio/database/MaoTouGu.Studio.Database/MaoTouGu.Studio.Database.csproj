@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+        <RootNamespace>MaoTouGu.Studio.Database</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\MaoTouGu.Studio.Database.Core\MaoTouGu.Studio.Database.Core.csproj" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="NetTopologySuite" Version="2.6.0" />
+        <PackageReference Include="QuikGraph" Version="2.3.0"/>
+        <PackageReference Include="NPinyin.Core" Version="3.0.0"/>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Folder Include="Entities\Topology\" />
+      <Folder Include="Templates\" />
+    </ItemGroup>
+
+</Project>

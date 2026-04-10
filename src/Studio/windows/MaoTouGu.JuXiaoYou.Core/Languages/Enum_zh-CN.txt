@@ -1,0 +1,19 @@
+﻿Enum.UserType.Super = 超级管理员
+Enum.UserType.Admin = 管理员
+Enum.UserType.User = 用户
+Enum.UserType.Guest = 访客
+
+Enum.StartupRouting.Home = 首页
+Enum.StartupRouting.Prototype = 原型
+Enum.StartupRouting.Inspiration = 灵感
+Enum.StartupRouting.Project = 企划
+Enum.StartupRouting.Outline = 大纲
+Enum.StartupRouting.Texting = 写文
+Enum.StartupRouting.SliceNarrative = 片段叙事
+Enum.StartupRouting.ConversationNarrative = 对话叙事（语C）
+
+Enum.FeaturePageKind.Style1 = 样式1
+Enum.FeaturePageKind.Style2 = 样式2
+Enum.FeaturePageKind.Style3 = 样式3
+Enum.FeaturePageKind.Style4 = 样式4
+Enum.FeaturePageKind.Style5 = 样式5

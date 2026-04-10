@@ -1,0 +1,23 @@
+global using System.Diagnostics;
+global using System.Globalization;
+
+
+global using System.Windows;
+global using System.Windows.Controls;
+global using System.Windows.Controls.Primitives;
+global using System.Windows.Data;
+global using System.Windows.Media;
+global using System.Windows.Media.Imaging;
+global using System.Windows.Input;
+
+global using Microsoft.Xaml.Behaviors;
+
+global using Application = System.Windows.Application;
+global using Pen = System.Windows.Media.Pen;
+global using Color = System.Windows.Media.Color;
+global using Brush = System.Windows.Media.Brush;
+global using Point = System.Windows.Point;
+global using Size = System.Windows.Size;
+global using Brushes = System.Windows.Media.Brushes;
+global using Colors = System.Windows.Media.Colors;
+global using UserControl = System.Windows.Controls.UserControl;

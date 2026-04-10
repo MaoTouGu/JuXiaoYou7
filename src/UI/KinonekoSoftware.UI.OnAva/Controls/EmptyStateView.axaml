@@ -1,0 +1,46 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:this="clr-namespace:KinonekoSoftware.UI.Controls"
+                    xmlns:p="clr-namespace:KinonekoSoftware.UI.Controls.Panels"
+                    xmlns:ui="urn:KinonekoSoftware/ui">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://KinonekoSoftware.UI.OnAva/Themes/Dark.axaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTheme x:Key="ClearStyle.EmptyStateView" TargetType="{x:Type this:EmptyStateView}">
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.Level3}"/>
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type this:EmptyStateView}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="0">
+                        <p:TilePanel>
+                            <ContentPresenter x:Name="PART_Content"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              Margin="{TemplateBinding Padding}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            
+                            <ContentPresenter x:Name="PART_EmptyState"
+                                              Content="{TemplateBinding EmptyState}"
+                                              ContentTemplate="{TemplateBinding EmptyStateTemplate}"
+                                              Margin="{TemplateBinding Padding}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              IsVisible="False"/>
+                        </p:TilePanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </ControlTheme>
+
+
+    <ControlTheme x:Key="{x:Type this:EmptyStateView}" BasedOn="{StaticResource ClearStyle.EmptyStateView}" TargetType="{x:Type this:EmptyStateView}" />
+</ResourceDictionary>

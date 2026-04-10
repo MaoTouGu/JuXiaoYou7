@@ -1,0 +1,182 @@
+﻿<ForestPage x:Class="MaoTouGu.JuXiaoYou.Indexing.ListIndexingView"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:ui="urn:KinonekoSoftware/ui"
+            xmlns:this="clr-namespace:MaoTouGu.JuXiaoYou.Indexing"
+            xmlns:thisVM="clr-namespace:MaoTouGu.JuXiaoYou.Indexing"
+            xmlns:classifiers="clr-namespace:MaoTouGu.Studio.Database.References;assembly=MaoTouGu.Studio.Database"
+            xmlns:plugins="clr-namespace:MaoTouGu.JuXiaoYou.Services.Plugins;assembly=MaoTouGu.JuXiaoYou.Services.Plugins"
+            mc:Ignorable="d"
+            d:DesignWidth="800" d:DesignHeight="450"
+            d:DataContext="{d:DesignInstance Type={x:Type thisVM:ListViewModel}, IsDesignTimeCreatable=True}"
+            Padding="16 8 16 0">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <Style TargetType="{x:Type ui:ListBoxItem}" BasedOn="{StaticResource ListBoxItem.Outline}">
+                <Setter Property="ui:ControlAssist.CornerRadius" Value="0" />
+                <Setter Property="BorderThickness" Value="2" />
+                <Setter Property="Margin" Value="0 0 0 6" />
+            </Style>
+
+            <!-- <DataTemplate DataType="{x:Type classifiers:Catalog}"> -->
+            <!--     <Grid MinWidth="100"> -->
+            <!--         <Grid.ColumnDefinitions> -->
+            <!--             <ColumnDefinition Width="1*" /> -->
+            <!--             <ColumnDefinition Width="Auto" /> -->
+            <!--         </Grid.ColumnDefinitions> -->
+            <!-- -->
+            <!--         <TextBlock Margin="12 6" -->
+            <!--                    Text="{Binding Name, Mode=OneWay}" -->
+            <!--                    VerticalAlignment="Center" /> -->
+            <!-- -->
+            <!--         <Border Grid.Column="1" -->
+            <!--                 Background="#10FFAB12" -->
+            <!--                 MinWidth="36"> -->
+            <!-- -->
+            <!--             <TextBlock Margin="12 6" -->
+            <!--                        Text="{Binding Count, Mode=OneWay}" -->
+            <!--                        TextAlignment="Center" -->
+            <!--                        VerticalAlignment="Center" /> -->
+            <!--         </Border> -->
+            <!--     </Grid> -->
+            <!-- </DataTemplate> -->
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" MinWidth="320" />
+            <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+
+
+        <!---->
+        <!---->
+        <!---->
+        <HeaderedContentControl Header="分类"
+                                Style="{StaticResource SettingItem}">
+            <ui:ControlAssist.ToolBar>
+                <StackPanel DockPanel.Dock="Top"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal"
+                            Visibility="{Binding Options.AllowCatalogOperation, Mode=OneWay, Converter={x:Static Converters.TrueToVisibility}}">
+                    <ui:GhostButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.PlusCircle}"
+                                    Content="创建"
+                                    Command="{Binding AddCatalog}"
+                                    IconMode="Both" />
+
+                    <ui:GhostButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.Edit}"
+                                    Content="编辑"
+                                    Command="{Binding EditCatalog}"
+                                    CommandParameter="{Binding Catalog, Mode=OneWay}"
+                                    IconMode="Both" />
+
+                    <ui:GhostButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.Trash}"
+                                    Content="删除"
+                                    Command="{Binding RemoveCatalog}"
+                                    CommandParameter="{Binding Catalog, Mode=OneWay}"
+                                    IconMode="Both" />
+                </StackPanel>
+            </ui:ControlAssist.ToolBar>
+
+
+            <!---->
+            <!---->
+            <!---->
+            <ui:ListBox DockPanel.Dock="Top"
+                        ItemsSource="{Binding Catalogs, Mode=OneWay}"
+                        SelectedItem="{Binding Catalog, Mode=TwoWay}">
+            </ui:ListBox>
+        </HeaderedContentControl>
+
+
+        <!---->
+        <!---->
+        <!---->
+        <HeaderedContentControl Grid.Column="1"
+                                Header="数据"
+                                Margin="16 0"
+                                Style="{StaticResource SettingItem}">
+            <ui:ControlAssist.ToolBar>
+                <StackPanel DockPanel.Dock="Top"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+                    <ui:GhostButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.PlusCircle}"
+                                    Content="新建"
+                                    Command="{Binding Add}"
+                                    CommandParameter="{Binding Moniker, Mode=OneWay}"
+                                    IconMode="Both" />
+                    <ui:GhostButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.Folder}"
+                                    Content="打开"
+                                    Command="{Binding Open}"
+                                    CommandParameter="{Binding Moniker, Mode=OneWay}"
+                                    IconMode="Both" />
+
+                    <ui:GhostButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.Trash}"
+                                    Content="删除"
+                                    Command="{Binding Remove}"
+                                    CommandParameter="{Binding Moniker, Mode=OneWay}"
+                                    IconMode="Both" />
+
+                    <ui:GhostButton ContextMenuAssist.UseClick="True"
+                                    ui:ControlAssist.Icon="{StaticResource More}"
+                                    ui:ControlAssist.IsFilled="True"
+                                    Content="更多"
+                                    IconMode="Both">
+                        <ui:GhostButton.ContextMenu>
+                            <ui:ContextMenu Placement="Bottom"
+                                            ItemsSource="{Binding MoreCommands}">
+                                <ui:ContextMenu.Resources>
+                                    <Style x:Key="Command" TargetType="{x:Type ui:MenuItem}" BasedOn="{StaticResource ClearStyle.MenuItem}">
+                                        <Setter Property="OverridesDefaultStyle" Value="True" />
+                                        <EventSetter Event="Click" Handler="MenuItem_PseudoExecute" />
+                                    </Style>
+
+                                    <Style x:Key="Container" TargetType="{x:Type ui:MenuItem}" BasedOn="{StaticResource ClearStyle.MenuItem}">
+                                        <Setter Property="OverridesDefaultStyle" Value="True" />
+                                    </Style>
+
+                                    <DataTemplate DataType="{x:Type plugins:Command}">
+                                        <TextBlock Text="{Binding Name}" />
+                                    </DataTemplate>
+
+                                    <DataTemplate DataType="{x:Type plugins:SeparatorItem}">
+                                        <Separator />
+                                    </DataTemplate>
+
+                                    <HierarchicalDataTemplate DataType="{x:Type plugins:CommandContainer}"
+                                                              ItemsSource="{Binding Commands}">
+                                        <TextBlock Text="{Binding Name}" />
+                                    </HierarchicalDataTemplate>
+                                </ui:ContextMenu.Resources>
+                                <ItemsControl.ItemContainerStyleSelector>
+                                    <thisVM:ContainerStyleSelector />
+                                </ItemsControl.ItemContainerStyleSelector>
+                            </ui:ContextMenu>
+                        </ui:GhostButton.ContextMenu>
+                    </ui:GhostButton>
+                </StackPanel>
+            </ui:ControlAssist.ToolBar>
+
+            <ui:ListBox Grid.Column="2"
+                        ItemsSource="{Binding Monikers, Mode=OneWay}"
+                        SelectedItem="{Binding Moniker, Mode=TwoWay}"
+                        SelectedIndex="0">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name, Mode=OneWay}"
+                                   TextAlignment="Center"
+                                   Margin="8 4"
+                                   MinWidth="100" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ui:ListBox>
+        </HeaderedContentControl>
+    </Grid>
+</ForestPage>

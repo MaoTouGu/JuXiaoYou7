@@ -1,0 +1,136 @@
+﻿<UserControl x:Class="MaoTouGu.JuXiaoYou.Domain.IM.Pages.ContractPartialView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ui="urn:KinonekoSoftware/ui"
+             xmlns:ux="urn:KinonekoSoftware/ux"
+             xmlns:this="clr-namespace:MaoTouGu.JuXiaoYou.Domain.IM.Pages"
+             xmlns:thisVM="clr-namespace:MaoTouGu.JuXiaoYou.Domain.IM.Pages"
+             mc:Ignorable="d"
+             d:DesignWidth="800" d:DesignHeight="450"
+             d:DataContext="{d:DesignInstance Type={x:Type thisVM:LobbyViewModel}, IsDesignTimeCreatable=True}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+
+        <!---->
+        <!---->
+        <!---->
+        <DockPanel Grid.Column="0"
+                   Margin="0 0 8 0">
+
+            <!---->
+            <!---->
+            <!---->
+            <StackPanel DockPanel.Dock="Top">
+                <Border ImageSystem.Thumbnail="Of360p"
+                        ImageSystem.Fallback="Gravatar"
+                        ImageSystem.Type="Gravatar"
+                        ImageSystem.Source="2"
+                        CornerRadius="96"
+                        Width="84"
+                        Height="84">
+                </Border>
+
+
+                <ui:TextButton FontFamily="{StaticResource SongTi}"
+                               FontSize="18"
+                               Content="{Binding User.DisplayName, Mode=OneWay}"
+                               Margin="0 8"
+                               HorizontalContentAlignment="Center" />
+            </StackPanel>
+
+            <!---->
+            <!---->
+            <!---->
+            <ui:ListBox ItemsSource="{Binding Other, Mode=OneWay}"
+                        SelectedItem="{Binding Target, Mode=TwoWay}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel>
+                            <Border ImageSystem.Thumbnail="Of360p"
+                                    ImageSystem.Fallback="Gravatar"
+                                    ImageSystem.Type="Gravatar"
+                                    ImageSystem.Source="{Binding Gravatar, Mode=OneWay}"
+                                    CornerRadius="96"
+                                    Width="48"
+                                    Height="48">
+                            </Border>
+
+                            <TextBlock Margin="16 0"
+                                       Text="{Binding DisplayName, Mode=OneWay}"
+                                       TextAlignment="Left"
+                                       VerticalAlignment="Center" />
+                        </DockPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ui:ListBox>
+        </DockPanel>
+
+        <!---->
+        <!---->
+        <!---->
+        <HeaderedContentControl Grid.Column="1"
+                                Header="与用户的聊天"
+                                Margin="8 0"
+                                Style="{StaticResource SettingItem}">
+
+            <Grid Grid.Column="1"
+                  ShowGridLines="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="48" MaxHeight="96"/>
+                    <RowDefinition Height="160" />
+                </Grid.RowDefinitions>
+
+                <!---->
+                <!---->
+                <!---->
+                <ScrollViewer Grid.Row="0">
+                    <ItemsControl Grid.Row="0"
+                                  ItemsSource="{Binding C2CMsgCollection, Mode=OneWay}">
+
+                    </ItemsControl>
+                </ScrollViewer>
+
+                <!---->
+                <!---->
+                <!---->
+                <ToolBar Grid.Row="1"
+                         Background="Transparent">
+                    <ui:GhostButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.Image}"
+                                    IconMode="Icon"/>
+
+                    <ui:GhostButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.File}"
+                                    IconMode="Icon"/>
+
+                    <ui:GhostButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.Gift}"
+                                    IconMode="Icon"/>
+
+                    <ui:GhostButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.At}"
+                                    IconMode="Icon"/>
+                </ToolBar>
+
+                <!---->
+                <!---->
+                <!---->
+                <DockPanel Grid.Row="2">
+                    <ui:MainButton DockPanel.Dock="Right"
+                                    ui:ControlAssist.Icon="{StaticResource FeatherIcon.ArrowRight}"
+                                    Content="发送"
+                                   Command="{Binding AddPlainTextToC2C}"
+                                    IconMode="Both"
+                                   Margin="8 0"
+                                   Height="36"
+                                   Width="120"
+                                   VerticalAlignment="Top"/>
+                    <ui:SingleLine CornerRadius="0"
+                                   Text="{Binding TextBox, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Delay=100}"/>
+                </DockPanel>
+            </Grid>
+        </HeaderedContentControl>
+    </Grid>
+</UserControl>

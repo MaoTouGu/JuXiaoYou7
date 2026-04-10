@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>AvalonDock</RootNamespace>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <NoWarn>SYSLIB0003;SYSLIB0004;CS3009</NoWarn>
+    <OutputPath>../../../builds/nuget</OutputPath>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>AvalonDock</PackageId>
+    <Title>AvalonDock</Title>
+    <Description>猫头菇工作室的基础设施库，提供了基于4.72.1的AvalonDock的封装。</Description>
+    <Copyright>All copyright reserved by luoyisi</Copyright>
+    <PackageTags>Foundation</PackageTags>
+    <Version>6.0.1</Version>
+    <AssemblyVersion>6.0.1</AssemblyVersion>
+    <FileVersion>6.0.1.0</FileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net.5.0-windows|AnyCPU'">
+    <DefineConstants />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="**\*.png" />
+  </ItemGroup>
+
+  <!-- NuGet Packaging -->
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.ca-ES.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\UI\KinonekoSoftware.UI.OnWPF\KinonekoSoftware.UI.OnWPF.csproj" />
+  </ItemGroup>
+
+  <!--PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+  </PropertyGroup>-->
+</Project>

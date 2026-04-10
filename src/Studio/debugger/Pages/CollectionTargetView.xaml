@@ -1,0 +1,45 @@
+﻿<ForestPage x:Class="MaoTouGu.JuXiaoYou.Pages.CollectionTargetView"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:ui="urn:KinonekoSoftware/ui"
+            xmlns:this="clr-namespace:MaoTouGu.JuXiaoYou.Pages"
+            xmlns:thisVM="clr-namespace:MaoTouGu.JuXiaoYou.Pages"
+            mc:Ignorable="d"
+            d:DesignWidth="800" d:DesignHeight="450"
+            d:DataContext="{d:DesignInstance Type={x:Type thisVM:CollectionTargetViewModel}, IsDesignTimeCreatable=True}">
+
+    <StackPanel Width="720"
+                VerticalAlignment="Center">
+        <HeaderedContentControl Header="数据库名"
+                                Margin="0 0 0 16"
+                                IsTabStop="False"
+                                Style="{StaticResource SettingItem}">
+            <ComboBox ItemsSource="{Binding DatabaseNamePreset}"
+                      IsEditable="True"
+                      VerticalContentAlignment="Center"
+                      Text="{Binding DatabaseName, Mode=TwoWay}">
+
+            </ComboBox>
+        </HeaderedContentControl>
+
+        <HeaderedContentControl Header="表名"
+                                Margin="0 0 0 16"
+                                IsTabStop="False"
+                                Style="{StaticResource SettingItem}">
+            <ComboBox ItemsSource="{Binding CollectionNamePreset}"
+                      IsEditable="True"
+                      VerticalContentAlignment="Center"
+                      Text="{Binding CollectionName, Mode=TwoWay}">
+
+            </ComboBox>
+        </HeaderedContentControl>
+
+        <ui:MainButton ui:ControlAssist.CornerRadius="0"
+                       Content="调试"
+                       Command="{Binding StartDebug}"
+                       Padding="24 8"
+                       Width="320"/>
+    </StackPanel>
+</ForestPage>

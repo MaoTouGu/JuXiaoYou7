@@ -1,0 +1,98 @@
+﻿using System.Windows;
+using System.Windows.Controls;
+
+namespace GraphShape.Controls
+{
+    /// <summary>
+    /// Vertex control.
+    /// </summary>
+    public class VertexControl : Control, IPoolObject, IDisposable
+    {
+        static VertexControl()
+        {
+            // Override the StyleKey property
+            DefaultStyleKeyProperty.OverrideMetadata(
+                typeof(VertexControl),
+                new FrameworkPropertyMetadata(typeof(VertexControl)));
+        }
+
+        #region Vertex
+
+        /// <summary>
+        /// Vertex object.
+        /// </summary>
+        public object Vertex
+        {
+            get => GetValue(VertexProperty);
+            set => SetValue(VertexProperty, value);
+        }
+
+        /// <summary>
+        /// Vertex dependency property.
+        /// </summary>
+        
+        public static readonly DependencyProperty VertexProperty = DependencyProperty.Register(
+            nameof(Vertex), typeof(object), typeof(VertexControl), new UIPropertyMetadata(null));
+
+        #endregion
+
+        #region RootCanvas
+
+        /// <summary>
+        /// Root canvas.
+        /// </summary>
+        public GraphCanvas RootCanvas
+        {
+            get => (GraphCanvas)GetValue(RootCanvasProperty);
+            set => SetValue(RootCanvasProperty, value);
+        }
+
+        /// <summary>
+        /// Root canvas dependency property.
+        /// </summary>
+        
+        public static readonly DependencyProperty RootCanvasProperty = DependencyProperty.Register(
+            nameof(RootCanvas), typeof(GraphCanvas), typeof(VertexControl), new UIPropertyMetadata(null));
+
+        #endregion
+
+        #region IPoolObject
+
+        /// <inheritdoc />
+        public void Reset()
+        {
+            Vertex = null;
+        }
+
+        /// <inheritdoc />
+        public void Terminate()
+        {
+            // Nothing to do, there are no unmanaged resources
+        }
+
+        /// <inheritdoc />
+        public event DisposingHandler Disposing;
+
+        #region IDisposable
+
+        /// <inheritdoc />
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// Dispose this object.
+        /// </summary>
+        /// <param name="disposing">Indicates if called by dispose or finalizer.</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            Disposing?.Invoke(this);
+        }
+
+        #endregion
+
+        #endregion
+    }
+}

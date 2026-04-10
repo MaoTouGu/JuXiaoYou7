@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+        <RootNamespace>MaoTouGu.Studio</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Shells\src\MaoTouGu.Shells\MaoTouGu.Shells.csproj" />
+      <ProjectReference Include="..\..\database\MaoTouGu.Studio.Database\MaoTouGu.Studio.Database.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Include="..\..\..\..\scaffolds\Usings\ApiRef_LiteDB.cs">
+        <Link>Properties\ApiRef_LiteDB.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\..\scaffolds\Usings\Usings_Foundation.cs">
+        <Link>Properties\Usings_Foundation.cs</Link>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="System.Reactive" Version="6.1.0" />
+    </ItemGroup>
+
+</Project>

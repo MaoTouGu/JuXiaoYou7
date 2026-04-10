@@ -1,0 +1,19 @@
+<Solution>
+  <Project Path="backend/MaoTouGu.Studio.Backend/MaoTouGu.Studio.Backend.csproj" />
+  <Folder Name="/Database/">
+    <Project Path="database/MaoTouGu.Studio.Database.Core/MaoTouGu.Studio.Database.Core.csproj" />
+    <Project Path="database/MaoTouGu.Studio.Database/MaoTouGu.Studio.Database.csproj" />
+    <Project Path="share/MaoTouGu.Studio.ORM/MaoTouGu.Studio.ORM.csproj" />
+  </Folder>
+  <Folder Name="/Foundations/">
+    <Project Path="../Foundation/src/MaoTouGu.Foundation/MaoTouGu.Foundation.csproj" />
+  </Folder>
+  <Folder Name="/Services/">
+    <Project Path="share/MaoTouGu.JuXiaoYou.Attributes/MaoTouGu.JuXiaoYou.Attributes.csproj" />
+    <Project Path="share/MaoTouGu.JuXiaoYou.Services.Plugins/MaoTouGu.JuXiaoYou.Services.Plugins.csproj" />
+    <Project Path="windows/MaoTouGu.JuXiaoYou.Services.Forms/MaoTouGu.JuXiaoYou.Services.Forms.csproj" />
+    <Project Path="windows/MaoTouGu.JuXiaoYou.Services.Imaging/MaoTouGu.JuXiaoYou.Services.Imaging.csproj" />
+    <Project Path="windows/MaoTouGu.JuXiaoYou.Services.Networks/MaoTouGu.JuXiaoYou.Services.Networks.csproj" />
+  </Folder>
+  
+</Solution>

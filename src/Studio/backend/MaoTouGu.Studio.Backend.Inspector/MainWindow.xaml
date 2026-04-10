@@ -1,0 +1,24 @@
+﻿<Window x:Class="MaoTouGu.Studio.BackendInspector.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MaoTouGu.Studio.BackendInspector"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        Padding="8">
+    <DockPanel>
+        <Button DockPanel.Dock="Bottom"
+                Content="打开文件"
+                Click="Button_Open"
+                Margin="8"
+                Height="48"
+                Width="240"></Button>
+        
+        <ScrollViewer>
+            <TextBox x:Name="Text"
+                     IsReadOnly="True"
+                     TextWrapping="Wrap"/>
+        </ScrollViewer>
+    </DockPanel>
+</Window>

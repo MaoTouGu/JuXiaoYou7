@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0-windows</TargetFramework>
+        <Nullable>disable</Nullable>
+        <UseWPF>true</UseWPF>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="10.0.1" />
+        <PackageReference Include="Microsoft.AspNetCore.SignalR.Protocols.NewtonsoftJson" Version="10.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Foundation\src\MaoTouGu.Foundation\MaoTouGu.Foundation.csproj" />
+      <ProjectReference Include="..\..\database\MaoTouGu.Studio.Database.Core\MaoTouGu.Studio.Database.Core.csproj" />
+      <ProjectReference Include="..\MaoTouGu.JuXiaoYou.Services.Imaging\MaoTouGu.JuXiaoYou.Services.Imaging.csproj" />
+    </ItemGroup>
+</Project>

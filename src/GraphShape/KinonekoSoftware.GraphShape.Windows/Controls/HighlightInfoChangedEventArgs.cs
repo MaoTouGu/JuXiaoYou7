@@ -1,0 +1,48 @@
+﻿using System.Windows;
+
+namespace GraphShape.Controls
+{
+    /// <summary>
+    /// Handler for an object highlight information changed event.
+    /// </summary>
+    /// <param name="sender">Event sender.</param>
+    /// <param name="args">Event arguments.</param>
+    public delegate void HighlightInfoChangedEventHandler( object sender,  HighlightInfoChangedEventArgs args);
+
+    /// <summary>
+    /// Highlight information changed event arguments.
+    /// </summary>
+    public class HighlightInfoChangedEventArgs : RoutedEventArgs
+    {
+        /// <summary>
+        /// Old highlight information.
+        /// </summary>
+        public object OldHighlightInfo { get; }
+
+        /// <summary>
+        /// New highlight information.
+        /// </summary>
+        public object NewHighlightInfo { get; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HighlightInfoChangedEventArgs"/> class.
+        /// </summary>
+        /// <param name="routedEvent">The routed event identifier for this instance of the <see cref="T:System.Windows.RoutedEventArgs" /> class.</param>
+        /// <param name="source">
+        /// An alternate source that will be reported when the event is handled.
+        /// This pre-populates the <see cref="P:System.Windows.RoutedEventArgs.Source" /> property.
+        /// </param>
+        /// <param name="oldHighlightInfo">Old highlight information.</param>
+        /// <param name="newHighlightInfo">New highlight information.</param>
+        public HighlightInfoChangedEventArgs(
+             RoutedEvent routedEvent,
+             object source,
+            object oldHighlightInfo,
+            object newHighlightInfo)
+            : base(routedEvent, source)
+        {
+            OldHighlightInfo = oldHighlightInfo;
+            NewHighlightInfo = newHighlightInfo;
+        }
+    }
+}

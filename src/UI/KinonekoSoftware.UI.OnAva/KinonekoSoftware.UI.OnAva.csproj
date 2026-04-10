@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+        <RootNamespace>KinonekoSoftware.UI</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\KinonekoSoftware.UI\KinonekoSoftware.UI.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Avalonia" Version="12.0.0-rc1" />
+      <PackageReference Include="Xaml.Behaviors.Avalonia" Version="12.0.0-rc1" />
+    </ItemGroup>
+</Project>

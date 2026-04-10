@@ -1,0 +1,50 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ui="urn:KinonekoSoftware/ui"
+                    xmlns:this="clr-namespace:MaoTouGu.Shells.Controls">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="_Controls/Windows.xaml"/>
+        <ResourceDictionary Source="_Controls/SplitButton.xaml"/>
+        <ResourceDictionary Source="_Icon/Icon.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type this:CloseButton}">
+        <Setter Property="ui:ControlAssist.CornerRadius" Value="3" />
+        <Setter Property="ui:ControlAssist.Icon" Value="{x:Null}" />
+        <Setter Property="ui:ControlAssist.IconSize" Value="12" />
+        <Setter Property="ui:ControlAssist.IsFilled" Value="False" />
+        <Setter Property="ui:ControlAssist.IconDock" Value="Left" />
+        <Setter Property="ui:ControlAssist.IconMargin" Value="0 0 0 0" />
+        <Setter Property="ui:ControlAssist.StrokeThickness" Value="2" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type this:CloseButton}">
+                    <Border x:Name="PART_Border"
+                            Background="Transparent"
+                            CornerRadius="16"
+                            Padding="4"
+                            VerticalAlignment="Center">
+                        <Path Data="F1 M16,16z M0,0z M2.5,13.5L13.5,2.5 M13.5,13.5L2.5,2.5"
+                              Stretch="Uniform"
+                              Stroke="{DynamicResource Brush.Foreground.Level1}"
+                              StrokeThickness="1"
+                              Height="10.5"
+                              Width="10.5" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="PART_Border" Value="{DynamicResource Brush.Overlay100}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" TargetName="PART_Border" Value="{DynamicResource Brush.Overlay200}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

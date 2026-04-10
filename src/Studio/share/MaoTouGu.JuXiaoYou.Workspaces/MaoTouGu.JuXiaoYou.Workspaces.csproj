@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+        <RootNamespace>MaoTouGu.JuXiaoYou.Workspaces</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\MaoTouGu.JuXiaoYou.Services.Plugins\MaoTouGu.JuXiaoYou.Services.Plugins.csproj" />
+      <ProjectReference Include="..\MaoTouGu.Studio.ORM\MaoTouGu.Studio.ORM.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="System.Reactive" Version="6.1.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Include="..\..\..\..\scaffolds\Usings\ApiRef_Foundation.cs">
+        <Link>Properties\ApiRef_Foundation.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\..\scaffolds\Usings\ApiRef_LiteDB.cs">
+        <Link>Properties\ApiRef_LiteDB.cs</Link>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Composes\" />
+      <Folder Include="Inspirations\" />
+      <Folder Include="Monikers\_Custom\" />
+      <Folder Include="Timelines\" />
+    </ItemGroup>
+
+</Project>

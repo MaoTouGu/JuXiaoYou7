@@ -1,0 +1,83 @@
+﻿<UserControl x:Class="MaoTouGu.JuXiaoYou.Domain.IM.Pages.UserProfilePartialView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ui="urn:KinonekoSoftware/ui"
+             xmlns:this="clr-namespace:MaoTouGu.JuXiaoYou.Domain.IM.Pages"
+             xmlns:thisVM="clr-namespace:MaoTouGu.JuXiaoYou.Domain.IM.Pages"
+             mc:Ignorable="d"
+             d:DesignWidth="800" d:DesignHeight="450"
+             d:DataContext="{d:DesignInstance Type={x:Type thisVM:LobbyViewModel}, IsDesignTimeCreatable=True}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+
+        <DockPanel Grid.Column="0">
+            <StackPanel DockPanel.Dock="Top">
+                <Border ImageSystem.Thumbnail="Of360p"
+                               ImageSystem.Fallback="Gravatar"
+                               ImageSystem.Type="Gravatar"
+                               ImageSystem.Source="2"
+                        CornerRadius="96"
+                        Width="84"
+                        Height="84">
+                </Border>
+
+
+                <ui:TextButton FontFamily="{StaticResource SongTi}"
+                               FontSize="18"
+                               Content="用户名"
+                               Margin="0 8 0 0"
+                               HorizontalContentAlignment="Center" />
+
+                <TextBlock FontFamily="{StaticResource SongTi}"
+                           Margin="0 8"
+                           Text="普通用户"
+                           TextAlignment="Center" />
+
+
+
+
+                <ui:MenuItem Header="账户设置"
+                             Icon="{StaticResource FeatherIcon.Settings}"
+                             IconMode="Both"
+                             IconSize="19"
+                             HorizontalContentAlignment="Stretch" />
+
+
+
+
+                <ui:MenuItem Header="更改密码"
+                             Icon="{StaticResource FeatherIcon.Tools}"
+                             IconMode="Both"
+                             IconSize="19"
+                             HorizontalContentAlignment="Stretch" />
+
+
+                <ui:MenuItem Header="更改邮件"
+                             Icon="{StaticResource FeatherIcon.Tools}"
+                             IconMode="Both"
+                             IconSize="19"
+                             HorizontalContentAlignment="Stretch" />
+
+
+                <Separator Margin="0 6" />
+
+
+                <ui:MenuItem Header="登出"
+                             Icon="{StaticResource SignOut}"
+                             IsFilled="True"
+                             IconMode="Both"
+                             IconSize="23"
+                             HorizontalContentAlignment="Stretch" />
+            </StackPanel>
+
+            <ui:ListBox>
+
+            </ui:ListBox>
+        </DockPanel>
+    </Grid>
+</UserControl>

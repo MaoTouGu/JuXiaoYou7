@@ -1,0 +1,28 @@
+<Solution>
+  <Folder Name="/foundation/">
+    <Project Path="../Foundation/src/MaoTouGu.Foundation/MaoTouGu.Foundation.csproj" />
+  </Folder>
+  <Folder Name="/generators/">
+    <Project Path="src/MaoTouGu.Shells.Generators/MaoTouGu.Shells.Generators.Sample/MaoTouGu.Shells.Generators.Sample.csproj" />
+    <Project Path="src/MaoTouGu.Shells.Generators/MaoTouGu.Shells.Generators.Tests/MaoTouGu.Shells.Generators.Tests.csproj" />
+    <Project Path="src/MaoTouGu.Shells.Generators/MaoTouGu.Shells.Generators/MaoTouGu.Shells.Generators.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/MaoTouGu.Shells.Runer/MaoTouGu.Shells.Runer.csproj" />
+  </Folder>
+  <Folder Name="/ui/">
+    <Project Path="../GraphShape/KinonekoSoftware.GraphShape.Windows/KinonekoSoftware.GraphShape.Windows.csproj" />
+    <Project Path="../GraphShape/KinonekoSoftware.GraphShape/KinonekoSoftware.GraphShape.csproj" />
+    <Project Path="../UI/KinonekoSoftware.UI.ColorPicker.OnAva/KinonekoSoftware.UI.ColorPicker.OnAva.csproj" />
+    <Project Path="../UI/KinonekoSoftware.UI.ColorPicker.OnWPF/KinonekoSoftware.UI.ColorPicker.OnWPF.csproj" />
+    <Project Path="../UI/KinonekoSoftware.UI.OnAva/KinonekoSoftware.UI.OnAva.csproj" />
+    <Project Path="../UI/KinonekoSoftware.UI.OnWPF/KinonekoSoftware.UI.OnWPF.csproj" />
+    <Project Path="../UI/KinonekoSoftware.UI/KinonekoSoftware.UI.csproj" />
+  </Folder>
+  <Project Path="src/MaoTouGu.Shells.Avalonia/MaoTouGu.Shells.Avalonia.csproj" />
+  <Project Path="src/MaoTouGu.Shells.Flyout.WPF/MaoTouGu.Shells.Flyout.WPF.csproj" />
+  <Project Path="src/MaoTouGu.Shells.Flyout/MaoTouGu.Shells.Flyout.csproj" />
+  <Project Path="src/MaoTouGu.Shells.WPF/MaoTouGu.Shells.WPF.csproj" />
+  <Project Path="src/MaoTouGu.Shells/MaoTouGu.Shells.csproj" />
+  <Project Path="tests/MaoTouGu.Shells.WPF.Tests/MaoTouGu.Shells.WPF.Tests.csproj" />
+</Solution>

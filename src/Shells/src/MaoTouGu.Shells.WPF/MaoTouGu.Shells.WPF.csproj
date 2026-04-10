@@ -1,0 +1,139 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0-windows</TargetFramework>
+        <Nullable>disable</Nullable>
+        <UseWPF>true</UseWPF>
+        <UseWindowsForms>true</UseWindowsForms>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>MaoTouGu.Shells</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Folder Include="Adorners\"/>
+        <Folder Include="Controls\_Flyout\"/>
+        <Folder Include="Controls\_TextBox\"/>
+        <Folder Include="Services\_Flyout\"/>
+        <Folder Include="Services\_Screen\"/>
+        <Folder Include="Themes\_WPF\"/>
+        <Folder Include="Xamls\"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\UI\KinonekoSoftware.UI.ColorPicker.OnWPF\KinonekoSoftware.UI.ColorPicker.OnWPF.csproj"/>
+        <ProjectReference Include="..\..\..\UI\KinonekoSoftware.UI.OnWPF\KinonekoSoftware.UI.OnWPF.csproj"/>
+        <ProjectReference Include="..\..\..\UI\KinonekoSoftware.UI\KinonekoSoftware.UI.csproj"/>
+        <ProjectReference Include="..\MaoTouGu.Shells.Flyout.WPF\MaoTouGu.Shells.Flyout.WPF.csproj"/>
+        <ProjectReference Include="..\MaoTouGu.Shells\MaoTouGu.Shells.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="..\..\..\..\scaffolds\Usings\ApiRef_Shells.cs">
+            <Link>Properties\ApiRef_Shells.cs</Link>
+        </Compile>
+        <Compile Include="..\..\..\..\scaffolds\Usings\ApiRef_WPF.cs">
+            <Link>Properties\ApiRef_WPF.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_Dialogs\BooleanRoot.cs">
+            <Link>Core\_Dialogs\BooleanRoot.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_Dialogs\Dialog.cs">
+            <Link>Core\_Dialogs\Dialog.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_Dialogs\InputRoot.Quad.cs">
+            <Link>Core\_Dialogs\InputRoot.Quad.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_Dialogs\InputRoot.Tripple.cs">
+            <Link>Core\_Dialogs\InputRoot.Tripple.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_Dialogs\InputRoot.Numeric.cs">
+            <Link>Core\_Dialogs\InputRoot.Numeric.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_Dialogs\InputRoot.Range.cs">
+            <Link>Core\_Dialogs\InputRoot.Range.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_Dialogs\InputRoot.Text.cs">
+            <Link>Core\_Dialogs\InputRoot.Text.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_Dialogs\PickerRoot.Enum.cs">
+            <Link>Core\_Dialogs\PickerRoot.Enum.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_Dialogs\FlyoutRoot.cs">
+            <Link>Core\_Dialogs\FlyoutRoot.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_Dialogs\NotifyRoot.cs">
+            <Link>Core\_Dialogs\NotifyRoot.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_Dialogs\NotifyType.cs">
+            <Link>Core\_Dialogs\NotifyType.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_Dialogs\ObjectRoot.cs">
+            <Link>Core\_Dialogs\ObjectRoot.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_Dialogs\PickerRoot.cs">
+            <Link>Core\_Dialogs\PickerRoot.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_Dialogs\QuestionRoot.cs">
+            <Link>Core\_Dialogs\QuestionRoot.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_Dialogs\SelectionRoot.cs">
+            <Link>Core\_Dialogs\SelectionRoot.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_Dialogs\VMBaseExtension.Notify.cs">
+            <Link>Core\_Dialogs\VMBaseExtension.Notify.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_Dialogs\VMBaseExtension.Object.cs">
+            <Link>Core\_Dialogs\VMBaseExtension.Object.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_Dialogs\VMBaseExtension.Picker.cs">
+            <Link>Core\_Dialogs\VMBaseExtension.Picker.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_Dialogs\VMBaseExtension.Question.cs">
+            <Link>Core\_Dialogs\VMBaseExtension.Question.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_Inputs\Command`1.cs">
+            <Link>Core\_Inputs\Command`1.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_Inputs\ContextCommand`1.cs">
+            <Link>Core\_Inputs\ContextCommand`1.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_Inputs\ContextCommand`2.cs">
+          <Link>Core\_Inputs\ContextCommand`2.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_Inputs\DelegateCommand.cs">
+            <Link>Core\_Inputs\DelegateCommand.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_Inputs\DelegateCommand`1.cs">
+            <Link>Core\_Inputs\DelegateCommand`1.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_Inputs\NavigationCommand.cs">
+            <Link>Core\_Inputs\NavigationCommand.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_Inputs\NavigationCommand`1.cs">
+            <Link>Core\_Inputs\NavigationCommand`1.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_Inputs\TupleContextCommand.cs">
+          <Link>Core\_Inputs\TupleContextCommand.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_Inputs\_Command.cs">
+            <Link>Core\_Inputs\_Command.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_View\IViewAmbient.cs">
+            <Link>Core\_View\IViewAmbient.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_View\ViewService.Context.cs">
+            <Link>Core\_View\ViewService.Context.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_View\ViewService.cs">
+            <Link>Core\_View\ViewService.cs</Link>
+        </Compile>
+        <Compile Include="..\..\share\_View\ViewService.NestedClass.cs">
+            <Link>Core\_View\ViewService.NestedClass.cs</Link>
+        </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135"/>
+    </ItemGroup>
+
+</Project>

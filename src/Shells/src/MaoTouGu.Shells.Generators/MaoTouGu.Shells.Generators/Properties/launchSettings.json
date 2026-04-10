@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "DebugRoslynSourceGenerator": {
+      "commandName": "DebugRoslynComponent",
+      "targetProject": "../MaoTouGu.Shells.Generators.Sample/MaoTouGu.Shells.Generators.Sample.csproj"
+    }
+  }
+}

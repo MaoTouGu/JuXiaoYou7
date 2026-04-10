@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+        <RootNamespace>KinonekoSoftware.UI</RootNamespace>
+        <GeneratePackageOnBuild Condition="$(Configuration)== 'Release'">True</GeneratePackageOnBuild>
+        <PackageId>KinonekoSoftware.UI</PackageId>
+        <Title>KinonekoSoftware.UI</Title>
+        <Description>猫头菇工作室的UI基础设施库。</Description>
+        <Copyright>All copyright reserved by luoyisi</Copyright>
+        <PackageTags>Foundation</PackageTags>
+        <Version>7.0.0</Version>
+        <AssemblyVersion>7.0.0</AssemblyVersion>
+        <FileVersion>7.0.0.0</FileVersion>
+        <RootNamespace>KinonekoSoftware.UI</RootNamespace>
+        <OutputPath>../../../builds/nuget</OutputPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Foundation\src\MaoTouGu.Foundation\MaoTouGu.Foundation.csproj" />
+    </ItemGroup>
+</Project>

@@ -1,0 +1,1 @@
+[assembly: XmlnsDefinition("urn:KinonekoSoftware/ux", "ColorPicker")]

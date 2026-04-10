@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <UseWPF>true</UseWPF>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Resource Include="..\..\..\assets\fonts\GB2312.ttf">
+        <Link>Assets\GB2312.ttf</Link>
+      </Resource>
+      <Resource Include="..\..\..\assets\fonts\SmileySans.ttf">
+        <Link>Assets\SmileySans.ttf</Link>
+      </Resource>
+      <Resource Include="..\..\..\assets\fonts\SourceHanSansTC.otf">
+        <Link>Assets\SourceHanSansTC.otf</Link>
+      </Resource>
+      <Resource Include="..\..\..\assets\fonts\SourceHanSerifCN.otf">
+        <Link>Assets\SourceHanSerifCN.otf</Link>
+      </Resource>
+    </ItemGroup>
+
+</Project>

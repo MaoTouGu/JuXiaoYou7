@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0-windows</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+        <UseWpf>true</UseWpf>
+        <Version>7.0.0</Version>
+        <RootNamespace>KinonekoSoftware.Foundation.GraphShape</RootNamespace>
+    </PropertyGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\KinonekoSoftware.GraphShape\KinonekoSoftware.GraphShape.csproj" />
+    </ItemGroup>
+
+</Project>

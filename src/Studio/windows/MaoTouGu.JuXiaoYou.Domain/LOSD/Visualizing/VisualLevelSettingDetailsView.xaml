@@ -1,0 +1,17 @@
+﻿<ForestPage x:Class="MaoTouGu.JuXiaoYou.LOSD.Visualizing.VisualLevelSettingDetailsView"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:ui="urn:KinonekoSoftware/ui"
+            xmlns:this="clr-namespace:MaoTouGu.JuXiaoYou.LOSD.Visualizing"
+            xmlns:thisVM="clr-namespace:MaoTouGu.JuXiaoYou.LOSD.Visualizing"
+            xmlns:domain="clr-namespace:MaoTouGu.JuXiaoYou.Domain.VisualBlocks.Core;assembly=MaoTouGu.JuXiaoYou.Domain.VisualBlocks"
+            mc:Ignorable="d"
+            d:DesignWidth="800" d:DesignHeight="450"
+            d:DataContext="{d:DesignInstance Type={x:Type thisVM:VisualLevelSettingDetailsViewModel}, IsDesignTimeCreatable=True}">
+    <ItemsControl ItemsSource="{Binding Blocks, Mode=OneWay}"
+                  ItemTemplateSelector="{x:Static domain:VisualBlockBuilder.Selector}">
+        
+    </ItemsControl>
+</ForestPage>

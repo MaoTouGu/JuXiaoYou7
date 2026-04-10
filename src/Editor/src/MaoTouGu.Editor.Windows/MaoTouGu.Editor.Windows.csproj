@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0-windows</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+        <UseWpf>true</UseWpf>
+        <RootNamespace>MaoTouGu.Editor.WindowsCore</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\MaoTouGu.Editor.Core\MaoTouGu.Editor.Core.csproj" />
+    </ItemGroup>
+
+</Project>

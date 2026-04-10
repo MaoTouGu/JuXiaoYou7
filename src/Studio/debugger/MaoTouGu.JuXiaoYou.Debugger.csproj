@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net9.0-windows</TargetFramework>
+        <Nullable>disable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UseWPF>true</UseWPF>
+        <OutDir>../../../../builds/studio/debugger</OutDir>
+        <AssemblyName>MaoTouGu.JuXiaoYou.Debugger</AssemblyName>
+        <RootNamespace>MaoTouGu.JuXiaoYou</RootNamespace>
+        <ApplicationIcon>..\..\..\assets\icon\nuget.ico</ApplicationIcon>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MaoTouGu.Shells.Generators" Version="1.0.4" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Compile Include="..\..\..\scaffolds\Usings\ApiRef_Shells.cs">
+        <Link>Properties\ApiRef_Shells.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\scaffolds\Usings\Usings_Foundation.cs">
+        <Link>Properties\Usings_Foundation.cs</Link>
+      </Compile>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\windows\MaoTouGu.JuXiaoYou.Core\MaoTouGu.JuXiaoYou.Core.csproj" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Resource Include="..\..\..\assets\icon\nuget.ico">
+        <Link>nuget.ico</Link>
+      </Resource>
+    </ItemGroup>
+
+</Project>

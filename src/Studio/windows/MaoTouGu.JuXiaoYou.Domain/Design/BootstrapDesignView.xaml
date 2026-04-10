@@ -1,0 +1,45 @@
+﻿<ForestPage x:Class="MaoTouGu.JuXiaoYou.Design.BootstrapDesignView"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:ui="urn:KinonekoSoftware/ui"
+            xmlns:this="clr-namespace:MaoTouGu.JuXiaoYou.Design"
+            xmlns:thisVM="clr-namespace:MaoTouGu.JuXiaoYou.Design"
+            mc:Ignorable="d"
+            d:DesignWidth="800" d:DesignHeight="450"
+            d:DataContext="{d:DesignInstance Type={x:Type thisVM:BootstrapDesignViewModel}, IsDesignTimeCreatable=True}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <ui:ListBox>
+            <ui:ListBoxItem Content="表格模式"/>
+            <ui:ListBoxItem Content="灵感模式"/>
+            <ui:ListBoxItem Content="富文本模式"/>
+            <ui:ListBoxItem Content="档案模式"/>
+            <ui:ListBoxItem Content="技能卡片"/>
+            <ui:ListBoxItem Content="设定模组"/>
+            <ui:ListBoxItem Content="预设值1：插件提供"/>
+            <ui:ListBoxItem Content="预设值2：插件提供"/>
+        </ui:ListBox>
+
+        <DockPanel Grid.Column="1">
+            <ui:SingleLine DockPanel.Dock="Top"
+                           CornerRadius="0"/>
+            
+            <RichTextBox Background="{DynamicResource Brush.Background.Level4}"
+                         BorderThickness="0"/>
+        </DockPanel>
+        
+        <StackPanel Grid.Column="2">
+            <ui:GhostButton Content="新建设定"/>
+            <ui:GhostButton Content="完善此设定"/>
+            <ui:GhostButton Content="查看所有设定"/>
+            <ui:GhostButton Content="首页"/>
+        </StackPanel>
+    </Grid>
+</ForestPage>

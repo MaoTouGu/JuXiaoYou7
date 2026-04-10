@@ -1,0 +1,54 @@
+﻿using JetBrains.Annotations;
+
+namespace GraphShape.Controls.Extensions
+{
+    /// <summary>
+    /// Extensions related to basic structures types.
+    /// </summary>
+    public static class BasicStructuresExtensions
+    {
+        /// <summary>
+        /// Converts a <see cref="Point"/> into a <see cref="T:System.Windows.Point"/>.
+        /// </summary>
+        [Pure]
+        public static System.Windows.Point ToPoint(this Point point)
+        {
+            return new System.Windows.Point(point.X, point.Y);
+        }
+
+        /// <summary>
+        /// Converts a set of <see cref="Point"/>s into a set of <see cref="T:System.Windows.Point"/>s.
+        /// </summary>
+        [Pure]
+        
+        public static IEnumerable<System.Windows.Point> ToPoints( this IEnumerable<Point> points)
+        {
+            foreach (var point in points)
+            {
+                yield return new System.Windows.Point(point.X, point.Y);
+            }
+        }
+
+        /// <summary>
+        /// Converts a <see cref="T:System.Windows.Point"/> into a <see cref="Point"/>.
+        /// </summary>
+        [Pure]
+        public static Point ToGraphShapePoint(this System.Windows.Point point)
+        {
+            return new Point(point.X, point.Y);
+        }
+
+        /// <summary>
+        /// Converts a set of <see cref="T:System.Windows.Point"/>s into a set of <see cref="Point"/>s.
+        /// </summary>
+        [Pure]
+        
+        public static IEnumerable<Point> ToGraphShapePoints( this IEnumerable<System.Windows.Point> points)
+        {
+            foreach (var point in points)
+            {
+                yield return new Point(point.X, point.Y);
+            }
+        }
+    }
+}

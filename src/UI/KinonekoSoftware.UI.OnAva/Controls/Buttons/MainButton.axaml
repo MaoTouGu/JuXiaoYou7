@@ -1,0 +1,155 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:this="clr-namespace:KinonekoSoftware.UI.Controls"
+        xmlns:p="clr-namespace:KinonekoSoftware.UI.Controls.Panels"
+        xmlns:b="clr-namespace:KinonekoSoftware.UI.Controls.Buttons">
+    <Styles.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="avares://KinonekoSoftware.UI.OnAva/Themes/Brushes.axaml" />
+                <ResourceInclude Source="avares://KinonekoSoftware.UI.OnAva/Themes/Dark.axaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Styles.Resources>
+    
+    <!-- MainButton: HighlightB -->
+    <Style Selector="b|MainButton.HighlightB">
+        <Style Selector="^ /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.HighlightB4}" />
+        </Style>
+        
+        <!-- text:PointerOver -->
+        <Style Selector="^:pointerover /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.HighlightB2}" />
+        </Style>
+
+        <!-- text:Pressed -->
+        <Style Selector="^:pressed /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.HighlightB5}" />
+        </Style>
+    </Style>
+    
+    <!-- MainButton: HighlightC -->
+    <Style Selector="b|MainButton.HighlightC">
+        
+        <Style Selector="^ /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.HighlightC4}" />
+        </Style>
+        
+        <!-- text:PointerOver -->
+        <Style Selector="^:pointerover /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.HighlightC2}" />
+        </Style>
+
+        <!-- text:Pressed -->
+        <Style Selector="^:pressed /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.HighlightC5}" />
+        </Style>
+    </Style>
+    
+    <!-- MainButton: Danger -->
+    <Style Selector="b|MainButton.Danger">
+        
+        <Style Selector="^ /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.Error100}" />
+        </Style>
+        <!-- text:PointerOver -->
+        <Style Selector="^:pointerover /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.Error400}" />
+        </Style>
+
+        <!-- text:Pressed -->
+        <Style Selector="^:pressed /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.Error300}" />
+        </Style>
+    </Style>
+    
+    <!-- MainButton: Warning -->
+    <Style Selector="b|MainButton.Warning">
+        
+        <Style Selector="^ /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.Warning100}" />
+        </Style>
+        <!-- text:PointerOver -->
+        <Style Selector="^:pointerover /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.Warning400}" />
+        </Style>
+
+        <!-- text:Pressed -->
+        <Style Selector="^:pressed /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.Warning300}" />
+        </Style>
+    </Style>
+    
+    
+    <!-- MainButton: Success -->
+    <Style Selector="b|MainButton.Success">
+        
+        <Style Selector="^ /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.Success100}" />
+        </Style>
+        <!-- text:PointerOver -->
+        <Style Selector="^:pointerover /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.Success400}" />
+        </Style>
+
+        <!-- text:Pressed -->
+        <Style Selector="^:pressed /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.Success300}" />
+        </Style>
+    </Style>
+    
+    
+    <!-- MainButton: Info -->
+    <Style Selector="b|MainButton.Info">
+        
+        <Style Selector="^ /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.Info100}" />
+        </Style>
+        <!-- text:PointerOver -->
+        <Style Selector="^:pointerover /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.Info400}" />
+        </Style>
+
+        <!-- text:Pressed -->
+        <Style Selector="^:pressed /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.Info300}" />
+        </Style>
+    </Style>
+    
+    
+    <!-- MainButton: Obsoleted -->
+    <Style Selector="b|MainButton.Obsoleted">
+        
+        <Style Selector="^ /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.Obsoleted100}" />
+        </Style>
+        <!-- text:PointerOver -->
+        <Style Selector="^:pointerover /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.Obsoleted400}" />
+        </Style>
+
+        <!-- text:Pressed -->
+        <Style Selector="^:pressed /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.Obsoleted300}" />
+        </Style>
+    </Style>
+    
+    
+    <!-- MainButton: SlateGray -->
+    <Style Selector="b|MainButton.SlateGray">
+        
+        <Style Selector="^ /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.SlateGray100}" />
+        </Style>
+        <!-- text:PointerOver -->
+        <Style Selector="^:pointerover /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.SlateGray400}" />
+        </Style>
+
+        <!-- text:Pressed -->
+        <Style Selector="^:pressed /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.SlateGray300}" />
+        </Style>
+    </Style>
+</Styles>

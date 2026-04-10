@@ -1,0 +1,232 @@
+﻿<ForestPage x:Class="MaoTouGu.JuXiaoYou.Startups.Naming.NamingLOSDView"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:ui="urn:KinonekoSoftware/ui"
+            xmlns:this="clr-namespace:MaoTouGu.JuXiaoYou.Startups.Naming"
+            xmlns:thisVM="clr-namespace:MaoTouGu.JuXiaoYou.Startups.Naming"
+            xmlns:prototype="clr-namespace:MaoTouGu.JuXiaoYou"
+            mc:Ignorable="d"
+            d:DesignWidth="800" d:DesignHeight="450"
+            d:DataContext="{d:DesignInstance Type={x:Type thisVM:NamingLOSDViewModel}, IsDesignTimeCreatable=True}">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type ui:ListBoxItem}" BasedOn="{StaticResource ListBoxItem.Outline}">
+            <Setter Property="BorderThickness" Value="3 0 0 0" />
+        </Style>
+    </UserControl.Resources>
+    <ui:Drawer IsRightOpen="{Binding IsDrawerOpen, Mode=TwoWay}"
+               Padding="16 0">
+        <Grid ShowGridLines="False">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" MinWidth="280" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="1*" MinWidth="280" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        Grid.Row="0"
+                            HorizontalAlignment="Center"
+                            Orientation="Horizontal">
+                <ui:GhostButton ui:ControlAssist.CornerRadius="0"
+                                    ui:ControlAssist.Icon="{StaticResource FeatherIcon.Box}"
+                                    ui:ControlAssist.IconSize="31"
+                                    ui:ControlAssist.IconMargin="12 0"
+                                    Content="卡牌"
+                                    Command="{Binding CardExplore}"
+                                    IconMode="Both"
+                                    Margin="4"
+                                    Padding="8 12 24 12"
+                                    HorizontalContentAlignment="Left" />
+
+                <ui:GhostButton ui:ControlAssist.CornerRadius="0"
+                                    ui:ControlAssist.Icon="{StaticResource FeatherIcon.Hexagon}"
+                                    ui:ControlAssist.IconSize="31"
+                                    ui:ControlAssist.IconMargin="12 0"
+                                    Content="原型"
+                                    Command="{Binding PrototypeExplore}"
+                                    IconMode="Both"
+                                    Margin="4"
+                                    Padding="8 12 24 12"
+                                    HorizontalContentAlignment="Left" />
+
+
+                <ui:GhostButton ui:ControlAssist.CornerRadius="0"
+                                    ui:ControlAssist.Icon="{StaticResource FeatherIcon.Layer}"
+                                    ui:ControlAssist.IconSize="31"
+                                    ui:ControlAssist.IconMargin="12 0"
+                                    Content="卡组"
+                                    Command="{Binding DeckExplore}"
+                                    IconMode="Both"
+                                    Margin="4"
+                                    Padding="8 12 24 12"
+                                    HorizontalContentAlignment="Left" />
+
+                <ui:GhostButton ui:ControlAssist.CornerRadius="0"
+                                    ui:ControlAssist.Icon="{StaticResource FeatherIcon.People}"
+                                    ui:ControlAssist.IconSize="31"
+                                    ui:ControlAssist.IconMargin="12 0"
+                                    Content="角色"
+                                    Command="{Binding CharacterExplore}"
+                                    IconMode="Both"
+                                    Margin="4"
+                                    Padding="8 12 24 12"
+                                    HorizontalContentAlignment="Left" />
+
+                <ui:GhostButton ui:ControlAssist.CornerRadius="0"
+                                    ui:ControlAssist.Icon="{StaticResource World}"
+                                    ui:ControlAssist.IconSize="31"
+                                    ui:ControlAssist.IconMargin="12 0"
+                                    Content="规则"
+                                    Command="{Binding RuleExplore}"
+                                    IconMode="Both"
+                                    Margin="4"
+                                    Padding="8 12 24 12"
+                                    HorizontalContentAlignment="Left" />
+
+                <ui:GhostButton ui:ControlAssist.CornerRadius="0"
+                                    ui:ControlAssist.Icon="{StaticResource FeatherIcon.Edit}"
+                                    ui:ControlAssist.IconSize="31"
+                                    ui:ControlAssist.IconMargin="12 0"
+                                    Content="自定义"
+                                    Command="{Binding RuleExplore}"
+                                    IconMode="Both"
+                                    Margin="4"
+                                    Padding="8 12 24 12"
+                                    HorizontalContentAlignment="Left" />
+            </StackPanel>
+
+            <!---->
+            <!---->
+            <!---->
+            <Grid Grid.Column="1"
+                  Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="6*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+
+
+                <StackPanel Grid.Row="0"
+                            Margin="16 0"
+                            VerticalAlignment="Center">
+
+                    <DockPanel Margin="0 0 0 8">
+
+                        <ui:ComboBox DockPanel.Dock="Right"
+                                     BorderBrush="{DynamicResource Brush.HighlightC3}"
+                                     BorderThickness="0 0 0 2"
+                                     HorizontalAlignment="Right"
+                                     ItemsSource="{Binding CardTypes}"
+                                     SelectedItem="{Binding CardType, Mode=TwoWay}"
+                                     Width="144">
+                            <ui:ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Converter={x:Static Converters.EnumToString}}" />
+                                </DataTemplate>
+                            </ui:ComboBox.ItemTemplate>
+                        </ui:ComboBox>
+
+                        <ui:GhostButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.Inbox}"
+                                        Content="{Binding Recents.Count, Mode=OneWay}"
+                                        Command="{Binding Open}"
+                                        HorizontalAlignment="Left"
+                                        IconMode="Both" />
+                    </DockPanel>
+
+                    <ui:SingleLine CornerRadius="0"
+                                   Text="{Binding Text, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Delay=100}"
+                                   Margin="0 0 0 8" />
+
+                    <UniformGrid Columns="2">
+
+                        <ui:MainButton ui:ControlAssist.CornerRadius="0"
+                                       Content="创建"
+                                       Command="{Binding Create}"
+                                       Height="36"
+                                       Margin="0 0 8 0"
+                                       Style="{StaticResource MainButton.HighlightC}" />
+
+                        <ui:MainButton ui:ControlAssist.CornerRadius="0"
+                                       Content="创建并编辑"
+                                       Command="{Binding CreateAndEdit}"
+                                       Height="36"
+                                       Margin="8 0 0 0"
+                                       Style="{StaticResource MainButton.SlateGray}">
+
+                        </ui:MainButton>
+                    </UniformGrid>
+                </StackPanel>
+            </Grid>
+
+            <!---->
+            <!---->
+            <!---->
+        </Grid>
+
+        <ui:Drawer.RightContent>
+            <Border Background="{DynamicResource Brush.Background.Level4}"
+                    Padding="16"
+                    Width="480">
+                <DockPanel>
+                    <StackPanel DockPanel.Dock="Top"
+                                Margin="0 0 0 8"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Top">
+
+                        <ui:GhostButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.Edit}"
+                                        Content="编辑"
+                                        Command="{Binding Edit}"
+                                        CommandParameter="{Binding Card, Mode=OneWay}"
+                                        IconMode="Both" />
+
+                        <ui:GhostButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.Camera}"
+                                        Content="截图"
+                                        Command="{Binding Render}"
+                                        CommandParameter="{Binding Card, Mode=OneWay}"
+                                        IconMode="Both" />
+
+                        <ui:GhostButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.Printer}"
+                                        Content="打印"
+                                        Command="{Binding Print}"
+                                        CommandParameter="{Binding Card, Mode=OneWay}"
+                                        IconMode="Both" />
+
+                        <ui:GhostButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.Share}"
+                                        Content="导出"
+                                        Command="{Binding Share}"
+                                        CommandParameter="{Binding Card, Mode=OneWay}"
+                                        IconMode="Both" />
+                    </StackPanel>
+
+                    <ui:ListBox ItemsSource="{Binding Recents, Mode=OneWay}"
+                                SelectedItem="{Binding Card, Mode=TwoWay}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <DockPanel Margin="8 4">
+                                    <Border DockPanel.Dock="Right"
+                                            BorderThickness="1"
+                                            BorderBrush="{DynamicResource Brush.HighlightC3}"
+                                            CornerRadius="3"
+                                            Margin="8 0 0 0"
+                                            Padding="8 4">
+                                        <TextBlock Text="{Binding Type, Converter={x:Static Converters.EnumToString}}"/>
+                                    </Border>
+
+                                    <TextBlock Text="{Binding Name, Mode=OneWay}"
+                                               VerticalAlignment="Center"/>
+                                </DockPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ui:ListBox>
+                </DockPanel>
+            </Border>
+        </ui:Drawer.RightContent>
+    </ui:Drawer>
+</ForestPage>

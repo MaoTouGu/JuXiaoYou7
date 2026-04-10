@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0-windows</TargetFramework>
+        <Nullable>disable</Nullable>
+        <UseWPF>true</UseWPF>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>MaoTouGu.JuXiaoYou</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\MaoTouGu.JuXiaoYou.Core\MaoTouGu.JuXiaoYou.Core.csproj" />
+      <ProjectReference Include="..\MaoTouGu.JuXiaoYou.Domain.Geography\MaoTouGu.JuXiaoYou.Domain.Geography.csproj" />
+      <ProjectReference Include="..\MaoTouGu.JuXiaoYou.Domain.IM\MaoTouGu.JuXiaoYou.Domain.IM.csproj" />
+      <ProjectReference Include="..\MaoTouGu.JuXiaoYou.Domain.VisualBlocks\MaoTouGu.JuXiaoYou.Domain.VisualBlocks.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Classifiers\" />
+      <Folder Include="Inspirations\" />
+      <Folder Include="LOSD\Grouping\" />
+      <Folder Include="LOSD\Systeming\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Include="..\..\..\..\scaffolds\Usings\Usings_Foundation.cs">
+        <Link>Properties\Usings_Foundation.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\..\scaffolds\Usings\Usings_MaoTouGu.Shells.cs">
+        <Link>Properties\Usings_MaoTouGu.Shells.cs</Link>
+      </Compile>
+    </ItemGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="MaoTouGu.Shells.Generators" Version="1.0.4"/>
+    </ItemGroup>
+</Project>

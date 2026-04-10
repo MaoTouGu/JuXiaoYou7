@@ -1,0 +1,5 @@
+﻿App.Tutorials =  https://juxiaoyou.yuque.com/vqcqw3/jxy7
+App.Dotate = https://afdian.com/a/futuregl
+
+App.FeatureExploreViewModel = 首页
+App.DomainViewModel = 世界

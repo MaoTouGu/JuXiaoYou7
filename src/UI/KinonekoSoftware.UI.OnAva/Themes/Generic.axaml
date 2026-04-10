@@ -1,0 +1,20 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://KinonekoSoftware.UI.OnAva/Themes/Styles/Button.axaml" />
+        <ResourceInclude Source="avares://KinonekoSoftware.UI.OnAva/Themes/Styles/HeaderedContentControl.axaml" />
+        <!-- <ResourceInclude Source="avares://KinonekoSoftware.UI.OnAva/Themes/Styles/Expander.axaml" /> -->
+        <!-- <ResourceInclude Source="avares://KinonekoSoftware.UI.OnAva/Themes/Styles/HeaderedContentControl.axaml" /> -->
+        <ResourceInclude Source="avares://KinonekoSoftware.UI.OnAva/Themes/Styles/ScrollViewer.axaml" />
+        <ResourceInclude Source="avares://KinonekoSoftware.UI.OnAva/Controls/EmptyStateView.axaml" />
+        <ResourceInclude Source="avares://KinonekoSoftware.UI.OnAva/Controls/Drawer.axaml" />
+        <ResourceInclude Source="avares://KinonekoSoftware.UI.OnAva/Controls/Iconify.axaml" />
+        <ResourceInclude Source="avares://KinonekoSoftware.UI.OnAva/Controls/TextBox.axaml" />
+        <ResourceInclude Source="avares://KinonekoSoftware.UI.OnAva/Controls/Buttons/Button.axaml" />
+        <ResourceInclude Source="avares://KinonekoSoftware.UI.OnAva/Controls/Collections/ListBox.axaml" />
+        <ResourceInclude Source="avares://KinonekoSoftware.UI.OnAva/Controls/Collections/TabbedListBox.axaml" />
+        <ResourceInclude Source="avares://KinonekoSoftware.UI.OnAva/Controls/Collections/TabControl.axaml" />
+        <ResourceInclude Source="avares://KinonekoSoftware.UI.OnAva/Controls/Collections/TreeView.axaml" />
+        <ResourceInclude Source="avares://KinonekoSoftware.UI.OnAva/Controls/Menu/Menu.axaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

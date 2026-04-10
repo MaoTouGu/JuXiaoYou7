@@ -1,0 +1,45 @@
+﻿using System.Windows;
+
+namespace GraphShape.Controls
+{
+    /// <summary>
+    /// Handler for an object highlight trigger changed event.
+    /// </summary>
+    /// <param name="sender">Event sender.</param>
+    /// <param name="args">Event arguments.</param>
+    public delegate void HighlightTriggerEventHandler( object sender,  HighlightTriggeredEventArgs args);
+
+    /// <summary>
+    /// Highlight triggered event arguments.
+    /// </summary>
+    public class HighlightTriggeredEventArgs : RoutedEventArgs
+    {
+        /// <summary>
+        /// Indicates if event has been canceled or not.
+        /// </summary>
+        public bool Cancel { get; set; }
+
+        /// <summary>
+        /// Highlight triggered?
+        /// </summary>
+        public bool IsPositiveTrigger { get; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PositionChangedEventArgs"/> class.
+        /// </summary>
+        /// <param name="routedEvent">The routed event identifier for this instance of the <see cref="T:System.Windows.RoutedEventArgs" /> class.</param>
+        /// <param name="source">
+        /// An alternate source that will be reported when the event is handled.
+        /// This pre-populates the <see cref="P:System.Windows.RoutedEventArgs.Source" /> property.
+        /// </param>
+        /// <param name="isPositiveTrigger">Indicates if trigger has been triggered.</param>
+        public HighlightTriggeredEventArgs(
+             RoutedEvent routedEvent,
+             object source,
+            bool isPositiveTrigger)
+            : base(routedEvent, source)
+        {
+            IsPositiveTrigger = isPositiveTrigger;
+        }
+    }
+}

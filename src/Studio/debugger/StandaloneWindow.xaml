@@ -1,0 +1,84 @@
+﻿<MTGWindow x:Class="MaoTouGu.JuXiaoYou.StandaloneWindow"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+           xmlns:local="clr-namespace:MaoTouGu.JuXiaoYou"
+           xmlns:ui="urn:KinonekoSoftware/ui"
+           xmlns:thisVM="clr-namespace:MaoTouGu.Shells.AppModels;assembly=MaoTouGu.Shells.WPF"
+           xmlns:appModels="clr-namespace:MaoTouGu.JuXiaoYou.AppModels;assembly=MaoTouGu.JuXiaoYou.Core"
+           mc:Ignorable="d"
+           Icon="pack://application:,,,/MaoTouGu.JuXiaoYou.Debugger;component/nuget.ico"
+           UseLayoutRounding="True"
+           SnapsToDevicePixels="True"
+           MinHeight="640"
+           MinWidth="1280"
+           Height="640"
+           Width="1280"
+           d:DataContext="{d:DesignInstance Type={x:Type thisVM:MultipleWindowContext}, IsDesignTimeCreatable=True}">
+    <Window.Resources>
+        <BindingProxy x:Key="ViewModel" ViewModel="{Binding}" />
+    </Window.Resources>
+    <DialogHost x:Name="DialogHost">
+        <DockPanel>
+            <Grid DockPanel.Dock="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="48" />
+                    <ColumnDefinition Width="48" />
+                    <ColumnDefinition Width="48" />
+                </Grid.ColumnDefinitions>
+
+                <ui:TabbedListBox Grid.Column="0"
+                                  WindowChrome.IsHitTestVisibleInChrome="True"
+                                  HorizontalAlignment="Left"
+                                  Margin="12 8 12 0"
+                                  ItemsSource="{Binding Tabs}"
+                                  SelectedItem="{Binding Page, Mode=TwoWay}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type appModels:JuXiaoYouPage}">
+                            <DockPanel>
+                                <CloseButton DockPanel.Dock="Right"
+                                             Command="{Binding Shutdown}"
+                                             Height="19"
+                                             Width="19"
+                                             Visibility="{Binding Removable, Mode=OneWay, Converter={x:Static Converters.TrueToVisibility}}" />
+                                <TextBlock Text="{Binding Title, Mode=OneWay}"
+                                           MinWidth="60"
+                                           MaxWidth="120" />
+                            </DockPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ui:TabbedListBox>
+
+                <WindowMinimumButton Grid.Column="2"
+                                     WindowChrome.IsHitTestVisibleInChrome="True"
+                                     Width="48"
+                                     Height="32"
+                                     VerticalAlignment="Top" />
+
+                <WindowMaximumButton Grid.Column="3"
+                                     WindowChrome.IsHitTestVisibleInChrome="True"
+                                     Width="48"
+                                     Height="32"
+                                     VerticalAlignment="Top" />
+
+                <WindowCloseButton Grid.Column="4"
+                                   WindowChrome.IsHitTestVisibleInChrome="True"
+                                   Width="48"
+                                   Height="32"
+                                   VerticalAlignment="Top" />
+            </Grid>
+            <ui:Drawer>
+                <ContentHost x:Name="ContentHost"
+                             ViewModel="{Binding Page, Mode=OneWay}" />
+            </ui:Drawer>
+        </DockPanel>
+    </DialogHost>
+</MTGWindow>

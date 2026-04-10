@@ -1,0 +1,55 @@
+﻿using JetBrains.Annotations;
+using QuikGraph;
+
+namespace GraphShape.Algorithms.Layout
+{
+    /// <summary>
+    /// Represents information on a layout algorithm iteration.
+    /// </summary>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    /// <typeparam name="TEdge">Edge type.</typeparam>
+    public interface ILayoutInfoIterationEventArgs<TVertex, in TEdge>
+        : ILayoutIterationEventArgs<TVertex>
+        where TEdge : IEdge<TVertex>
+    {
+        /// <summary>
+        /// Returns the extra layout information of the <paramref name="vertex"/> (or <see langword="null"/>).
+        /// </summary>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
+        [Pure]
+        [CanBeNull]
+        object GetVertexInfo( TVertex vertex);
+
+        /// <summary>
+        /// Returns the extra layout information of the <paramref name="edge"/> (or <see langword="null"/>).
+        /// </summary>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="edge"/> is <see langword="null"/>.</exception>
+        [Pure]
+        [CanBeNull]
+        object GetEdgeInfo( TEdge edge);
+    }
+
+    /// <summary>
+    /// Represents information on a layout algorithm iteration.
+    /// </summary>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    /// <typeparam name="TEdge">Edge type.</typeparam>
+    /// <typeparam name="TVertexInfo">Vertex information type.</typeparam>
+    /// <typeparam name="TEdgeInfo">Edge information type.</typeparam>
+    public interface ILayoutInfoIterationEventArgs<TVertex, TEdge, TVertexInfo, TEdgeInfo>
+        : ILayoutInfoIterationEventArgs<TVertex, TEdge>
+        where TEdge : IEdge<TVertex>
+    {
+        /// <summary>
+        /// Extra vertices information.
+        /// </summary>
+        [CanBeNull]
+        IDictionary<TVertex, TVertexInfo> VerticesInfos { get; }
+
+        /// <summary>
+        /// Extra edges information.
+        /// </summary>
+        [CanBeNull]
+        IDictionary<TEdge, TEdgeInfo> EdgesInfos { get; }
+    }
+}

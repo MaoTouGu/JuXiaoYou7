@@ -1,0 +1,64 @@
+﻿<shells:ForestDialog x:Class="MaoTouGu.Shells.Controls.EnumPickerView"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:ui="urn:KinonekoSoftware/ui"
+                    xmlns:converters="clr-namespace:MaoTouGu.Shells.Converters"
+                    xmlns:this="clr-namespace:MaoTouGu.Shells"
+                    xmlns:shells="clr-namespace:MaoTouGu.Shells.Controls"
+                    mc:Ignorable="d"
+                    d:DesignWidth="800" d:DesignHeight="450">
+    <Border Background="{DynamicResource Brush.Background.Level3}"
+            CornerRadius="8"
+            Padding="32 16"
+            Height="384"
+            Width="320">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="5*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Title -->
+            <TextBlock Grid.Row="0"
+                       FontSize="20"
+                       FontWeight="Bold"
+                       Margin="0 16 0 0"
+                       Text="选择"
+                       TextAlignment="Center" />
+
+            <!-- ModuleType List -->
+            <ui:ComboBox Grid.Row="1"
+                        Margin="0 12"
+                        ItemsSource="{Binding Collection}"
+                        SelectedItem="{Binding Selected, Mode=TwoWay}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Margin="8 2"
+                                   Text="{Binding Converter={x:Static converters:Converters.NotifyBrush}}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ui:ComboBox>
+
+            <!-- Ok/Cancel Button -->
+            <UniformGrid Grid.Row="2"
+                         Columns="2"
+                         Height="36">
+                <ui:MainButton ui:ControlAssist.CornerRadius="18"
+                               Content="确定"
+                               Command="{Binding CompleteCommand}"
+                               FontSize="13"
+                               Margin="0 0 4 0"
+                               Style="{StaticResource MainButton.Base}" />
+
+                <ui:GhostButton ui:ControlAssist.CornerRadius="18"
+                               Content="取消"
+                               Command="{Binding CancelCommand}"
+                               FontSize="13"
+                               Margin="4 0 0 0"/>
+            </UniformGrid>
+        </Grid>
+    </Border>
+</shells:ForestDialog>

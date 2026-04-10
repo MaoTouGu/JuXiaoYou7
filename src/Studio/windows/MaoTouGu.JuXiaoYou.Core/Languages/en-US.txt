@@ -1,0 +1,14 @@
+﻿// ----------------------------------------------------------
+//            文件：en-US.txt
+//            作者：Luoyisi<acorisbk@qq.com>
+//            创建时间：2025年12月23日 10:51
+//            版权所有：MaoTouGu Studio & Luoyisi
+// 
+// ----------------------------------------------------------
+namespace MaoTouGu.Studio.Languages
+{
+    public class zh_CN_txt
+    {
+        
+    }
+}

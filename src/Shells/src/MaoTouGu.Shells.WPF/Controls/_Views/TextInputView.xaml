@@ -1,0 +1,71 @@
+﻿<shells:ForestDialog x:Class="MaoTouGu.Shells.Controls.TextInputView"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:ui="urn:KinonekoSoftware/ui"
+                    xmlns:this="clr-namespace:MaoTouGu.Shells"
+                    xmlns:shells="clr-namespace:MaoTouGu.Shells.Controls"
+                    xmlns:thisVM="clr-namespace:MaoTouGu.Shells.Core"
+                    mc:Ignorable="d"
+                    d:DesignWidth="800" d:DesignHeight="450"
+                    d:DataContext="{d:DesignInstance Type={x:Type thisVM:TextInputRoot}, IsDesignTimeCreatable=True}">
+    <UserControl.InputBindings>
+        <KeyBinding Key="Enter" Command="{Binding CompleteCommand}"/>
+        <KeyBinding Key="Escape" Command="{Binding CancelCommand}"/>
+    </UserControl.InputBindings>
+    <Border Background="{DynamicResource Brush.Background.Level3}"
+            BorderBrush="{DynamicResource Brush.SlateGray100}"
+            BorderThickness="0 0 0 0"
+            ui:ControlAssist.CornerRadius="8"
+            Padding="32 16"
+            Width="360">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       FontSize="18"
+                       FontWeight="Bold"
+                       Margin="0 0 0 12"
+                       Text="{Binding Title}"
+                       TextAlignment="Center" />
+
+            <TextBlock Grid.Row="1"
+                       FontSize="13"
+                       Foreground="{DynamicResource Brush.Foreground.Level2}"
+                       Margin="0"
+                       Text="{Binding Description}"
+                       TextWrapping="Wrap"/>
+
+            <ui:SingleLine x:Name="Input"
+                           Grid.Row="2"
+                           Margin="0 16"
+                           Text="{Binding Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                           PreviewKeyUp="Input_OnPreviewKeyUp"/>
+
+            <!-- Ok/Cancel Button -->
+            <UniformGrid Grid.Row="3"
+                         Columns="2"
+                         Height="36">
+                <ui:MainButton Content="确定"
+                               ui:ControlAssist.CornerRadius="18"
+                               Command="{Binding CompleteCommand}"
+                               IconMode="Text"
+                               FontSize="13"
+                               Margin="0 0 4 0"/>
+
+                <ui:GhostButton Content="取消"
+                                ui:ControlAssist.CornerRadius="18"
+                                Command="{Binding CancelCommand}"
+                                IconMode="Text"
+                                FontSize="13"
+                                Margin="4 0 0 0"/>
+            </UniformGrid>
+        </Grid>
+    </Border>
+</shells:ForestDialog>

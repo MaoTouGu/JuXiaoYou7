@@ -1,0 +1,45 @@
+<Solution>
+  <Project Path="share/MaoTouGu.JuXiaoYou.Workspaces/MaoTouGu.JuXiaoYou.Workspaces.csproj" />
+  <Project Path="windows/MaoTouGu.JuXiaoYou.Core/MaoTouGu.JuXiaoYou.Core.csproj" />
+  <Project Path="windows/MaoTouGu.JuXiaoYou.Domain/MaoTouGu.JuXiaoYou.Domain.csproj" />
+  <Project Path="windows/MaoTouGu.JuXiaoYou/MaoTouGu.JuXiaoYou.x64.csproj" />
+  <Project Path="windows/MaoTouGu.JuXiaoYou/MaoTouGu.JuXiaoYou.x86.csproj" />
+  <Folder Name="/Database/">
+    <Project Path="database/MaoTouGu.Studio.Database.Core/MaoTouGu.Studio.Database.Core.csproj" />
+    <Project Path="database/MaoTouGu.Studio.Database/MaoTouGu.Studio.Database.csproj" />
+    <Project Path="share/MaoTouGu.Studio.ORM/MaoTouGu.Studio.ORM.csproj" />
+  </Folder>
+  <Folder Name="/Domain/">
+    <Project Path="windows/MaoTouGu.JuXiaoYou.Domain.Geography/MaoTouGu.JuXiaoYou.Domain.Geography.csproj" />
+    <Project Path="windows/MaoTouGu.JuXiaoYou.Domain.IM/MaoTouGu.JuXiaoYou.Domain.IM.csproj" />
+    <Project Path="windows/MaoTouGu.JuXiaoYou.Domain.VisualBlocks/MaoTouGu.JuXiaoYou.Domain.VisualBlocks.csproj" />
+  </Folder>
+
+  <Folder Name="/Foundations/">
+    <Project Path="../Foundation/src/MaoTouGu.Foundation/MaoTouGu.Foundation.csproj" />
+  </Folder>
+  <Folder Name="/Services/">
+    <Project Path="share/MaoTouGu.JuXiaoYou.Attributes/MaoTouGu.JuXiaoYou.Attributes.csproj" />
+    <Project Path="share/MaoTouGu.JuXiaoYou.Services.Plugins/MaoTouGu.JuXiaoYou.Services.Plugins.csproj" />
+    <Project Path="windows/MaoTouGu.JuXiaoYou.Services.Forms/MaoTouGu.JuXiaoYou.Services.Forms.csproj" />
+    <Project Path="windows/MaoTouGu.JuXiaoYou.Services.Imaging/MaoTouGu.JuXiaoYou.Services.Imaging.csproj" />
+    <Project Path="windows/MaoTouGu.JuXiaoYou.Services.Networks/MaoTouGu.JuXiaoYou.Services.Networks.csproj" />
+    <Project Path="windows/MaoTouGu.JuXiaoYou.Services.TextEditor/MaoTouGu.JuXiaoYou.Services.TextEditor.csproj" />
+  </Folder>
+  
+  <Folder Name="/Shells/">
+    <Project Path="../GraphShape/KinonekoSoftware.GraphShape.Windows/KinonekoSoftware.GraphShape.Windows.csproj" />
+    <Project Path="../GraphShape/KinonekoSoftware.GraphShape/KinonekoSoftware.GraphShape.csproj" />
+    <Project Path="../Shells/src/MaoTouGu.Shells.Flyout.WPF/MaoTouGu.Shells.Flyout.WPF.csproj" />
+    <Project Path="../Shells/src/MaoTouGu.Shells.Flyout/MaoTouGu.Shells.Flyout.csproj" />
+    <Project Path="../Shells/src/MaoTouGu.Shells.WPF/MaoTouGu.Shells.WPF.csproj" />
+    <Project Path="../Shells/src/MaoTouGu.Shells/MaoTouGu.Shells.csproj" />
+    <Project Path="../UI/AvalonDock.Themes.VS2013/AvalonDock.Themes.VS2013.csproj" />
+    <Project Path="../UI/AvalonDock/AvalonDock.csproj" />
+    <Project Path="../UI/KinonekoSoftware.UI.ColorPicker.OnWPF/KinonekoSoftware.UI.ColorPicker.OnWPF.csproj" />
+    <Project Path="../UI/KinonekoSoftware.UI.OnWPF/KinonekoSoftware.UI.OnWPF.csproj" />
+    <Project Path="../UI/KinonekoSoftware.UI/KinonekoSoftware.UI.csproj" />
+    <Project Path="../Resources/MaoTouGu.Resources.Fonts.WPF/MaoTouGu.Resources.Fonts.WPF.csproj" />
+    <Project Path="../UX/KinonekoSoftware.UX.OnWPF/KinonekoSoftware.UX.OnWPF.csproj" />
+  </Folder>
+</Solution>

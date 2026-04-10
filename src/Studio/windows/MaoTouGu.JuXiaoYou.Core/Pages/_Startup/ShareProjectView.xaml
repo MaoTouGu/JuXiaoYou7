@@ -1,0 +1,59 @@
+﻿<ForestDialog x:Class="MaoTouGu.JuXiaoYou.Pages.ShareProjectView"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              xmlns:ui="urn:KinonekoSoftware/ui"
+              xmlns:this="clr-namespace:MaoTouGu.JuXiaoYou.Pages"
+              xmlns:thisVM="clr-namespace:MaoTouGu.JuXiaoYou.Pages"
+              mc:Ignorable="d"
+              d:DesignWidth="800" d:DesignHeight="450"
+              d:DataContext="{d:DesignInstance Type={x:Type thisVM:ShareProjectViewModel}, IsDesignTimeCreatable=True}">
+
+    <Border Background="{DynamicResource Brush.Background.Level3}"
+            Padding="32 16 32 32"
+            Width="480">
+
+        <HeaderedContentControl Header="分享项目"
+                                Style="{StaticResource SettingItem}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="192" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Border>
+                    <Image Source="{Binding QrCode}"
+                           Height="192"
+                           Width="192" />
+                </Border>
+
+                <StackPanel Grid.Column="1"
+                            Margin="16 0 0 0">
+
+
+                    <!---->
+                    <!---->
+                    <!---->
+                    <ui:MainButton Content="保存文件"
+                                   Command="{Binding Save}"
+                                   HorizontalAlignment="Center"
+                                   IconMode="Text"
+                                   Margin="0 6"
+                                   Height="32"
+                                   Width="240" />
+                    <!---->
+                    <!---->
+                    <!---->
+                    <ui:GhostButton DockPanel.Dock="Bottom"
+                                    Content="关闭"
+                                    Command="{Binding CompleteCommand}"
+                                    HorizontalAlignment="Center"
+                                    IconMode="Text"
+                                    Margin="0 6"
+                                    Height="32"
+                                    Width="240" />
+                </StackPanel>
+            </Grid>
+        </HeaderedContentControl>
+    </Border>
+</ForestDialog>

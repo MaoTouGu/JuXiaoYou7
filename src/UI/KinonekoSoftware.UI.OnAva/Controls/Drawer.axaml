@@ -1,0 +1,127 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:KinonekoSoftware.UI.Controls"
+                    xmlns:ui="urn:KinonekoSoftware/ui">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://KinonekoSoftware.UI.OnAva/Themes/Dark.axaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <DropShadowEffect x:Key="Ui.Shadow2" OffsetX="0" OffsetY="0" BlurRadius="8" Opacity="0.32" Color="#AA000000" />
+
+    <ControlTheme x:Key="Drawer.Base" TargetType="{x:Type c:Drawer}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="ClipToBounds" Value="True" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type c:Drawer}">
+                    <Border x:Name="PART_Bd"
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}">
+                        <Grid RowDefinitions="Auto,*,Auto"
+                              ColumnDefinitions="Auto,*,Auto">
+
+                            <ContentPresenter x:Name="PART_Content"
+                                              Grid.Column="0"
+                                              Grid.ColumnSpan="3"
+                                              Grid.Row="0"
+                                              Grid.RowSpan="3"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              Margin="{TemplateBinding Padding}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              RecognizesAccessKey="False" />
+
+                            <Border x:Name="mask"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    Grid.Row="0"
+                                    Grid.RowSpan="3"
+                                    Background="{DynamicResource Brush.Overlay100}"
+                                    IsVisible="False">
+                                <Border.Transitions>
+                                    <Transitions>
+                                        <DoubleTransition Property="Opacity" Duration="0:0:0.150" />
+                                    </Transitions>
+                                </Border.Transitions>
+                            </Border>
+
+                            <Border x:Name="PART_Left"
+                                    Grid.Column="0"
+                                    Grid.Row="0"
+                                    Grid.RowSpan="3"
+                                    ZIndex="1"
+                                    VerticalAlignment="Stretch"
+                                    HorizontalAlignment="Left"
+                                    ClipToBounds="True"
+                                    IsVisible="False">
+                                <ContentPresenter Content="{TemplateBinding LeftContent}"
+                                                  ContentTemplate="{TemplateBinding LeftContentTemplate}"
+                                                  VerticalAlignment="Stretch"
+                                                  HorizontalAlignment="Left"
+                                                  RecognizesAccessKey="False"
+                                                  ClipToBounds="True" />
+                            </Border>
+
+                            <Border x:Name="PART_Right"
+                                    Grid.Column="2"
+                                    Grid.Row="0"
+                                    Grid.RowSpan="3"
+                                    ZIndex="2"
+                                    VerticalAlignment="Stretch"
+                                    HorizontalAlignment="Right"
+                                    ClipToBounds="True"
+                                    IsVisible="False">
+                                <ContentPresenter Content="{TemplateBinding RightContent}"
+                                                  ContentTemplate="{TemplateBinding RightContentTemplate}"
+                                                  VerticalAlignment="Stretch"
+                                                  HorizontalAlignment="Right"
+                                                  RecognizesAccessKey="False"
+                                                  ClipToBounds="True" />
+                            </Border>
+
+                            <Border x:Name="PART_Top"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    Grid.Row="0"
+                                    ZIndex="3"
+                                    VerticalAlignment="Top"
+                                    HorizontalAlignment="Stretch"
+                                    ClipToBounds="True"
+                                    IsVisible="False">
+                                <ContentPresenter Content="{TemplateBinding TopContent}"
+                                                  ContentTemplate="{TemplateBinding TopContentTemplate}"
+                                                  VerticalAlignment="Top"
+                                                  HorizontalAlignment="Stretch"
+                                                  RecognizesAccessKey="False" />
+                            </Border>
+
+                            <Border x:Name="PART_Bottom"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    Grid.Row="2"
+                                    ZIndex="4"
+                                    VerticalAlignment="Bottom"
+                                    HorizontalAlignment="Stretch"
+                                    ClipToBounds="True"
+                                    IsVisible="False">
+                                <ContentPresenter Content="{TemplateBinding BottomContent}"
+                                                  ContentTemplate="{TemplateBinding BottomContentTemplate}"
+                                                  VerticalAlignment="Bottom"
+                                                  HorizontalAlignment="Stretch"
+                                                  RecognizesAccessKey="False" />
+                            </Border>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </ControlTheme>
+
+    <ControlTheme x:Key="{x:Type c:Drawer}" TargetType="{x:Type c:Drawer}" BasedOn="{StaticResource Drawer.Base}"/>
+</ResourceDictionary>

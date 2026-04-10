@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- FontFamily -->
+    <!-- FontFamily -->
+    <!-- FontFamily -->
+    <FontFamily x:Key="FangSong">pack://application:,,,/MaoTouGu.Resources.Fonts.WPF;component/Assets/GB2312.ttf#仿宋_GB2312</FontFamily>
+    <FontFamily x:Key="SongTi">pack://application:,,,/MaoTouGu.Resources.Fonts.WPF;component/Assets/SOURCEHANSERIFCN.OTF#思源宋体 CN</FontFamily>
+    <FontFamily x:Key="DeYiHei">pack://application:,,,/MaoTouGu.Resources.Fonts.WPF;component/Assets/SmileySans.ttf#得意黑</FontFamily>
+    <FontFamily x:Key="HeiTi">pack://application:,,,/MaoTouGu.Resources.Fonts.WPF;component/Assets/SourceHanSansTC.OTF#Source Han Sans TC</FontFamily>
+</ResourceDictionary>

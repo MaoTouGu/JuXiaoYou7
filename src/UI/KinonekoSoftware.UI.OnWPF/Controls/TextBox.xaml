@@ -1,0 +1,666 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:this="clr-namespace:KinonekoSoftware.UI.Controls"
+                    xmlns:p="clr-namespace:KinonekoSoftware.UI.Controls.Panels">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/KinonekoSoftware.UI.OnWPF;component/Themes/Dark.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/KinonekoSoftware.UI.OnWPF;component/Themes/Styles/ScrollViewer.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+
+    <Style x:Key="ClearStyle.FocusVisual">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle RadiusX="0"
+                               RadiusY="0"
+                               SnapsToDevicePixels="True"
+                               Stroke="{DynamicResource Brush.AdaptiveLevel1}"
+                               StrokeThickness="1" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ClearStyle.SingleLine" TargetType="{x:Type this:SingleLine}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="CaretBrush" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="CornerRadius" Value="3" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.Level1}" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="False" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="False" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Padding" Value="8" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type this:SingleLine}">
+                    <Border x:Name="PART_Bd"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            MinWidth="{TemplateBinding MinWidth}"
+                            MinHeight="{TemplateBinding MinHeight}"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch">
+                        <Grid HorizontalAlignment="Stretch"
+                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+
+                            <TextBlock x:Name="PART_Watermark"
+                                       FontSize="{TemplateBinding FontSize}"
+                                       Foreground="{DynamicResource Brush.Foreground.Level2}"
+                                       Text="{TemplateBinding Watermark}"
+                                       Margin="8 0 0 0"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Visibility="Collapsed" />
+
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          CanContentScroll="{TemplateBinding ScrollViewer.CanContentScroll}"
+                                          HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                          IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
+                                          IsTabStop="{TemplateBinding ScrollViewer.IsTabStop}"
+                                          Style="{StaticResource ClearStyle.ScrollViewer}"
+                                          VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#50e5e9af" TargetName="PART_Bd" />
+                        </Trigger>
+
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="#2098a12b" TargetName="PART_Bd" />
+                        </Trigger>
+                        <Trigger Property="HasText" Value="False">
+                            <Setter Property="Visibility" TargetName="PART_Watermark" Value="Visible" />
+                        </Trigger>
+
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="#30000000" TargetName="PART_Bd" />
+                            <Setter Property="Foreground" Value="#10FFFFFF" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="ClearStyle.HeaderedSingleLine" TargetType="{x:Type this:HeaderedSingleLine}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="CornerRadius" Value="3" />
+        <Setter Property="CaretBrush" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.Level1}" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="MinHeight" Value="28" />
+        <Setter Property="TextBlock.LineHeight" Value="21" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="False" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="False" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Top" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Padding" Value="8" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type this:HeaderedSingleLine}">
+
+                    <DockPanel Background="Transparent">
+                        <TextBlock DockPanel.Dock="Top"
+                                   FontSize="13"
+                                   FontWeight="Bold"
+                                   Text="{TemplateBinding Header}"
+                                   Margin="0 0 0 8"
+                                   VerticalAlignment="Center" />
+                        
+                        <Border x:Name="PART_Bd"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                MinWidth="{TemplateBinding MinWidth}"
+                                MinHeight="{TemplateBinding MinHeight}"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch">
+                            <p:TilePanel HorizontalAlignment="Stretch"
+                                         VerticalAlignment="Top">
+
+                                <ScrollViewer x:Name="PART_ContentHost"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              CanContentScroll="{TemplateBinding ScrollViewer.CanContentScroll}"
+                                              HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                              IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
+                                              IsTabStop="{TemplateBinding ScrollViewer.IsTabStop}"
+                                              Style="{StaticResource ClearStyle.ScrollViewer}"
+                                              VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" />
+
+                                <TextBlock x:Name="PART_Watermark"
+                                           FontSize="{TemplateBinding FontSize}"
+                                           Foreground="{DynamicResource Brush.Foreground.Level2}"
+                                           Text="{TemplateBinding Watermark}"
+                                           Margin="8 0 0 0"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Visibility="Collapsed" />
+                            </p:TilePanel>
+                        </Border>
+                    </DockPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#50e5e9af" TargetName="PART_Bd" />
+                        </Trigger>
+
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="#2098a12b" TargetName="PART_Bd" />
+                        </Trigger>
+                        <Trigger Property="HasText" Value="False">
+                            <Setter Property="Visibility" TargetName="PART_Watermark" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="#30000000" TargetName="PART_Bd" />
+                            <Setter Property="Foreground" Value="#10FFFFFF" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ClearStyle.MultiLine" TargetType="{x:Type this:MultiLine}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="CornerRadius" Value="3" />
+        <Setter Property="CaretBrush" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.Level1}" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="AcceptsReturn" Value="True" />
+        <Setter Property="AcceptsTab" Value="True" />
+        <Setter Property="TextBlock.LineHeight" Value="21" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="False" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Padding" Value="8" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type this:MultiLine}">
+                    <Border x:Name="PART_Bd"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            MinWidth="{TemplateBinding MinWidth}"
+                            MinHeight="{TemplateBinding MinHeight}"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch">
+                        <p:TilePanel HorizontalAlignment="Stretch"
+                                     VerticalAlignment="Top">
+
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          CanContentScroll="{TemplateBinding ScrollViewer.CanContentScroll}"
+                                          HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                          IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
+                                          IsTabStop="{TemplateBinding ScrollViewer.IsTabStop}"
+                                          Style="{StaticResource ClearStyle.ScrollViewer}"
+                                          Margin="0 4 0 0"
+                                          VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" />
+
+                            <TextBlock x:Name="PART_Watermark"
+                                       FontSize="{TemplateBinding FontSize}"
+                                       Foreground="{DynamicResource Brush.Foreground.Level2}"
+                                       Text="{TemplateBinding Watermark}"
+                                       Margin="8 0 0 0"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Visibility="Collapsed" />
+                        </p:TilePanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#50e5e9af" TargetName="PART_Bd" />
+                        </Trigger>
+
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="#2098a12b" TargetName="PART_Bd" />
+                        </Trigger>
+                        <Trigger Property="HasText" Value="False">
+                            <Setter Property="Visibility" TargetName="PART_Watermark" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="#30000000" TargetName="PART_Bd" />
+                            <Setter Property="Foreground" Value="#10FFFFFF" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="ClearStyle.HeaderedMultiLine" TargetType="{x:Type this:HeaderedMultiLine}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="CornerRadius" Value="3" />
+        <Setter Property="CaretBrush" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.Level1}" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="AcceptsReturn" Value="True" />
+        <Setter Property="AcceptsTab" Value="True" />
+        <Setter Property="TextBlock.LineHeight" Value="21" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="False" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Top" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Padding" Value="8" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type this:HeaderedMultiLine}">
+                    <DockPanel Background="Transparent">
+                        <TextBlock DockPanel.Dock="Top"
+                                   FontWeight="Bold"
+                                   FontSize="13"
+                                   Text="{TemplateBinding Header}"
+                                   Margin="0 0 0 8"
+                                   VerticalAlignment="Center" />
+                        <Border x:Name="PART_Bd"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                MinWidth="{TemplateBinding MinWidth}"
+                                MinHeight="{TemplateBinding MinHeight}"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch">
+                            <p:TilePanel HorizontalAlignment="Stretch"
+                                         VerticalAlignment="Top">
+
+                                <ScrollViewer x:Name="PART_ContentHost"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              CanContentScroll="{TemplateBinding ScrollViewer.CanContentScroll}"
+                                              HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                              IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
+                                              IsTabStop="{TemplateBinding ScrollViewer.IsTabStop}"
+                                              Style="{StaticResource ClearStyle.ScrollViewer}"
+                                              VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" />
+
+                                <TextBlock x:Name="PART_Watermark"
+                                           FontSize="{TemplateBinding FontSize}"
+                                           Foreground="{DynamicResource Brush.Foreground.Level2}"
+                                           Text="{TemplateBinding Watermark}"
+                                           Margin="8 0 0 0"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Visibility="Collapsed" />
+                            </p:TilePanel>
+                        </Border>
+                    </DockPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#50e5e9af" TargetName="PART_Bd" />
+                        </Trigger>
+
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="#2098a12b" TargetName="PART_Bd" />
+                        </Trigger>
+                        <Trigger Property="HasText" Value="False">
+                            <Setter Property="Visibility" TargetName="PART_Watermark" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="#30000000" TargetName="PART_Bd" />
+                            <Setter Property="Foreground" Value="#10FFFFFF" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ClearStyle.SingleLine.Enclose" TargetType="{x:Type this:SingleLine}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="CaretBrush" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="CornerRadius" Value="3" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.Level1}" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="TextBlock.LineHeight" Value="21" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="False" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="False" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Top" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Padding" Value="8" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type this:SingleLine}">
+                    <Border x:Name="PART_Bd"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            MinWidth="{TemplateBinding MinWidth}"
+                            MinHeight="{TemplateBinding MinHeight}"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch">
+                        <p:TilePanel HorizontalAlignment="Stretch"
+                                     VerticalAlignment="Top">
+
+                            <TextBlock x:Name="PART_Watermark"
+                                       FontSize="{TemplateBinding FontSize}"
+                                       Foreground="{DynamicResource Brush.Foreground.Level2}"
+                                       Text="{TemplateBinding Watermark}"
+                                       Margin="8 0 0 0"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Visibility="Collapsed" />
+
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          CanContentScroll="{TemplateBinding ScrollViewer.CanContentScroll}"
+                                          HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                          IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
+                                          IsTabStop="{TemplateBinding ScrollViewer.IsTabStop}"
+                                          Style="{StaticResource ClearStyle.ScrollViewer}"
+                                          VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" />
+                        </p:TilePanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#50e5e9af" TargetName="PART_Bd" />
+                        </Trigger>
+
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="#2098a12b" TargetName="PART_Bd" />
+                        </Trigger>
+                        <Trigger Property="HasText" Value="False">
+                            <Setter Property="Visibility" TargetName="PART_Watermark" Value="Visible" />
+                        </Trigger>
+
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="#30000000" TargetName="PART_Bd" />
+                            <Setter Property="Foreground" Value="#10FFFFFF" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ClearStyle.HeaderedSingleLine.Enclose" TargetType="{x:Type this:HeaderedSingleLine}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="CornerRadius" Value="3" />
+        <Setter Property="CaretBrush" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.Level1}" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="MinHeight" Value="28" />
+        <Setter Property="TextBlock.LineHeight" Value="21" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="False" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="False" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Top" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Padding" Value="8" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type this:HeaderedSingleLine}">
+
+
+                    <Border x:Name="PART_Bd"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            MinWidth="{TemplateBinding MinWidth}"
+                            MinHeight="{TemplateBinding MinHeight}"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch">
+                        <DockPanel Background="Transparent">
+                            <TextBlock DockPanel.Dock="Top"
+                                       FontSize="13"
+                                       FontWeight="Bold"
+                                       Text="{TemplateBinding Header}"
+                                       Margin="8 8 8 0"
+                                       VerticalAlignment="Center" />
+                            <p:TilePanel HorizontalAlignment="Stretch"
+                                         VerticalAlignment="Top">
+
+                                <ScrollViewer x:Name="PART_ContentHost"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              CanContentScroll="{TemplateBinding ScrollViewer.CanContentScroll}"
+                                              HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                              IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
+                                              IsTabStop="{TemplateBinding ScrollViewer.IsTabStop}"
+                                              Style="{StaticResource ClearStyle.ScrollViewer}"
+                                              VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" />
+
+                                <TextBlock x:Name="PART_Watermark"
+                                           FontSize="{TemplateBinding FontSize}"
+                                           Foreground="{DynamicResource Brush.Foreground.Level2}"
+                                           Text="{TemplateBinding Watermark}"
+                                           Margin="8 0 0 0"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Visibility="Collapsed" />
+                            </p:TilePanel>
+                        </DockPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#50e5e9af" TargetName="PART_Bd" />
+                        </Trigger>
+
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="#2098a12b" TargetName="PART_Bd" />
+                        </Trigger>
+                        <Trigger Property="HasText" Value="False">
+                            <Setter Property="Visibility" TargetName="PART_Watermark" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="#30000000" TargetName="PART_Bd" />
+                            <Setter Property="Foreground" Value="#10FFFFFF" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ClearStyle.MultiLine.Enclose" TargetType="{x:Type this:MultiLine}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="CornerRadius" Value="3" />
+        <Setter Property="CaretBrush" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.Level1}" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="AcceptsReturn" Value="True" />
+        <Setter Property="AcceptsTab" Value="True" />
+        <Setter Property="TextBlock.LineHeight" Value="21" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="False" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Padding" Value="8" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type this:MultiLine}">
+                    <Border x:Name="PART_Bd"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            MinWidth="{TemplateBinding MinWidth}"
+                            MinHeight="{TemplateBinding MinHeight}"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch">
+                        <p:TilePanel HorizontalAlignment="Stretch"
+                                     VerticalAlignment="Top">
+
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          CanContentScroll="{TemplateBinding ScrollViewer.CanContentScroll}"
+                                          HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                          IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
+                                          IsTabStop="{TemplateBinding ScrollViewer.IsTabStop}"
+                                          Style="{StaticResource ClearStyle.ScrollViewer}"
+                                          Margin="0 4 0 0"
+                                          VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" />
+
+                            <TextBlock x:Name="PART_Watermark"
+                                       FontSize="{TemplateBinding FontSize}"
+                                       Foreground="{DynamicResource Brush.Foreground.Level2}"
+                                       Text="{TemplateBinding Watermark}"
+                                       Margin="8 0 0 0"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Visibility="Collapsed" />
+                        </p:TilePanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#50e5e9af" TargetName="PART_Bd" />
+                        </Trigger>
+
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="#2098a12b" TargetName="PART_Bd" />
+                        </Trigger>
+                        <Trigger Property="HasText" Value="False">
+                            <Setter Property="Visibility" TargetName="PART_Watermark" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="#30000000" TargetName="PART_Bd" />
+                            <Setter Property="Foreground" Value="#10FFFFFF" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ClearStyle.HeaderedMultiLine.Enclose" TargetType="{x:Type this:HeaderedMultiLine}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="CornerRadius" Value="3" />
+        <Setter Property="CaretBrush" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.Level1}" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="AcceptsReturn" Value="True" />
+        <Setter Property="AcceptsTab" Value="True" />
+        <Setter Property="TextBlock.LineHeight" Value="21" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="False" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Top" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Padding" Value="8" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type this:HeaderedMultiLine}">
+                    <Border x:Name="PART_Bd"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            MinWidth="{TemplateBinding MinWidth}"
+                            MinHeight="{TemplateBinding MinHeight}"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch">
+                        <DockPanel Background="Transparent">
+                            <TextBlock DockPanel.Dock="Top"
+                                       FontWeight="Bold"
+                                       FontSize="13"
+                                       Text="{TemplateBinding Header}"
+                                       Margin="8 8 8 0"
+                                       VerticalAlignment="Center" />
+                            <p:TilePanel HorizontalAlignment="Stretch"
+                                         VerticalAlignment="Top">
+
+                                <ScrollViewer x:Name="PART_ContentHost"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              CanContentScroll="{TemplateBinding ScrollViewer.CanContentScroll}"
+                                              HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                              IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
+                                              IsTabStop="{TemplateBinding ScrollViewer.IsTabStop}"
+                                              Style="{StaticResource ClearStyle.ScrollViewer}"
+                                              VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" />
+
+                                <TextBlock x:Name="PART_Watermark"
+                                           FontSize="{TemplateBinding FontSize}"
+                                           Foreground="{DynamicResource Brush.Foreground.Level2}"
+                                           Text="{TemplateBinding Watermark}"
+                                           Margin="8 0 0 0"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Visibility="Collapsed" />
+                            </p:TilePanel>
+                        </DockPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#50e5e9af" TargetName="PART_Bd" />
+                        </Trigger>
+
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="#2098a12b" TargetName="PART_Bd" />
+                        </Trigger>
+                        <Trigger Property="HasText" Value="False">
+                            <Setter Property="Visibility" TargetName="PART_Watermark" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="#30000000" TargetName="PART_Bd" />
+                            <Setter Property="Foreground" Value="#10FFFFFF" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type this:SingleLine}" BasedOn="{StaticResource ClearStyle.SingleLine}" />
+    <Style TargetType="{x:Type this:HeaderedMultiLine}" BasedOn="{StaticResource ClearStyle.HeaderedMultiLine}" />
+    <Style TargetType="{x:Type this:HeaderedSingleLine}" BasedOn="{StaticResource ClearStyle.HeaderedSingleLine}" />
+    <Style TargetType="{x:Type this:MultiLine}" BasedOn="{StaticResource ClearStyle.MultiLine}" />
+</ResourceDictionary>

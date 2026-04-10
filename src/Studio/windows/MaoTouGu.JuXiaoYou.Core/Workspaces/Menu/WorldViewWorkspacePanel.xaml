@@ -1,0 +1,136 @@
+﻿<UserControl x:Class="MaoTouGu.JuXiaoYou.Workspaces.WorldViewWorkspacePanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ui="urn:KinonekoSoftware/ui"
+             xmlns:dock="https://github.com/Dirkster99/AvalonDock"
+             xmlns:this="clr-namespace:MaoTouGu.JuXiaoYou.Workspaces"
+             xmlns:thisVM="clr-namespace:MaoTouGu.JuXiaoYou.Workspaces"
+             xmlns:monikers="clr-namespace:MaoTouGu.JuXiaoYou.Workspaces.WorldView;assembly=MaoTouGu.JuXiaoYou.Workspaces"
+             mc:Ignorable="d"
+             d:DesignWidth="800" d:DesignHeight="450"
+             d:DataContext="{d:DesignInstance Type={x:Type thisVM:WorkspaceViewModel}, IsDesignTimeCreatable=True}">
+    <UserControl.Resources>
+        <!-- -->
+        <!-- -->
+        <!-- -->
+        <Geometry x:Key="Moniker">F1 M256,256z M0,0z M43.18,128A29.8,29.8,0,0,1,51.18,138.26C55.98,148.16 55.98,160.26 55.98,172 55.98,196.31 56.98,208 79.98,208A8,8,0,0,1,79.98,224C62.5,224 50.66,217.86 44.78,205.74 39.98,195.84 39.98,183.74 39.98,172 39.98,147.69 38.98,136 15.98,136A8,8,0,0,1,15.98,120C38.98,120 39.98,108.31 39.98,84 39.98,72.28 39.98,60.16 44.78,50.26 50.68,38.14 62.52,32 80,32A8,8,0,0,1,80,48C57,48 56,59.69 56,84 56,95.72 56,107.84 51.2,117.74A29.8,29.8,0,0,1,43.18,128 M240,120C217,120 216,108.31 216,84 216,72.28 216,60.16 211.2,50.26 205.32,38.14 193.48,32 176,32A8,8,0,0,0,176,48C199,48 200,59.69 200,84 200,95.72 200,107.84 204.8,117.74A29.8,29.8,0,0,0,212.8,128A29.8,29.8,0,0,0,204.8,138.26C200,148.16 200,160.26 200,172 200,196.31 199,208 176,208A8,8,0,0,0,176,224C193.48,224 205.32,217.86 211.2,205.74 216,195.84 216,183.74 216,172 216,147.69 217,136 240,136A8,8,0,0,0,240,120</Geometry>
+        <Geometry x:Key="More">F1 M24,24z M0,0z M6,20L7,16 3,16 3.5,14 7.5,14 8.5,10 4.5,10 5,8 9,8 10,4 12,4 11,8 15,8 16,4 18,4 17,8 21,8 20.5,10 16.5,10 15.5,14 19.5,14 19,16 15,16 14,20 12,20 13,16 9,16 8,20z M9.5,14L13.5,14 14.5,10 10.5,10z</Geometry>
+
+
+        <!-- ============ TopClassWorkspaceItem ============-->
+        <HierarchicalDataTemplate DataType="{x:Type monikers:TopClassWorkspaceItem}"
+                                  ItemsSource="{Binding Children, Mode=OneWay}">
+            <DockPanel Background="Transparent">
+                <DockPanel.ContextMenu>
+                    <ui:ContextMenu>
+                        <ui:MenuItem Header="添加"
+                                  Click="MenuItem_AddSubClass"
+                                  CommandParameter="{Binding}"/>
+                        <ui:MenuItem Header="编辑"
+                                  Click="MenuItem_EditTopClass"
+                                  CommandParameter="{Binding}"/>
+                        <Separator/>
+                        <ui:MenuItem Header="删除"
+                                  Click="MenuItem_RemoveTopClass"
+                                  CommandParameter="{Binding}"/>
+                    </ui:ContextMenu>
+                </DockPanel.ContextMenu>
+                <ui:Iconify Icon="{StaticResource World}"
+                            IconSize="21"/>
+                <TextBlock Margin="8 0 0 0"
+                           Text="{Binding Instance.Name, Mode=OneWay}" 
+                           VerticalAlignment="Center"/>
+            </DockPanel>
+        </HierarchicalDataTemplate>
+
+
+        <!-- ============ SubClassWorkspaceItem ============-->
+        <HierarchicalDataTemplate DataType="{x:Type monikers:SubClassWorkspaceItem}"
+                                  ItemsSource="{Binding Children, Mode=OneWay}">
+            <DockPanel Background="Transparent">
+                <DockPanel.ContextMenu>
+                    <ui:ContextMenu>
+                        <ui:MenuItem Header="添加"
+                                  Click="MenuItem_AddSubClass"
+                                  CommandParameter="{Binding}"/>
+                        <ui:MenuItem Header="编辑"
+                                  Click="MenuItem_EditSubClass"
+                                  CommandParameter="{Binding}"/>
+                        <Separator/>
+                        <ui:MenuItem Header="删除"
+                                  Click="MenuItem_RemoveSubClass"
+                                  CommandParameter="{Binding}"/>
+                    </ui:ContextMenu>
+                </DockPanel.ContextMenu>
+                <ui:Iconify Icon="{StaticResource More}"
+                            IconSize="21"
+                            IsFilled="True" />
+                <TextBlock Margin="8 0 0 0"
+                           Text="{Binding Instance.Name, Mode=OneWay}" 
+                           VerticalAlignment="Center"/>
+            </DockPanel>
+        </HierarchicalDataTemplate>
+
+        <!-- ============ WorldViewFolder ============-->
+        <HierarchicalDataTemplate DataType="{x:Type monikers:WorldViewFolder}"
+                                  ItemsSource="{Binding Items, Mode=OneWay}">
+            <DockPanel Background="Transparent">
+                <DockPanel.ContextMenu>
+                    <ui:ContextMenu>
+                        <ui:MenuItem Header="添加"
+                                  Click="MenuItem_AddTopClass"/>
+                        <Separator/>
+                        <ui:MenuItem Header="开发者操作">
+                            <ui:MenuItem Header="导出快照"/>
+                        </ui:MenuItem>
+                    </ui:ContextMenu>
+                </DockPanel.ContextMenu>
+                <ui:Iconify Foreground="#FFAB12"
+                            Icon="{StaticResource FeatherIcon.Folder}"
+                            IconSize="19" />
+
+                <TextBlock Margin="8 0 0 0"
+                           Text="{Binding Name, Mode=OneWay}"
+                           VerticalAlignment="Center" />
+            </DockPanel>
+        </HierarchicalDataTemplate>
+    </UserControl.Resources>
+    
+    
+    <!-- -->
+    <!-- -->
+    <!-- -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="3*" />
+        </Grid.RowDefinitions>
+
+        <!-- ============ 设定 ============-->
+        <DockPanel Grid.Row="0">
+            <ui:GhostButton DockPanel.Dock="Right"
+                            ui:ControlAssist.Icon="{StaticResource FeatherIcon.Search}"
+                            ui:ControlAssist.IconSize="19"
+                            IconMode="Icon"
+                            Height="40"
+                            Width="40"/>
+
+            <ui:SingleLine CornerRadius="0"
+                           FontSize="14"
+                           VerticalContentAlignment="Center"/>
+        </DockPanel>
+                
+                
+
+        <!-- ============ 设定 ============-->
+        <ui:TreeView Grid.Row="1"
+                     VirtualizingPanel.IsVirtualizing="True"
+                     VirtualizingPanel.CacheLengthUnit="Pixel"
+                     Margin="0 8"
+                     MouseDoubleClick="TreeView_DoubleClick"
+                     ItemsSource="{Binding WorldView.Items}">
+        </ui:TreeView>
+    </Grid>
+</UserControl>

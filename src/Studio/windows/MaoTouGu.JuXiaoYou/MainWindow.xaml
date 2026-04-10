@@ -1,0 +1,78 @@
+﻿<MTGWindow x:Class="MaoTouGu.JuXiaoYou.MainWindow"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+           xmlns:local="clr-namespace:MaoTouGu.JuXiaoYou"
+           xmlns:ui="urn:KinonekoSoftware/ui"
+           xmlns:appModels="clr-namespace:MaoTouGu.Shells.AppModels;assembly=MaoTouGu.Shells.WPF"
+           xmlns:inputs="clr-namespace:MaoTouGu.Shells.Inputs;assembly=MaoTouGu.Shells.WPF"
+           xmlns:thisVM="clr-namespace:MaoTouGu.JuXiaoYou.Pages;assembly=MaoTouGu.JuXiaoYou.Core"
+           mc:Ignorable="d"
+           Icon="pack://application:,,,/MaoTouGu.JuXiaoYou;component/JuXiaoYou4.ico"
+           UseLayoutRounding="True"
+           SnapsToDevicePixels="True"
+           MinHeight="640"
+           MinWidth="1280"
+           Height="640"
+           Width="1280"
+           d:DataContext="{d:DesignInstance Type={x:Type appModels:MultipleWindowContext}, IsDesignTimeCreatable=True}">
+    <Window.Resources>
+        <BindingProxy x:Key="ViewModel" ViewModel="{Binding}" />
+    </Window.Resources>
+    <DialogHost x:Name="DialogHost">
+        <DockPanel>
+            <Grid DockPanel.Dock="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="48" />
+                    <ColumnDefinition Width="48" />
+                    <ColumnDefinition Width="48" />
+                    <ColumnDefinition Width="48" />
+                    <ColumnDefinition Width="48" />
+                </Grid.ColumnDefinitions>
+
+                <ui:GhostButton Grid.Column="2"
+                                ui:ControlAssist.Icon="{StaticResource FeatherIcon.Chat}"
+                                WindowChrome.IsHitTestVisibleInChrome="True"
+                                Command="{x:Static inputs:NavigationCommand.Instance}"
+                                CommandParameter="{x:Type thisVM:SettingViewModel}"
+                                IconMode="Icon"
+                                Height="36"
+                                VerticalAlignment="Top" />
+
+                <ui:GhostButton Grid.Column="3"
+                                ui:ControlAssist.Icon="{StaticResource FeatherIcon.Settings}"
+                                WindowChrome.IsHitTestVisibleInChrome="True"
+                                Command="{x:Static inputs:NavigationCommand.Instance}"
+                                CommandParameter="{x:Type thisVM:SettingViewModel}"
+                                IconMode="Icon"
+                                Height="36"
+                                VerticalAlignment="Top" />
+
+                <WindowMinimumButton Grid.Column="4"
+                                     WindowChrome.IsHitTestVisibleInChrome="True"
+                                     Width="48"
+                                     Height="36"
+                                     VerticalAlignment="Top" />
+
+                <WindowMaximumButton Grid.Column="5"
+                                     WindowChrome.IsHitTestVisibleInChrome="True"
+                                     Width="48"
+                                     Height="36"
+                                     VerticalAlignment="Top" />
+
+                <WindowCloseButton Grid.Column="6"
+                                   WindowChrome.IsHitTestVisibleInChrome="True"
+                                   Width="48"
+                                   Height="36"
+                                   VerticalAlignment="Top" />
+            </Grid>
+            <ui:Drawer>
+                <ContentHost x:Name="ContentHost"
+                             ViewModel="{Binding Page, Mode=OneWay}" />
+            </ui:Drawer>
+        </DockPanel>
+    </DialogHost>
+</MTGWindow>

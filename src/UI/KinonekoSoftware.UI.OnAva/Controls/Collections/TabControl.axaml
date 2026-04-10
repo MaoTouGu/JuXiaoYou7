@@ -1,0 +1,443 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ui="clr-namespace:KinonekoSoftware.UI.Controls"
+                    xmlns:this="clr-namespace:KinonekoSoftware.UI.Controls.Collections">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://KinonekoSoftware.UI.OnAva/Themes/Dark.axaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTheme x:Key="TabItem.Sink" TargetType="{x:Type this:SinkTabItem}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="MinHeight" Value="30" />
+        <Setter Property="MinWidth" Value="30" />
+        <Setter Property="Padding" Value="16 7" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type this:SinkTabItem}">
+                    <Border x:Name="PART_Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="0"
+                            Padding="{TemplateBinding Padding}"
+                            UseLayoutRounding="True">
+                        <ContentPresenter x:Name="PART_Content"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          Content="{TemplateBinding Header}"
+                                          ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                          Focusable="False"
+                                          Margin="0 0 0 0"
+                                          RecognizesAccessKey="True" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <!--  Selected PointerOver state  -->
+        <Style Selector="^:selected:pointerover /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.HighlightB5}" />
+        </Style>
+        <!--  Selected Pressed state  -->
+        <Style Selector="^:selected:pressed /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.HighlightB5}" />
+        </Style>
+
+        <!--  PointerOver state  -->
+        <Style Selector="^:pointerover /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.HighlightB5}" />
+        </Style>
+
+
+        <!--  Selected state  -->
+        <!--  We don't use selector to PART_LayoutRoot, so developer can override selected item background with TabStripItem.Background  -->
+        <Style Selector="^:selected /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.HighlightB4}" />
+        </Style>
+
+        <!--  Disabled state  -->
+        <Style Selector="^:disabled /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.Foreground.Disabled}" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="TabItem.Iconify" TargetType="{x:Type this:IconifyTabItem}">
+        <Setter Property="ui:ControlAssist.CornerRadius" Value="0" />
+        <Setter Property="ui:ControlAssist.Icon" Value="{x:Null}" />
+        <Setter Property="ui:ControlAssist.IconSize" Value="19" />
+        <Setter Property="ui:ControlAssist.IsFilled" Value="False" />
+        <Setter Property="ui:ControlAssist.IconDock" Value="Left" />
+        <Setter Property="ui:ControlAssist.IconMargin" Value="0 0 0 0" />
+        <Setter Property="ui:ControlAssist.StrokeThickness" Value="1" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="MinHeight" Value="48" />
+        <Setter Property="MinWidth" Value="48" />
+        <Setter Property="Padding" Value="8 4" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type this:IconifyTabItem}">
+                    <Border x:Name="PART_Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{Binding (ui:ControlAssist.CornerRadius), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                            Padding="{TemplateBinding Padding}"
+                            UseLayoutRounding="True">
+                        <ui:Iconify x:Name="PART_Icon"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    Margin="{Binding (ui:ControlAssist.IconMargin), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                    Icon="{Binding (ui:ControlAssist.Icon), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                    IconSize="{Binding (ui:ControlAssist.IconSize), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                    IsFilled="{Binding (ui:ControlAssist.IsFilled), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                    StrokeThickness="{Binding (ui:ControlAssist.StrokeThickness), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <!--  Selected PointerOver state  -->
+        <Style Selector="^:selected:pointerover /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.HighlightC2}" />
+        </Style>
+        <!--  Selected Pressed state  -->
+        <Style Selector="^:selected:pressed /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.HighlightC2}" />
+        </Style>
+
+        <!--  PointerOver state  -->
+        <Style Selector="^:pointerover /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.HighlightC2}" />
+        </Style>
+
+
+        <!--  Selected state  -->
+        <!--  We don't use selector to PART_LayoutRoot, so developer can override selected item background with TabStripItem.Background  -->
+        <Style Selector="^:selected /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.HighlightC4}" />
+        </Style>
+
+        <!--  Disabled state  -->
+        <Style Selector="^:disabled /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource Brush.Foreground.Disabled}" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="TabItem.Strike" TargetType="{x:Type this:StrikeTabItem}">
+        <Setter Property="ui:ControlAssist.CornerRadius" Value="3" />
+        <Setter Property="ui:ControlAssist.Icon" Value="{x:Null}" />
+        <Setter Property="ui:ControlAssist.IconSize" Value="19" />
+        <Setter Property="ui:ControlAssist.IsFilled" Value="False" />
+        <Setter Property="ui:ControlAssist.IconDock" Value="Left" />
+        <Setter Property="ui:ControlAssist.IconMargin" Value="0 0 0 0" />
+        <Setter Property="ui:ControlAssist.StrokeThickness" Value="1" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Level1}" />
+        <Setter Property="MinHeight" Value="28" />
+        <Setter Property="MinWidth" Value="28" />
+        <Setter Property="Padding" Value="8 4" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type this:StrikeTabItem}">
+                    <Border x:Name="PART_Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="3"
+                            Padding="{TemplateBinding Padding}"
+                            UseLayoutRounding="True">
+                        <ui:Iconify x:Name="PART_Icon"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    Margin="{Binding (ui:ControlAssist.IconMargin), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                    Icon="{Binding (ui:ControlAssist.Icon), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                    IconSize="{Binding (ui:ControlAssist.IconSize), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                    IsFilled="{Binding (ui:ControlAssist.IsFilled), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}"
+                                    StrokeThickness="{Binding (ui:ControlAssist.StrokeThickness), RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=OneWay}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <!--  Selected PointerOver state  -->
+        <Style Selector="^:selected:pointerover /template/ ContentPresenter#PART_Content">
+            <Setter Property="Foreground" Value="{DynamicResource Brush.HighlightC2}" />
+        </Style>
+        <!--  Selected Pressed state  -->
+        <Style Selector="^:selected:pressed /template/ ContentPresenter#PART_Content">
+            <Setter Property="Foreground" Value="{DynamicResource Brush.HighlightC2}" />
+        </Style>
+
+        <!--  PointerOver state  -->
+        <Style Selector="^:pointerover /template/ ContentPresenter#PART_Content">
+            <Setter Property="Foreground" Value="{DynamicResource Brush.HighlightC2}" />
+        </Style>
+
+
+        <!--  Selected state  -->
+        <!--  We don't use selector to PART_LayoutRoot, so developer can override selected item background with TabStripItem.Background  -->
+        <Style Selector="^:selected /template/ ContentPresenter#PART_Content">
+            <Setter Property="Foreground" Value="{DynamicResource Brush.HighlightC4}" />
+        </Style>
+
+        <!--  Disabled state  -->
+        <Style Selector="^:disabled /template/ ContentPresenter#PART_Content">
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Disabled}" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="TabControl.Iconify" TargetType="{x:Type this:IconifyTabControl}">
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        Background="{TemplateBinding Background}"
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                    <DockPanel>
+                        <Border DockPanel.Dock="{TemplateBinding TabStripPlacement}"
+                                BorderBrush="{DynamicResource Brush.Foreground.Level1}">
+                            <ItemsPresenter Name="PART_ItemsPresenter"
+                                            ItemsPanel="{TemplateBinding ItemsPanel}">
+                                <ItemsPresenter.GestureRecognizers>
+                                    <ScrollGestureRecognizer />
+                                </ItemsPresenter.GestureRecognizers>
+                            </ItemsPresenter>
+                        </Border>
+                        <ContentPresenter Name="PART_SelectedContentHost"
+                                          Margin="{TemplateBinding Padding}"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Content="{TemplateBinding SelectedContent}"
+                                          ContentTemplate="{TemplateBinding SelectedContentTemplate}" />
+                    </DockPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^[TabStripPlacement=Left] /template/ ItemsPresenter#PART_ItemsPresenter > WrapPanel">
+            <Setter Property="Orientation" Value="Vertical" />
+        </Style>
+        <Style Selector="^[TabStripPlacement=Right] /template/ ItemsPresenter#PART_ItemsPresenter > WrapPanel">
+            <Setter Property="Orientation" Value="Vertical" />
+        </Style>
+        <Style Selector="^[TabStripPlacement=Top] /template/ ItemsPresenter#PART_ItemsPresenter">
+            <Setter Property="Margin" Value="0" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="TabControl.Strike" TargetType="{x:Type this:StrikeTabControl}">
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Padding" Value="8 0" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        Background="{TemplateBinding Background}"
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                    <DockPanel>
+                        <Border DockPanel.Dock="{TemplateBinding TabStripPlacement}"
+                                BorderBrush="{DynamicResource Brush.Foreground.Level1}">
+                            <ItemsPresenter Name="PART_ItemsPresenter"
+                                            ItemsPanel="{TemplateBinding ItemsPanel}">
+                                <ItemsPresenter.GestureRecognizers>
+                                    <ScrollGestureRecognizer />
+                                </ItemsPresenter.GestureRecognizers>
+                            </ItemsPresenter>
+                        </Border>
+                        <ContentPresenter Name="PART_SelectedContentHost"
+                                          Margin="{TemplateBinding Padding}"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Content="{TemplateBinding SelectedContent}"
+                                          ContentTemplate="{TemplateBinding SelectedContentTemplate}" />
+                    </DockPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^[TabStripPlacement=Left] /template/ ItemsPresenter#PART_ItemsPresenter > WrapPanel">
+            <Setter Property="Orientation" Value="Vertical" />
+        </Style>
+        <Style Selector="^[TabStripPlacement=Right] /template/ ItemsPresenter#PART_ItemsPresenter > WrapPanel">
+            <Setter Property="Orientation" Value="Vertical" />
+        </Style>
+        <Style Selector="^[TabStripPlacement=Top] /template/ ItemsPresenter#PART_ItemsPresenter">
+            <Setter Property="Margin" Value="0" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="TabControl.Sink" TargetType="{x:Type this:SinkTabControl}">
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Padding" Value="8 0" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        Background="{TemplateBinding Background}"
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                    <DockPanel>
+                        <Border DockPanel.Dock="{TemplateBinding TabStripPlacement}"
+                                BorderBrush="{DynamicResource Brush.HighlightB4}"
+								BorderThickness="0 0 0 2"
+								Padding="16 0">
+                            <ItemsPresenter Name="PART_ItemsPresenter"
+                                            ItemsPanel="{TemplateBinding ItemsPanel}">
+                                <ItemsPresenter.GestureRecognizers>
+                                    <ScrollGestureRecognizer />
+                                </ItemsPresenter.GestureRecognizers>
+                            </ItemsPresenter>
+                        </Border>
+                        <ContentPresenter Name="PART_SelectedContentHost"
+                                          Margin="{TemplateBinding Padding}"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Content="{TemplateBinding SelectedContent}"
+                                          ContentTemplate="{TemplateBinding SelectedContentTemplate}" />
+                    </DockPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^[TabStripPlacement=Left] /template/ ItemsPresenter#PART_ItemsPresenter > WrapPanel">
+            <Setter Property="Orientation" Value="Vertical" />
+        </Style>
+        <Style Selector="^[TabStripPlacement=Right] /template/ ItemsPresenter#PART_ItemsPresenter > WrapPanel">
+            <Setter Property="Orientation" Value="Vertical" />
+        </Style>
+        <Style Selector="^[TabStripPlacement=Top] /template/ ItemsPresenter#PART_ItemsPresenter">
+            <Setter Property="Margin" Value="0" />
+        </Style>
+    </ControlTheme>
+    
+    
+    <ControlTheme x:Key="TabControl.Sink.Advanced" TargetType="{x:Type this:AdvancedSinkTabControl}">
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Padding" Value="8 0" />
+        <Setter Property="ToolBarMargin" Value="8 0 0 0"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        Background="{TemplateBinding Background}"
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                    <DockPanel>
+                        <Border DockPanel.Dock="{TemplateBinding TabStripPlacement}"
+                                BorderBrush="{DynamicResource Brush.HighlightB4}"
+								BorderThickness="0 0 0 2"
+								Padding="16 0 0 0">
+                            <DockPanel>
+                                <ContentPresenter DockPanel.Dock="Right"
+                                                  Name="PART_ToolBar"
+                                                  Margin="{TemplateBinding ToolBarMargin}"
+                                                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  Content="{TemplateBinding ToolBar}"
+                                                  ContentTemplate="{TemplateBinding ToolBarTemplate}" />
+                                
+                                <ItemsPresenter Name="PART_ItemsPresenter"
+                                                ItemsPanel="{TemplateBinding ItemsPanel}">
+                                    <ItemsPresenter.GestureRecognizers>
+                                        <ScrollGestureRecognizer />
+                                    </ItemsPresenter.GestureRecognizers>
+                                </ItemsPresenter>
+                            </DockPanel>
+                        </Border>
+                        
+                        <ContentPresenter Name="PART_SelectedContentHost"
+                                          Margin="{TemplateBinding Padding}"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Content="{TemplateBinding SelectedContent}"
+                                          ContentTemplate="{TemplateBinding SelectedContentTemplate}" />
+                    </DockPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^[TabStripPlacement=Left] /template/ ItemsPresenter#PART_ItemsPresenter > WrapPanel">
+            <Setter Property="Orientation" Value="Vertical" />
+        </Style>
+        <Style Selector="^[TabStripPlacement=Right] /template/ ItemsPresenter#PART_ItemsPresenter > WrapPanel">
+            <Setter Property="Orientation" Value="Vertical" />
+        </Style>
+        <Style Selector="^[TabStripPlacement=Top] /template/ ItemsPresenter#PART_ItemsPresenter">
+            <Setter Property="Margin" Value="0" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="{x:Type TabControl}" TargetType="TabControl">
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Padding" Value="8 0" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        Background="{TemplateBinding Background}"
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                    <DockPanel>
+                        <ItemsPresenter Name="PART_ItemsPresenter"
+                                        ItemsPanel="{TemplateBinding ItemsPanel}"
+                                        DockPanel.Dock="{TemplateBinding TabStripPlacement}">
+                            <ItemsPresenter.GestureRecognizers>
+                                <ScrollGestureRecognizer />
+                            </ItemsPresenter.GestureRecognizers>
+                        </ItemsPresenter>
+                        <ContentPresenter Name="PART_SelectedContentHost"
+                                          Margin="{TemplateBinding Padding}"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Content="{TemplateBinding SelectedContent}"
+                                          ContentTemplate="{TemplateBinding SelectedContentTemplate}" />
+                    </DockPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^[TabStripPlacement=Left] /template/ ItemsPresenter#PART_ItemsPresenter > WrapPanel">
+            <Setter Property="Orientation" Value="Vertical" />
+        </Style>
+        <Style Selector="^[TabStripPlacement=Right] /template/ ItemsPresenter#PART_ItemsPresenter > WrapPanel">
+            <Setter Property="Orientation" Value="Vertical" />
+        </Style>
+        <Style Selector="^[TabStripPlacement=Top] /template/ ItemsPresenter#PART_ItemsPresenter">
+            <Setter Property="Margin" Value="0" />
+        </Style>
+    </ControlTheme>
+
+
+    <ControlTheme x:Key="{x:Type this:SinkTabControl}" TargetType="{x:Type this:SinkTabControl}" BasedOn="{StaticResource TabControl.Sink}" />
+    <ControlTheme x:Key="{x:Type this:AdvancedSinkTabControl}" TargetType="{x:Type this:AdvancedSinkTabControl}" BasedOn="{StaticResource TabControl.Sink.Advanced}" />
+    <ControlTheme x:Key="{x:Type this:StrikeTabControl}" TargetType="{x:Type this:StrikeTabControl}" BasedOn="{StaticResource TabControl.Strike}" />
+    <ControlTheme x:Key="{x:Type this:IconifyTabControl}" TargetType="{x:Type this:IconifyTabControl}" BasedOn="{StaticResource TabControl.Iconify}" />
+    <ControlTheme x:Key="{x:Type this:SinkTabItem}" TargetType="{x:Type this:SinkTabItem}" BasedOn="{StaticResource TabItem.Sink}" />
+    <ControlTheme x:Key="{x:Type this:StrikeTabItem}" TargetType="{x:Type this:StrikeTabItem}" BasedOn="{StaticResource TabItem.Strike}" />
+    <ControlTheme x:Key="{x:Type this:IconifyTabItem}" TargetType="{x:Type this:IconifyTabItem}" BasedOn="{StaticResource TabItem.Iconify}" />
+</ResourceDictionary>
