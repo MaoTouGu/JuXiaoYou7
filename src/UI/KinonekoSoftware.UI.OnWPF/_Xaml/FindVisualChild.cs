@@ -1,5 +1,5 @@
 ﻿namespace KinonekoSoftware.UI
-{ 
+{
     partial class Xaml
     {
         /// <summary>
@@ -35,7 +35,25 @@
 
             return null;
         }
-        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <typeparam name="T">泛型类型。</typeparam>
+        /// <returns></returns>
+        public static T FindLogicalChild<T>(DependencyObject parent) where T : DependencyObject
+        {
+            foreach (var child in LogicalTreeHelper.GetChildren(parent))
+            {
+                if (child is T)
+                {
+                    return (T)child;
+                }
+            }
+
+            return null;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -52,7 +70,7 @@
             {
                 return null;
             }
-            
+
             for (var i = 0; i < childCount; i++)
             {
                 var child = VisualTreeHelper.GetChild(parent, i);
@@ -61,7 +79,7 @@
                 {
                     return instance;
                 }
- 
+
                 var foundChild = FindVisualChild<T>(child, depth + 1, maxDepth);
 
                 if (foundChild != null)

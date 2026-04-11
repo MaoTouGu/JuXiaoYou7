@@ -5,7 +5,7 @@
 //            版权所有：MaoTouGu Studio & Luoyisi
 // 
 // ----------------------------------------------------------
-namespace MaoTouGu.JuXiaoYou.Indexing.BySetting
+namespace MaoTouGu.JuXiaoYou.Indexing
 {
     public class ByStarRankingViewModel : SystemPage
     {

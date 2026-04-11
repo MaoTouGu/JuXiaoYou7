@@ -21,15 +21,17 @@ namespace MaoTouGu.JuXiaoYou.Services.Plugins
         {
             var name = assembly.FullName;
 
+            return FilterAssembly(name);
+        }
+
+        static bool FilterAssembly(string name)
+        {
             if (string.IsNullOrEmpty(name))
             {
                 return false;
             }
 
-            return !name.Contains("System")     &&
-                   !name.Contains("Microsoft")  &&
-                   !name.Contains("Newtonsoft") &&
-                   !name.Contains("KinonekoSoftware");
+            return name.Contains("MaoTouGu");
         }
 
         static void InstallManifests(Assembly[] userAssemblies)
@@ -55,7 +57,7 @@ namespace MaoTouGu.JuXiaoYou.Services.Plugins
             _Logger.Info($"正在扫描所有程序集，在{userAssemblies.Length}个程序集中发现了{collection.Count}个实现了IPluginManifest接口的实例。");
 
             _Invoker ??= Ioc.Get<IThreadingInvoker>();
-            
+
             InstallManifests(collection);
         }
 
@@ -64,20 +66,40 @@ namespace MaoTouGu.JuXiaoYou.Services.Plugins
             foreach (var manifest in collection)
             {
                 _Invoker.RunOnUIThread(() =>
-                                  {
-                                      Manifests.Add(manifest);
-                                  });
-                
+                                       {
+                                           Manifests.Add(manifest);
+                                       });
+
                 //
                 //
                 manifest.RegisterFeatures();
                 manifest.RegisterVisualManagers();
+                manifest.RegisterVisualizers();
             }
+        }
+
+        static List<Assembly> GetReferencedAssemblies()
+        {
+            var result = new List<Assembly>();
+
+            var iterator = Assembly.GetEntryAssembly()
+                                  ?.GetReferencedAssemblies()
+                                   .Where(x => FilterAssembly(x.FullName))
+                                   .ToList();
+
+            if (iterator is null)
+            {
+                return result;
+            }
+
+            result.AddRange(iterator.Select(x => Assembly.Load(x.FullName)));
+
+            return result;
         }
 
         public static void Scan()
         {
-            var assemblies     = AppDomain.CurrentDomain.GetAssemblies();
+            var assemblies     = GetReferencedAssemblies();
             var userAssemblies = assemblies.Where(FilterAssembly).ToArray();
 
             InstallManifests(userAssemblies);

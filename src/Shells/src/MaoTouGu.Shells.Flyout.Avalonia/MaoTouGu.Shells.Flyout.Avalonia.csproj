@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\UI\KinonekoSoftware.UI.OnAva\KinonekoSoftware.UI.OnAva.csproj" />
+      <ProjectReference Include="..\MaoTouGu.Shells.Flyout\MaoTouGu.Shells.Flyout.csproj" />
+    </ItemGroup>
+
+</Project>

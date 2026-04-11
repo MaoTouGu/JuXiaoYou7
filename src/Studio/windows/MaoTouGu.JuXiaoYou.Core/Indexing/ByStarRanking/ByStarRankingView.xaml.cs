@@ -1,4 +1,4 @@
-﻿namespace MaoTouGu.JuXiaoYou.Indexing.BySetting
+﻿namespace MaoTouGu.JuXiaoYou.Indexing
 {
 
     [Associate(View = typeof(ByStarRankingView), ViewModel = typeof(ByStarRankingViewModel))]

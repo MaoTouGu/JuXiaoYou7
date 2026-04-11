@@ -7,12 +7,8 @@
 // ----------------------------------------------------------
 namespace MaoTouGu.JuXiaoYou.Indexing
 {
-    public class ByNameRankingSettingViewModel : NestedPage
+    public class ByNameRankingSettingViewModel
     {
 
-        public ByNameRankingSettingViewModel(IFilterMethod method, JuXiaoYouPage parent) : base(nameof(ByNameRankingSettingViewModel), parent)
-        {
-
-        }
     }
 }

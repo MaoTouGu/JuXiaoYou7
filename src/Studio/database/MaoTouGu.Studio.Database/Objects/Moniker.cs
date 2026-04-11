@@ -23,13 +23,13 @@ namespace MaoTouGu.Studio.Database.Objects
 
             return new Moniker
             {
+                Settings = new MonikerSettingSet(),
                 Id          = ID.Get(),
                 Name        = name,
                 Created     = time,
                 Modified    = time,
                 Creator     = user?.Id,
                 CreatorName = user?.DisplayName,
-                Settings    = new MonikerSettingSet(),
             };
         }
 
@@ -39,13 +39,13 @@ namespace MaoTouGu.Studio.Database.Objects
 
             return new Moniker
             {
+                Settings = new MonikerSettingSet(),
                 Id          = id,
                 Name        = name,
                 Created     = time,
                 Modified    = time,
                 Creator     = user?.Id,
                 CreatorName = user?.DisplayName,
-                Settings    = new MonikerSettingSet(),
             };
         }
 
@@ -83,7 +83,15 @@ namespace MaoTouGu.Studio.Database.Objects
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public bool AsBoolean(string key) => bool.TryParse(SafetyGetSetting(key), out var result) && result;
+        public bool AsBoolean(string key)
+        {
+            if(bool.TryParse(SafetyGetSetting(key), out var result))
+            {
+                return result;
+            }
+
+            return false;
+        }
 
         public void Set(string key, int value) => Set(key, value.ToString());
         public void Set(string key, float value) => Set(key, value.ToString("F5"));
@@ -128,22 +136,34 @@ namespace MaoTouGu.Studio.Database.Objects
         }
 
         public string GetGravatar() => Gravatar;
+        
         public void SetGravatar(string value)
         {
             Gravatar = value;
         }
+        
+        [BsonIgnore]
+        [Newtonsoft.Json.JsonIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
         public string Gravatar
         {
-            get => _gravatar;
-            set => SetValue(ref _gravatar, value);
-        }
-
-        public string Name
-        {
-            get => _name;
+            get => AsString(nameof(Gravatar));
             set
             {
-                SetValue(ref _name, value);
+                Set(nameof(Gravatar), value);
+                RaiseUpdated();
+            }
+        }
+
+        [BsonIgnore]
+        [Newtonsoft.Json.JsonIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        public string Name
+        {
+            get => AsString(nameof(Name));
+            set
+            {
+                Set(nameof(Name), value);
                 RaiseUpdated(nameof(FriendlyName));
             }
         }

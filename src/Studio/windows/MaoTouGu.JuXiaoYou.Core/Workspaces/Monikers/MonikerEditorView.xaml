@@ -1,0 +1,147 @@
+﻿<ForestPage x:Class="MaoTouGu.JuXiaoYou.Workspaces.Monikers.MonikerEditorView"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:ui="urn:KinonekoSoftware/ui"
+            xmlns:this="clr-namespace:MaoTouGu.JuXiaoYou.Workspaces.Monikers"
+            xmlns:thisVM="clr-namespace:MaoTouGu.JuXiaoYou.Workspaces.Monikers"
+            mc:Ignorable="d"
+            d:DesignWidth="800" d:DesignHeight="450"
+            d:DataContext="{d:DesignInstance Type={x:Type thisVM:MonikerEditorViewModel}, IsDesignTimeCreatable=True}"
+            Padding="16 8">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type ui:ListBoxItem}" BasedOn="{StaticResource ListBoxItem.Outline}">
+            <Setter Property="Padding" Value="8 4" />
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="16*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" MinWidth="320" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+
+            <!---->
+            <!---->
+            <!---->
+            <TextBlock Grid.Row="0"
+                       FontFamily="{StaticResource HeiTi}"
+                       FontSize="32"
+                       Margin="0 0 0 8"
+                       Text="{Binding Moniker.FriendlyName, Mode=OneWay}" />
+            <!---->
+            <!---->
+            <!---->
+            <ui:SinkTabControl Grid.Column="0"
+                               Grid.Row="1"
+                               BorderBrush="{DynamicResource Brush.HighlightA3}"
+                               Margin="0 0 8 0">
+                <ui:SinkTabItem Header="喵喵咒语">
+                    <DockPanel>
+                        <StackPanel DockPanel.Dock="Top"
+                                    Margin="0 0 0 4"
+                                    Orientation="Horizontal">
+                            <ui:GhostButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.PlusCircle}"
+                                            Content="添加设定"
+                                            HorizontalContentAlignment="Left"
+                                            IconMode="Both"
+                                            Padding="8 6" />
+                            <ui:GhostButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.Trash}"
+                                            Content="删除设定"
+                                            HorizontalContentAlignment="Left"
+                                            IconMode="Both"
+                                            Padding="8 6" />
+                        </StackPanel>
+                        <ui:ListBox ItemsSource="{Binding Settings, Mode=OneWay}">
+
+                        </ui:ListBox>
+                    </DockPanel>
+                </ui:SinkTabItem>
+                <ui:SinkTabItem Header="视觉效果">
+                    <StackPanel>
+
+                        <ui:ListBox Margin="0 0 0 16"
+                                    ItemsSource="{Binding Settings, Mode=OneWay}">
+
+                        </ui:ListBox>
+                        <ui:CheckBox ui:ControlAssist.CornerRadius="0"
+                                         Content="自动匹配视觉效果"
+                                         HorizontalContentAlignment="Left"
+                                         Padding="8 6"/>
+
+                        <ui:GhostButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.Save}"
+                                        Content="保存设置"
+                                        HorizontalContentAlignment="Left"
+                                        IconMode="Both"
+                                        Padding="8" />
+                        
+                        <ui:GhostButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.Trash}"
+                                        Content="导出模板"
+                                        HorizontalContentAlignment="Left"
+                                        IconMode="Both"
+                                        Padding="8" />
+                        
+                        <ui:GhostButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.Trash}"
+                                        Content="导入模板"
+                                        HorizontalContentAlignment="Left"
+                                        IconMode="Both"
+                                        Padding="8" />
+
+                    </StackPanel>
+                </ui:SinkTabItem>
+                <ui:SinkTabItem Header="设置">
+                    <StackPanel>
+                        <HeaderedContentControl Header="设定占用"
+                                                VerticalContentAlignment="Center"
+                                                Style="{StaticResource SettingItem}">
+
+                            <ui:ListBox ItemsSource="{Binding Settings, Mode=OneWay}">
+
+                            </ui:ListBox>
+                        </HeaderedContentControl>
+                    </StackPanel>
+                </ui:SinkTabItem>
+            </ui:SinkTabControl>
+
+
+            <!---->
+            <!---->
+            <!---->
+            <HeaderedContentControl Grid.Column="1"
+                                    Grid.Row="1"
+                                    Header="视觉"
+                                    Margin="8 0"
+                                    Style="{StaticResource HeaderedContentControl.DecoratedStyle1}">
+                <ui:ControlAssist.ToolBar>
+                    <StackPanel Margin="0 0 0 4"
+                                Orientation="Horizontal">
+                        <ui:GhostButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.Refresh}"
+                                        Content="改变视觉"
+                                        HorizontalContentAlignment="Left"
+                                        IconMode="Both"
+                                        Padding="8 6" />
+                        <ui:GhostButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.Save}"
+                                        Content="保存更改"
+                                        HorizontalContentAlignment="Left"
+                                        IconMode="Both"
+                                        Padding="8 6" />
+                    </StackPanel>
+                </ui:ControlAssist.ToolBar>
+
+            </HeaderedContentControl>
+
+        </Grid>
+    </Grid>
+</ForestPage>

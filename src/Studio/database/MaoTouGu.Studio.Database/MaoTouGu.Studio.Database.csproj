@@ -16,10 +16,5 @@
         <PackageReference Include="QuikGraph" Version="2.3.0"/>
         <PackageReference Include="NPinyin.Core" Version="3.0.0"/>
     </ItemGroup>
-    
-    <ItemGroup>
-      <Folder Include="Entities\Topology\" />
-      <Folder Include="Templates\" />
-    </ItemGroup>
 
 </Project>

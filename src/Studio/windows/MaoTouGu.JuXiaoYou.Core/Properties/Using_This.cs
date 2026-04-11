@@ -19,6 +19,7 @@ global using MaoTouGu.JuXiaoYou.Common.Commands;
 global using MaoTouGu.JuXiaoYou.Common.Helpers;
 global using MaoTouGu.JuXiaoYou.Core;
 global using MaoTouGu.JuXiaoYou.Startups;
+global using MaoTouGu.JuXiaoYou.Visualizers;
 global using MaoTouGu.JuXiaoYou.Workspaces;
 global using MaoTouGu.JuXiaoYou.Workspaces.Monikers;
 global using MaoTouGu.JuXiaoYou.Workspaces.WorldView;
@@ -28,6 +29,7 @@ global using MaoTouGu.JuXiaoYou.Workspaces.WorldView;
  */
 global using MaoTouGu.Studio;
 global using MaoTouGu.Studio.AppModels;
+global using MaoTouGu.Studio.Keywords;
 global using MaoTouGu.Studio.References;
 
 /*

@@ -99,14 +99,12 @@
 
     <ItemGroup>
       <Folder Include="Common\Behaviors\" />
-      <Folder Include="Common\Converters\" />
       <Folder Include="Controls\" />
-      <Folder Include="Managements\_FamilyTree\" />
-      <Folder Include="Managements\_Label\" />
-      <Folder Include="Managements\_\" />
       <Folder Include="Startups\Features\" />
       <Folder Include="Pages\_Pickers\" />
+      <Folder Include="Visualizers\BlockWide\" />
       <Folder Include="Visualizers\Expressions\" />
+      <Folder Include="Visualizers\MetadataWide\" />
       <Folder Include="Workspaces\Composing\" />
       <Folder Include="Workspaces\Core\" />
       <Folder Include="Workspaces\Properties\" />

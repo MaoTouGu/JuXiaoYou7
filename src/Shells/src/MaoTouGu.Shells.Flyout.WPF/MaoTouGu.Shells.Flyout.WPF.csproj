@@ -9,24 +9,16 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Compile Include="..\..\..\..\scaffolds\Usings\ApiRef_WPF.cs">
-        <Link>Properties\ApiRef_WPF.cs</Link>
-      </Compile>
+        <Compile Include="..\..\..\..\scaffolds\Usings\ApiRef_WPF.cs">
+            <Link>Properties\ApiRef_WPF.cs</Link>
+        </Compile>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\MaoTouGu.Shells\MaoTouGu.Shells.csproj" />
-        <ProjectReference Include="..\..\..\UI\KinonekoSoftware.UI.ColorPicker.OnWPF\KinonekoSoftware.UI.ColorPicker.OnWPF.csproj" />
-        <ProjectReference Include="..\..\..\UI\KinonekoSoftware.UI.OnWPF\KinonekoSoftware.UI.OnWPF.csproj" />
-        <ProjectReference Include="..\..\..\UI\KinonekoSoftware.UI\KinonekoSoftware.UI.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Page Update="FlyoutIndicator.xaml">
-        <Generator>MSBuild:Compile</Generator>
-        <XamlRuntime>Wpf</XamlRuntime>
-        <SubType>Designer</SubType>
-      </Page>
+        <ProjectReference Include="..\MaoTouGu.Shells\MaoTouGu.Shells.csproj"/>
+        <ProjectReference Include="..\..\..\UI\KinonekoSoftware.UI.ColorPicker.OnWPF\KinonekoSoftware.UI.ColorPicker.OnWPF.csproj"/>
+        <ProjectReference Include="..\..\..\UI\KinonekoSoftware.UI.OnWPF\KinonekoSoftware.UI.OnWPF.csproj"/>
+        <ProjectReference Include="..\..\..\UI\KinonekoSoftware.UI\KinonekoSoftware.UI.csproj"/>
     </ItemGroup>
 
 </Project>

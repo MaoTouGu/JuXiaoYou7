@@ -12,7 +12,7 @@
       <ProjectReference Include="..\MaoTouGu.JuXiaoYou.Core\MaoTouGu.JuXiaoYou.Core.csproj" />
       <ProjectReference Include="..\MaoTouGu.JuXiaoYou.Domain.Geography\MaoTouGu.JuXiaoYou.Domain.Geography.csproj" />
       <ProjectReference Include="..\MaoTouGu.JuXiaoYou.Domain.IM\MaoTouGu.JuXiaoYou.Domain.IM.csproj" />
-      <ProjectReference Include="..\MaoTouGu.JuXiaoYou.Domain.VisualBlocks\MaoTouGu.JuXiaoYou.Domain.VisualBlocks.csproj" />
+      <ProjectReference Include="..\MaoTouGu.JuXiaoYou.Domain.Visualizers\MaoTouGu.JuXiaoYou.Domain.Visualizers.csproj" />
     </ItemGroup>
 
     <ItemGroup>

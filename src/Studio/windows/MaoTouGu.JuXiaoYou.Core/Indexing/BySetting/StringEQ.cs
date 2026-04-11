@@ -5,7 +5,7 @@
 //            版权所有：MaoTouGu Studio & Luoyisi
 // 
 // ----------------------------------------------------------
-namespace MaoTouGu.JuXiaoYou.Indexing.BySetting
+namespace MaoTouGu.JuXiaoYou.Indexing
 {
     public class StringEQ : BySettingFilterMethod<SettingEQFilter, StringEQ>
     {
@@ -13,9 +13,11 @@ namespace MaoTouGu.JuXiaoYou.Indexing.BySetting
         {
             return Task.Run(() =>
                             {
+                                var v = CustomFilter.Value;
                                 originalSource.AddRange(
-                                                        collection.Where(moniker => !moniker.IsSoftDeleted && 
-                                                                                    moniker.ContainSettingItem(CustomFilter.Key)));
+                                                        collection.Where(moniker => !moniker.IsSoftDeleted                                 &&
+                                                                                    moniker.TryGetSetting(CustomFilter.Key, out var value) &&
+                                                                                    value.Equals(v, StringComparison.OrdinalIgnoreCase)));
                             });
         }
     }

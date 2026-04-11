@@ -14,6 +14,7 @@ namespace MaoTouGu.Studio.Database.Core
     {
         protected abstract Task EntityBackgroundAdding(string handlerID, string documentID);
         protected abstract Task EntityBackgroundRemoving(string handlerID, string documentID);
+        protected abstract Task EntityBackgroundUpdating(string handlerID, string documentID, bool isSelfOperating);
 
         /// <summary>
         /// 判断是否可以处理
@@ -33,8 +34,9 @@ namespace MaoTouGu.Studio.Database.Core
         /// 处理。
         /// </summary>
         /// <param name="change"></param>
+        /// <param name="isSelfOperating">是否为自身在操作。</param>
         /// <returns></returns>
-        async Task IBackgroundDataSyncService.Handle(DataChangedSpot change)
+        async Task IBackgroundDataSyncService.Handle(DataChangedSpot change, bool isSelfOperating)
         {
             if (change.Operation == DataOperation.Added)
             {
@@ -46,8 +48,7 @@ namespace MaoTouGu.Studio.Database.Core
             }
             else
             {
-                await EntityBackgroundRemoving(change.HandlerID, change.DocumentID);
-                await EntityBackgroundAdding(change.HandlerID, change.DocumentID);
+                await EntityBackgroundUpdating(change.HandlerID, change.DocumentID, isSelfOperating);
             }
         }
     }

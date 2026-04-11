@@ -9,14 +9,16 @@ namespace MaoTouGu.JuXiaoYou.Core
 {
     partial class DatabaseManager
     {
-        
-        
+
+
         public static async Task Handle(Spot dataEvent)
         {
             if (dataEvent is not DataChangedSpot dcs)
             {
                 return;
             }
+
+            var isSelfOperating = dcs.HandlerID == GlobalSettings.UserID;
 
             await Task.Run(() =>
                            {
@@ -45,7 +47,7 @@ namespace MaoTouGu.JuXiaoYou.Core
             foreach (var service in Services.OfType<IBackgroundDataSyncService>()
                                             .Where(x => x.CanHandle(dcs.EventID)))
             {
-                await service.Handle(dcs);
+                await service.Handle(dcs, isSelfOperating);
             }
         }
     }

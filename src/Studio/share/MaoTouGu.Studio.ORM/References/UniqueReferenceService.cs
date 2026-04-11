@@ -24,5 +24,40 @@ namespace MaoTouGu.Studio.References
             return DbSet.Find(Query.And(l, r))
                         .Select(Deserialize);
         }
+        
+        
+        public BsonDocument FindDocument(string documentID, string topClassId, string subClassId)
+        {
+            var l        = Query.EQ(nameof(UniqueReference.TopClass), topClassId);
+            var r        = Query.EQ(nameof(UniqueReference.SubClass), subClassId);
+            var b        = Query.EQ(nameof(UniqueReference.SubClass), documentID);
+            var a        = Query.And(l, r);
+            var document = DbSet.FindOne(Query.And(a, b));
+
+            return document;
+        }
+        
+        public UniqueReference Find(string documentID, string topClassId, string subClassId)
+        {
+            var document = FindDocument(documentID, topClassId, subClassId);
+
+            if (document is not null)
+            {
+                return Deserialize(document);
+            }
+
+            return null;
+        }
+
+        public async Task Remove(string documentID, string topClassId, string subClassId)
+        {
+            var document = FindDocument(documentID, topClassId, subClassId);
+
+            if (document is null || !document.TryGetValue(DBHelper.Field_ID, out var value))
+            {
+                return;
+            }
+            await Remove(value.AsString);
+        }
     }
 }

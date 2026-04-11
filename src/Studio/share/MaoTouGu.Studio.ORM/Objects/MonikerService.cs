@@ -29,6 +29,7 @@ namespace MaoTouGu.Studio
                 if (target.IsSoftDeleted)
                 {
                     ms.Deleted.OnNext(target);
+                    Collection.Remove(target);
                 }
                 else
                 {
@@ -39,12 +40,16 @@ namespace MaoTouGu.Studio
                     {
                         ms.Favorite.OnNext(target);
                     }
+
+                    Collection.Add(target);
                 }
             }
 
             protected override void OnRemoved(Moniker target)
             {
                 ((MonikerService)Impl).Deleted.OnNext(target);
+
+                Collection.Remove(target);
             }
 
             public override bool Remove(string documentID)
@@ -78,6 +83,11 @@ namespace MaoTouGu.Studio
 
                 return r;
             }
+        }
+
+        protected override void OnEntityUpdated(Moniker target)
+        {
+            Favorite.OnNext(target);
         }
 
         public bool IsDeleted(string id)

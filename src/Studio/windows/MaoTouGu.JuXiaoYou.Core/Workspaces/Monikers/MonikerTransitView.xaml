@@ -5,6 +5,7 @@
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             xmlns:ui="urn:KinonekoSoftware/ui"
             xmlns:this="clr-namespace:MaoTouGu.JuXiaoYou.Workspaces.Monikers"
+            xmlns:workspaceCommon="clr-namespace:MaoTouGu.JuXiaoYou.Workspaces.Common"
             xmlns:thisVM="clr-namespace:MaoTouGu.JuXiaoYou.Workspaces.Monikers"
             mc:Ignorable="d"
             d:DesignWidth="800" d:DesignHeight="450"
@@ -16,48 +17,65 @@
         <!-- -->
         <!-- -->
         <!-- -->
-
-
-        <!-- ============ TopClassWorkspaceItem ============-->
+        <!-- ============ 容器 ============-->
         <DockPanel Grid.Column="0"
                    Margin="6 0">
             <!-- -->
             <!-- -->
             <!-- -->
-            <!-- ============ TopClassWorkspaceItem ============-->
-            <Grid DockPanel.Dock="Top"
-                  ShowGridLines="True">
+            <!-- ============ 顶部信息栏 ============-->
+            <Grid DockPanel.Dock="Top">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="120" />
                     <ColumnDefinition Width="2*" />
                     <ColumnDefinition Width="300" />
                 </Grid.ColumnDefinitions>
 
+                <!-- ============ 头像 ============-->
                 <Border ImageSystem.Source="{Binding Moniker.Gravatar, Mode=OneWay}"
                         ImageSystem.Fallback="Gravatar"
                         Height="96"
                         Width="96">
-
                     <ui:MainButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.Folder}"
+                                   Command="{Binding SelectGravatar}"
+                                   CommandParameter="{Binding Moniker}"
                                    IconMode="Icon"
-                                   Style="{StaticResource MainButton.Overlay}">
-                    </ui:MainButton>
+                                   Style="{StaticResource MainButton.Overlay}" />
+
                 </Border>
 
+                <!-- ============ 顶部信息栏 ============-->
                 <DockPanel Grid.Column="1"
                            Margin="16 0 0 0">
 
+                    <!-- ============ 顶部信息栏 ============-->
                     <StackPanel DockPanel.Dock="Top"
                                 Orientation="Horizontal">
+                        <!-- ============ 标题 ============-->
                         <TextBlock FontSize="32"
                                    FontFamily="{StaticResource HeiTi}"
                                    Text="{Binding Moniker.FriendlyName}"
+                                   Margin="0 0 16 0"
                                    VerticalAlignment="Center" />
+                        <!-- ============ 顶部信息栏 ============-->
                         <ui:GhostButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.Edit}"
-                                        IconMode="Icon" />
-                        <ui:GhostButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.Star}"
-                                        IconMode="Icon" />
+                                        Command="{Binding AddFavorite}"
+                                        CommandParameter="{Binding Moniker}"
+                                        IconMode="Icon"
+                                        Height="36"
+                                        Width="36" />
+                        <!-- ============ 顶部信息栏 ============-->
+                        <ui:ToggleButton ui:ControlAssist.CornerRadius="0"
+                                         ui:ControlAssist.Icon="{StaticResource FeatherIcon.Star}"
+                                         Command="{Binding AddFavorite}"
+                                         CommandParameter="{Binding Moniker}"
+                                         IconMode="Icon"
+                                         IsChecked="{Binding Moniker.IsStar, Mode=OneWay}"
+                                         Height="36"
+                                         Width="36" />
                     </StackPanel>
+
+                    <!-- ============ 标题 ============-->
                     <TextBlock LineHeight="21"
                                Foreground="{DynamicResource Brush.Foreground.Level2}">
                         <Run Text="{Binding Moniker.CreatorName, Mode=OneWay, StringFormat={}作者：{0}}" />
@@ -82,17 +100,15 @@
             <!-- -->
             <!-- -->
             <!-- -->
-            <!-- ============ TopClassWorkspaceItem ============-->
+            <!-- ============ 底部数据栏 ============-->
             <Grid ShowGridLines="False">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*" />
                     <ColumnDefinition Width="1*" />
                 </Grid.ColumnDefinitions>
                 <StackPanel Margin="6 0">
-                    <HeaderedContentControl Header="标签"
-                                            Margin="0 8"
-                                            Style="{StaticResource HeaderedContentControl.DecoratedStyle1}">
-                    </HeaderedContentControl>
+                    <workspaceCommon:KeywordComponent Margin="0 8" />
+
                     <HeaderedContentControl Header="基础数据"
                                             Margin="0 8"
                                             Style="{StaticResource HeaderedContentControl.DecoratedStyle1}">
@@ -105,6 +121,42 @@
 
                 <StackPanel Grid.Column="1"
                             Margin="6 0">
+                    <HeaderedContentControl Header="喵喵咒语"
+                                            Margin="0 8"
+                                            Style="{StaticResource HeaderedContentControl.DecoratedStyle1}">
+                        <ItemsControl Grid.IsSharedSizeScope="True"
+                                      ItemsSource="{Binding Moniker.Settings, Mode=OneWay}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel ItemWidth="320" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="0 0 0 4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" SharedSizeGroup="Key" />
+                                            <ColumnDefinition Width="1*" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock FontSize="13"
+                                                   FontFamily="{StaticResource SongTi}"
+                                                   Text="{Binding Key}"
+                                                   TextAlignment="Left"
+                                                   VerticalAlignment="Center" />
+
+                                        <TextBlock Grid.Column="1"
+                                                   FontSize="12"
+                                                   FontFamily="{StaticResource SongTi}"
+                                                   Foreground="{DynamicResource Brush.Foreground.Level2}"
+                                                   Margin="16 0 0 0"
+                                                   Text="{Binding Value}"
+                                                   TextAlignment="Center"
+                                                   VerticalAlignment="Center" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </HeaderedContentControl>
 
                     <HeaderedContentControl Header="默认操作"
                                             Margin="0 8"
@@ -150,42 +202,6 @@
                         </StackPanel>
                     </HeaderedContentControl>
 
-                    <HeaderedContentControl Header="喵喵咒语"
-                                            Margin="0 8"
-                                            Style="{StaticResource HeaderedContentControl.DecoratedStyle1}">
-                        <ItemsControl Grid.IsSharedSizeScope="True"
-                                      ItemsSource="{Binding Moniker.Settings, Mode=OneWay}">
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapPanel ItemWidth="320" />
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid Margin="0 0 0 4">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="auto" SharedSizeGroup="Key" />
-                                            <ColumnDefinition Width="1*" />
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock FontSize="13"
-                                                   FontFamily="{StaticResource SongTi}"
-                                                   Text="{Binding Key}"
-                                                   TextAlignment="Left"
-                                                   VerticalAlignment="Center" />
-
-                                        <TextBlock Grid.Column="1"
-                                                   FontSize="12"
-                                                   FontFamily="{StaticResource SongTi}"
-                                                   Foreground="{DynamicResource Brush.Foreground.Level2}"
-                                                   Margin="16 0 0 0"
-                                                   Text="{Binding Value}"
-                                                   TextAlignment="Center"
-                                                   VerticalAlignment="Center" />
-                                    </Grid>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                    </HeaderedContentControl>
                 </StackPanel>
             </Grid>
         </DockPanel>

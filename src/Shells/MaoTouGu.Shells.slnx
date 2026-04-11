@@ -19,9 +19,13 @@
     <Project Path="../UI/KinonekoSoftware.UI.OnWPF/KinonekoSoftware.UI.OnWPF.csproj" />
     <Project Path="../UI/KinonekoSoftware.UI/KinonekoSoftware.UI.csproj" />
   </Folder>
+  <Project Path="src/MaoTouGu.Shells.Mobile/MaoTouGu.Shells.Mobile.csproj" />
   <Project Path="src/MaoTouGu.Shells.Avalonia/MaoTouGu.Shells.Avalonia.csproj" />
+  <Project Path="src/MaoTouGu.Shells.Desktop/MaoTouGu.Shells.Desktop.csproj" />
+  <Project Path="src/MaoTouGu.Shells.Flyout.Avalonia/MaoTouGu.Shells.Flyout.Avalonia.csproj" />
   <Project Path="src/MaoTouGu.Shells.Flyout.WPF/MaoTouGu.Shells.Flyout.WPF.csproj" />
   <Project Path="src/MaoTouGu.Shells.Flyout/MaoTouGu.Shells.Flyout.csproj" />
+  <Project Path="src/MaoTouGu.Shells.Tablet/MaoTouGu.Shells.Tablet.csproj" />
   <Project Path="src/MaoTouGu.Shells.WPF/MaoTouGu.Shells.WPF.csproj" />
   <Project Path="src/MaoTouGu.Shells/MaoTouGu.Shells.csproj" />
   <Project Path="tests/MaoTouGu.Shells.WPF.Tests/MaoTouGu.Shells.WPF.Tests.csproj" />

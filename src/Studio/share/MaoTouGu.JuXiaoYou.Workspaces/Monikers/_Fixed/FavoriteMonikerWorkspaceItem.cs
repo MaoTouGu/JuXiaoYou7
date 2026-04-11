@@ -19,17 +19,44 @@ namespace MaoTouGu.JuXiaoYou.Workspaces.Monikers
         {
             //
             //
-            MonikerService.Subject
-                          .Subscribe(AddOrTrimmed)
+            MonikerService.Favorite
+                          .Subscribe(OnMonikerChanged)
                           .DisposeWith(DisposableCollection);
         }
-        
-        public override void Initialize(Moniker x)
+
+        void OnMonikerChanged(Moniker x)
         {
+            if (x.IsSoftDeleted)
+            {
+                return;
+            }
+
             if (x.IsStar)
             {
                 AddOrTrimmed(x);
+                Count += 1;
             }
+            else
+            {
+                RemoveOrTrimmed(x);
+                Count = Math.Clamp(Count - 1,0, int.MaxValue);
+            }
+        }
+
+
+        public override void Initialize(Moniker x)
+        {
+            if (x.IsSoftDeleted)
+            {
+                return;
+            }
+
+            if (x.IsStar)
+            {
+                AddOrTrimmed(x);
+                Count += 1;
+            }
+
         }
 
         /// <summary>

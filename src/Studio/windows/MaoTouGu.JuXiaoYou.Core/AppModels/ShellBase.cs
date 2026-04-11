@@ -26,6 +26,18 @@ namespace MaoTouGu.JuXiaoYou.AppModels
         IEnumerable<ViewModelBase> IViewModelProvider.GetContextList() => InstanceTable.Values
                                                                                        .Select(x => x.ViewModel);
 
+        protected void Close<T>() where T : PageBase
+        {
+            
+            if (InstanceTable.Values
+                             .FirstOrDefault(x => x.ViewModel is PlaceholdingViewModel) is
+                {
+                    ViewModel: T landing
+                })
+            {
+                landing.Stop();
+            }
+        }
 
         protected void ClosePlaceholdingView()
         {

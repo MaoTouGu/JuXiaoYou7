@@ -11,5 +11,6 @@ namespace MaoTouGu.JuXiaoYou.Services.Plugins
     {
         void RegisterVisualManagers();
         void RegisterFeatures();
+        void RegisterVisualizers();
     }
 }

@@ -8,7 +8,7 @@
 
 using MaoTouGu.JuXiaoYou.Indexing;
 
-namespace MaoTouGu.JuXiaoYou.Indexing.BySetting
+namespace MaoTouGu.JuXiaoYou.Indexing
 {
     public sealed class ByStarRankingFilterMethod
     {

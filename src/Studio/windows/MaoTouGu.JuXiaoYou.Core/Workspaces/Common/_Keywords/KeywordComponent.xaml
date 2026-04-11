@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="MaoTouGu.JuXiaoYou.Workspaces.Common.KeywordComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:ui="urn:KinonekoSoftware/ui"
+             xmlns:local="clr-namespace:MaoTouGu.JuXiaoYou.Workspaces.Common"
+             xmlns:keywords="clr-namespace:MaoTouGu.Studio.Database.References;assembly=MaoTouGu.Studio.Database"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300"
+             d:DataContext="{d:DesignInstance Type={x:Type local:IKeywordTarget}, IsDesignTimeCreatable=True}">
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type keywords:Keyword}">
+            <Border Background="#20808000"
+                    BorderBrush="Olive"
+                    BorderThickness="1"
+                    CornerRadius="0"
+                    Margin="0 0 8 8"
+                    Padding="8 4"
+                    MinWidth="100">
+                <DockPanel>
+                    <CloseButton DockPanel.Dock="Right"
+                                 Click="Button_Remove" />
+                    <TextBlock Text="{Binding Name}"
+                               TextAlignment="Center" />
+                </DockPanel>
+            </Border>
+        </DataTemplate>
+    </UserControl.Resources>
+    <HeaderedContentControl Header="标签"
+                            Style="{StaticResource HeaderedContentControl.DecoratedStyle1}">
+        <ui:ControlAssist.ToolBar>
+            <ui:GhostButton Content="添加标签"
+                            Click="Button_Add"/>
+        </ui:ControlAssist.ToolBar>
+        <ItemsControl ItemsSource="{Binding Keywords}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+    </HeaderedContentControl>
+</UserControl>

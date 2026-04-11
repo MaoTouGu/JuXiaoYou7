@@ -6,7 +6,7 @@
         <Nullable>disable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <UseWPF>true</UseWPF>
-        <OutDir>../../../../builds/studio/debugger</OutDir>
+        <OutDir>../../../builds/studio/debugger</OutDir>
         <AssemblyName>MaoTouGu.JuXiaoYou.Debugger</AssemblyName>
         <RootNamespace>MaoTouGu.JuXiaoYou</RootNamespace>
         <ApplicationIcon>..\..\..\assets\icon\nuget.ico</ApplicationIcon>

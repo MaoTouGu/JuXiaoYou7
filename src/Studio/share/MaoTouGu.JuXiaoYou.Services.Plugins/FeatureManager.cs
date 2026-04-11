@@ -17,7 +17,10 @@ namespace MaoTouGu.JuXiaoYou.Services.Plugins
             Features       = new ViewList<Feature>();
             VisualManagers = new ViewList<Feature>();
             Manifests      = new ViewList<IPluginManifest>();
-            _Logger        = LoggerExt.GetLogger(nameof(FeatureManager));
+
+            Visualizers    = new();
+
+            _Logger = LoggerExt.GetLogger(nameof(FeatureManager));
         }
 
 
@@ -47,6 +50,7 @@ namespace MaoTouGu.JuXiaoYou.Services.Plugins
 
             VisualManagers.Add(f);
         }
+
 
         public static void UsePage<T>(string id, string name) where T : PageBase
         {
@@ -86,5 +90,7 @@ namespace MaoTouGu.JuXiaoYou.Services.Plugins
         /// 可以作为VisualManager的Feature。
         /// </summary>
         public static ViewList<Feature> VisualManagers { get; }
+
+        public static Dictionary<string, IVisualizerGenerator> Visualizers    { get; }
     }
 }

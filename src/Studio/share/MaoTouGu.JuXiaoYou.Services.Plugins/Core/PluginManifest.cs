@@ -11,7 +11,12 @@ namespace MaoTouGu.JuXiaoYou.Services.Plugins
 {
     public abstract class PluginManifest : ObservableObject, IPluginManifest
     {
-
+        public virtual void RegisterVisualizers()
+        {
+            
+        }
+        
+        
         public abstract void RegisterVisualManagers();
         public abstract void RegisterFeatures();
 

@@ -94,25 +94,15 @@ namespace KinonekoSoftware.UI
         //-------------------------------------------------------------
         #region ToBitmap
 
-        public static BitmapImage ToBitmap(Stream stream)
+        public static Bitmap ToBitmap(Stream stream)
         {
-            var bi = new BitmapImage();
-            bi.BeginInit();
-            bi.StreamSource = stream;
-            bi.EndInit();
-            if (bi.CanFreeze) bi.Freeze();
-            return bi;
+            return new Bitmap(stream);
         }
 
-        public static BitmapImage ToBitmap(byte[] buffer)
+        public static Bitmap ToBitmap(byte[] buffer)
         {
             var stream = new MemoryStream(buffer);
-            var bi     = new BitmapImage();
-            bi.BeginInit();
-            bi.StreamSource = stream;
-            bi.EndInit();
-            if (bi.CanFreeze) bi.Freeze();
-            return bi;
+            return ToBitmap(stream);
         }
 
         #endregion

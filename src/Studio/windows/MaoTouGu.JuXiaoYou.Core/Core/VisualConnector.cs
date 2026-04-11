@@ -14,7 +14,7 @@ namespace MaoTouGu.JuXiaoYou.Core
                                                 "Connect",
                                                 typeof(bool),
                                                 typeof(VisualConnector),
-                                                new PropertyMetadata(default(bool), OnConnectPropertyChanged));
+                                                new PropertyMetadata(Boxing.False, OnConnectPropertyChanged));
 
         sealed class VisualConnectorBehavior : Behavior<FrameworkElement>
         {
@@ -30,20 +30,20 @@ namespace MaoTouGu.JuXiaoYou.Core
                 Disconnect();
                 AssociatedObject.Loaded -= OnLoaded;
             }
-            
+
             void Connect()
             {
                 if (!AssociatedObject.IsInitialized)
                 {
                     return;
                 }
-                
+
                 if (AssociatedObject.DataContext is IVisualConnector ivc)
                 {
                     ivc.Control = AssociatedObject;
                 }
-            } 
-            
+            }
+
             void Disconnect()
             {
                 if (AssociatedObject.DataContext is IVisualConnector ivc)
@@ -51,8 +51,8 @@ namespace MaoTouGu.JuXiaoYou.Core
                     ivc.Control = null;
                 }
             }
-            
-            
+
+
             private void OnLoaded(object sender, RoutedEventArgs e)
             {
                 Connect();

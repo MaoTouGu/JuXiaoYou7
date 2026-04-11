@@ -1,6 +1,8 @@
 <Solution>
+  <Project Path="designer/MaoTouGu.Studio.Designer/MaoTouGu.Studio.Designer.csproj" />
   <Project Path="share/MaoTouGu.JuXiaoYou.Workspaces/MaoTouGu.JuXiaoYou.Workspaces.csproj" />
   <Project Path="windows/MaoTouGu.JuXiaoYou.Core/MaoTouGu.JuXiaoYou.Core.csproj" />
+  <Project Path="windows/MaoTouGu.JuXiaoYou.Domain.Visualizers/MaoTouGu.JuXiaoYou.Domain.Visualizers.csproj" />
   <Project Path="windows/MaoTouGu.JuXiaoYou.Domain/MaoTouGu.JuXiaoYou.Domain.csproj" />
   <Project Path="windows/MaoTouGu.JuXiaoYou/MaoTouGu.JuXiaoYou.x64.csproj" />
   <Project Path="windows/MaoTouGu.JuXiaoYou/MaoTouGu.JuXiaoYou.x86.csproj" />
@@ -12,7 +14,6 @@
   <Folder Name="/Domain/">
     <Project Path="windows/MaoTouGu.JuXiaoYou.Domain.Geography/MaoTouGu.JuXiaoYou.Domain.Geography.csproj" />
     <Project Path="windows/MaoTouGu.JuXiaoYou.Domain.IM/MaoTouGu.JuXiaoYou.Domain.IM.csproj" />
-    <Project Path="windows/MaoTouGu.JuXiaoYou.Domain.VisualBlocks/MaoTouGu.JuXiaoYou.Domain.VisualBlocks.csproj" />
   </Folder>
 
   <Folder Name="/Foundations/">

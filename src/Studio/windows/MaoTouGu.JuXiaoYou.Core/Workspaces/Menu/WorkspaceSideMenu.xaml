@@ -47,16 +47,16 @@
                           TabStripPlacement="Left">
 
 
+        <!-- ============ 设定 ============-->
+        <ui:IconifyTabItem ui:ControlAssist.Icon="{StaticResource FeatherIcon.People}"
+                           ui:ControlAssist.IconSize="23">
+            <workspace:MonikerWorkspacePanel/>
+        </ui:IconifyTabItem>
+
         <!-- ============ 世界观 ============-->
         <ui:IconifyTabItem ui:ControlAssist.Icon="{StaticResource World}"
                            ui:ControlAssist.IconSize="23">
             <workspace:WorldViewWorkspacePanel/>
-        </ui:IconifyTabItem>
-
-        <!-- ============ 设定 ============-->
-        <ui:IconifyTabItem ui:ControlAssist.Icon="{StaticResource Moniker}"
-                           ui:ControlAssist.IsFilled="True">
-            <workspace:MonikerWorkspacePanel/>
         </ui:IconifyTabItem>
 
         <!-- ============ 关系 ============-->
@@ -67,7 +67,7 @@
         </ui:IconifyTabItem>
 
         <!-- ============ 团队 ============-->
-        <ui:IconifyTabItem ui:ControlAssist.Icon="{StaticResource FeatherIcon.People}"
+        <ui:IconifyTabItem ui:ControlAssist.Icon="{StaticResource FeatherIcon.Layer}"
                            ui:ControlAssist.IconSize="23">
             <workspace:TeamspacePanel/>
         </ui:IconifyTabItem>
@@ -103,7 +103,7 @@
         <ui:IconifyTabItem ui:ControlAssist.Icon="{StaticResource Properties}"
                            ui:ControlAssist.IconSize="29"
                            ui:ControlAssist.IsFilled="False">
-            <workspace:FeatureWorkspace/>
+            <workspace:FeatureWorkspacePanel/>
         </ui:IconifyTabItem>
 
         

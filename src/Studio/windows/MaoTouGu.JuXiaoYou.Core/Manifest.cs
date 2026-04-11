@@ -6,7 +6,6 @@
 // 
 // ----------------------------------------------------------
 using MaoTouGu.JuXiaoYou.Indexing;
-using MaoTouGu.JuXiaoYou.Indexing.BySetting;
 
 namespace MaoTouGu.JuXiaoYou
 {

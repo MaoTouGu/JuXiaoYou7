@@ -105,7 +105,7 @@ namespace MaoTouGu.Foundation.Collections
                 {
                     return default;
                 }
-                
+
                 return _dictionary.GetValueOrDefault(key);
             }
             set
@@ -114,27 +114,12 @@ namespace MaoTouGu.Foundation.Collections
                 var oldValue = exists ? _dictionary[key] : default;
 
                 _dictionary[key] = value;
+                OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
 
-                if (exists)
-                {
-                    // 替换操作
-                    OnCollectionChanged(new NotifyCollectionChangedEventArgs(
-                                                                             NotifyCollectionChangedAction.Replace,
-                                                                             new KeyValuePair<TKey, TValue>(key, value),
-                                                                             new KeyValuePair<TKey, TValue>(key, oldValue),
-                                                                             -1));
-                    OnPropertyChanged("Item[]");
-                }
-                else
-                {
-                    // 添加操作
-                    OnCollectionChanged(new NotifyCollectionChangedEventArgs(
-                                                                             NotifyCollectionChangedAction.Add,
-                                                                             new KeyValuePair<TKey, TValue>(key, value),
-                                                                             -1));
-                    OnPropertyChanged(nameof(Count));
-                    OnPropertyChanged("Item[]");
-                }
+                OnPropertyChanged(nameof(Count));
+                OnPropertyChanged("Item[]");
+                OnPropertyChanged(nameof(Keys));
+                OnPropertyChanged(nameof(Values));
             }
         }
 
@@ -180,10 +165,7 @@ namespace MaoTouGu.Foundation.Collections
                 var removed = _dictionary.Remove(key);
                 if (removed)
                 {
-                    OnCollectionChanged(new NotifyCollectionChangedEventArgs(
-                                                                             NotifyCollectionChangedAction.Remove,
-                                                                             new KeyValuePair<TKey, TValue>(key, value),
-                                                                             -1));
+                    OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
                     OnPropertyChanged(nameof(Count));
                     OnPropertyChanged("Item[]");
                 }
@@ -337,15 +319,16 @@ namespace MaoTouGu.Foundation.Collections
             ((ICollection)_dictionary).CopyTo(array, index);
         }
 
-        int ICollection.   Count          => _dictionary.Count;
-        bool ICollection.  IsSynchronized => false;
-        object ICollection.SyncRoot       => ((ICollection)_dictionary).SyncRoot;
+        int ICollection.Count => _dictionary.Count;
+
+        bool ICollection.IsSynchronized => false;
+
+        object ICollection.SyncRoot => ((ICollection)_dictionary).SyncRoot;
 
         #endregion
-        
+
         #region IReadOnlyDictionary
 
-        
         IEnumerable<TValue> IReadOnlyDictionary<TKey, TValue>.Values => _dictionary.Values;
 
         IEnumerable<TKey> IReadOnlyDictionary<TKey, TValue>.Keys => _dictionary.Keys;

@@ -1,0 +1,14 @@
+﻿// ----------------------------------------------------------
+//            文件：TextGroupVPO.cs
+//            作者：Luoyisi<acorisbk@qq.com>
+//            创建时间：2026年02月15日 21:51
+//            版权所有：MaoTouGu Studio & Luoyisi
+// 
+// ----------------------------------------------------------
+namespace MaoTouGu.JuXiaoYou.Visualizers.Models
+{
+    public class TextGroupVPO : VisualBlockVPO<TextGroup>
+    {
+        
+    }
+}

@@ -10,6 +10,7 @@ using MaoTouGu.Studio.Database.References;
 
 namespace MaoTouGu.JuXiaoYou.Services.Plugins
 {
+    [Obsolete("将使用四种粒度的视觉呈现器代替。")]
     public interface IVisualManager
     {
         /// <summary>

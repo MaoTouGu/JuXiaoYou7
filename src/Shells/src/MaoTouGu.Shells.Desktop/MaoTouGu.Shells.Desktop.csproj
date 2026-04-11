@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+        <RootNamespace>MaoTouGu.Shells</RootNamespace>
+        <DefineConstants>$(DefineConstants);Avalonia;AVALONIA</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\UI\KinonekoSoftware.UI.OnAva\KinonekoSoftware.UI.OnAva.csproj" />
+      <ProjectReference Include="..\MaoTouGu.Shells\MaoTouGu.Shells.csproj" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Compile Include="..\..\..\..\scaffolds\Usings\ApiRef_Shells.cs">
+        <Link>Properties\ApiRef_Shells.cs</Link>
+      </Compile>
+    </ItemGroup>
+
+</Project>

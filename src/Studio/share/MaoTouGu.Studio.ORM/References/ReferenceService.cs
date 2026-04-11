@@ -5,6 +5,8 @@
 //            版权所有：MaoTouGu Studio & Luoyisi
 // 
 // ----------------------------------------------------------
+using MaoTouGu.Studio.Database;
+
 namespace MaoTouGu.Studio.References
 {
     public class ReferenceService : DataService<Reference>
@@ -16,5 +18,39 @@ namespace MaoTouGu.Studio.References
 
         public IEnumerable<Reference> Find(string folderName) => DbSet.Find(Query.EQ(nameof(Reference.Name), folderName))
                                                                       .Select(Deserialize);
+        
+        public Reference Find(string documentID, string folderName)
+        {
+            var document = FindDocument(documentID, folderName);
+
+            if (document is not null)
+            {
+                return Deserialize(document);
+            }
+
+            return null;
+        }
+        
+        
+        public BsonDocument FindDocument(string documentID, string folderName)
+        {
+            var left     = Query.EQ(nameof(Reference.DocumentID), documentID);
+            var right    = Query.EQ(nameof(Reference.Name), folderName);
+            var document = DbSet.FindOne(Query.And(left, right));
+
+            return document;
+        }
+
+        public async Task<bool> Delete(string documentID, string folderName)
+        {
+            var document = FindDocument(documentID, folderName);
+
+            if (document is null || !document.TryGetValue(DBHelper.Field_ID, out var value))
+            {
+                return false;
+            }
+
+            return await Remove(value.AsString);
+        }
     }
 }

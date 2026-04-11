@@ -22,7 +22,8 @@ namespace MaoTouGu.Studio.Database.Core
         /// 处理该后台事件。。
         /// </summary>
         /// <param name="e"></param>
+        /// <param name="isSelfOperating"></param>
         /// <returns></returns>
-        Task Handle(DataChangedSpot e);
+        Task Handle(DataChangedSpot e, bool isSelfOperating);
     }
 }

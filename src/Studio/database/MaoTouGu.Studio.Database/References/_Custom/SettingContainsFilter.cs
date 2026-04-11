@@ -13,6 +13,7 @@ namespace MaoTouGu.Studio.Database.References
     public class SettingContainsFilter : CustomFilter
     {
         private string _key;
+        private string _value;
 
         public override bool Equals(CustomFilter other)
         {
@@ -28,7 +29,7 @@ namespace MaoTouGu.Studio.Database.References
                 return false;
             }
             
-            return _key == b._key;
+            return _key == b._key && _value == b._value;
         }
         
         public override bool Equals(object obj)
@@ -42,9 +43,14 @@ namespace MaoTouGu.Studio.Database.References
             return Equals((SettingContainsFilter)obj);
         }
         
-        public override int GetHashCode() => HashCode.Combine(_key);
+        public override int GetHashCode() => HashCode.Combine(_key, _value);
         
         
+        public string Value
+        {
+            get => _value;
+            set => SetValue(ref _value, value);
+        }
 
         public string Key
         {

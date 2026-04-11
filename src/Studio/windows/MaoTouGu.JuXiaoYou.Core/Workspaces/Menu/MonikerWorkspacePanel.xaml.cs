@@ -37,6 +37,7 @@ namespace MaoTouGu.JuXiaoYou.Workspaces
 
             if (item.DataContext is MonikerWrapperItem wrapper)
             {
+                await viewModel.Navigate(new MonikerEditorViewModel(wrapper.Moniker));
                 viewModel.Open(new MonikerTransitViewModel(wrapper.Moniker, viewModel));
                 return;
             }
@@ -59,23 +60,6 @@ namespace MaoTouGu.JuXiaoYou.Workspaces
                 viewModel.Open(new FilterViewModel(filter, viewModel));
                 return;
             }
-        }
-
-        private void MenuItem_EditFilterMethod(object sender, RoutedEventArgs e)
-        {
-
-            if (DataContext is not WorkspaceViewModel viewModel)
-            {
-                return;
-            }
-            if (sender is not MenuItem { CommandParameter: IFilterMethod method })
-            {
-                return;
-            }
-
-            //
-            //
-            viewModel.Open((NestedPage)method.OpenSetting(viewModel));
         }
 
         private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
@@ -191,6 +175,39 @@ namespace MaoTouGu.JuXiaoYou.Workspaces
          *
          *******************************************************************/
         private async void MenuItem_Add(object sender, RoutedEventArgs e)
+        {
+            if (!this.TryGetMonikerWorkspace(sender, out var viewModel, out var item, out var workspace))
+            {
+                return;
+            }
+
+            if (item is TopClassWorkspaceItem topClassWI)
+            {
+                await workspace.Add(viewModel, topClassWI);
+                return;
+            }
+
+            if (item is SubClassWorkspaceItem subClassWI)
+            {
+                await workspace.Add(viewModel, subClassWI);
+                return;
+            }
+
+            if (item is FolderWrapperItem folderWrapper)
+            {
+                await workspace.Add(viewModel, folderWrapper);
+                return;
+            }
+
+            if (item is LabelWrapperItem labelWrapper)
+            {
+                await workspace.Add(viewModel, labelWrapper);
+                return;
+            }
+
+        }
+        
+        private async void MenuItem_AddExists(object sender, RoutedEventArgs e)
         {
             if (!this.TryGetMonikerWorkspace(sender, out var viewModel, out var item, out var workspace))
             {
@@ -369,7 +386,7 @@ namespace MaoTouGu.JuXiaoYou.Workspaces
             workspace.ExportFilter(viewModel, item);
         }
 
-        private async void MenuItem_ImportFolder(object sender, RoutedEventArgs e)
+        private async void MenuItem_ImportFilter(object sender, RoutedEventArgs e)
         {
             if (!this.TryGetFilterContext(sender, out var viewModel, out var item, out var workspace))
             {

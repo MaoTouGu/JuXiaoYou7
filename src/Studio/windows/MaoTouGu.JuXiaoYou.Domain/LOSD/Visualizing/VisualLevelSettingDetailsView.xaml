@@ -6,7 +6,7 @@
             xmlns:ui="urn:KinonekoSoftware/ui"
             xmlns:this="clr-namespace:MaoTouGu.JuXiaoYou.LOSD.Visualizing"
             xmlns:thisVM="clr-namespace:MaoTouGu.JuXiaoYou.LOSD.Visualizing"
-            xmlns:domain="clr-namespace:MaoTouGu.JuXiaoYou.Domain.VisualBlocks.Core;assembly=MaoTouGu.JuXiaoYou.Domain.VisualBlocks"
+            xmlns:domain="clr-namespace:MaoTouGu.JuXiaoYou.Visualizers.Core;assembly=MaoTouGu.JuXiaoYou.Domain.Visualizers"
             mc:Ignorable="d"
             d:DesignWidth="800" d:DesignHeight="450"
             d:DataContext="{d:DesignInstance Type={x:Type thisVM:VisualLevelSettingDetailsViewModel}, IsDesignTimeCreatable=True}">

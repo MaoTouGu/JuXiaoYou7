@@ -1,7 +1,6 @@
-﻿namespace MaoTouGu.Shells
-{
-    public class Class1
-    {
+﻿namespace MaoTouGu.Shells.Avalonia;
 
-    }
+public class Class1
+{
+
 }

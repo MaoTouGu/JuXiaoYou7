@@ -5,7 +5,7 @@
 //            版权所有：MaoTouGu Studio & Luoyisi
 // 
 // ----------------------------------------------------------
-namespace MaoTouGu.JuXiaoYou.Indexing.BySetting
+namespace MaoTouGu.JuXiaoYou.Indexing
 {
 
     public class NumericRange : NumericMethod<SettingRangeFilter, NumericRange>
@@ -127,7 +127,7 @@ namespace MaoTouGu.JuXiaoYou.Indexing.BySetting
         
         static HashSet<string> GetHashSet(KeywordService service, string name)
         {
-            return service.Find(name)
+            return service.FindByName(name)
                           .Select(x => x.DocumentID)
                           .ToHashSet();
         }

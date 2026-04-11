@@ -76,6 +76,7 @@
                         Orientation="Horizontal">
                 <ui:MainButton ui:ControlAssist.CornerRadius="0"
                                Content="新建"
+                               Command="{Binding Add}"
                                Margin="3 0"
                                Padding="32 8"
                                Width="160"/>
@@ -93,7 +94,9 @@
                                Margin="3 0"
                                Padding="32 8"/>
                 <ui:GhostButton ui:ControlAssist.CornerRadius="0"
-                               Content="分享"
+                               Content="删除"
+                               Command="{Binding Remove}"
+                               CommandParameter="{Binding Moniker, Mode=OneWay}"
                                Margin="3 0"
                                Padding="32 8"/>
                 <ui:GhostButton ui:ControlAssist.CornerRadius="0"

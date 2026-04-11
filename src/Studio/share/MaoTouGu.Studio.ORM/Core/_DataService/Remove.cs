@@ -53,15 +53,6 @@ namespace MaoTouGu.Studio.Database.Core
             
             try
             {
-
-                //
-                // 开始事务。
-                Database.BeginTrans();
-                DbSet.Delete(target.Id);
-                //
-                // 提交事务更改。
-                Database.Commit();
-
                 return LocalScoped.Remove(target.Id);
             }
             catch (Exception e)

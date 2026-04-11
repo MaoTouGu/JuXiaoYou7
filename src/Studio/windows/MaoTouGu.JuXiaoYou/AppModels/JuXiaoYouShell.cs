@@ -106,37 +106,5 @@ namespace MaoTouGu.JuXiaoYou.AppModels
             // Navigate<VisualLevelSettingDetailsViewModel>();
             // Navigate<GeometryPrototypingViewModel>();
         }
-
-        #region JumpTask
-
-        public static JumpTask CreateNavigateToSettingTask()
-        {
-            var setting = Ioc.Get<IAppConfig>().DirOfSettings;
-
-            return new JumpTask
-            {
-                Title            = "设置目录",
-                Description      = "打开应用存放设置的目录",
-                ApplicationPath  = "explorer.exe",
-                Arguments        = setting,
-                IconResourcePath = "explorer.exe",
-            };
-        }
-
-        public static JumpTask CreateNavigateToLogsTask()
-        {
-            var setting = Ioc.Get<IAppConfig>().DirOfLogs;
-
-            return new JumpTask
-            {
-                Title            = "日志目录",
-                Description      = "打开应用存放日志的目录",
-                ApplicationPath  = "explorer.exe",
-                Arguments        = setting,
-                IconResourcePath = "explorer.exe",
-            };
-        }
-
-        #endregion
     }
 }

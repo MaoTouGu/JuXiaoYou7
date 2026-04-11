@@ -5,9 +5,8 @@
 //            版权所有：MaoTouGu Studio & Luoyisi
 // 
 // ----------------------------------------------------------
-using MaoTouGu.JuXiaoYou.Domain.VisualBlocks.Core;
-using MaoTouGu.JuXiaoYou.Domain.VisualBlocks.Layouts;
-using MaoTouGu.JuXiaoYou.Domain.VisualBlocks.Models;
+using MaoTouGu.JuXiaoYou.Visualizers.Core;
+using MaoTouGu.JuXiaoYou.Visualizers.Layouts;
 using MaoTouGu.Studio.Database.Entities.VisualBlocks;
 
 namespace MaoTouGu.JuXiaoYou.LOSD.Visualizing
@@ -24,22 +23,8 @@ namespace MaoTouGu.JuXiaoYou.LOSD.Visualizing
         {
             base.OnStart();
 
-            var radar = new Radar
-            {
-                Id   = ID.Get(),
-                Name = "test",
-            };
-            var text = new TextGroup
-            {
-                Id   = ID.Get(),
-                Name = "test",
-            };
 
-            var vpo     = VisualBlockBuilder.GetVisualBlockVPO(radar);
-            var textvpo = VisualBlockBuilder.GetVisualBlockVPO(text);
-            
-            Blocks.Add(vpo);
-            Blocks.Add(textvpo);
+
         }
 
         public ViewList<VisualBlockVPO> Blocks  { get; }

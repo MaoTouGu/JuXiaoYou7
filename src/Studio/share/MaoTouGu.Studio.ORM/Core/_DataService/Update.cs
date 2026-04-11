@@ -9,6 +9,30 @@ namespace MaoTouGu.Studio.Database.Core
 {
     partial class DataService<T>
     {
+        protected override async Task EntityBackgroundUpdating(string handlerID, string documentID, bool isSelfOperating)
+        {
+            try
+            {
+                if (isSelfOperating)
+                {
+                    return;
+                }
+                
+                //
+                // 不是远端的为了避免麻烦，直接删除后添加。
+                await EntityBackgroundRemoving(handlerID, documentID);
+                await EntityBackgroundAdding(handlerID, documentID);
+                
+                //
+                //
+                // 有的时候需要通知用户关闭，并重新打开。
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
 
         /// <summary>
         /// 
@@ -22,21 +46,25 @@ namespace MaoTouGu.Studio.Database.Core
             }
 
             var document = Serialize(target);
+            
             try
             {
-                OnEntityUpdated(target);
-
-
+                //
+                // 直接更新。
+                Database.BeginTrans();
+                DbSet.Update(document);
+                Database.Commit();
+                
+                //
+                // 更新到Remote设备。
                 if (Api.IsOnline)
                 {
                     await _UpdateAsync(document);
                 }
-                else
-                {
-                    Database.BeginTrans();
-                    DbSet.Update(document);
-                    Database.Commit();
-                }
+                
+                //
+                // 派生类做额外操作。
+                OnEntityUpdated(target);
                 return true;
             }
             catch(Exception e)

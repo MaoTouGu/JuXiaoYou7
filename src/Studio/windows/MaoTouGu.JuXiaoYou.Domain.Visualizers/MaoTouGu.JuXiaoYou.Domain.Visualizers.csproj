@@ -1,0 +1,64 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0-windows</TargetFramework>
+        <Nullable>disable</Nullable>
+        <UseWPF>true</UseWPF>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>MaoTouGu.JuXiaoYou.Visualizers</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MaoTouGu.Shells.Generators" Version="1.0.4"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\MaoTouGu.JuXiaoYou.Core\MaoTouGu.JuXiaoYou.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Include="..\..\..\..\scaffolds\Usings\ApiRef_Foundation.cs">
+        <Link>Properties\ApiRef_Foundation.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\..\scaffolds\Usings\ApiRef_LiteDB.cs">
+        <Link>Properties\ApiRef_LiteDB.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\..\scaffolds\Usings\ApiRef_WPF.cs">
+        <Link>Properties\ApiRef_WPF.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\..\scaffolds\Usings\Usings_Foundation.cs">
+        <Link>Properties\Usings_Foundation.cs</Link>
+      </Compile>
+      <Compile Include="..\..\..\..\scaffolds\Usings\Usings_MaoTouGu.Shells.cs">
+        <Link>Properties\Usings_MaoTouGu.Shells.cs</Link>
+      </Compile>
+      <Compile Remove="Blocks\_Radar\**" />
+      <Compile Remove="Blocks\_TextGroup\**" />
+      <Compile Remove="Blocks\Radars\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Documents\" />
+      <Folder Include="GravatarWide\WithName\" />
+      <Folder Include="GravatarWide\WithRarity\" />
+      <Folder Include="GravatarWide\WithTitle\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Blocks\_Radar\**" />
+      <EmbeddedResource Remove="Blocks\_TextGroup\**" />
+      <EmbeddedResource Remove="Blocks\Radars\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Remove="Blocks\_Radar\**" />
+      <Page Remove="Blocks\_TextGroup\**" />
+      <Page Remove="Blocks\Radars\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Blocks\_Radar\**" />
+      <None Remove="Blocks\_TextGroup\**" />
+      <None Remove="Blocks\Radars\**" />
+    </ItemGroup>
+</Project>

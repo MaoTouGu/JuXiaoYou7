@@ -75,15 +75,6 @@ namespace MaoTouGu.Studio.Database.Core
                 
                 try
                 {
-
-                    //
-                    // 开始事务。
-                    Database.BeginTrans();
-                    DbSet.Insert(document);
-                    //
-                    // 提交事务更改。
-                    Database.Commit();
-
                     var a   = target as Authorable;
                     var usr = GetUser(a?.Creator);
 

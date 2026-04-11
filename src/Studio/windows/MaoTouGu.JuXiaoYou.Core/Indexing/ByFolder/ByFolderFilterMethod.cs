@@ -22,6 +22,32 @@ namespace MaoTouGu.JuXiaoYou.Indexing
                             });
         }
 
+        public override async Task<Moniker> AddAsync(FilterViewModel viewModel)
+        {
+            var r = await AddMonikerAndReference(viewModel, Folder);
+
+            if (!r.IsFinished)
+            {
+                return null;
+            }
+
+            return r.Value;
+        }
+
+        public override async Task RemoveAsync(FilterViewModel viewModel, Moniker x)
+        {
+            try
+            {
+                await RemoveMonikerAndReference(x, Folder);
+                viewModel.RemoveSuccess();
+            }
+            catch(Exception e)
+            {
+            }
+        }
+
         public Folder Folder { get; init; }
+
+        public override string Name => Folder?.Name;
     }
 }

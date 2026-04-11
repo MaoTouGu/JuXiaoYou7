@@ -92,6 +92,7 @@ namespace MaoTouGu.JuXiaoYou.Workspaces.Monikers
             //
             await _service.Start();
             await _folderService.Start();
+            await _filterService.Start();
             await _labelService.Start();
             await _uniqueService.Start();
             await _referenceService.Start();
@@ -116,31 +117,11 @@ namespace MaoTouGu.JuXiaoYou.Workspaces.Monikers
          *
          *
          *******************************************************************/
-        private async Task<Result<Moniker>> Add(PageBase viewModel)
-        {
-            var r = await viewModel.SingleLine("新建", "创建一个设定");
-
-            if (!r.IsFinished)
-            {
-                return Result<Moniker>.Failure;
-            }
-
-            var moniker = Moniker.Create(r.Value, GlobalSettings.User);
-
-            if (moniker is null)
-            {
-                return Result<Moniker>.Failure;
-            }
-
-            await _service.Add(moniker);
-
-            return Result<Moniker>.Success(moniker);
-        }
 
 
         public async Task Add(PageBase viewModel, TopClassWorkspaceItem instance)
         {
-            var r = await Add(viewModel);
+            var r = await FilterMethod.Add(viewModel);
 
             if (!r.IsFinished)
             {
@@ -150,71 +131,25 @@ namespace MaoTouGu.JuXiaoYou.Workspaces.Monikers
 
         public async Task Add(PageBase viewModel, SubClassWorkspaceItem instance)
         {
-            var r = await Add(viewModel);
-
-            if (!r.IsFinished)
-            {
-                return;
-            }
 
             //
             // 寻找TopClass
             var topClassWI = V5Workspace.GetTopClassWorkspaceItem(instance.ParentID);
 
-            if (topClassWI is null)
-            {
-                return;
-            }
-
-            var unique = new UniqueReference
-            {
-                Id         = ID.Get(),
-                DocumentID = r.Value.Id,
-                TopClass   = topClassWI.Id,
-                SubClass   = instance.Id,
-            };
-
-            await _uniqueService.Add(unique);
+            await FilterMethod.AddMonikerAndUniqueReference(
+                                                            viewModel,
+                                                            topClassWI.Instance, 
+                                                            instance.Instance,
+                                                            _uniqueService);
         }
 
-        public async Task Add(PageBase viewModel, LabelWrapperItem instance)
+        public Task Add(PageBase viewModel, LabelWrapperItem instance)
         {
-            var r = await Add(viewModel);
-
-            if (!r.IsFinished)
-            {
-                return;
-            }
-
-            var keyword = new Keyword
-            {
-                Id         = ID.Get(),
-                DocumentID = r.Value.Id,
-                Name       = instance.Label.Name,
-            };
-
-            await _keywordService.Add(keyword);
+            return FilterMethod.AddMonikerAndKeyword(viewModel, instance.Label, _keywordService);
         }
 
-        public async Task Add(PageBase viewModel, FolderWrapperItem instance)
-        {
-            var r = await Add(viewModel);
-
-            if (!r.IsFinished)
-            {
-                return;
-            }
-
-            var keyword = new Reference
-            {
-                Id         = ID.Get(),
-                DocumentID = r.Value.Id,
-                Name       = instance.Folder.Name,
-            };
-
-            await _referenceService.Add(keyword);
-        }
-
+        public Task Add(PageBase viewModel, FolderWrapperItem instance) => FilterMethod.AddMonikerAndReference(viewModel, instance.Folder, _referenceService);
+        
         /*******************************************************************
          *
          *
@@ -477,9 +412,15 @@ namespace MaoTouGu.JuXiaoYou.Workspaces.Monikers
                 var filter   = JSON2.FromFile<CustomFilter>(r.Value);
                 var filterMI = new BySettingFilterMethodItem(filter);
 
-
-                await _filterService.Add(filter);
-                BySetting.Items.Remove(filterMI);
+                if (_filterService.Has(filter.Id))
+                {
+                    await _filterService.Update(filter);
+                }
+                else
+                {
+                    await _filterService.Add(filter);   
+                }
+                BySetting.Items.Add(filterMI);
 
                 viewModel.SaveSuccess("提示", "导入成功");
             }

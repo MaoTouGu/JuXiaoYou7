@@ -12,9 +12,9 @@ namespace KinonekoSoftware.UI
         /// <param name="recursive"></param>
         /// <typeparam name="T">泛型类型。</typeparam>
         /// <returns></returns>
-        public static T FindVisualChild<T>(DependencyObject parent, bool recursive = false) where T : DependencyObject
+        public static T FindVisualChild<T>(Visual parent, bool recursive = false) where T : DependencyObject
         {
-            var childCount = VisualTreeHelper.GetChildrenCount(parent);
+            var childCount = parent.GetChildrenCount(parent);
 
             for (var i = 0; i < childCount; i++)
             {

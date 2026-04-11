@@ -26,6 +26,16 @@ namespace MaoTouGu.JuXiaoYou.Workspaces.Monikers
             }
 
             AddOrTrimmed(x);
+
+            foreach(var container in Containers)
+            {
+                if(container is DeletedMonikerWorkspaceItem)
+                {
+                    continue;
+                }
+
+                container.RemoveOrTrimmed(x);
+            }
         }
     }
 }

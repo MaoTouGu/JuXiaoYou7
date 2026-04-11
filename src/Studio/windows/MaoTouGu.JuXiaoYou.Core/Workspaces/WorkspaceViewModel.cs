@@ -28,8 +28,12 @@ namespace MaoTouGu.JuXiaoYou.Workspaces
 
             //
             //
+            Feature.Start();
+            Graphing.Start();
             Moniker.Start();
+            Teamspace.Start();
             WorldView.Start();
+            
 
             //
             //
