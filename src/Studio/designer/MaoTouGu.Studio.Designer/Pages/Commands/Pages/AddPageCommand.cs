@@ -26,6 +26,7 @@ namespace MaoTouGu.JuXiaoYou.Pages.Commands
                     },
                 },
                 Blocks = new ViewList<TypographyBlock>(),
+                Height = 1000,
             };
 
             Context.Pages.Add(page);

@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Threading;
 using MaoTouGu.JuXiaoYou.Controls;
 using MaoTouGu.Studio.Database.Topology;
 
@@ -18,6 +19,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
         public DesignView()
         {
             InitializeComponent();
+
         }
 
         private void Button_ReleaseCapture(object sender, RoutedEventArgs e)
@@ -80,40 +82,6 @@ namespace MaoTouGu.JuXiaoYou.Pages
             layer.Add(resizeAdorner);
             _adorner = resizeAdorner;
 
-        }
-
-        private void Control_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (sender is not FrameworkElement fe)
-            {
-                return;
-            }
-
-            var Canvas = Xaml.FindVisualParent<Canvas>(fe);
-            var pos    = Canvas.TranslatePoint(e.GetPosition(fe), fe);
-
-            if (fe.DataContext is TypographyBlock b)
-            {
-                b.X = (int)(pos.X / 20);
-                b.Y = (int)(pos.Y / 20);
-            }
-        }
-
-        private void Control_MouseLeave(object sender, MouseEventArgs e)
-        {
-            if (sender is FrameworkElement fe)
-            {
-                fe.MouseMove -= Control_MouseMove;
-            }
-        }
-
-        private void Control_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-
-            if (sender is FrameworkElement fe)
-            {
-                fe.MouseMove -= Control_MouseMove;
-            }
         }
 
         private TabPanel _tabPanel;

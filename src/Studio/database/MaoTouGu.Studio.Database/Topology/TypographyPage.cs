@@ -14,6 +14,13 @@ namespace MaoTouGu.Studio.Database.Topology
         private object _bitmap;
         private bool   _isDynamic;
         private bool   _isLock;
+        private int    _height;
+
+        public int Height
+        {
+            get => _height;
+            set => SetValue(ref _height, value);
+        }
 
         public bool IsLock
         {
@@ -36,8 +43,8 @@ namespace MaoTouGu.Studio.Database.Topology
             get => _bitmap;
             set => SetValue(ref _bitmap, value);
         }
-        
-        public ViewList<TypographyBlock>  Blocks      { get; init; }
-        public ViewList<TypographyLayer>  Layers      { get; init; }
+
+        public ViewList<TypographyBlock> Blocks { get; init; }
+        public ViewList<TypographyLayer> Layers { get; init; }
     }
 }

@@ -6,7 +6,6 @@
 // 
 // ----------------------------------------------------------
 using MaoTouGu.JuXiaoYou.Visualizers.Core;
-using MaoTouGu.JuXiaoYou.Visualizers.Layouts;
 using MaoTouGu.Studio.Database.Entities.VisualBlocks;
 
 namespace MaoTouGu.JuXiaoYou.LOSD.Visualizing

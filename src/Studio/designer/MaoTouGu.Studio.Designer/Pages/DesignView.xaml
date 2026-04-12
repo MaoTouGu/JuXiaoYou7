@@ -159,12 +159,13 @@
 
                     <ui:GhostButton Grid.Column="2"
                                     ui:ControlAssist.CornerRadius="0"
-                                    ui:ControlAssist.Icon="{StaticResource FeatherIcon.PlusCircle}"
+                                    ui:ControlAssist.Icon="{StaticResource Components}"
                                     ui:ControlAssist.IconSize="31"
                                     ui:ControlAssist.IconDock="Top"
                                     ui:ControlAssist.IconMargin="0 8"
-                                    Content="新建页面"
-                                    Command="{Binding AddPage}"
+                                    Content="添加视觉"
+                                    Command="{Binding AddVisualizer}"
+                                    Foreground="{DynamicResource Brush.Success200}"
                                     IconMode="Both" />
 
                     <Rectangle Grid.Column="3"
@@ -238,36 +239,36 @@
                                         Height="48"
                                         HorizontalContentAlignment="Left"
                                         IconMode="Both" />
-                        
+
                         <ui:GhostButton ui:ControlAssist.CornerRadius="0"
                                         ui:ControlAssist.Icon="{StaticResource FeatherIcon.Image}"
                                         Content="添加水平装饰"
                                         Height="48"
                                         HorizontalContentAlignment="Left"
                                         IconMode="Both" />
-                        
-                        
+
+
                         <ui:GhostButton ui:ControlAssist.CornerRadius="0"
                                         ui:ControlAssist.Icon="{StaticResource FeatherIcon.Image}"
                                         Content="添加垂直装饰"
                                         Height="48"
                                         HorizontalContentAlignment="Left"
                                         IconMode="Both" />
-                        
+
                         <ui:GhostButton ui:ControlAssist.CornerRadius="0"
                                         ui:ControlAssist.Icon="{StaticResource FeatherIcon.Image}"
                                         Content="添加对角装饰（\）"
                                         Height="48"
                                         HorizontalContentAlignment="Left"
                                         IconMode="Both" />
-                        
+
                         <ui:GhostButton ui:ControlAssist.CornerRadius="0"
                                         ui:ControlAssist.Icon="{StaticResource FeatherIcon.Image}"
                                         Content="添加对角装饰（/）"
                                         Height="48"
                                         HorizontalContentAlignment="Left"
                                         IconMode="Both" />
-                        
+
                         <ui:GhostButton ui:ControlAssist.CornerRadius="0"
                                         ui:ControlAssist.Icon="{StaticResource FeatherIcon.Image}"
                                         Content="添加四角装饰"
@@ -300,46 +301,13 @@
 
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="384" />
+                        <ColumnDefinition Width="200" />
                         <ColumnDefinition Width="200" />
                         <ColumnDefinition Width="1*" />
                         <ColumnDefinition Width="384" />
                     </Grid.ColumnDefinitions>
-                    <HeaderedContentControl Header="模板宽度"
-                                            Margin="8 2"
-                                            Style="{StaticResource SettingItem}"
-                                            Width="360">
 
-                        <WrapPanel ItemWidth="120"
-                                   Orientation="Horizontal">
-                            <ui:RadioButton Content="小尺寸"
-                                            HorizontalContentAlignment="Left" />
-                            <ui:RadioButton Content="正常尺寸"
-                                            HorizontalContentAlignment="Left" />
-                            <ui:RadioButton Content="大尺寸"
-                                            HorizontalContentAlignment="Left" />
-                            <ui:RadioButton Content="特大尺寸"
-                                            HorizontalContentAlignment="Left" />
-                            <ui:RadioButton Content="自定义"
-                                            HorizontalContentAlignment="Left" />
-
-                        </WrapPanel>
-                    </HeaderedContentControl>
-
-                    <HeaderedContentControl Grid.Column="1"
-                                            Header="页面属性"
-                                            Margin="8 2"
-                                            Style="{StaticResource SettingItem}"
-                                            VerticalAlignment="Top">
-                        <DockPanel>
-                            <ui:SingleLine DockPanel.Dock="Bottom"
-                                           CornerRadius="0"
-                                           Margin="0 4"
-                                           Watermark="自定义（1000px~2000px）" />
-                        </DockPanel>
-                    </HeaderedContentControl>
-
-                    <HeaderedContentControl Grid.Column="2"
+                    <HeaderedContentControl Grid.Column="0"
                                             Header="页面属性"
                                             Margin="8 2"
                                             Style="{StaticResource SettingItem}">
@@ -348,15 +316,52 @@
                             <HeaderedContentControl Header="宽度"
                                                     BorderThickness="0"
                                                     Style="{StaticResource PropertyItem}">
-                                <TextBlock Text="{Binding Block.Width, Mode=OneWay,StringFormat={}{0:F1}}" />
+                                <TextBlock Text="{Binding PageWidth, Mode=OneWay,StringFormat={}{0:F1}}" />
                             </HeaderedContentControl>
 
                             <HeaderedContentControl Header="高度"
                                                     BorderThickness="0"
                                                     Style="{StaticResource PropertyItem}">
-                                <TextBlock Text="{Binding Block.Height, Mode=OneWay,StringFormat={}{0:F1}}" />
+                                <TextBlock Text="{Binding PageHeight, Mode=OneWay,StringFormat={}{0:F1}}" />
                             </HeaderedContentControl>
                         </StackPanel>
+                    </HeaderedContentControl>
+
+                    <HeaderedContentControl Grid.Column="1"
+                                            Header="页面宽度"
+                                            Margin="8 2"
+                                            Style="{StaticResource SettingItem}"
+                                            VerticalAlignment="Top">
+                        <DockPanel>
+                            <ui:SingleLine DockPanel.Dock="Bottom"
+                                           IsEnabled="{Binding IsCustomSize, Mode=OneWay}"
+                                           CornerRadius="0"
+                                           Margin="0 4"
+                                           Text="{Binding PageWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Delay=100}"
+                                           Watermark="自定义（1000px~2000px）" />
+                        </DockPanel>
+                    </HeaderedContentControl>
+                    <HeaderedContentControl Grid.Column="2"
+                                            Header="模板宽度"
+                                            Margin="8 2"
+                                            Style="{StaticResource SettingItem}">
+
+                        <ui:ListBox ItemsSource="{Binding PageSizes}"
+                                    SelectedItem="{Binding PageSize, Mode=TwoWay}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel ItemWidth="100"
+                                               Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Margin="8 4"
+                                               Text="{Binding Converter={x:Static Converters.EnumToString}}"
+                                               VerticalAlignment="Center" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ui:ListBox>
                     </HeaderedContentControl>
 
                     <HeaderedContentControl Grid.Column="3"
@@ -387,54 +392,9 @@
                     </HeaderedContentControl>
                 </Grid>
             </ui:SinkTabItem>
-
-            <!-- ============ 喵喵咒语面板 ============-->
-            <ui:SinkTabItem Header="喵喵咒语">
-                <Grid Margin="8">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="96" />
-                        <ColumnDefinition Width="8" />
-                        <ColumnDefinition Width="96" />
-                        <ColumnDefinition Width="8" />
-                        <ColumnDefinition Width="300" />
-                        <ColumnDefinition Width="8" />
-                        <ColumnDefinition Width="3*" />
-                        <ColumnDefinition Width="8" />
-                        <ColumnDefinition Width="200" />
-                    </Grid.ColumnDefinitions>
-
-
-                    <ui:GhostButton ui:ControlAssist.CornerRadius="0"
-                                    ui:ControlAssist.Icon="{StaticResource Components}"
-                                    ui:ControlAssist.IconSize="31"
-                                    ui:ControlAssist.IconDock="Top"
-                                    ui:ControlAssist.IconMargin="0 8"
-                                    Grid.Column="0"
-                                    Foreground="{DynamicResource Brush.Success200}"
-                                    Content="添加视觉"
-                                    IconMode="Both" />
-
-                    <Rectangle Grid.Column="1"
-                               Fill="{DynamicResource Brush.Border}"
-                               Width="1"
-                               VerticalAlignment="Stretch" />
-
-                    <ui:GhostButton ui:ControlAssist.CornerRadius="0"
-                                    ui:ControlAssist.Icon="{StaticResource Refresh}"
-                                    ui:ControlAssist.IconSize="31"
-                                    ui:ControlAssist.IconDock="Top"
-                                    ui:ControlAssist.IconMargin="0 8"
-                                    Grid.Column="2"
-                                    Content="更改视觉"
-                                    IconMode="Both" />
-
-                    <Rectangle Grid.Column="3"
-                               Fill="{DynamicResource Brush.Border}"
-                               Width="1"
-                               VerticalAlignment="Stretch" />
-
-                </Grid>
-            </ui:SinkTabItem>
+            
+            <!-- ============ 帮助面板 ============-->
+            <ui:SinkTabItem Header="设定" />
 
             <!-- ============ 帮助面板 ============-->
             <ui:SinkTabItem Header="帮助" />
@@ -474,12 +434,20 @@
                     </StackPanel>
                 </ui:ControlAssist.ToolBar>
                 <ui:ListBox ItemsSource="{Binding Pages, Mode=OneWay}"
-                            SelectedItem="{Binding Page, Mode=TwoWay}">
+                            SelectedItem="{Binding Page, Mode=TwoWay}"
+                            SelectionChanged="Selection_RenderCanvas">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Border Background="Gray"
                                     Height="90"
-                                    Width="160" />
+                                    Width="160">
+                                <Border Height="90"
+                                        Width="160">
+                                    <Border.Background>
+                                        <ImageBrush ImageSource="{Binding Bitmap, Mode=OneWay}"/>
+                                    </Border.Background>
+                                </Border>
+                            </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ui:ListBox>
@@ -544,8 +512,8 @@
                                     <ItemsPanelTemplate>
                                         <Canvas IsItemsHost="True"
                                                 Margin="8"
-                                                Height="1400"
-                                                Width="1400">
+                                                Height="{Binding PageHeight, Mode=OneWay}"
+                                                Width="{Binding PageWidth, Mode=OneWay}">
                                             <Canvas.Background>
                                                 <DrawingBrush Drawing="{thisControls:GridlineGenerator Brush={StaticResource Brush.Background.Level1}}"
                                                               Viewport="0,0,200,200"
@@ -573,7 +541,17 @@
                                             Header="图层"
                                             Style="{StaticResource SettingItem}">
                         <ui:ControlAssist.ToolBar>
-                            <StackPanel Orientation="Horizontal">
+                            <ui:CheckBox ui:ControlAssist.CornerRadius="0"
+                                         Content="仅显示当前图层"
+                                         HorizontalAlignment="Right"
+                                         IsChecked="{Binding LayerBlockOnly, Mode=TwoWay}"
+                                         Height="32" />
+                        </ui:ControlAssist.ToolBar>
+
+                        <DockPanel>
+                            <StackPanel DockPanel.Dock="Top"
+                                        Margin="0 0 0 8"
+                                        Orientation="Horizontal">
                                 <ui:GhostButton ui:ControlAssist.CornerRadius="0"
                                                 ui:ControlAssist.Icon="{StaticResource FeatherIcon.PlusCircle}"
                                                 Command="{Binding AddLayer}"
@@ -594,18 +572,6 @@
                                                 Height="32"
                                                 Width="32" />
                             </StackPanel>
-                        </ui:ControlAssist.ToolBar>
-
-                        <DockPanel>
-
-                            <ui:ToggleButton DockPanel.Dock="Bottom"
-                                             ui:ControlAssist.CornerRadius="0"
-                                             Content="仅显示当前图层"
-                                             IconMode="Text"
-                                             IsChecked="{Binding LayerBlockOnly, Mode=TwoWay}"
-                                             Margin="0 0 16 0"
-                                             Padding="0"
-                                             Height="32" />
                             <ui:TreeView ItemsSource="{Binding Layers}"
                                          BindableSelectedItem="{Binding Layer, Mode=TwoWay}">
 

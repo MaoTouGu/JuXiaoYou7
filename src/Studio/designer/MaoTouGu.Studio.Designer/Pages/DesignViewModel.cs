@@ -23,8 +23,11 @@ namespace MaoTouGu.JuXiaoYou.Pages
         private double _pageWidth;
         private double _pageHeight;
         private string _setting;
-        private bool   _layerBlockOnly;
 
+        private bool _layerBlockOnly;
+        private bool _isCustomSize;
+
+        private TypographyPageSize _pageSize;
         private TypographyBlockVPO _block;
         private TypographyLayerVPO _layer;
         private TypographyPage     _page;
@@ -37,6 +40,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
                             Pages         = new ViewList<TypographyPage>(),
                             OccupiedTable = new HashSet<string>(),
                             Base64Table   = new Dictionary<string, string>(),
+                            Width = (int)TypographyPageSize.Regular,
                         };
 
             Pages      = new ViewList<TypographyPage>();
@@ -44,11 +48,17 @@ namespace MaoTouGu.JuXiaoYou.Pages
             Layers     = new ViewList<TypographyLayerVPO>();
             Dictionary = new Dictionary<string, TypographyBlockVPO>();
             Bitmaps    = new ViewList<NamedBitmap>();
+            PageSizes  = new List<TypographyPageSize>(ClassStatic.GetEnums<TypographyPageSize>());
 
             Moniker                   = Moniker.Create(string.Empty, new User { Id = ID.Get(), DisplayName = "Test" });
             Moniker.Name              = "测试";
             Moniker.Gravatar          = @"C:\Users\Luoyisi\Pictures\Character.png";
             Moniker.Settings["Color"] = "#007ACC";
+
+            //
+            // 设置一个初始值，避免异常。
+            PageWidth  = 600;
+            PageHeight = 600;
 
             LayerBlockOnly = true;
 
@@ -103,6 +113,17 @@ namespace MaoTouGu.JuXiaoYou.Pages
                     }
                 }
             }
+
+            PageWidth = _template.Width;
+
+            PageSize = _template.Width switch
+            {
+                800  => TypographyPageSize.Small,
+                1000 => TypographyPageSize.Regular,
+                1440 => TypographyPageSize.Large,
+                2000 => TypographyPageSize.UltraLarge,
+                _    => TypographyPageSize.Custom,
+            };
         }
 
         void OnPageChanged(TypographyPage page)
@@ -119,6 +140,10 @@ namespace MaoTouGu.JuXiaoYou.Pages
             //
             //
             Layer = Layers.FirstOrDefault();
+
+            //
+            //
+            PageHeight = Math.Max(600, page.Height);
         }
 
         /*******************************************************************
@@ -147,6 +172,35 @@ namespace MaoTouGu.JuXiaoYou.Pages
             }
         }
 
+        public IEnumerable<TypographyPageSize> PageSizes { get; }
+
+
+        public bool IsCustomSize
+        {
+            get => _isCustomSize;
+            set => SetValue(ref _isCustomSize, value);
+        }
+
+        public TypographyPageSize PageSize
+        {
+            get => _pageSize;
+            set
+            {
+                SetValue(ref _pageSize, value);
+
+                if (_pageSize == TypographyPageSize.Custom)
+                {
+
+                    IsCustomSize = true;
+                    PageWidth    = Math.Max(PageWidth, 1440);
+                }
+                else
+                {
+                    IsCustomSize = false;
+                    PageWidth = (int)_pageSize;
+                }
+            }
+        }
 
         /// <summary>
         /// 是否只呈现当前图层的元素。
@@ -181,7 +235,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
             set
             {
                 SetValue(ref _layer, value);
-                
+
                 if (_layer is null)
                 {
                     Blocks.Clear();
@@ -221,13 +275,27 @@ namespace MaoTouGu.JuXiaoYou.Pages
         public double PageHeight
         {
             get => _pageHeight;
-            set => SetValue(ref _pageHeight, value);
+            set
+            {
+                SetValue(ref _pageHeight, value);
+
+                if (Page is null)
+                {
+                    return;
+                }
+
+                Page.Height = (int)Math.Clamp(_pageHeight, 600, 4000);
+            }
         }
 
         public double PageWidth
         {
             get => _pageWidth;
-            set => SetValue(ref _pageWidth, value);
+            set
+            {
+                SetValue(ref _pageWidth, value);
+                _template.Width = (int)Math.Clamp(_pageWidth, 600, 4000);
+            }
         }
 
         public Moniker Moniker { get; }

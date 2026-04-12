@@ -17,3 +17,9 @@ Enum.FeaturePageKind.Style2 = 样式2
 Enum.FeaturePageKind.Style3 = 样式3
 Enum.FeaturePageKind.Style4 = 样式4
 Enum.FeaturePageKind.Style5 = 样式5
+
+Enum.TypographyPageSize.Small = 小尺寸
+Enum.TypographyPageSize.Regular = 正常尺寸
+Enum.TypographyPageSize.Large = 大尺寸
+Enum.TypographyPageSize.UltraLarge = 特大尺寸
+Enum.TypographyPageSize.Custom = 自定义

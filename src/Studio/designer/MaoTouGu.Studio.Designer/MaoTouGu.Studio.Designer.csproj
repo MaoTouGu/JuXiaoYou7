@@ -36,4 +36,9 @@
         </Compile>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Pages\_Debugger\" />
+      <Folder Include="Pages\_Launcher\" />
+    </ItemGroup>
+
 </Project>
