@@ -1,13 +1,14 @@
 ﻿// ----------------------------------------------------------
-//            文件：TypographyVerticalDecorator.cs
+//            文件：IMetadataSourceProvider.cs
 //            作者：Luoyisi<acorisbk@qq.com>
-//            创建时间：2026年04月11日 20:34
+//            创建时间：2026年04月12日 13:06
 //            版权所有：MaoTouGu Studio & Luoyisi
 // 
 // ----------------------------------------------------------
-namespace MaoTouGu.Studio.Database.Topology
+namespace MaoTouGu.Studio.Database.Templates
 {
-    public class TypographyVerticalDecorator  : TypographyWithVisualizer
+    public interface IMetadataSourceProvider
     {
+        IEnumerable<string> GetMetadataSources();
     }
 }

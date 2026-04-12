@@ -5,6 +5,9 @@
 //            版权所有：MaoTouGu Studio & Luoyisi
 // 
 // ----------------------------------------------------------
+global using System.Windows.Media;
+global using System.Windows.Media.Imaging;
+
 global using MaoTouGu.Studio.Database.Identity;
 global using MaoTouGu.Studio.Database.Objects;
 global using MaoTouGu.Studio.Database.Templates;

@@ -16,7 +16,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
 
         public DebuggerViewModel()
         {
-            var v = new WithRarityGravatarVisualizer { RarityFrom = "稀有度" };
+            var v = new WithRarityGravatarVisualizer { MetadataSource = "稀有度" };
 
             Moniker          = Moniker.Create(string.Empty, new User { Id = ID.Get(), DisplayName = "Test" });
             Moniker.Name     = "测试";

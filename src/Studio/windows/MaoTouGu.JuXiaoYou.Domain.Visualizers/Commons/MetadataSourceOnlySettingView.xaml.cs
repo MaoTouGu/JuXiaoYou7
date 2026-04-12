@@ -1,15 +1,15 @@
 ﻿// ----------------------------------------------------------
-//            文件：WithRarityGravatarSettingView.xaml.cs
+//            文件：MetadataSourceOnlySettingView.xaml.cs
 //            作者：Luoyisi<acorisbk@qq.com>
-//            创建时间：2026年04月11日 18:52
+//            创建时间：2026年04月11日 23:40
 //            版权所有：MaoTouGu Studio & Luoyisi
 // 
 // ----------------------------------------------------------
-namespace MaoTouGu.JuXiaoYou.Visualizers.GravatarWide
+namespace MaoTouGu.JuXiaoYou.Visualizers.Commons
 {
-    public partial class WithRarityGravatarSettingView : UserControl
+    public partial class MetadataSourceOnlySettingView : UserControl
     {
-        public WithRarityGravatarSettingView()
+        public MetadataSourceOnlySettingView()
         {
             InitializeComponent();
         }

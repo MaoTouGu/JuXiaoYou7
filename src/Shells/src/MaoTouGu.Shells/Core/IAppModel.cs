@@ -5,7 +5,7 @@ namespace MaoTouGu.Shells.Core
     /// <summary>
     /// <see cref="IAppModel"/> 接口用于表示一个应用模型。
     /// </summary>
-    public interface IAppModel : ILifetime, IFlyoutAmbient, IWorkspaceAmbient
+    public interface IAppModel : ILifetime, IFlyoutAmbient, IWorkspaceAmbient, IDisposableCollector
     {
         Task<bool> Navigate(PageBase page);
         Task<bool> Navigate(PageBase page, params object[] args);

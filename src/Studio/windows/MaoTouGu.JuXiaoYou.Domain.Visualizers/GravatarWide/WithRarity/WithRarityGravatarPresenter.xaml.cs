@@ -29,7 +29,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.GravatarWide
             var brush    = new LinearGradientBrush();
             var stop1    = new GradientStop();
             var stop2    = new GradientStop(Colors.Transparent, 0.9);
-            var binding  = GetBinding(m, visualizer.RarityFrom, Converters.ToColor);
+            var binding  = GetBinding(m, visualizer.MetadataSource, Converters.ToColor);
             var binding2 = GetBinding(m, nameof(Moniker.Name));
             var binding3 = GetBinding(m, nameof(Moniker.Gravatar));
 

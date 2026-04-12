@@ -9,7 +9,7 @@ namespace MaoTouGu.Studio.Database.Topology
 {
     public class TypographyImage : TypographyBlock
     {
-        private string _base64;
+        private string _source;
         private int    _imageWidth;
         private int    _imageHeight;
 
@@ -24,10 +24,11 @@ namespace MaoTouGu.Studio.Database.Topology
             get => _imageWidth;
             set => SetValue(ref _imageWidth, value);
         }
-        public string Base64
+
+        public string Source
         {
-            get => _base64;
-            set => SetValue(ref _base64, value);
+            get => _source;
+            set => SetValue(ref _source, value);
         }
     }
 }

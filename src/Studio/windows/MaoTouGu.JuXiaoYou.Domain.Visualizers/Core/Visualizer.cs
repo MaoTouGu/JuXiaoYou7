@@ -13,7 +13,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Core
     {
         static FrameworkElement Create(TypographyVisualizerVPO value, Func<IVisualizerGenerator, Type> expression)
         {
-            var _visualizer = value.Visualizer;
+            var _visualizer = value.Instance;
             var feature     = FeatureManager.Visualizers.SafetyGet(_visualizer.Visualizer);
 
             if (feature?.SettingType is null)
@@ -50,7 +50,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Core
         
         static FrameworkElement Create(TypographyVisualizerVPO value)
         {
-            var _visualizer = value.Visualizer;
+            var _visualizer = value.Instance;
             var feature     = FeatureManager.Visualizers.SafetyGet(_visualizer.Visualizer);
 
             if (feature?.SettingType is null)

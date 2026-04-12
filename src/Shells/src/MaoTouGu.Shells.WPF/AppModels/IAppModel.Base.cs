@@ -2,12 +2,16 @@
 
 namespace MaoTouGu.Shells.AppModels
 {
-    public abstract class AppModelBase : FlyoutAmbient, IAppModel, IAppModelInitialized
+    public abstract class AppModelBase : FlyoutAmbient, IAppModel, IAppModelInitialized, IDisposableCollector
     {
         protected readonly Dictionary<int, PageContext> InstanceTable = new Dictionary<int, PageContext>();
 
         private readonly Dictionary<int, InitializeCache> _initializeCaches = new();
 
+        public void Collect(IDisposable disposable)
+        {
+            DisposableCollection.Collect(disposable);
+        }
 
         #region Activate / Deactivate
 
@@ -444,5 +448,7 @@ namespace MaoTouGu.Shells.AppModels
             internal DialogHost  DialogHost;
             internal ContentHost ContentHost;
         }
+
+        public DisposableCollection DisposableCollection { get; } = new DisposableCollection();
     }
 }

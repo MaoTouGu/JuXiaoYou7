@@ -1,15 +1,13 @@
 ﻿// ----------------------------------------------------------
-//            文件：AddVisualizerCommand.cs
+//            文件：AddImageCommand.cs
 //            作者：Luoyisi<acorisbk@qq.com>
-//            创建时间：2026年04月11日 16:57
+//            创建时间：2026年04月12日 12:44
 //            版权所有：MaoTouGu Studio & Luoyisi
 // 
 // ----------------------------------------------------------
-using MaoTouGu.JuXiaoYou.Services.Plugins;
-
 namespace MaoTouGu.JuXiaoYou.Pages.Commands
 {
-    sealed class AddVisualizerCommand(DesignViewModel target) : VisualizerCommand(target)
+    sealed class AddImageCommand(DesignViewModel target) : VisualizerCommand(target)
     {
         
         public override async void Execute(object parameter)

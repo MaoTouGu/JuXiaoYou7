@@ -18,8 +18,10 @@ namespace MaoTouGu.JuXiaoYou.Pages
                 RaiseUpdated();
             }
         }
+
+        public List<string> BlockIds => Layer.Blocks;
         
-        public List<TypographyBlockVPO> Blocks { get; init; }
+        public required List<TypographyBlockVPO> Blocks { get; init; }
 
         public TypographyLayer Layer { get; init; }
     }

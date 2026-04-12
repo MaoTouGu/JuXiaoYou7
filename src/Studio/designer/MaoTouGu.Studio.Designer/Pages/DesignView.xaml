@@ -14,6 +14,11 @@
             d:DesignWidth="800" d:DesignHeight="450"
             d:DataContext="{d:DesignInstance Type={x:Type thisVM:DesignViewModel}, IsDesignTimeCreatable=True}"
             Padding="0 8">
+
+    <UserControl.InputBindings>
+        <KeyBinding Gesture="Ctrl+S" Command="{Binding Save}" />
+        <KeyBinding Gesture="Ctrl+Shift+S" Command="{Binding SaveAs}" />
+    </UserControl.InputBindings>
     <UserControl.Resources>
 
 
@@ -108,7 +113,7 @@
     </UserControl.Resources>
 
     <DockPanel>
-        <!-- ============ TopClassWorkspaceItem ============-->
+        <!-- ============ 顶部菜单 ============-->
         <ui:SinkTabControl DockPanel.Dock="Top"
                            WindowChrome.IsHitTestVisibleInChrome="True"
                            Background="{DynamicResource Brush.Background.Level2}"
@@ -120,7 +125,7 @@
                            Padding="0"
                            Style="{StaticResource Menu}">
 
-            <!-- ============ Typography ____ 排版 ============-->
+            <!-- ============ 开始面板 ============-->
             <ui:SinkTabItem Header="开始"
                             SizeChanged="TabControl_OnSizeChanged">
                 <Grid Margin="8">
@@ -233,6 +238,42 @@
                                         Height="48"
                                         HorizontalContentAlignment="Left"
                                         IconMode="Both" />
+                        
+                        <ui:GhostButton ui:ControlAssist.CornerRadius="0"
+                                        ui:ControlAssist.Icon="{StaticResource FeatherIcon.Image}"
+                                        Content="添加水平装饰"
+                                        Height="48"
+                                        HorizontalContentAlignment="Left"
+                                        IconMode="Both" />
+                        
+                        
+                        <ui:GhostButton ui:ControlAssist.CornerRadius="0"
+                                        ui:ControlAssist.Icon="{StaticResource FeatherIcon.Image}"
+                                        Content="添加垂直装饰"
+                                        Height="48"
+                                        HorizontalContentAlignment="Left"
+                                        IconMode="Both" />
+                        
+                        <ui:GhostButton ui:ControlAssist.CornerRadius="0"
+                                        ui:ControlAssist.Icon="{StaticResource FeatherIcon.Image}"
+                                        Content="添加对角装饰（\）"
+                                        Height="48"
+                                        HorizontalContentAlignment="Left"
+                                        IconMode="Both" />
+                        
+                        <ui:GhostButton ui:ControlAssist.CornerRadius="0"
+                                        ui:ControlAssist.Icon="{StaticResource FeatherIcon.Image}"
+                                        Content="添加对角装饰（/）"
+                                        Height="48"
+                                        HorizontalContentAlignment="Left"
+                                        IconMode="Both" />
+                        
+                        <ui:GhostButton ui:ControlAssist.CornerRadius="0"
+                                        ui:ControlAssist.Icon="{StaticResource FeatherIcon.Image}"
+                                        Content="添加四角装饰"
+                                        Height="48"
+                                        HorizontalContentAlignment="Left"
+                                        IconMode="Both" />
                     </WrapPanel>
 
                     <Rectangle Grid.Column="7"
@@ -254,7 +295,7 @@
             </ui:SinkTabItem>
 
 
-            <!-- ============ Typography ____ 排版 ============-->
+            <!-- ============ 页面面板 ============-->
             <ui:SinkTabItem Header="页面">
 
                 <Grid>
@@ -347,7 +388,7 @@
                 </Grid>
             </ui:SinkTabItem>
 
-            <!-- ============ Typography ____ 排版 ============-->
+            <!-- ============ 喵喵咒语面板 ============-->
             <ui:SinkTabItem Header="喵喵咒语">
                 <Grid Margin="8">
                     <Grid.ColumnDefinitions>
@@ -395,11 +436,11 @@
                 </Grid>
             </ui:SinkTabItem>
 
-            <!-- ============ Typography ____ 排版 ============-->
+            <!-- ============ 帮助面板 ============-->
             <ui:SinkTabItem Header="帮助" />
         </ui:SinkTabControl>
 
-        <!-- ============ TopClassWorkspaceItem ============-->
+        <!-- ============ 中间内容 ============-->
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="16" />
@@ -486,7 +527,7 @@
                                   VerticalScrollBarVisibility="Auto">
                         <AdornerDecorator>
                             <ItemsControl x:Name="Items"
-                                          ItemsSource="{Binding Blocks, Mode=OneWay}">
+                                          ItemsSource="{Binding ObservableBlocks, Mode=OneWay}">
                                 <ItemsControl.Resources>
                                     <DataTemplate DataType="{x:Type visualizers:TypographyVisualizerVPO}">
                                         <ContentPresenter Content="{Binding Converter={x:Static visualizers:Visualizer.View}}" />
@@ -524,6 +565,54 @@
             <ui:SinkTabControl Grid.Column="3"
                                BorderBrush="Gray"
                                Margin="16 0">
+
+
+                <ui:SinkTabItem Header="图层">
+
+                    <HeaderedContentControl Grid.Row="0"
+                                            Header="图层"
+                                            Style="{StaticResource SettingItem}">
+                        <ui:ControlAssist.ToolBar>
+                            <StackPanel Orientation="Horizontal">
+                                <ui:GhostButton ui:ControlAssist.CornerRadius="0"
+                                                ui:ControlAssist.Icon="{StaticResource FeatherIcon.PlusCircle}"
+                                                Command="{Binding AddLayer}"
+                                                IconMode="Icon"
+                                                Padding="0"
+                                                Height="32"
+                                                Width="32" />
+                                <ui:GhostButton ui:ControlAssist.CornerRadius="0"
+                                                ui:ControlAssist.Icon="{StaticResource FeatherIcon.Edit}"
+                                                IconMode="Icon"
+                                                Padding="0"
+                                                Height="32"
+                                                Width="32" />
+                                <ui:GhostButton ui:ControlAssist.CornerRadius="0"
+                                                ui:ControlAssist.Icon="{StaticResource FeatherIcon.Trash}"
+                                                IconMode="Icon"
+                                                Padding="0"
+                                                Height="32"
+                                                Width="32" />
+                            </StackPanel>
+                        </ui:ControlAssist.ToolBar>
+
+                        <DockPanel>
+
+                            <ui:ToggleButton DockPanel.Dock="Bottom"
+                                             ui:ControlAssist.CornerRadius="0"
+                                             Content="仅显示当前图层"
+                                             IconMode="Text"
+                                             IsChecked="{Binding LayerBlockOnly, Mode=TwoWay}"
+                                             Margin="0 0 16 0"
+                                             Padding="0"
+                                             Height="32" />
+                            <ui:TreeView ItemsSource="{Binding Layers}"
+                                         BindableSelectedItem="{Binding Layer, Mode=TwoWay}">
+
+                            </ui:TreeView>
+                        </DockPanel>
+                    </HeaderedContentControl>
+                </ui:SinkTabItem>
                 <ui:SinkTabItem Header="元素">
 
                     <StackPanel>
@@ -619,81 +708,57 @@
                                                     Width="32" />
                                 </StackPanel>
                             </ui:ControlAssist.ToolBar>
-                            <ui:ListBox ItemsSource="{Binding Blocks}"
+                            <ui:ListBox DisplayMemberPath="Base.Name"
+                                        ItemsSource="{Binding Blocks}"
                                         SelectedItem="{Binding Block, Mode=TwoWay}">
                             </ui:ListBox>
                         </HeaderedContentControl>
 
                     </StackPanel>
                 </ui:SinkTabItem>
-                <ui:SinkTabItem Header="图层">
+                <ui:SinkTabItem Header="属性">
+                    <ScrollViewer>
+                        <ContentControl Content="{Binding Block, Mode=OneWay}">
 
-                    <HeaderedContentControl Grid.Row="0"
-                                            Header="图层"
+                            <ContentControl.Resources>
+                                <DataTemplate DataType="{x:Type visualizers:TypographyVisualizerVPO}">
+                                    <ContentPresenter Content="{Binding Converter={x:Static visualizers:Visualizer.Setting}}" />
+                                </DataTemplate>
+                            </ContentControl.Resources>
+                        </ContentControl>
+                    </ScrollViewer>
+                </ui:SinkTabItem>
+                <ui:SinkTabItem Header="设定">
+                    <HeaderedContentControl Grid.Column="2"
+                                            Header="设定"
+                                            Margin="8 2"
                                             Style="{StaticResource SettingItem}">
                         <ui:ControlAssist.ToolBar>
                             <StackPanel Orientation="Horizontal">
                                 <ui:GhostButton ui:ControlAssist.CornerRadius="0"
                                                 ui:ControlAssist.Icon="{StaticResource FeatherIcon.PlusCircle}"
-                                                Command="{Binding AddLayer}"
+                                                Command="{Binding AddSetting}"
                                                 IconMode="Icon"
                                                 Padding="0"
                                                 Height="32"
                                                 Width="32" />
                                 <ui:GhostButton ui:ControlAssist.CornerRadius="0"
-                                                ui:ControlAssist.Icon="{StaticResource FeatherIcon.Edit}"
-                                                IconMode="Icon"
-                                                Padding="0"
-                                                Height="32"
-                                                Width="32" />
-                                <ui:GhostButton ui:ControlAssist.CornerRadius="0"
-                                                ui:ControlAssist.Icon="{StaticResource FeatherIcon.Trash}"
+                                                ui:ControlAssist.Icon="{StaticResource Rename}"
+                                                ui:ControlAssist.IsFilled="True"
+                                                Command="{Binding UpdateSetting}"
                                                 IconMode="Icon"
                                                 Padding="0"
                                                 Height="32"
                                                 Width="32" />
                             </StackPanel>
                         </ui:ControlAssist.ToolBar>
-                        <ui:TreeView ItemsSource="{Binding Layers}"
-                                     BindableSelectedItem="{Binding Layer, Mode=TwoWay}">
 
-                        </ui:TreeView>
+                        <ui:ListBox DisplayMemberPath="Key"
+                                    ItemsSource="{Binding Moniker.Settings, Mode=OneWay}"
+                                    SelectedValue="{Binding Setting, Mode=TwoWay}"
+                                    SelectedValuePath="Key">
+                        </ui:ListBox>
                     </HeaderedContentControl>
-                </ui:SinkTabItem>
-                <ui:SinkTabItem Header="元素">
-                    <ScrollViewer>
-                        <StackPanel>
-                            <HeaderedContentControl Header="X"
-                                                    BorderThickness="0"
-                                                    Style="{StaticResource PropertyItem}">
-                                <TextBlock Text="{Binding Block.X, Mode=OneWay,StringFormat={}{0:F1}}" />
-                            </HeaderedContentControl>
-                            <HeaderedContentControl Header="Y"
-                                                    BorderThickness="0"
-                                                    Style="{StaticResource PropertyItem}">
-                                <TextBlock Text="{Binding Block.Y, Mode=OneWay,StringFormat={}{0:F1}}" />
-                            </HeaderedContentControl>
-                            <HeaderedContentControl Header="宽度"
-                                                    BorderThickness="0"
-                                                    Style="{StaticResource PropertyItem}">
-                                <TextBlock Text="{Binding Block.Width, Mode=OneWay,StringFormat={}{0:F1}}" />
-                            </HeaderedContentControl>
-                            <HeaderedContentControl Header="高度"
-                                                    BorderThickness="0"
-                                                    Style="{StaticResource PropertyItem}">
-                                <TextBlock Text="{Binding Block.Height, Mode=OneWay,StringFormat={}{0:F1}}" />
-                            </HeaderedContentControl>
-
-                            <ContentControl Content="{Binding Block, Mode=OneWay}">
-
-                                <ContentControl.Resources>
-                                    <DataTemplate DataType="{x:Type visualizers:TypographyVisualizerVPO}">
-                                        <ContentPresenter Content="{Binding Converter={x:Static visualizers:Visualizer.Setting}}" />
-                                    </DataTemplate>
-                                </ContentControl.Resources>
-                            </ContentControl>
-                        </StackPanel>
-                    </ScrollViewer>
                 </ui:SinkTabItem>
             </ui:SinkTabControl>
         </Grid>

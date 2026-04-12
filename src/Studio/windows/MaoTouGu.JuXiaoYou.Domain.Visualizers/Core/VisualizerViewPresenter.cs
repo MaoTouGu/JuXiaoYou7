@@ -10,9 +10,7 @@ using MaoTouGu.Studio.Database.Objects;
 
 namespace MaoTouGu.JuXiaoYou.Visualizers.Core
 {
-    /// <summary>
-    /// <see cref=""/>
-    /// </summary>
+    [Obsolete("使用Visualizer的转化器来代替")]
     public sealed class VisualizerViewPresenter : ContentPresenter, IAddChild
     {
         void IAddChild.AddChild(object value)
@@ -37,7 +35,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Core
         {
             if (e.NewValue is TypographyVisualizerVPO value)
             {
-                var _visualizer = value.Visualizer;
+                var _visualizer = value.Instance;
                 var feature     = FeatureManager.Visualizers.SafetyGet(_visualizer.Visualizer);
 
                 if (feature?.ViewType is null)

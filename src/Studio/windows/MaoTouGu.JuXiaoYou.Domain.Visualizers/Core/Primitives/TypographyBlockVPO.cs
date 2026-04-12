@@ -6,13 +6,31 @@
 // 
 // ----------------------------------------------------------
 
-using MaoTouGu.Studio.Database.Objects;
 
 namespace MaoTouGu.JuXiaoYou.Visualizers.Core
 {
     public abstract class TypographyBlockVPO : ObservableObjectEX<JuXiaoYouPage>
     {
         private IVisualizerOptions _options;
+
+        private static readonly List<TypographyBlockVPO> _dummies = new List<TypographyBlockVPO>
+        {
+            new TypographyVisualizerVPO { Moniker = null },
+            new TypographyImageVPO { Moniker      = null },
+            new TypographyTextVPO { Moniker       = null },
+        };
+
+
+        public static TypographyBlockVPO GetInstance(TypographyBlock block, Moniker moniker)
+        {
+            return _dummies.FirstOrDefault(x => x.CanAccept(block))
+                          ?.OnCreate(block, moniker);
+        }
+
+        protected abstract bool CanAccept(TypographyBlock block);
+        protected abstract TypographyBlockVPO OnCreate(TypographyBlock block, Moniker moniker);
+
+        public string Id => Base.Id;
 
         public TypographyBlock Base { get; protected init; }
 

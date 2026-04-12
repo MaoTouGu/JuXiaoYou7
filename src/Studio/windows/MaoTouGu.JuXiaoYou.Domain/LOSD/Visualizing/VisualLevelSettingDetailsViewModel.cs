@@ -16,7 +16,6 @@ namespace MaoTouGu.JuXiaoYou.LOSD.Visualizing
         public VisualLevelSettingDetailsViewModel()
         {
             Blocks  = new ViewList<VisualBlockVPO>();
-            Layouts = new ViewList<LayoutUnitVPO>();
         }
 
         protected override void OnStart()
@@ -28,6 +27,5 @@ namespace MaoTouGu.JuXiaoYou.LOSD.Visualizing
         }
 
         public ViewList<VisualBlockVPO> Blocks  { get; }
-        public ViewList<LayoutUnitVPO>  Layouts { get; }
     }
 }

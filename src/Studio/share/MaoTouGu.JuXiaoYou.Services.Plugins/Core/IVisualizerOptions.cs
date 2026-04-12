@@ -7,10 +7,11 @@
 // ----------------------------------------------------------
 using System.ComponentModel;
 using MaoTouGu.Foundation;
+using MaoTouGu.Studio.Database.Templates;
 
 namespace MaoTouGu.JuXiaoYou.Services.Plugins
 {
-    public interface IVisualizerOptions : INotifyPropertyChanged
+    public interface IVisualizerOptions : INotifyPropertyChanged, IMetadataSourceProvider
     {
         string ToBase64();
     }

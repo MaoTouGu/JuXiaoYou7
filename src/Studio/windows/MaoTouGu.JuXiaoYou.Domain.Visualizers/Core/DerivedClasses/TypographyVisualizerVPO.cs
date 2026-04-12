@@ -10,18 +10,15 @@ using MaoTouGu.Studio.Database.Topology;
 
 namespace MaoTouGu.JuXiaoYou.Visualizers.Core
 {
-    public sealed class TypographyVisualizerVPO : TypographyBlockVPO
+    public sealed class TypographyVisualizerVPO : TypographyBlockVPO<TypographyWithVisualizer>
     {
-        private readonly TypographyWithVisualizer _visualizer;
-
-        public TypographyWithVisualizer Visualizer
+        protected override TypographyBlockVPO OnCreate(TypographyWithVisualizer block, Moniker moniker)
         {
-            get => _visualizer;
-            init
+            return new TypographyVisualizerVPO
             {
-                Base        = value;
-                _visualizer = value;
-            }
+                Instance = block,
+                Moniker  = moniker,
+            };
         }
     }
 }

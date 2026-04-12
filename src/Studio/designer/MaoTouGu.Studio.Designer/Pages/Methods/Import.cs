@@ -1,14 +1,13 @@
 ﻿// ----------------------------------------------------------
-//            文件：PlainTextBlock.cs
+//            文件：Import.cs
 //            作者：Luoyisi<acorisbk@qq.com>
-//            创建时间：2026年04月11日 17:04
+//            创建时间：2026年04月12日 13:04
 //            版权所有：MaoTouGu Studio & Luoyisi
 // 
 // ----------------------------------------------------------
-
 namespace MaoTouGu.JuXiaoYou.Pages
 {
-    public class PlainTextBlock : TypographyBlockVPO
+    partial class DesignViewModel
     {
         
     }

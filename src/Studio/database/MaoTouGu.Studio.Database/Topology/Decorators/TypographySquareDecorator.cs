@@ -7,12 +7,8 @@
 // ----------------------------------------------------------
 namespace MaoTouGu.Studio.Database.Topology
 {
-    public class TypographySquareDecorator : TypographyBlock
+    public class TypographySquareDecorator  : TypographyWithVisualizer
     {
-        private string _visualizer;
-        private string _visualizerName;
-        private string _base64;
-        
         //
         // +----------------+
         // |                |
@@ -20,22 +16,5 @@ namespace MaoTouGu.Studio.Database.Topology
         // |                |
         // +----------------+
         
-        public string Base64
-        {
-            get => _base64;
-            set => SetValue(ref _base64, value);
-        }
-
-        public string VisualizerName
-        {
-            get => _visualizerName;
-            set => SetValue(ref _visualizerName, value);
-        }
-
-        public string Visualizer
-        {
-            get => _visualizer;
-            set => SetValue(ref _visualizer, value);
-        }
     }
 }

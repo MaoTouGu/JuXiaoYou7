@@ -13,7 +13,7 @@ namespace MaoTouGu.Studio.Database.Templates
     /// <summary>
     /// 排版模板。
     /// </summary>
-    public sealed class TypographyTemplate : DatabaseObject
+    public sealed class TypographyTemplate : Nameable
     {
         private int _width;
 

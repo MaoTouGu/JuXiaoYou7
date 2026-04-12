@@ -34,7 +34,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Core
         {
             if (e.NewValue is TypographyVisualizerVPO value)
             {
-                var _visualizer = value.Visualizer;
+                var _visualizer = value.Instance;
                 var feature     = FeatureManager.Visualizers.SafetyGet(_visualizer.Visualizer);
 
                 if (feature?.SettingType is null)

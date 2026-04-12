@@ -1,5 +1,7 @@
-﻿using MaoTouGu.JuXiaoYou.Core;
+﻿using System.Windows.Media.Imaging;
+using MaoTouGu.JuXiaoYou.Core;
 using MaoTouGu.JuXiaoYou.Pages;
+using MaoTouGu.JuXiaoYou.Services.Imaging;
 using MaoTouGu.JuXiaoYou.Services.Imaging.Caching;
 using MaoTouGu.JuXiaoYou.Workspaces;
 using MaoTouGu.JuXiaoYou.Services.Plugins;
@@ -14,12 +16,16 @@ namespace MaoTouGu.JuXiaoYou.AppModels
         {
             
             Ioc.Use<IImageCacheService, ImageCacheService>(new ImageCacheService()).Start();
+            //
+            // Initialize
+            ImageSystem.Gravatar = new BitmapImage(new Uri(URI_Gravatar));
+            ImageSystem.Icon     = new BitmapImage(new Uri(URI_Icon));
+            ImageSystem.Image    = new BitmapImage(new Uri(URI_Image));
             
             //
             //
-            await Navigate<LauncherViewModel>();
-            await Task.Delay(100)
-                      .ContinueWith(x => GUI.RunOnUIThread(StartupImpl));
+            await Navigate<LauncherViewModel>()
+                .ContinueWith(x => GUI.RunOnUIThread(StartupImpl));
         }
 
         private DialogHost FindDialogHost()

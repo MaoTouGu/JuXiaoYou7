@@ -11,7 +11,7 @@ using MaoTouGu.Studio.Database.Objects;
 
 namespace MaoTouGu.JuXiaoYou.Visualizers.Core
 {
-    public abstract class VisualizerControl : UserControl
+    public abstract partial class VisualizerControl : UserControl
     {
         public static readonly DependencyProperty OptionsProperty =
             DependencyProperty.Register(
@@ -25,10 +25,28 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Core
                                         nameof(Moniker),
                                         typeof(Moniker),
                                         typeof(VisualizerControl),
-                                        new PropertyMetadata(default(Moniker), OnMonikerChanged));
+                                        new PropertyMetadata(null, OnMonikerChanged));
 
-        private readonly List<Binding> _bindings = new List<Binding>();
-        
+
+        protected VisualizerControl()
+        {
+            //
+            // 强制最小缩放。
+            MinHeight = 20;
+            MinWidth  = 20;
+            VisualConnector.SetConnect(this, true);
+            DataContextChanged += OnDataContextChanged;
+        }
+
+        private void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (e.NewValue is TypographyBlockVPO vpo)
+            {
+                SetBinding(HeightProperty, new Binding { Source = vpo, Mode = BindingMode.OneWay, Path = new PropertyPath(nameof(TypographyBlockVPO.Height)) });
+                SetBinding(WidthProperty, new Binding { Source  = vpo, Mode = BindingMode.OneWay, Path = new PropertyPath(nameof(TypographyBlockVPO.Width)) });
+            }
+        }
+
         /// <summary>
         /// 给定一个Moniker和一个喵喵咒语，获得绑定。
         /// </summary>
@@ -51,8 +69,6 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Core
                 Converter = converter,
             };
 
-            _bindings.Add(binding);
-            
             return binding;
         }
 
@@ -67,7 +83,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Core
 
             if (e.NewValue is Moniker m && vc.Options is {} o)
             {
-                vc.OnBuildExpression(m, o);
+                vc.BuildExpression(m, o);
             }
         }
 
@@ -80,24 +96,57 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Core
 
             if (e.OldValue is IVisualizerOptions oldValue)
             {
-                oldValue.PropertyChanged -= vc.OnOptionChanged;
+                oldValue.PropertyChanged -= vc.WhenOptionChanged;
             }
 
             if (e.NewValue is IVisualizerOptions o && vc.Moniker is {} m)
             {
-                vc.OnBuildExpression(m, o);
-                o.PropertyChanged += vc.OnOptionChanged;
+                vc.BuildExpression(m, o);
+                o.PropertyChanged += vc.WhenOptionChanged;
             }
         }
 
-        private void OnOptionChanged(object sender, PropertyChangedEventArgs e)
+
+        /// <summary>
+        /// 当<see cref="TypographyVisualizerVPO.Options"/>属性发生变化的时候，需要通知所有VisualizerControl变更绑定。
+        /// </summary>
+        private void WhenOptionChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (Options is {} o && Moniker is {} m)
+            if (Options is not {} o || Moniker is not {} m)
             {
-                OnBuildExpression(m, o);
+                return;
             }
+
+            //
+            // DONE: 需要做事件限流，防止过多的ToBase64调用进而导致CPU浪费。
+            //
+            // 采用4hz的频率，间隔250ms更新一次。
+            if (!_requestTable.ContainsKey(GetHashCode()))
+            {
+                _throttleEvent.Moniker = m;
+                _throttleEvent.Options = o;
+                _throttleEvent.VPO     = DataContext as TypographyVisualizerVPO;
+
+                _requestTable.TryAdd(GetHashCode(), 1);
+                _throttleRequests.Enqueue(this);
+            }
+
+            //
+            // OnBuildExpression(m, o);
+            // if (DataContext is TypographyVisualizerVPO vpo)
+            // {
+            //     vpo.Instance
+            //        .Base64 = o.ToBase64();
+            // }
         }
 
+        protected void BuildExpression(Moniker m, IVisualizerOptions options)
+        {
+
+            //
+            //
+            OnBuildExpression(m, options);
+        }
 
         protected abstract void OnBuildExpression(Moniker m, IVisualizerOptions options);
 

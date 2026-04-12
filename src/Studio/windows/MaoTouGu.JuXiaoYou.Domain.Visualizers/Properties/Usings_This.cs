@@ -19,4 +19,5 @@ global using MaoTouGu.JuXiaoYou.Services.Plugins;
 global using MaoTouGu.Studio.Database.Entities.VisualBlocks;
 global using MaoTouGu.Studio.Database.Identity;
 global using MaoTouGu.Studio.Database.IM;
+global using MaoTouGu.Studio.Database.Objects;
 global using MaoTouGu.Studio.Database.Topology;

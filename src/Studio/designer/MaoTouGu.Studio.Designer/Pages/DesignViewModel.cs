@@ -9,18 +9,21 @@
 
 using MaoTouGu.JuXiaoYou.Pages.Commands;
 using MaoTouGu.JuXiaoYou.Visualizers.Core;
+using MaoTouGu.Studio.Database;
 using MaoTouGu.Studio.Database.Identity;
 using MaoTouGu.Studio.Database.Objects;
 using MaoTouGu.Studio.Database.Utils;
 
 namespace MaoTouGu.JuXiaoYou.Pages
 {
-    public class DesignViewModel : JuXiaoYouPage
+    public partial class DesignViewModel : JuXiaoYouPage
     {
         private readonly TypographyTemplate _template;
 
         private double _pageWidth;
         private double _pageHeight;
+        private string _setting;
+        private bool   _layerBlockOnly;
 
         private TypographyBlockVPO _block;
         private TypographyLayerVPO _layer;
@@ -36,16 +39,18 @@ namespace MaoTouGu.JuXiaoYou.Pages
                             Base64Table   = new Dictionary<string, string>(),
                         };
 
-            Pages  = new ViewList<TypographyPage>();
-            Blocks = new ViewList<TypographyBlockVPO>();
-            Layers = new ViewList<TypographyLayerVPO>();
-
-
+            Pages      = new ViewList<TypographyPage>();
+            Blocks     = new ViewList<TypographyBlockVPO>();
+            Layers     = new ViewList<TypographyLayerVPO>();
+            Dictionary = new Dictionary<string, TypographyBlockVPO>();
+            Bitmaps    = new ViewList<NamedBitmap>();
 
             Moniker                   = Moniker.Create(string.Empty, new User { Id = ID.Get(), DisplayName = "Test" });
             Moniker.Name              = "测试";
             Moniker.Gravatar          = @"C:\Users\Luoyisi\Pictures\Character.png";
             Moniker.Settings["Color"] = "#007ACC";
+
+            LayerBlockOnly = true;
 
             AddPage    = new AddPageCommand(this);
             RemovePage = new RemovePageCommand(this);
@@ -53,6 +58,12 @@ namespace MaoTouGu.JuXiaoYou.Pages
             AddLayer = new AddLayerCommand(this);
 
             AddVisualizer = new AddVisualizerCommand(this);
+
+            AddSetting    = new AddSettingCommand(this);
+            UpdateSetting = new UpdateSettingCommand(this);
+
+            Save   = new DelegateCommand(DoSaveCommand);
+            SaveAs = new DelegateCommand(DoSaveAsCommand);
         }
 
 
@@ -64,6 +75,51 @@ namespace MaoTouGu.JuXiaoYou.Pages
          *
          *******************************************************************/
 
+        protected override void OnStart()
+        {
+            foreach (var (id, base64) in _template.Base64Table)
+            {
+                var buffer = Convert.FromBase64String(base64);
+                var bi     = Xaml.ToBitmap(buffer);
+
+                Bitmaps.Add(new NamedBitmap
+                {
+                    Image = bi,
+                    Name  = id,
+                });
+            }
+
+            foreach (var page in _template.Pages)
+            {
+                Pages.Add(page);
+
+                foreach (var block in page.Blocks)
+                {
+                    var vpo = TypographyBlockVPO.GetInstance(block, Moniker);
+
+                    if (Dictionary.TryAdd(block.Id, vpo))
+                    {
+
+                    }
+                }
+            }
+        }
+
+        void OnPageChanged(TypographyPage page)
+        {
+            Layers.AddMany(page.Layers.Select(x => new TypographyLayerVPO
+            {
+                Layer = x,
+                Blocks = x.Blocks
+                          .Select(y => Dictionary.SafetyGet(y))
+                          .Where(DBHelper.NotNull)
+                          .ToList(),
+            }), true);
+
+            //
+            //
+            Layer = Layers.FirstOrDefault();
+        }
 
         /*******************************************************************
          *
@@ -78,16 +134,88 @@ namespace MaoTouGu.JuXiaoYou.Pages
             set => SetValue(ref _block, value);
         }
 
+        public IEnumerable<TypographyBlockVPO> ObservableBlocks
+        {
+            get
+            {
+                if (LayerBlockOnly)
+                {
+                    return Blocks;
+                }
+
+                return Dictionary.Values;
+            }
+        }
+
+
+        /// <summary>
+        /// 是否只呈现当前图层的元素。
+        /// </summary>
+        public bool LayerBlockOnly
+        {
+            get => _layerBlockOnly;
+            set
+            {
+                SetValue(ref _layerBlockOnly, value);
+
+                if (value)
+                {
+                    RaiseUpdated(nameof(ObservableBlocks));
+                }
+                else
+                {
+                    Layer = null;
+                }
+            }
+        }
+
+        public string Setting
+        {
+            get => _setting;
+            set => SetValue(ref _setting, value);
+        }
 
         public TypographyLayerVPO Layer
         {
             get => _layer;
-            set => SetValue(ref _layer, value);
+            set
+            {
+                SetValue(ref _layer, value);
+                
+                if (_layer is null)
+                {
+                    Blocks.Clear();
+
+                }
+                else
+                {
+                    Blocks.AddMany(_layer.Blocks, true);
+                }
+
+                if (LayerBlockOnly)
+                {
+                    RaiseUpdated(nameof(ObservableBlocks));
+                }
+            }
         }
+
         public TypographyPage Page
         {
             get => _page;
-            set => SetValue(ref _page, value);
+            set
+            {
+                SetValue(ref _page, value);
+
+                if (_page is null)
+                {
+                    Layer = null;
+                    Layers.Clear();
+                }
+                else
+                {
+                    OnPageChanged(_page);
+                }
+            }
         }
 
         public double PageHeight
@@ -114,6 +242,10 @@ namespace MaoTouGu.JuXiaoYou.Pages
         public ViewList<TypographyPage>     Pages  { get; }
         public ViewList<TypographyLayerVPO> Layers { get; }
         public ViewList<TypographyBlockVPO> Blocks { get; }
+
+        public Dictionary<string, TypographyBlockVPO> Dictionary { get; }
+
+        public ViewList<NamedBitmap> Bitmaps { get; }
 
         public TypographyTemplate Template => _template;
 
@@ -145,5 +277,8 @@ namespace MaoTouGu.JuXiaoYou.Pages
         public ICommandEX SaveAs { get; }
         public ICommandEX Import { get; }
         public ICommandEX Export { get; }
+
+        public ICommandEX AddSetting    { get; }
+        public ICommandEX UpdateSetting { get; }
     }
 }

@@ -38,6 +38,8 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Blocks\_Image\" />
+      <Folder Include="Blocks\_Rectangle\" />
       <Folder Include="Documents\" />
       <Folder Include="GravatarWide\WithName\" />
       <Folder Include="GravatarWide\WithRarity\" />
