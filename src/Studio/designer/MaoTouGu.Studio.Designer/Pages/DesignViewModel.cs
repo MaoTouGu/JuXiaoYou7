@@ -7,6 +7,8 @@
 // ----------------------------------------------------------
 
 
+using System.Globalization;
+using System.Windows.Data;
 using MaoTouGu.JuXiaoYou.Pages.Commands;
 using MaoTouGu.JuXiaoYou.Visualizers.Core;
 using MaoTouGu.Studio.Database;
@@ -16,7 +18,7 @@ using MaoTouGu.Studio.Database.Utils;
 
 namespace MaoTouGu.JuXiaoYou.Pages
 {
-    public partial class DesignViewModel : JuXiaoYouPage
+    public partial class DesignViewModel : JuXiaoYouPage, IValueConverter
     {
         private readonly TypographyTemplate _template;
 
@@ -80,10 +82,12 @@ namespace MaoTouGu.JuXiaoYou.Pages
             RenameLayer = null;
             ExportLayer = null;
             ImportLayer = null;
-            RemoveLayer = null;
+            RemoveLayer = new RemoveLayerCommand(this);
             
             AddVisualizer = new AddVisualizerCommand(this);
+            AddImageBlock = new AddImageBlockCommand(this);
             AddTextBlock  = new AddTextCommand(this);
+            RemoveBlock   = new RemoveBlockCommand(this);
 
             AddSetting    = new AddSettingCommand(this);
             UpdateSetting = new UpdateSettingCommand(this);
@@ -164,6 +168,18 @@ namespace MaoTouGu.JuXiaoYou.Pages
             PageHeight = Math.Max(600, page.Height);
         }
 
+        /*******************************************************************
+         *
+         *
+         *
+         *
+         *
+         *******************************************************************/
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return 
+        }
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => throw new NotImplementedException();
         /*******************************************************************
          *
          *

@@ -28,7 +28,16 @@ namespace MaoTouGu.JuXiaoYou.Pages.Commands
 
             if (Context.Page == target)
             {
-                Context.Page = Context.Pages.LastOrDefault();
+                var index = Context.Pages.IndexOf(target);
+
+                if (index < Context.Pages.Count)
+                {
+                    Context.Page = Context.Pages.LastOrDefault();
+                }
+                else
+                {
+                    Context.Page = Context.Pages[index];
+                }
             }
         }
     }

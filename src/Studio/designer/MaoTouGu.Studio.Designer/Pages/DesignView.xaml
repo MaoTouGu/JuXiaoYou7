@@ -187,6 +187,7 @@
                         <ui:GhostButton ui:ControlAssist.CornerRadius="0"
                                         ui:ControlAssist.Icon="{StaticResource FeatherIcon.Save}"
                                         Content="另存为"
+                                        Command="{Binding SaveAs}"
                                         Height="32"
                                         HorizontalContentAlignment="Left"
                                         IconMode="Both"
@@ -238,6 +239,7 @@
                                         ui:ControlAssist.Icon="{StaticResource Text}"
                                         ui:ControlAssist.IsFilled="True"
                                         Content="添加装饰文本"
+                                        Command="{Binding AddTextBlock}"
                                         Height="48"
                                         HorizontalContentAlignment="Left"
                                         IconMode="Both" />
@@ -245,6 +247,7 @@
                         <ui:GhostButton ui:ControlAssist.CornerRadius="0"
                                         ui:ControlAssist.Icon="{StaticResource FeatherIcon.Image}"
                                         Content="添加装饰图片"
+                                        Command="{Binding AddImageBlock}"
                                         Height="48"
                                         HorizontalContentAlignment="Left"
                                         IconMode="Both" />
@@ -299,6 +302,8 @@
                                     ui:ControlAssist.IconDock="Top"
                                     ui:ControlAssist.IconMargin="0 8"
                                     Content="删除页面"
+                                    Command="{Binding RemovePage}"
+                                    CommandParameter="{Binding Page, Mode=OneWay}"
                                     Foreground="{DynamicResource Brush.Error400}"
                                     IconMode="Both" />
                 </Grid>
@@ -566,6 +571,8 @@
                                                 Width="32" />
                                 <ui:GhostButton ui:ControlAssist.CornerRadius="0"
                                                 ui:ControlAssist.Icon="{StaticResource FeatherIcon.Trash}"
+                                                Command="{Binding RemoveLayer}"
+                                                CommandParameter="{Binding Layer, Mode=OneWay}"
                                                 IconMode="Icon"
                                                 Padding="0"
                                                 Height="32"
@@ -667,6 +674,7 @@
                                     <ui:GhostButton ui:ControlAssist.CornerRadius="0"
                                                     ui:ControlAssist.Icon="{StaticResource FeatherIcon.Trash}"
                                                     Command="{Binding RemoveBlock}"
+                                                    CommandParameter="{Binding Block, Mode=OneWay}"
                                                     IconMode="Icon"
                                                     Padding="0"
                                                     Height="32"
