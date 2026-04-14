@@ -20,7 +20,11 @@ namespace MaoTouGu.JuXiaoYou.Pages
         public DesignView()
         {
             InitializeComponent();
-
+            PreviewKeyDown += OnPreviewKeyDown;
+        }
+        private void OnPreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            Debug.WriteLine($"Key = {e.Key}, Modifiers = {e.KeyboardDevice.Modifiers}");
         }
 
         private void Button_ReleaseCapture(object sender, RoutedEventArgs e)
@@ -131,12 +135,12 @@ namespace MaoTouGu.JuXiaoYou.Pages
                 viewer.ScrollToVerticalOffset(e.Delta + viewer.VerticalOffset);
                 e.Handled = true;
             }
-            else if(Keyboard.Modifiers == ModifierKeys.Shift)
+            else if (Keyboard.Modifiers == ModifierKeys.Shift)
             {
                 viewer.ScrollToHorizontalOffset(e.Delta + viewer.HorizontalOffset);
                 e.Handled = true;
             }
-            
+
         }
 
 
