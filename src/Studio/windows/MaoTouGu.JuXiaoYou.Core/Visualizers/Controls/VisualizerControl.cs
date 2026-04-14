@@ -44,6 +44,15 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Controls
             // 用一个VisualConnector连接V，方便寻找对应的ViewModel。
             VisualConnector.SetConnect(this, true);
             DataContextChanged += OnDataContextChanged;
+            Loaded += OnLoaded;
+        }
+        
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            if (Moniker is {} m && Options is {} o)
+            {
+                Setup(m, o);
+            }
         }
 
         /*******************************************************************

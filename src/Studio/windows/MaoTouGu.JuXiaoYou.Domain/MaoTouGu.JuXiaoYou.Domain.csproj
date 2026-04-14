@@ -16,22 +16,60 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Classifiers\" />
-      <Folder Include="Inspirations\" />
-      <Folder Include="LOSD\Grouping\" />
-      <Folder Include="LOSD\Systeming\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <Compile Include="..\..\..\..\scaffolds\Usings\Usings_Foundation.cs">
         <Link>Properties\Usings_Foundation.cs</Link>
       </Compile>
       <Compile Include="..\..\..\..\scaffolds\Usings\Usings_MaoTouGu.Shells.cs">
         <Link>Properties\Usings_MaoTouGu.Shells.cs</Link>
       </Compile>
+      <Compile Remove="Classifiers\**" />
+      <Compile Remove="Design\**" />
+      <Compile Remove="Inspirations\**" />
+      <Compile Remove="Internals\**" />
+      <Compile Remove="LOSD\**" />
+      <Compile Remove="Prototypings\**" />
+      <Compile Remove="Visualizers\**" />
+      <Compile Remove="Workflows\**" />
+      <Compile Remove="XDCModels\**" />
     </ItemGroup>
     
     <ItemGroup>
         <PackageReference Include="MaoTouGu.Shells.Generators" Version="1.0.4"/>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <EmbeddedResource Remove="Classifiers\**" />
+      <EmbeddedResource Remove="Design\**" />
+      <EmbeddedResource Remove="Inspirations\**" />
+      <EmbeddedResource Remove="Internals\**" />
+      <EmbeddedResource Remove="LOSD\**" />
+      <EmbeddedResource Remove="Prototypings\**" />
+      <EmbeddedResource Remove="Visualizers\**" />
+      <EmbeddedResource Remove="Workflows\**" />
+      <EmbeddedResource Remove="XDCModels\**" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Page Remove="Classifiers\**" />
+      <Page Remove="Design\**" />
+      <Page Remove="Inspirations\**" />
+      <Page Remove="Internals\**" />
+      <Page Remove="LOSD\**" />
+      <Page Remove="Prototypings\**" />
+      <Page Remove="Visualizers\**" />
+      <Page Remove="Workflows\**" />
+      <Page Remove="XDCModels\**" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <None Remove="Classifiers\**" />
+      <None Remove="Design\**" />
+      <None Remove="Inspirations\**" />
+      <None Remove="Internals\**" />
+      <None Remove="LOSD\**" />
+      <None Remove="Prototypings\**" />
+      <None Remove="Visualizers\**" />
+      <None Remove="Workflows\**" />
+      <None Remove="XDCModels\**" />
     </ItemGroup>
 </Project>

@@ -506,7 +506,7 @@
                                   HorizontalScrollBarVisibility="Auto"
                                   VerticalScrollBarVisibility="Auto"
                                   PreviewMouseWheel="ScrollViewer_OnMouseWheel">
-                        <AdornerDecorator>
+                        <AdornerDecorator MouseLeftButtonDown="Control_ClearSelection">
                             <ItemsControl x:Name="Items"
                                           ItemsSource="{Binding ObservableBlocks, Mode=OneWay}">
                                 <ItemsControl.LayoutTransform>

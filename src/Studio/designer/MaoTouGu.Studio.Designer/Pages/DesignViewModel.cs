@@ -248,7 +248,15 @@ namespace MaoTouGu.JuXiaoYou.Pages
             {
                 SetValue(ref _layerBlockOnly, value);
 
-                if (!value)
+                if (value)
+                {
+                    Layer = Layers.FirstOrDefault();
+                    if (Layer is not null)
+                    {
+                        Blocks.AddMany(Layer.Blocks, true);
+                    }
+                }
+                else
                 {
                     Layer = null;
                 }

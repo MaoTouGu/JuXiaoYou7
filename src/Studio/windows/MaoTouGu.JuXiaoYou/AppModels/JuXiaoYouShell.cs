@@ -11,47 +11,47 @@ namespace MaoTouGu.JuXiaoYou.AppModels
 {
     public class JuXiaoYouShell : ShellBase<MainWindow, StandaloneWindow>
     {
-        bool IsConfigExists()
-        {
-            return true;
-        }
-
-        void RoutingToConfigPage()
-        {
-
-        }
-
-        public void RoutingToStartupPage()
-        {
-            switch (GlobalSettings.AppSettings.StartupRouting)
-            {
-                case StartupRouting.Home:
-                    Navigate<HomeViewModel>();
-                    break;
-                case StartupRouting.Project:
-                    Navigate<ProjectViewModel>();
-                    break;
-                case StartupRouting.Prototype:
-                    Navigate<PrototypingViewModel>();
-                    break;
-                case StartupRouting.Inspiration:
-                    Navigate<InspirationViewModel>();
-                    break;
-                case StartupRouting.SliceNarrative:
-                    Navigate<SliceNarrativeViewModel>();
-                    break;
-                case StartupRouting.ConversationNarrative:
-                    Navigate<ConversationNarrativeViewModel>();
-                    break;
-                case StartupRouting.Outline:
-                    Navigate<OutlineViewModel>();
-                    break;
-                case StartupRouting.Texting:
-                    Navigate<TextingViewModel>();
-                    break;
-
-            }
-        }
+        // bool IsConfigExists()
+        // {
+        //     return true;
+        // }
+        //
+        // void RoutingToConfigPage()
+        // {
+        //
+        // }
+        //
+        // public void RoutingToStartupPage()
+        // {
+        //     switch (GlobalSettings.AppSettings.StartupRouting)
+        //     {
+        //         case StartupRouting.Home:
+        //             Navigate<HomeViewModel>();
+        //             break;
+        //         case StartupRouting.Project:
+        //             Navigate<ProjectViewModel>();
+        //             break;
+        //         case StartupRouting.Prototype:
+        //             Navigate<PrototypingViewModel>();
+        //             break;
+        //         case StartupRouting.Inspiration:
+        //             Navigate<InspirationViewModel>();
+        //             break;
+        //         case StartupRouting.SliceNarrative:
+        //             Navigate<SliceNarrativeViewModel>();
+        //             break;
+        //         case StartupRouting.ConversationNarrative:
+        //             Navigate<ConversationNarrativeViewModel>();
+        //             break;
+        //         case StartupRouting.Outline:
+        //             Navigate<OutlineViewModel>();
+        //             break;
+        //         case StartupRouting.Texting:
+        //             Navigate<TextingViewModel>();
+        //             break;
+        //
+        //     }
+        // }
 
         protected sealed override void OnStart()
         {

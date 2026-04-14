@@ -20,11 +20,6 @@ namespace MaoTouGu.JuXiaoYou.Pages
         public DesignView()
         {
             InitializeComponent();
-            PreviewKeyDown += OnPreviewKeyDown;
-        }
-        private void OnPreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            Debug.WriteLine($"Key = {e.Key}, Modifiers = {e.KeyboardDevice.Modifiers}");
         }
 
         private void Button_ReleaseCapture(object sender, RoutedEventArgs e)
@@ -60,15 +55,6 @@ namespace MaoTouGu.JuXiaoYou.Pages
 
             if (sender is not FrameworkElement fe || e.ClickCount < 2 || fe.DataContext is not TypographyBlockVPO { IsLock: false } block)
             {
-                layer = AdornerLayer.GetAdornerLayer(Items);
-
-                if (layer is null || _adorner is null)
-                {
-                    return;
-                }
-
-                layer.Remove(_adorner);
-                dc.Block = null;
                 return;
             }
 
@@ -95,6 +81,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
             layer.Add(resizeAdorner);
             _adorner = resizeAdorner;
 
+            e.Handled = true;
         }
 
 
@@ -158,6 +145,19 @@ namespace MaoTouGu.JuXiaoYou.Pages
             var baseScale = (int)(dc.IntScale / 10d * 10);
 
             dc.IntScale = Math.Clamp(baseScale - 10, 0, 400);
+        }
+        private void Control_ClearSelection(object sender, MouseButtonEventArgs e)
+        {
+            var layer = AdornerLayer.GetAdornerLayer(Items);
+            var dc    = ViewModel<DesignViewModel>();
+
+            if (layer is null || _adorner is null)
+            {
+                return;
+            }
+
+            layer.Remove(_adorner);
+            dc.Block = null;
         }
     }
 }

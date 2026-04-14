@@ -16,6 +16,11 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Blocks
             InitializeComponent();
         }
 
+        protected override void Setup(Moniker m, IVisualizerOptions options)
+        {
+            OptionChangedOverride(m, options);
+        }
+
         protected override void OptionChangedOverride(Moniker m, IVisualizerOptions options)
         {
             if (options is not RectangleVisualizer visualizer)
