@@ -16,19 +16,19 @@ namespace MaoTouGu.JuXiaoYou.Pages
             {
                 return;
             }
-            
+
             var projSetting = GlobalSettings.ProjectSettings;
-            
+
             //
             // 添加
             Context.Projects.Remove(project);
             projSetting.Projects.Remove(project);
 
-            
+
             //
             //
             if (projSetting.DefaultProject == project.Id &&
-                Context.Projects.Count > 0)
+                Context.Projects.Count     > 0)
             {
                 projSetting.DefaultProject = Context.Projects
                                                     .FirstOrDefault()
@@ -41,7 +41,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
                 Context.Project = Context.Projects
                                          .FirstOrDefault();
             }
-                
+
             //
             //
             GlobalSettings.SaveProjectSettings();

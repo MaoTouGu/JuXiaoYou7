@@ -77,22 +77,22 @@
 
                         </ui:ListBox>
                         <ui:CheckBox ui:ControlAssist.CornerRadius="0"
-                                         Content="自动匹配视觉效果"
-                                         HorizontalContentAlignment="Left"
-                                         Padding="8 6"/>
+                                     Content="自动匹配视觉效果"
+                                     HorizontalContentAlignment="Left"
+                                     Padding="8 6" />
 
                         <ui:GhostButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.Save}"
                                         Content="保存设置"
                                         HorizontalContentAlignment="Left"
                                         IconMode="Both"
                                         Padding="8" />
-                        
+
                         <ui:GhostButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.Trash}"
                                         Content="导出模板"
                                         HorizontalContentAlignment="Left"
                                         IconMode="Both"
                                         Padding="8" />
-                        
+
                         <ui:GhostButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.Trash}"
                                         Content="导入模板"
                                         HorizontalContentAlignment="Left"

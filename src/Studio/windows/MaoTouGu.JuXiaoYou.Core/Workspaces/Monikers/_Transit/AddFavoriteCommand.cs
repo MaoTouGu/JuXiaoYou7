@@ -15,7 +15,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Pages
             target.IsStar = !target.IsStar;
 
             var service = DatabaseManager.GetService<MonikerService>();
-            
+
             await service.Update(target);
         }
     }

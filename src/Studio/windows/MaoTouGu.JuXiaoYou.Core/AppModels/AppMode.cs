@@ -13,12 +13,12 @@ namespace MaoTouGu.JuXiaoYou.AppModels
         /// 无启动参数模式
         /// </summary>
         None,
-        
+
         /// <summary>
         /// 命令行模式
         /// </summary>
         Commandline,
-        
-        
+
+
     }
 }

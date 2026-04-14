@@ -8,7 +8,7 @@
         public const string FileName_Server     = "JuXiaoYou-V7-Server.Json";
         public const string FileName_Flyout     = "JuXiaoYou-V7-Flyout.Json";
         public const string FileName_Design     = "JuXiaoYou-Design.Json";
-        
+
         public static void FromFile(ISettingProvider<AppSettings> provider)
         {
             provider.FromFile(FileName, () => new AppSettings

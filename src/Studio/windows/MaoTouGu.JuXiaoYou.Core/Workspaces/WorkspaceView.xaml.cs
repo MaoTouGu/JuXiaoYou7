@@ -8,7 +8,7 @@
         {
             InitializeComponent();
         }
-        
+
         private void Button_CloseTab(object sender, RoutedEventArgs e)
         {
             if (sender is not Button { DataContext: NestedPage page })
@@ -20,11 +20,11 @@
 
 
 
-            var dc = ViewModel<WorkspaceViewModel>();
+            var dc    = ViewModel<WorkspaceViewModel>();
             var index = dc.Tabs.IndexOf(page);
 
             dc.Tabs.Remove(page);
-            
+
             if (index < dc.Tabs.Count)
             {
                 dc.Tab = dc.Tabs[index];

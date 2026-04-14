@@ -23,8 +23,8 @@ namespace MaoTouGu.JuXiaoYou.Services
             Collection = _List;
             Dictionary = new ReadOnlyDictionary<string, User>(_Dict);
         }
-        
-        
+
+
         private async Task OnUserChanged(UserSpot e)
         {
             var api = Ioc.SafeGet<IUserApiContract>();
@@ -33,7 +33,7 @@ namespace MaoTouGu.JuXiaoYou.Services
             {
                 return;
             }
-            
+
             if (e.Operation == DataOperation.Added)
             {
                 var r = await api.GetUserAsync(e.UserID);
@@ -42,7 +42,7 @@ namespace MaoTouGu.JuXiaoYou.Services
                 {
                     return;
                 }
-                
+
                 GUI.RunOnUIThread(() =>
                                   {
                                       if (_Dict.TryAdd(e.UserID, r.Value))
@@ -53,14 +53,14 @@ namespace MaoTouGu.JuXiaoYou.Services
             }
             else if (e.Operation == DataOperation.Updated)
             {
-                
+
                 var r = await api.GetUserAsync(e.UserID);
 
                 if (!r.IsFinished)
                 {
                     return;
                 }
-                
+
                 GUI.RunOnUIThread(() =>
                                   {
                                       if (_Dict.Remove(e.UserID) &&
@@ -80,7 +80,7 @@ namespace MaoTouGu.JuXiaoYou.Services
                                   });
             }
         }
-        
+
         private void OnUserChanged(UserChangeSpot e)
         {
             var usr = _Dict.GetValueOrDefault(e.UserID);
@@ -89,7 +89,7 @@ namespace MaoTouGu.JuXiaoYou.Services
             {
                 return;
             }
-            
+
             if (e.NewGravatar != e.OldGravatar)
             {
                 usr.Gravatar = e.NewGravatar;
@@ -116,7 +116,7 @@ namespace MaoTouGu.JuXiaoYou.Services
             {
                 return;
             }
-            
+
             GUI.RunOnUIThread(() =>
                               {
                                   foreach (var user in r.Value.Where(user => _Dict.TryAdd(user.Id, user)))
@@ -132,7 +132,7 @@ namespace MaoTouGu.JuXiaoYou.Services
             {
                 return;
             }
-            
+
             if (dataEvent is UserSpot us)
             {
                 await OnUserChanged(us);

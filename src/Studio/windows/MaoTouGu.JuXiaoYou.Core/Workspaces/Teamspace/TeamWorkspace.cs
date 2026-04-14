@@ -29,7 +29,7 @@ namespace MaoTouGu.JuXiaoYou.Workspaces
         public TeamspaceFolder     Vote   { get; }
         public VotingTeamspaceItem Voting { get; }
         public VotingTeamspaceItem Voted  { get; }
-        
-        
+
+
     }
 }

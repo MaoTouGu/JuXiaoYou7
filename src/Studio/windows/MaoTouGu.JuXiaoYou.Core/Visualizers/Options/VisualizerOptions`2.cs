@@ -12,7 +12,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers
         where TSetting : UserControl
         where TView : VisualizerControl
     {
-        
+
 
         [BsonIgnore]
         [Newtonsoft.Json.JsonIgnore]

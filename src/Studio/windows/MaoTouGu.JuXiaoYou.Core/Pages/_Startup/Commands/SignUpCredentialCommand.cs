@@ -9,7 +9,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
 {
     sealed class SignUpCredentialCommand(StartupViewModel target) : ContextCommand<Project, StartupViewModel>(target)
     {
-        protected override async void Execute( Project project)
+        protected override async void Execute(Project project)
         {
 
             var r = await Context.Object<Credential>(new SignUpCredentialViewModel(project));

@@ -5,7 +5,7 @@ namespace MaoTouGu.Foundation
     public abstract class Lifetime : ObservableObject, ICancelable, ILifetime, INotifyPropertyChangedEX
     {
 
-        void INotifyPropertyChangedEX.RaiseUpdated(string name)
+        void INotifyPropertyChangedEX.RaisePropertyChanged(string name)
         {
             RaiseUpdated(name);
         }

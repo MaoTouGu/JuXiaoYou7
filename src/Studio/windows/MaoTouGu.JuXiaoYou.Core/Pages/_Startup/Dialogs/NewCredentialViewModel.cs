@@ -12,12 +12,12 @@ namespace MaoTouGu.JuXiaoYou.Pages
         private string _account;
         private bool   _isDefault;
         private string _password;
-        
+
         public NewCredentialViewModel()
         {
-            
+
         }
-        
+
         public NewCredentialViewModel(Credential credential)
         {
             IsEditing = true;
@@ -55,7 +55,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
 
                 return val;
             }
-            
+
             return new Credential
             {
                 Account   = Account,

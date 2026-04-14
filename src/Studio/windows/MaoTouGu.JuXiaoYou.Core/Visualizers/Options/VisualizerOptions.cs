@@ -20,7 +20,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers
 
         protected void FireStructureChanged() => StructureChanged?.Invoke(this, null);
         protected void FireOptionChanged() => OptionChanged?.Invoke(this, null);
-        
+
         private void DoSaveCommand()
         {
             FireStructureChanged();
@@ -58,12 +58,12 @@ namespace MaoTouGu.JuXiaoYou.Visualizers
         [Newtonsoft.Json.JsonIgnore]
         [System.Text.Json.Serialization.JsonIgnore]
         public virtual int MinHeight => 40;
-        
+
         [BsonIgnore]
         [Newtonsoft.Json.JsonIgnore]
         [System.Text.Json.Serialization.JsonIgnore]
         public virtual int MinWidth => 40;
-        
+
         [BsonIgnore]
         [Newtonsoft.Json.JsonIgnore]
         [System.Text.Json.Serialization.JsonIgnore]
@@ -92,7 +92,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers
         [Newtonsoft.Json.JsonIgnore]
         [System.Text.Json.Serialization.JsonIgnore]
         public abstract string Name { get; }
-        
+
 
         [BsonIgnore]
         [Newtonsoft.Json.JsonIgnore]

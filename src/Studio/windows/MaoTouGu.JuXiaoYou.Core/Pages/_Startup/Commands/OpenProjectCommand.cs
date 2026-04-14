@@ -7,7 +7,7 @@
 // ----------------------------------------------------------
 using MaoTouGu.JuXiaoYou.Core;
 using MaoTouGu.JuXiaoYou.Pages;
-using  MaoTouGu.Studio.Database.Core;
+using MaoTouGu.Studio.Database.Core;
 
 namespace MaoTouGu.JuXiaoYou.Pages
 {
@@ -90,10 +90,10 @@ namespace MaoTouGu.JuXiaoYou.Pages
             //
             if (project.IsOnline)
             {
-               if(! await OpenOnlineProject(project))
-               {
-                   return;
-               }
+                if (!await OpenOnlineProject(project))
+                {
+                    return;
+                }
             }
             else
             {

@@ -13,9 +13,9 @@ namespace MaoTouGu.JuXiaoYou.Pages
     public sealed class ShareProjectViewModel : FlyoutRoot
     {
         private readonly Project _project;
-        
+
         private BitmapImage _qrCode;
-        
+
         public ShareProjectViewModel(Project project)
         {
             _project = project;
@@ -26,19 +26,19 @@ namespace MaoTouGu.JuXiaoYou.Pages
         protected override async void OnStart()
         {
             var json = JSON.Serialize(_project);
-            
+
             //
             //
             QrCode = await QR.GenerateAsync(json);
-            
-            
+
+
             //
             //
             base.OnStart();
         }
 
         public Project Project => _project;
-        
+
         public ICommandEX Save { get; }
 
         public BitmapImage QrCode

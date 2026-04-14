@@ -39,7 +39,7 @@ namespace MaoTouGu.JuXiaoYou.Workspaces
             item      = item2;
             return true;
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -109,7 +109,7 @@ namespace MaoTouGu.JuXiaoYou.Workspaces
 
             return true;
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -148,7 +148,7 @@ namespace MaoTouGu.JuXiaoYou.Workspaces
 
             return true;
         }
-        
+
         /// <summary>
         /// 
         /// </summary>

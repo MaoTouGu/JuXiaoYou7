@@ -42,7 +42,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Controls
                                           control2.OptionChangedOverride(throttleEvent.Moniker, throttleEvent.Options);
                                           control2._optionEvent = null;
                                       });
-                    
+
                     //
                     //
                     if (throttleEvent.VPO is not null)
@@ -52,20 +52,14 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Controls
                                      .Base64 = throttleEvent.Options.ToBase64();
                     }
                 }
-                
-                
+
+
                 if (control._structureEvent is not null)
                 {
                     var throttleEvent = control._structureEvent;
                     var control2      = control;
                     GUI.RunOnUIThread(() =>
                                       {
-                                          if (control2._optionEvent is not null)
-                                          {
-                                              control2.OptionChangedOverride(throttleEvent.Moniker, throttleEvent.Options);
-                                              control2._optionEvent = null;
-                                          }
-                                      
                                           if (control2._structureEvent is not null)
                                           {
                                               control2.StructureChangedOverride(throttleEvent.Moniker, throttleEvent.Options);

@@ -28,13 +28,13 @@ namespace MaoTouGu.JuXiaoYou.Indexing
                 return;
             }
 
-            
+
 
             try
             {
 
                 Moniker = r;
-            
+
                 OriginalSource.Add(r);
                 Monikers.Add(r);
             }
@@ -53,7 +53,7 @@ namespace MaoTouGu.JuXiaoYou.Indexing
 
             await Navigate(new MonikerTemplateVisualizerViewModel(target));
         }
-        
+
         private async void DoRemoveCommand(Moniker target)
         {
             if (target is null)
@@ -70,8 +70,8 @@ namespace MaoTouGu.JuXiaoYou.Indexing
             {
 
                 await Method.RemoveAsync(this, target);
-            
-            
+
+
                 OriginalSource.Remove(target);
                 Monikers.Remove(target);
             }

@@ -18,8 +18,22 @@ namespace MaoTouGu.JuXiaoYou.Pages.Commands
 
             //
             //
-            var visualizer = new TypographyText();
-            
+            var visualizer = new TypographyText
+            {
+                Id                  = ID.Get(),
+                Name                = "文本",
+                Text                = "文本",
+                Width               = 100,
+                Height              = 40,
+                Background          = "#00000000",
+                BorderBrush         = "#00000000",
+                FontFamily          = "Micorsoft Yahei",
+                FontWeight          = 2,
+                FontSize            = 14,
+                VerticalAlignment   = 3,
+                HorizontalAlignment = 3,
+            };
+
             //
             //
             AppendVisualizer(visualizer);

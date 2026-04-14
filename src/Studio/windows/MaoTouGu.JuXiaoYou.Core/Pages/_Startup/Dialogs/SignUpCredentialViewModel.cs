@@ -4,7 +4,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
 {
     public sealed class SignUpCredentialViewModel : ObjectRoot<Credential>
     {
-        private RemoteApi     _api;
+        private RemoteApi  _api;
         private Credential _credential;
         private string     _url;
         private string     _userName;
@@ -97,44 +97,44 @@ namespace MaoTouGu.JuXiaoYou.Pages
                 Logger.Warn($"注册失败 = {e.Message}");
             }
         }
-        
-        
+
+
         public string Email
         {
             get => _email;
             set => TryFinishAndSetValue(ref _email, value);
         }
-        
+
         public string RepeatPwd
         {
             get => _repeatPwd;
             set => TryFinishAndSetValue(ref _repeatPwd, value);
         }
-        
+
         public string Password
         {
             get => _password;
             set => TryFinishAndSetValue(ref _password, value);
         }
-        
+
         public string DisplayName
         {
             get => _displayName;
             set => TryFinishAndSetValue(ref _displayName, value);
         }
-        
+
         public string UserName
         {
             get => _userName;
             set => TryFinishAndSetValue(ref _userName, value);
         }
-        
+
         public string Url
         {
             get => _url;
             set => TryFinishAndSetValue(ref _url, value);
         }
-        
+
 
 
         public ICommandEX SignUp { get; }

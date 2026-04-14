@@ -10,7 +10,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Core
     public interface IMetadataSourceOnlySetting
     {
         /// <summary>
-        /// 表示数据来源。
+        /// 表示喵喵咒语。
         /// </summary>
         string MetadataSource { get; set; }
     }

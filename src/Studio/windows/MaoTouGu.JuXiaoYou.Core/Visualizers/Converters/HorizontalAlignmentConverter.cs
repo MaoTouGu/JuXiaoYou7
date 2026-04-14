@@ -17,19 +17,21 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Commons
             {
                 1 => HorizontalAlignment.Center,
                 2 => HorizontalAlignment.Right,
+                3 => HorizontalAlignment.Stretch,
                 _ => HorizontalAlignment.Left,
             };
         }
-        
+
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var align = value is HorizontalAlignment t ? t : HorizontalAlignment.Stretch;
 
             return align switch
             {
-                HorizontalAlignment.Center => 1,
-                HorizontalAlignment.Right => 2,
-                _                        => 0,
+                HorizontalAlignment.Center  => 1,
+                HorizontalAlignment.Right   => 2,
+                HorizontalAlignment.Stretch => 3,
+                _                           => 0,
             };
         }
     }

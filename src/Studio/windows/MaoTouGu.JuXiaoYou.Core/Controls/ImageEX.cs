@@ -102,7 +102,7 @@ namespace MaoTouGu.JuXiaoYou.Controls
                 // 锁X轴
                 SetValue(XProperty, x);
             }
-            
+
             if (y + iH < s.PixelHeight)
             {
                 SetValue(YProperty, y);
@@ -153,7 +153,7 @@ namespace MaoTouGu.JuXiaoYou.Controls
 
             if (s.PixelWidth < vW && s.PixelHeight < vH)
             {
-                x = (short)((vW - s.PixelWidth) / 2f);
+                x = (short)((vW - s.PixelWidth)  / 2f);
                 y = (short)((vH - s.PixelHeight) / 2f);
                 drawingContext.DrawImage(s, new Rect(x, y, s.PixelWidth, s.PixelHeight));
                 return;
@@ -168,7 +168,7 @@ namespace MaoTouGu.JuXiaoYou.Controls
                 // 锁X轴
                 x = 0;
             }
-            
+
             if (y + iH > s.PixelHeight)
             {
                 y = 0;

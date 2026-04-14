@@ -40,7 +40,7 @@ namespace MaoTouGu.JuXiaoYou.Workspaces
             {
                 var topClassWI = viewModel.WorldView
                                           .GetTopClassWorkspaceItem(subClassWI.ParentID);
-                
+
                 viewModel.Open(new FilterViewModel(topClassWI.Instance, subClassWI.Instance, viewModel));
                 return;
             }
@@ -217,7 +217,7 @@ namespace MaoTouGu.JuXiaoYou.Workspaces
             }
 
         }
-        
+
         private async void MenuItem_AddExists(object sender, RoutedEventArgs e)
         {
             if (!this.TryGetMonikerWorkspace(sender, out var viewModel, out var item, out var workspace))

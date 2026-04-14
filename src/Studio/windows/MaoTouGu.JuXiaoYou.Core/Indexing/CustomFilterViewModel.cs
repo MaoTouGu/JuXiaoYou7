@@ -10,7 +10,7 @@ namespace MaoTouGu.JuXiaoYou.Indexing
     public sealed class CustomFilterViewModel : ObjectRoot<bool>
     {
         private readonly int _HashCode;
-        
+
         public CustomFilterViewModel(CustomFilter filter)
         {
             Filter    = filter;

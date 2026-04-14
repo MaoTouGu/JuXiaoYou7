@@ -9,6 +9,6 @@ namespace MaoTouGu.JuXiaoYou.Startups.Prototypes
 {
     public sealed class PrototypeFirstScreenViewModel : SystemPage
     {
-        
+
     }
 }

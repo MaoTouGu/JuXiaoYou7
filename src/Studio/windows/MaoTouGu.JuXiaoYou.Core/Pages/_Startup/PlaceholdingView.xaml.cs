@@ -12,8 +12,8 @@
         protected override void OnLoaded()
         {
             base.OnLoaded();
-            
-            if(Ioc.Get<IAppModel>() is IShellBase shell)
+
+            if (Ioc.Get<IAppModel>() is IShellBase shell)
             {
                 shell.Startup();
             }

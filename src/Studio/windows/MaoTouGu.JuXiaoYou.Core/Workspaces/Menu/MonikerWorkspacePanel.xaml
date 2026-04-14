@@ -226,8 +226,8 @@
                 </DockPanel.ContextMenu>
                 <ui:Iconify Foreground="#90A800"
                             Icon="{StaticResource BookmarkList}"
-                            IconSize="21" 
-                            IsFilled="True"/>
+                            IconSize="21"
+                            IsFilled="True" />
 
                 <TextBlock Margin="8 0 0 0"
                            Text="按标签分类"
@@ -314,7 +314,7 @@
                         <ui:MenuItem Header="导入"
                                      Click="MenuItem_ImportFilter"
                                      CommandParameter="{Binding}" />
-                        <Separator/>
+                        <Separator />
                         <ui:MenuItem Header="编辑"
                                      Click="MenuItem_EditFilter"
                                      CommandParameter="{Binding}" />

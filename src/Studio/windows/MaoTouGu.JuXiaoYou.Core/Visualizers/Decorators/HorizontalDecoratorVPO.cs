@@ -7,8 +7,8 @@
 // ----------------------------------------------------------
 namespace MaoTouGu.JuXiaoYou.Visualizers.Core
 {
-    public sealed class HorizontalDecoratorVPO/* : DecoratorVPO<TypographyHorizontalDecorator>*/
+    public sealed class HorizontalDecoratorVPO /* : DecoratorVPO<TypographyHorizontalDecorator>*/
     {
-        
+
     }
 }

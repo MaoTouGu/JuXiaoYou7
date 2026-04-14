@@ -9,6 +9,6 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Core
 {
     public sealed class SquareDecoratorVPO
     {
-        
+
     }
 }

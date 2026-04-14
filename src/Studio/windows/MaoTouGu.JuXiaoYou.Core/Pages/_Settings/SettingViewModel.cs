@@ -9,6 +9,6 @@ namespace MaoTouGu.JuXiaoYou.Pages
 {
     public class SettingViewModel : SystemPage
     {
-        
+
     }
 }

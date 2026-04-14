@@ -21,7 +21,7 @@
                 <Setter Property="Margin" Value="0 0 0 6" />
             </Style>
 
-            <BindingProxy x:Key="ViewModel" ViewModel="{Binding}"/>
+            <BindingProxy x:Key="ViewModel" ViewModel="{Binding}" />
 
             <DataTemplate DataType="{x:Type core:Domain}">
                 <Grid Height="135">
@@ -29,10 +29,10 @@
                         <ui:ContextMenu Placement="Bottom">
                             <ui:MenuItem Header="编辑"
                                          Command="{Binding Source={StaticResource ViewModel},Path=ViewModel.Edit}"
-                                         CommandParameter="{Binding}"/>
+                                         CommandParameter="{Binding}" />
                             <ui:MenuItem Header="删除"
                                          Command="{Binding Source={StaticResource ViewModel},Path=ViewModel.Remove}"
-                                         CommandParameter="{Binding}"/>
+                                         CommandParameter="{Binding}" />
                         </ui:ContextMenu>
                     </Grid.ContextMenu>
                     <controls:ImageEX DockPanel.Dock="Left"

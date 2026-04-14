@@ -14,9 +14,9 @@ namespace MaoTouGu.JuXiaoYou.Pages
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var setting = GlobalSettings.ProjectSettings;
-            
-            
-            if (string.IsNullOrEmpty(setting.DefaultProject) || 
+
+
+            if (string.IsNullOrEmpty(setting.DefaultProject) ||
                 value is not Project project)
             {
                 return Boxing.False;

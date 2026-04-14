@@ -20,7 +20,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
 
             var proj        = r.Value;
             var projSetting = GlobalSettings.ProjectSettings;
-            
+
 
             //
             // 如果没有默认项目，则设置默认项目。
@@ -37,7 +37,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
             //
             // 选择。
             Context.Project = proj;
-                
+
             //
             //
             Context.UpdateDefaultProject();

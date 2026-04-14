@@ -1,5 +1,4 @@
-﻿
-namespace MaoTouGu.Studio.Controls
+﻿namespace MaoTouGu.Studio.Controls
 {
     /// <summary>
     /// Converter that checks equality between value and parameter.

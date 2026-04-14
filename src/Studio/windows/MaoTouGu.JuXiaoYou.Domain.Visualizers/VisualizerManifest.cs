@@ -8,7 +8,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers
     {
         /*
          *
-            343A75655BE14136A6D9E1073FFC9078
+            
             97E17BF4B1F040D3B30596EDE05BFEC2
             FD05FE4FA7244FFFBD393EB4386F487C
             E0267406B5814A51963E9F1663CFD8F5
@@ -40,6 +40,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers
             FeatureManager.AsVisualizer<WithRarityGravatarVisualizer>();
             FeatureManager.AsVisualizer<RectangleVisualizer>();
             FeatureManager.AsVisualizer<RadarVisualizer>();
+            FeatureManager.AsVisualizer<TextSourceVisualizer>();
         }
 
         public override void RegisterFeatures()

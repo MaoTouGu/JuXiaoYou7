@@ -13,7 +13,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
     {
         private Credential _credential;
         private Project    _project;
-        
+
         public StartupViewModel()
         {
 
@@ -22,15 +22,15 @@ namespace MaoTouGu.JuXiaoYou.Pages
             Dotate    = new OpenLinkCommand { Url = "explorer.exe", Arguments = I18N.GetText("App.Dotate") };
             Settings  = new NavigationCommand<SettingViewModel>(this);
 
-            AddProject       = new AddProjectCommand(this);
-            CreateProject    = new CreateProjectCommand(this);
-            EditProject      = new EditProjectCommand(this);
-            RemoveProject    = new RemoveProjectCommand(this);
-            ShareProject     = new ShareProjectCommand(this);
-            OpenProject      = new OpenProjectCommand(this);
-            
+            AddProject    = new AddProjectCommand(this);
+            CreateProject = new CreateProjectCommand(this);
+            EditProject   = new EditProjectCommand(this);
+            RemoveProject = new RemoveProjectCommand(this);
+            ShareProject  = new ShareProjectCommand(this);
+            OpenProject   = new OpenProjectCommand(this);
+
             AsDefaultProject = new AsDefaultProjectCommand(this);
-            
+
 
             AddCredential    = new AddCredentialCommand(this);
             SignUpCredential = new SignUpCredentialCommand(this);
@@ -57,7 +57,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
             UpdateDefaultProject();
         }
 
-        
+
         public Credential Credential
         {
             get => _credential;
@@ -114,7 +114,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
         public ICommandEX RemoveProject { get; }
 
         //public ICommandEX AsDefaultCredentials { get; }
-        public ICommandEX AsDefaultProject     { get; }
+        public ICommandEX AsDefaultProject { get; }
 
         public ICommandEX AddCredential    { get; }
         public ICommandEX SignUpCredential { get; }

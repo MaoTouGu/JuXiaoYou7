@@ -9,11 +9,11 @@ namespace MaoTouGu.JuXiaoYou
 {
     public static class SR
     {
-        
+
         public const string Image_All = "支持的图片文件|*.png;*.jpg;*.jpeg;*.bmp";
         public const string Image_Png = "PNG图片文件|*.png";
-        
-        
+
+
         public static string Title_Success    => I18N.GetText("txt.Title.Success");
         public static string Title_Info       => I18N.GetText("txt.Title.Info");
         public static string Title_Danger     => I18N.GetText("txt.Title.Danger");

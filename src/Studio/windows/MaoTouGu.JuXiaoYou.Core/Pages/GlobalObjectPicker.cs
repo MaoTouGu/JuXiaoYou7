@@ -11,7 +11,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
     {
         string PropertyName { get; }
     }
-    
+
     public sealed class GlobalObjectPicker<T> : PickerRoot<T>, IGlobalObjectPicker
     {
         public GlobalObjectPicker(IEnumerable<T> collection, string propertyName) : base()
@@ -19,7 +19,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
             Collection.AddMany(collection, true);
             PropertyName = propertyName;
         }
-        
+
         public string PropertyName { get; }
     }
 }

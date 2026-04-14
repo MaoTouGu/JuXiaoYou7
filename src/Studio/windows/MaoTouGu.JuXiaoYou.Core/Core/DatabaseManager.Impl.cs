@@ -11,7 +11,7 @@ namespace MaoTouGu.JuXiaoYou.Core
 {
     partial class DatabaseManager
     {
-        
+
         class Remote : Disposable, IDatabaseManager
         {
             private readonly ConcurrentDictionary<string, DatabaseStub> _dictionary = new();

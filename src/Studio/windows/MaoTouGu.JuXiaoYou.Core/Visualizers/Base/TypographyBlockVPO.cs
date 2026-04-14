@@ -9,7 +9,7 @@
 
 namespace MaoTouGu.JuXiaoYou.Visualizers.Core
 {
-    public abstract class TypographyBlockVPO : ObservableObjectEX<JuXiaoYouPage>
+    public abstract class TypographyBlockVPO : ObservableObjectEX<JuXiaoYouPage>, INotifyPropertyChangedEX
     {
         private IVisualizerOptions _options;
 
@@ -28,7 +28,14 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Core
         }
 
         protected abstract bool CanAccept(TypographyBlock block);
+
         protected abstract TypographyBlockVPO OnCreate(TypographyBlock block, Moniker moniker);
+
+
+        public void RaisePropertyChanged(string name)
+        {
+            RaiseUpdated(name);
+        }
 
         public string Id => Base.Id;
 

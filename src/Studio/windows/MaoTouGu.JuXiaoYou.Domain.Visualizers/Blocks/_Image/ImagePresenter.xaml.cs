@@ -24,12 +24,15 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Blocks
                 return;
             }
 
-            var brush   = new SolidColorBrush();
-            var binding = GetBinding(m, visualizer.MetadataSource);
-
-            
-            Image.SetBinding(ImageSystem.SourceProperty, binding);
-            Background = brush;
+            if (string.IsNullOrEmpty(visualizer.MetadataSource))
+            {
+                BindingOperations.ClearBinding(Image, Image.SourceProperty);
+            }
+            else
+            {
+                var binding = GetBinding(m, visualizer.MetadataSource);
+                Image.SetBinding(ImageSystem.SourceProperty, binding);
+            }
         }
     }
 }

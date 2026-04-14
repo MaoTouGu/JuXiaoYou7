@@ -10,7 +10,7 @@ using MaoTouGu.JuXiaoYou.Visualizers.Commons;
 namespace MaoTouGu.JuXiaoYou.Visualizers
 {
     public abstract class MetadataSourceVisualizerOptions<TView> : VisualizerOptions<MetadataSourceOnlySettingView, TView>,
-        IVisualizerOptions, 
+        IVisualizerOptions,
         IVisualizerGenerator,
         IMetadataSourceOnlySetting
         where TView : VisualizerControl

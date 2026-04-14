@@ -8,7 +8,7 @@
         {
             InitializeComponent();
         }
-        
+
         private async void Button_Add(object sender, RoutedEventArgs e)
         {
             var dc = ViewModel<CustomFilterViewModel>();
@@ -18,18 +18,18 @@
             {
                 return;
             }
-            
+
             ((KeywordIntersectionFilter)dc.Filter).Keywords.Add(r.Value);
             dc.Success("提示", "添加成功");
         }
-        
+
         private async void Button_Remove(object sender, RoutedEventArgs e)
         {
             var dc = ViewModel<CustomFilterViewModel>();
-            
+
             if (sender is Button { DataContext: string keyword })
             {
-                
+
                 ((KeywordIntersectionFilter)dc.Filter).Keywords.Add(keyword);
                 dc.Success("提示", "添加成功");
             }

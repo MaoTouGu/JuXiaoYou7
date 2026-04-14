@@ -9,35 +9,35 @@ namespace MaoTouGu.Studio.Database.Topology
 {
     public sealed class TypographyText : TypographyBlock
     {
-        private int            _fontStyle;
-        private int            _fontSize;
-        private int            _fontWeight;
-        private int            _textAlignment;
-        private int            _horizontalAlignment;
-        private int            _verticalAlignment;
-        private int            _borderThickness;
+        private bool _isBold;
+        private int  _fontSize;
+        private int  _fontWeight;
+        private int  _textAlignment;
+        private int  _horizontalAlignment;
+        private int  _verticalAlignment;
 
         private string _background;
         private string _foreground;
         private string _fontFamily;
         private string _text;
         private string _borderBrush;
-        
+
         private Int32CornerRadius _cornerRadius;
+        private Int32Thickness    _borderThickness;
         private Int32Thickness    _padding;
 
         public Int32Thickness Padding
         {
             get => _padding;
             set => SetValue(ref _padding, value);
-        }        
+        }
 
-        public int BorderThickness
+        public Int32Thickness BorderThickness
         {
             get => _borderThickness;
             set => SetValue(ref _borderThickness, value);
         }
-        
+
         public string BorderBrush
         {
             get => _borderBrush;
@@ -63,6 +63,7 @@ namespace MaoTouGu.Studio.Database.Topology
         /// <para>0，代表Top</para>
         /// <para>1，代表Center</para>
         /// <para>2，代表Bottom</para>
+        /// <para>3，代表Stretch</para>
         /// </remarks>
         public int VerticalAlignment
         {
@@ -77,13 +78,14 @@ namespace MaoTouGu.Studio.Database.Topology
         /// <para>0，代表Left</para>
         /// <para>1，代表Center</para>
         /// <para>2，代表Right</para>
+        /// <para>3，代表Stretch</para>
         /// </remarks>
         public int HorizontalAlignment
         {
             get => _horizontalAlignment;
             set => SetValue(ref _horizontalAlignment, value);
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -122,11 +124,11 @@ namespace MaoTouGu.Studio.Database.Topology
             get => _fontSize;
             set => SetValue(ref _fontSize, value);
         }
-        
-        public int FontStyle
+
+        public bool IsBold
         {
-            get => _fontStyle;
-            set => SetValue(ref _fontStyle, value);
+            get => _isBold;
+            set => SetValue(ref _isBold, value);
         }
 
         public string FontFamily

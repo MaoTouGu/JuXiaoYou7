@@ -9,18 +9,18 @@
              d:DesignHeight="300" d:DesignWidth="300"
              d:DataContext="{d:DesignInstance Type={x:Type local:IMetadataSourceOnlySetting}, IsDesignTimeCreatable=True}">
     <StackPanel>
-        <HeaderedContentControl Header="数据来源"
+        <HeaderedContentControl Header="喵喵咒语"
                                 Style="{StaticResource SettingItem}">
             <ui:SingleLine Text="{Binding MetadataSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Delay=100}" />
         </HeaderedContentControl>
 
 
         <ui:MainButton ui:ControlAssist.CornerRadius="0"
-                           ui:ControlAssist.Icon="{StaticResource FeatherIcon.ArrowLeft}"
-                           Command="{Binding Save}"
-                           Content="保存"
-                           Height="32"
-                           Margin="0 8"
-                           Style="{StaticResource MainButton.HighlightB}"/>
+                       ui:ControlAssist.Icon="{StaticResource FeatherIcon.ArrowLeft}"
+                       Command="{Binding Save}"
+                       Content="保存"
+                       Height="32"
+                       Margin="0 8"
+                       Style="{StaticResource MainButton.HighlightB}" />
     </StackPanel>
 </UserControl>

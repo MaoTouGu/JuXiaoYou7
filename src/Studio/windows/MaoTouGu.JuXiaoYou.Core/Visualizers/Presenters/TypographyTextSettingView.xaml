@@ -12,53 +12,53 @@
              d:DataContext="{d:DesignInstance Type={x:Type core:TypographyTextVPO}, IsDesignTimeCreatable=True}">
     <StackPanel>
         <HeaderedContentControl Header="文本"
+                                Margin="0 0 0 8"
                                 Style="{StaticResource SettingItem}">
             <ui:SingleLine Text="{Binding Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Delay=100}" />
         </HeaderedContentControl>
-        
-        <Expander Header="外观">
-            <StackPanel>
-                <local:FontFamilyEditorItem/>
-                <local:FontWeightEditorItem/>
-                
-                <WrapPanel>
-                    
-                    <HeaderedContentControl Header="背景色"
-                                            Style="{StaticResource SettingItem}">
-                        <ux:PortableColorPicker SelectedColor="{Binding Background, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={x:Static Converters.ToColor}}"
-                                                HorizontalAlignment="Left"
-                                                Height="40"
-                                                Width="40" />
-                    </HeaderedContentControl>
-                    
-                    <HeaderedContentControl Header="边框"
-                                            Style="{StaticResource SettingItem}">
-                        <ux:PortableColorPicker SelectedColor="{Binding BorderBrush, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={x:Static Converters.ToColor}}"
-                                                HorizontalAlignment="Left"
-                                                Height="40"
-                                                Width="40" />
-                    </HeaderedContentControl>
-                    
-                    <HeaderedContentControl Header="边框大小"
-                                            Style="{StaticResource SettingItem}">
-                        <ui:SingleLine Text="{Binding BorderThickness, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Delay=100}" />
-                    </HeaderedContentControl>
-                </WrapPanel>
-            </StackPanel>
-        </Expander>
-        
-        <Expander Header="文字属性">
-            <StackPanel>
-                <local:FontFamilyEditorItem/>
-                <local:FontWeightEditorItem/>
-                <local:FontStyleEditorItem/>
-                
-                <HeaderedContentControl Header="边框大小"
-                                        Style="{StaticResource SettingItem}">
-                    <ui:SingleLine Text="{Binding FontSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Delay=100}" />
-                </HeaderedContentControl>
-            </StackPanel>
-        </Expander>
-        <local:CornerRadiusEditorItem></local:CornerRadiusEditorItem>
+
+        <HeaderedContentControl Header="背景色"
+                                Margin="0 0 0 8"
+                                Style="{StaticResource SettingItem}">
+            <ux:PortableColorPicker SelectedColor="{Binding Background, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={x:Static Converters.ToColor}}"
+                                    HorizontalAlignment="Left"
+                                    Height="40"
+                                    Width="40" />
+        </HeaderedContentControl>
+
+        <HeaderedContentControl Header="边框"
+                                Margin="0 0 0 8"
+                                Style="{StaticResource SettingItem}">
+            <ux:PortableColorPicker SelectedColor="{Binding BorderBrush, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={x:Static Converters.ToColor}}"
+                                    HorizontalAlignment="Left"
+                                    Height="40"
+                                    Width="40" />
+        </HeaderedContentControl>
+
+        <local:CornerRadiusEditorItem />
+        <local:ThicknessEditorItem/>
+        <local:BorderThicknessEditorItem/>
+        <local:FontFamilyEditorItem />
+        <local:FontWeightEditorItem />
+        <local:FontStyleEditorItem />
+
+        <HeaderedContentControl Header="前景色"
+                                Margin="0 0 0 8"
+                                Style="{StaticResource SettingItem}">
+            <ux:PortableColorPicker SelectedColor="{Binding Foreground, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={x:Static Converters.ToColor}}"
+                                    HorizontalAlignment="Left"
+                                    Height="40"
+                                    Width="40" />
+        </HeaderedContentControl>
+
+        <HeaderedContentControl Header="字体大小"
+                                Margin="0 0 0 8"
+                                Style="{StaticResource SettingItem}">
+            <ui:SingleLine Text="{Binding FontSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Delay=100}" />
+        </HeaderedContentControl>
+
+
+        <local:HorizontalAlignmentEditorItem />
+        <local:VerticalAlignmentEditorItem />
     </StackPanel>
 </UserControl>

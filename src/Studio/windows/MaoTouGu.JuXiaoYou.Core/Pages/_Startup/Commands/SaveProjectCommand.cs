@@ -19,7 +19,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
             {
                 return;
             }
-            
+
             //
             //
             JSON.ToFile(r.Value, Context.Project);

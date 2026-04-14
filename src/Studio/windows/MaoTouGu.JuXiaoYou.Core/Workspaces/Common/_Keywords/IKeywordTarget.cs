@@ -11,7 +11,7 @@ namespace MaoTouGu.JuXiaoYou.Workspaces.Common
     {
         Task AddKeyword();
         Task RemoveKeyword(Keyword keyword);
-        
+
         ViewList<Keyword> Keywords { get; }
     }
 }

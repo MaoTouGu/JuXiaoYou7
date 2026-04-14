@@ -7,7 +7,7 @@
 // ----------------------------------------------------------
 namespace MaoTouGu.JuXiaoYou.Indexing
 {
-    public class ByStarRankingSettingViewModel 
+    public class ByStarRankingSettingViewModel
     {
     }
 }

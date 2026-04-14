@@ -16,8 +16,8 @@
         <LinearGradientBrush StartPoint="0 0"
                              EndPoint="0 1">
             <GradientStop Color="{Binding Settings[Color], Converter={x:Static Converters.ToColor}}"
-                          Offset="0"/>
-            <GradientStop Color="Transparent" Offset="0.9"/>
+                          Offset="0" />
+            <GradientStop Color="Transparent" Offset="0.9" />
         </LinearGradientBrush>
     </UserControl.Background>
     <DockPanel Margin="8"
@@ -29,8 +29,8 @@
                                     Stroke="{Binding Settings[Start_Color], Converter={x:Static Converters.ToBrush}}"
                                     Value="{Binding Settings[Star], Mode=OneWay, Converter={x:Static this:NumericSettingConverter.Instance}}"
                                     Maximum="{Binding Settings[Maximum], Mode=OneWay, Converter={x:Static this:NumericSettingConverter.Instance}}"
-                                    Height="21"/>
-        <Border DockPanel.Dock="Top" 
+                                    Height="21" />
+        <Border DockPanel.Dock="Top"
                 ImageSystem.Source="{Binding Gravatar, Mode=OneWay}"
                 ImageSystem.Fallback="Gravatar"
                 Height="84"
@@ -39,6 +39,6 @@
 
         <TextBlock Margin="0 8"
                    Text="{Binding FriendlyName, Mode=OneWay}"
-                   TextAlignment="Center"/>
+                   TextAlignment="Center" />
     </DockPanel>
 </UserControl>

@@ -68,7 +68,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Controls
 
         protected virtual void OptionChangedOverride(Moniker m, IVisualizerOptions options)
         {
-            
+
         }
 
         protected virtual void StructureChangedOverride(Moniker m, IVisualizerOptions options)

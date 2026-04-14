@@ -1,5 +1,4 @@
-﻿
-using System.Windows.Markup;
+﻿using System.Windows.Markup;
 
 namespace MaoTouGu.Studio.Controls
 {
@@ -12,7 +11,7 @@ namespace MaoTouGu.Studio.Controls
         public event ContentSizeChangedHandler ContentSizeChanged;
 
         private Size _contentSize;
-        
+
         void IAddChild.AddChild(object value)
         {
             if (value is FrameworkElement fe)
@@ -22,7 +21,7 @@ namespace MaoTouGu.Studio.Controls
         }
         void IAddChild.AddText(string text)
         {
-            
+
         }
 
         public Size ContentSize

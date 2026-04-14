@@ -10,6 +10,6 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Core
 {
     public abstract class DecoratorVPO<T> : TypographyBlockVPO<T> where T : TypographyBlock
     {
-        
+
     }
 }

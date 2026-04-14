@@ -139,7 +139,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Pages
 
             await FilterMethod.AddMonikerAndUniqueReference(
                                                             viewModel,
-                                                            topClassWI.Instance, 
+                                                            topClassWI.Instance,
                                                             instance.Instance,
                                                             _uniqueService);
         }
@@ -150,7 +150,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Pages
         }
 
         public Task Add(PageBase viewModel, FolderWrapperItem instance) => FilterMethod.AddMonikerAndReference(viewModel, instance.Folder, _referenceService);
-        
+
         /*******************************************************************
          *
          *
@@ -348,7 +348,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Pages
             var filterMI = new BySettingFilterMethodItem(filter);
 
             BySetting.Items.Add(filterMI);
-            
+
             //
             //
             await viewModel.Object(new CustomFilterViewModel(filter));
@@ -357,7 +357,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Pages
 
         public async Task EditFilter(WorkspaceViewModel viewModel, BySettingFilterMethodItem target)
         {
-            if (target?.Filter is  null)
+            if (target?.Filter is null)
             {
                 return;
             }
@@ -370,7 +370,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Pages
         }
         public async Task RemoveFilter(WorkspaceViewModel viewModel, BySettingFilterMethodItem target)
         {
-            if (target?.Filter is  null)
+            if (target?.Filter is null)
             {
                 return;
             }
@@ -394,7 +394,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Pages
             {
                 return;
             }
-            
+
             JSON2.ToFile(r.Value, item.Filter);
             viewModel.SaveSuccess();
         }
@@ -407,7 +407,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Pages
             {
                 return;
             }
-            
+
             try
             {
                 var filter   = JSON2.FromFile<CustomFilter>(r.Value);
@@ -419,13 +419,13 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Pages
                 }
                 else
                 {
-                    await _filterService.Add(filter);   
+                    await _filterService.Add(filter);
                 }
                 BySetting.Items.Add(filterMI);
 
                 viewModel.SaveSuccess("提示", "导入成功");
             }
-            catch (Exception e)
+            catch(Exception e)
             {
                 Console.WriteLine(e);
                 throw;

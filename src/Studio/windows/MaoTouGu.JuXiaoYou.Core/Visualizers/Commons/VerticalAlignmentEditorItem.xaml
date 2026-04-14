@@ -4,9 +4,36 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:MaoTouGu.JuXiaoYou.Visualizers.Commons"
+             xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+             xmlns:ui="urn:KinonekoSoftware/ui"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        
-    </Grid>
+    <UserControl.Resources>
+        <sys:Int32 x:Key="Zero">0</sys:Int32>
+        <sys:Int32 x:Key="One">1</sys:Int32>
+        <sys:Int32 x:Key="Two">2</sys:Int32>
+        <sys:Int32 x:Key="Three">3</sys:Int32>
+        <sys:Int32 x:Key="Four">4</sys:Int32>
+        <sys:Int32 x:Key="Five">5</sys:Int32>
+    </UserControl.Resources>
+
+
+    <HeaderedContentControl Header="垂直对齐"
+                            Margin="0 0 0 8"
+                            Style="{StaticResource SettingItem}">
+
+        <ui:ListBox x:Name="Input"
+                    SelectionChanged="ListBox_OnSelectionChanged"
+                    Style="{StaticResource ListBox.Direct}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ui:ListBoxItem Content="顶部" Tag="{StaticResource Zero}" />
+            <ui:ListBoxItem Content="居中" Tag="{StaticResource One}" />
+            <ui:ListBoxItem Content="底部" Tag="{StaticResource Two}" />
+            <ui:ListBoxItem Content="伸展" Tag="{StaticResource Three}" />
+        </ui:ListBox>
+    </HeaderedContentControl>
 </UserControl>

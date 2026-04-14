@@ -78,7 +78,8 @@ namespace MaoTouGu.JuXiaoYou.Services
 
         async Task OnDataChanged(DataChangedSpot args)
         {
-            var handler = _shell.Value.GetContextList()
+            var handler = _shell.Value
+                                .GetContextList()
                                 .OfType<IPushingEventHandler>()
                                 .FirstOrDefault(x => x.CanHandle(args.EventID));
 
@@ -87,7 +88,7 @@ namespace MaoTouGu.JuXiaoYou.Services
                 var usr = _userService.Value
                                       .Dictionary
                                       .SafetyGet(args.HandlerID);
-                
+
                 await handler.Handle(args.DocumentID, usr.DisplayName, args.EventID, args.Operation);
                 return;
             }

@@ -92,7 +92,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers
             Item   = item;
             IsEdit = true;
         }
-        
+
         private void DoPreviousCommand(TItem item)
         {
             var index = Collection.IndexOf(item);
@@ -114,7 +114,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers
             Item   = Collection[index];
             IsEdit = true;
         }
-        
+
         private void DoNextCommand(TItem item)
         {
             var index = Collection.IndexOf(item);

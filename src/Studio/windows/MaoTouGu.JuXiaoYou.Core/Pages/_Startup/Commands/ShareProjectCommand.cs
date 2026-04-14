@@ -7,11 +7,11 @@
 // ----------------------------------------------------------
 namespace MaoTouGu.JuXiaoYou.Pages
 {
-    sealed class ShareProjectCommand(StartupViewModel target)  : ContextCommand<Project, StartupViewModel>(target)
+    sealed class ShareProjectCommand(StartupViewModel target) : ContextCommand<Project, StartupViewModel>(target)
     {
         protected override async void Execute(Project project)
         {
-            
+
             await Context.Flyout(new ShareProjectViewModel(project));
         }
     }

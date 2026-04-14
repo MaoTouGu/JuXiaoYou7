@@ -34,7 +34,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Controls
                     Options = o,
                     VPO     = DataContext as TypographyVisualizerVPO,
                 };
-                    
+
                 _throttleRequests.Enqueue(this);
             }
 

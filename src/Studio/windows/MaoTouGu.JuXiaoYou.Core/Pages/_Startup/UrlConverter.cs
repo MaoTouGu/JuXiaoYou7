@@ -20,7 +20,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
             {
                 return string.Empty;
             }
-            
+
             if (str.Length < 10)
             {
                 return str;

@@ -31,74 +31,74 @@
             <StackPanel Grid.Column="0"
                         Grid.ColumnSpan="3"
                         Grid.Row="0"
-                            HorizontalAlignment="Center"
-                            Orientation="Horizontal">
+                        HorizontalAlignment="Center"
+                        Orientation="Horizontal">
                 <ui:GhostButton ui:ControlAssist.CornerRadius="0"
-                                    ui:ControlAssist.Icon="{StaticResource FeatherIcon.Box}"
-                                    ui:ControlAssist.IconSize="31"
-                                    ui:ControlAssist.IconMargin="12 0"
-                                    Content="卡牌"
-                                    Command="{Binding CardExplore}"
-                                    IconMode="Both"
-                                    Margin="4"
-                                    Padding="8 12 24 12"
-                                    HorizontalContentAlignment="Left" />
+                                ui:ControlAssist.Icon="{StaticResource FeatherIcon.Box}"
+                                ui:ControlAssist.IconSize="31"
+                                ui:ControlAssist.IconMargin="12 0"
+                                Content="卡牌"
+                                Command="{Binding CardExplore}"
+                                IconMode="Both"
+                                Margin="4"
+                                Padding="8 12 24 12"
+                                HorizontalContentAlignment="Left" />
 
                 <ui:GhostButton ui:ControlAssist.CornerRadius="0"
-                                    ui:ControlAssist.Icon="{StaticResource FeatherIcon.Hexagon}"
-                                    ui:ControlAssist.IconSize="31"
-                                    ui:ControlAssist.IconMargin="12 0"
-                                    Content="原型"
-                                    Command="{Binding PrototypeExplore}"
-                                    IconMode="Both"
-                                    Margin="4"
-                                    Padding="8 12 24 12"
-                                    HorizontalContentAlignment="Left" />
+                                ui:ControlAssist.Icon="{StaticResource FeatherIcon.Hexagon}"
+                                ui:ControlAssist.IconSize="31"
+                                ui:ControlAssist.IconMargin="12 0"
+                                Content="原型"
+                                Command="{Binding PrototypeExplore}"
+                                IconMode="Both"
+                                Margin="4"
+                                Padding="8 12 24 12"
+                                HorizontalContentAlignment="Left" />
 
 
                 <ui:GhostButton ui:ControlAssist.CornerRadius="0"
-                                    ui:ControlAssist.Icon="{StaticResource FeatherIcon.Layer}"
-                                    ui:ControlAssist.IconSize="31"
-                                    ui:ControlAssist.IconMargin="12 0"
-                                    Content="卡组"
-                                    Command="{Binding DeckExplore}"
-                                    IconMode="Both"
-                                    Margin="4"
-                                    Padding="8 12 24 12"
-                                    HorizontalContentAlignment="Left" />
+                                ui:ControlAssist.Icon="{StaticResource FeatherIcon.Layer}"
+                                ui:ControlAssist.IconSize="31"
+                                ui:ControlAssist.IconMargin="12 0"
+                                Content="卡组"
+                                Command="{Binding DeckExplore}"
+                                IconMode="Both"
+                                Margin="4"
+                                Padding="8 12 24 12"
+                                HorizontalContentAlignment="Left" />
 
                 <ui:GhostButton ui:ControlAssist.CornerRadius="0"
-                                    ui:ControlAssist.Icon="{StaticResource FeatherIcon.People}"
-                                    ui:ControlAssist.IconSize="31"
-                                    ui:ControlAssist.IconMargin="12 0"
-                                    Content="角色"
-                                    Command="{Binding CharacterExplore}"
-                                    IconMode="Both"
-                                    Margin="4"
-                                    Padding="8 12 24 12"
-                                    HorizontalContentAlignment="Left" />
+                                ui:ControlAssist.Icon="{StaticResource FeatherIcon.People}"
+                                ui:ControlAssist.IconSize="31"
+                                ui:ControlAssist.IconMargin="12 0"
+                                Content="角色"
+                                Command="{Binding CharacterExplore}"
+                                IconMode="Both"
+                                Margin="4"
+                                Padding="8 12 24 12"
+                                HorizontalContentAlignment="Left" />
 
                 <ui:GhostButton ui:ControlAssist.CornerRadius="0"
-                                    ui:ControlAssist.Icon="{StaticResource World}"
-                                    ui:ControlAssist.IconSize="31"
-                                    ui:ControlAssist.IconMargin="12 0"
-                                    Content="规则"
-                                    Command="{Binding RuleExplore}"
-                                    IconMode="Both"
-                                    Margin="4"
-                                    Padding="8 12 24 12"
-                                    HorizontalContentAlignment="Left" />
+                                ui:ControlAssist.Icon="{StaticResource World}"
+                                ui:ControlAssist.IconSize="31"
+                                ui:ControlAssist.IconMargin="12 0"
+                                Content="规则"
+                                Command="{Binding RuleExplore}"
+                                IconMode="Both"
+                                Margin="4"
+                                Padding="8 12 24 12"
+                                HorizontalContentAlignment="Left" />
 
                 <ui:GhostButton ui:ControlAssist.CornerRadius="0"
-                                    ui:ControlAssist.Icon="{StaticResource FeatherIcon.Edit}"
-                                    ui:ControlAssist.IconSize="31"
-                                    ui:ControlAssist.IconMargin="12 0"
-                                    Content="自定义"
-                                    Command="{Binding RuleExplore}"
-                                    IconMode="Both"
-                                    Margin="4"
-                                    Padding="8 12 24 12"
-                                    HorizontalContentAlignment="Left" />
+                                ui:ControlAssist.Icon="{StaticResource FeatherIcon.Edit}"
+                                ui:ControlAssist.IconSize="31"
+                                ui:ControlAssist.IconMargin="12 0"
+                                Content="自定义"
+                                Command="{Binding RuleExplore}"
+                                IconMode="Both"
+                                Margin="4"
+                                Padding="8 12 24 12"
+                                HorizontalContentAlignment="Left" />
             </StackPanel>
 
             <!---->
@@ -216,11 +216,11 @@
                                             CornerRadius="3"
                                             Margin="8 0 0 0"
                                             Padding="8 4">
-                                        <TextBlock Text="{Binding Type, Converter={x:Static Converters.EnumToString}}"/>
+                                        <TextBlock Text="{Binding Type, Converter={x:Static Converters.EnumToString}}" />
                                     </Border>
 
                                     <TextBlock Text="{Binding Name, Mode=OneWay}"
-                                               VerticalAlignment="Center"/>
+                                               VerticalAlignment="Center" />
                                 </DockPanel>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>

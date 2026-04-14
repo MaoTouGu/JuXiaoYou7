@@ -1,4 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
@@ -16,7 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="H.NotifyIcon.Wpf" Version="2.4.1"/>
+        <!--<PackageReference Include="H.NotifyIcon.Wpf" Version="2.4.1"/>-->
         <PackageReference Include="MaoTouGu.Shells.Generators" Version="1.0.4"/>
     </ItemGroup>
 

@@ -39,7 +39,7 @@ namespace MaoTouGu.JuXiaoYou.Indexing
         {
             return Task.Run(() =>
                             {
-                                
+
                                 var iterator = from moniker in collection.Where(x => !x.IsSoftDeleted)
                                     let v = GetValue(moniker, CustomFilter.Key)
                                     where v > CustomFilter.Value
@@ -105,18 +105,18 @@ namespace MaoTouGu.JuXiaoYou.Indexing
                                                           .Select(x => GetHashSet(service, x))
                                                           .ToList();
                                 var set = IntersectAll(setList);
-                                originalSource.AddRange(collection.Where(x => !x.IsSoftDeleted && 
+                                originalSource.AddRange(collection.Where(x => !x.IsSoftDeleted &&
                                                                               set.Contains(x.Id)));
                             });
         }
-        
-        
+
+
         static HashSet<T> IntersectAll<T>(IEnumerable<HashSet<T>> sets)
         {
             if (sets == null) throw new ArgumentNullException(nameof(sets));
             var enumerable = sets as IList<HashSet<T>> ?? sets.ToList();
             if (!enumerable.Any()) return new HashSet<T>();
-        
+
             var result = new HashSet<T>(enumerable.First());
             foreach (var set in enumerable.Skip(1))
             {
@@ -124,7 +124,7 @@ namespace MaoTouGu.JuXiaoYou.Indexing
             }
             return result;
         }
-        
+
         static HashSet<string> GetHashSet(KeywordService service, string name)
         {
             return service.FindByName(name)

@@ -113,6 +113,7 @@ namespace MaoTouGu.Foundation.Collections
                 _dictionary[key] = value;
                 OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
                 OnPropertyChanged(key.ToString());
+                OnPropertyChanged("Item[]");
             }
         }
 

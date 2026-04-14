@@ -15,7 +15,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Pages
         {
             Moniker  = item;
             Keywords = new ViewList<Keyword>();
-            Title = $"中转页：{item.Name}";
+            Title    = $"中转页：{item.Name}";
 
             AddFavorite    = new AddFavoriteCommand(this);
             SelectGravatar = new SelectGravatarCommand(this);

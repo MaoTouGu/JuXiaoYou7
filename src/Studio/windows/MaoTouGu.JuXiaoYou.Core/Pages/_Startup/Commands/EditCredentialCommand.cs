@@ -17,7 +17,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
             {
                 return;
             }
-            
+
             if (r.Value.IsDefault && Context.Credentials.Any(x => x.IsDefault))
             {
                 Context.Credentials
@@ -25,8 +25,8 @@ namespace MaoTouGu.JuXiaoYou.Pages
 
                 credential.IsDefault = true;
             }
-            
-            
+
+
             GlobalSettings.SaveProjectSettings();
         }
     }

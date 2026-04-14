@@ -20,7 +20,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Pages
             get => _name;
             set => SetValue(ref _name, value);
         }
-        
+
         public int Height
         {
             get => _height;

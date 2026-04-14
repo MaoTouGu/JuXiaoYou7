@@ -37,7 +37,7 @@ namespace MaoTouGu.JuXiaoYou
                 return false;
             }
         }
-        
+
         /// <summary>
         /// 用于避免重复打开数据库的Mutex。
         /// </summary>

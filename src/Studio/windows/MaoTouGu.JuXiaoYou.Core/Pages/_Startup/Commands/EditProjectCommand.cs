@@ -9,7 +9,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
 {
     sealed class EditProjectCommand(StartupViewModel target) : ContextCommand<Project, StartupViewModel>(target)
     {
-        protected override async void Execute( Project project)
+        protected override async void Execute(Project project)
         {
 
             var r = await Context.Object<Project>(new NewProjectViewModel(project));
@@ -18,7 +18,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
             {
                 return;
             }
-            
+
             //
             //
             GlobalSettings.SaveProjectSettings();

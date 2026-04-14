@@ -9,6 +9,6 @@ namespace MaoTouGu.JuXiaoYou.Indexing
 {
     public class ByStarRankingViewModel : SystemPage
     {
-        
+
     }
 }

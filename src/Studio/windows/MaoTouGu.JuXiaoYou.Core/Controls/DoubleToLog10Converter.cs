@@ -1,5 +1,4 @@
-﻿
-namespace MaoTouGu.Studio.Controls
+﻿namespace MaoTouGu.Studio.Controls
 {
     /// <summary>
     /// Converter from <see cref="double"/> value to <see cref="Math.Log10"/> <see cref="double"/> value and vice versa.
@@ -9,14 +8,14 @@ namespace MaoTouGu.Studio.Controls
         /// <inheritdoc />
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var val = (double) value;
+            var val = (double)value;
             return Math.Log10(val);
         }
 
         /// <inheritdoc />
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var val = (double) value;
+            var val = (double)value;
             return Math.Pow(10, val);
         }
     }

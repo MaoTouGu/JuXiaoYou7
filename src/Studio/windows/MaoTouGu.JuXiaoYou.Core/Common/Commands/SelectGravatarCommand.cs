@@ -52,9 +52,9 @@ namespace MaoTouGu.JuXiaoYou.Common.Commands
                 {
 
                     GUI.RunOnUIThread(() =>
-                    {
-                        target.SetGravatar(result.Id);
-                    });
+                                      {
+                                          target.SetGravatar(result.Id);
+                                      });
 
                     if (target is User usr)
                     {

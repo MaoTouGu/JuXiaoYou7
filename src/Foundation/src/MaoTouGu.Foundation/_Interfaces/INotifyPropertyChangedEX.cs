@@ -4,6 +4,6 @@ namespace MaoTouGu.Foundation
 {
     public interface INotifyPropertyChangedEX : INotifyPropertyChanged
     {
-        void RaiseUpdated(string name);
+        void RaisePropertyChanged(string name);
     }
 }

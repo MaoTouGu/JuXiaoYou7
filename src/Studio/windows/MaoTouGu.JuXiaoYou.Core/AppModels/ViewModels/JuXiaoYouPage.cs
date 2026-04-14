@@ -1,6 +1,4 @@
-﻿
-
-using MaoTouGu.JuXiaoYou.Core;
+﻿using MaoTouGu.JuXiaoYou.Core;
 using MaoTouGu.Studio.Database.Core;
 
 namespace MaoTouGu.JuXiaoYou.AppModels
@@ -21,7 +19,7 @@ namespace MaoTouGu.JuXiaoYou.AppModels
         protected T GetService<T>() where T : DataService
         {
             var srv = DatabaseManager.Services.OfType<T>().FirstOrDefault();
-            
+
             if (srv is null)
             {
                 srv = Ioc.GetOrRegister<T>();
@@ -30,7 +28,7 @@ namespace MaoTouGu.JuXiaoYou.AppModels
 
             return srv;
         }
-        
+
         private async void DoShutdown()
         {
             if (IsDisposed)
@@ -45,7 +43,7 @@ namespace MaoTouGu.JuXiaoYou.AppModels
 
             Stop();
         }
-        
+
         public ICommandEX Shutdown { get; }
     }
 }

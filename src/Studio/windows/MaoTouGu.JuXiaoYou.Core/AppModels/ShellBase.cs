@@ -28,7 +28,7 @@ namespace MaoTouGu.JuXiaoYou.AppModels
 
         protected void Close<T>() where T : PageBase
         {
-            
+
             if (InstanceTable.Values
                              .FirstOrDefault(x => x.ViewModel is PlaceholdingViewModel) is
                 {

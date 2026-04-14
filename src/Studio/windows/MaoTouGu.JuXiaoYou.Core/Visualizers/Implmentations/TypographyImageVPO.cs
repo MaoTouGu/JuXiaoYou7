@@ -17,8 +17,8 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Core
                 Instance = block,
             };
         }
-        
-        
+
+
         public int ImageHeight
         {
             get => Instance.ImageHeight;

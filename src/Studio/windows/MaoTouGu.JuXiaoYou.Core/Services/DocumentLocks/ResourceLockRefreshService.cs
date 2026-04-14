@@ -43,7 +43,7 @@ namespace MaoTouGu.JuXiaoYou.Services
                 {
                     await api.RefreshLockAsync(page.InstanceID);
                     page.Modified = DateTime.Now;
-                    
+
                     Debug.WriteLine($"Refresh Lock -> {page.GetType().Name} = {page.InstanceID}");
                 }
             }

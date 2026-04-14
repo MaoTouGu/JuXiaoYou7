@@ -7,7 +7,7 @@
 // ----------------------------------------------------------
 namespace MaoTouGu.JuXiaoYou.Visualizers.Core
 {
-    public class TypographyTextVPO : TypographyBlockVPO<TypographyText>
+    public class TypographyTextVPO : TypographyBlockVPO<TypographyText>, ITextTarget
     {
         protected override TypographyBlockVPO OnCreate(TypographyText block, Moniker moniker)
         {
@@ -17,8 +17,8 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Core
                 Instance = block,
             };
         }
-        
-        public int BorderThickness
+
+        public Int32Thickness BorderThickness
         {
             get => Instance.BorderThickness;
             set
@@ -27,7 +27,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Core
                 RaiseUpdated();
             }
         }
-        
+
         public string BorderBrush
         {
             get => Instance.BorderBrush;
@@ -37,7 +37,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Core
                 RaiseUpdated();
             }
         }
-        
+
         public Int32Thickness Padding
         {
             get => Instance.Padding;
@@ -47,7 +47,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Core
                 RaiseUpdated();
             }
         }
-        
+
         public Int32CornerRadius CornerRadius
         {
             get => Instance.CornerRadius;
@@ -95,7 +95,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Core
                 RaiseUpdated();
             }
         }
-        
+
         public int TextAlignment
         {
             get => Instance.TextAlignment;
@@ -115,7 +115,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Core
                 RaiseUpdated();
             }
         }
-        
+
         public int FontSize
         {
             get => Instance.FontSize;
@@ -126,12 +126,12 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Core
             }
         }
 
-        public int FontStyle
+        public bool IsBold
         {
-            get => Instance.FontStyle;
+            get => Instance.IsBold;
             set
             {
-                Instance.FontStyle = value;
+                Instance.IsBold = value;
                 RaiseUpdated();
             }
         }

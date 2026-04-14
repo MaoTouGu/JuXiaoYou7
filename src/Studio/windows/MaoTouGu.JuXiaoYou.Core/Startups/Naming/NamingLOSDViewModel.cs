@@ -9,6 +9,6 @@ namespace MaoTouGu.JuXiaoYou.Startups.Naming
 {
     public class NamingLOSDViewModel : SystemPage
     {
-        
+
     }
 }

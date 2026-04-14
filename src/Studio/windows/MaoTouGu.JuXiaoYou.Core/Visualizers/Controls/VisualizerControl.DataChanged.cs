@@ -9,7 +9,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Controls
 {
     partial class VisualizerControl
     {
-        
+
         /// <summary>
         /// 给定一个Moniker和一个喵喵咒语，获得绑定。
         /// </summary>
@@ -34,7 +34,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Controls
 
             return binding;
         }
-        
+
         /// <summary>
         /// 给定一个IVisualizerOptions，获得绑定。
         /// </summary>

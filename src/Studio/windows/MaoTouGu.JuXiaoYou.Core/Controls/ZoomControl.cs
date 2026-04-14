@@ -1,5 +1,4 @@
-﻿
-// ReSharper disable PossibleNullReferenceException
+﻿// ReSharper disable PossibleNullReferenceException
 // ReSharper disable IdentifierTypo
 
 using System.Diagnostics.CodeAnalysis;
@@ -22,33 +21,33 @@ namespace MaoTouGu.Studio.Controls
     [TemplatePart(Name = PartPresenter, Type = typeof(ZoomContentPresenter))]
     public sealed class ZoomControl : ContentControl
     {
-        
+
         private const string PartPresenter = "PART_Presenter";
 
-        private Point _mouseDownPos;
+        private Point                _mouseDownPos;
         private ZoomContentPresenter _presenter;
-        private ScaleTransform _scaleTransform;
-        private Vector _startTranslate;
-        private TransformGroup _transformGroup;
-        private TranslateTransform _translateTransform;
-        private int _zoomAnimCount;
-        private bool _isZooming;
+        private ScaleTransform       _scaleTransform;
+        private Vector               _startTranslate;
+        private TransformGroup       _transformGroup;
+        private TranslateTransform   _translateTransform;
+        private int                  _zoomAnimCount;
+        private bool                 _isZooming;
 
         /// <summary/>
         static ZoomControl()
         {
             DefaultStyleKeyProperty.OverrideMetadata(
-                typeof(ZoomControl),
-                new FrameworkPropertyMetadata(typeof(ZoomControl)));
+                                                     typeof(ZoomControl),
+                                                     new FrameworkPropertyMetadata(typeof(ZoomControl)));
         }
 
         /// <summary/>
         public ZoomControl()
         {
             PreviewMouseWheel += OnZoomControlMouseWheel;
-            PreviewMouseDown += OnZoomControlPreviewMouseDown;
-            MouseDown += OnZoomControlMouseDown;
-            MouseUp += OnZoomControlMouseUp;
+            PreviewMouseDown  += OnZoomControlPreviewMouseDown;
+            MouseDown         += OnZoomControlMouseDown;
+            MouseUp           += OnZoomControlMouseUp;
         }
 
         public Brush ZoomBoxBackground
@@ -57,9 +56,9 @@ namespace MaoTouGu.Studio.Controls
             set => SetValue(ZoomBoxBackgroundProperty, value);
         }
 
-        
+
         public static readonly DependencyProperty ZoomBoxBackgroundProperty = DependencyProperty.Register(
-            nameof(ZoomBoxBackground), typeof(Brush), typeof(ZoomControl), new UIPropertyMetadata(null));
+                                                                                                          nameof(ZoomBoxBackground), typeof(Brush), typeof(ZoomControl), new UIPropertyMetadata(null));
 
         public Brush ZoomBoxBorderBrush
         {
@@ -67,9 +66,9 @@ namespace MaoTouGu.Studio.Controls
             set => SetValue(ZoomBoxBorderBrushProperty, value);
         }
 
-        
+
         public static readonly DependencyProperty ZoomBoxBorderBrushProperty = DependencyProperty.Register(
-            nameof(ZoomBoxBorderBrush), typeof(Brush), typeof(ZoomControl), new UIPropertyMetadata(null));
+                                                                                                           nameof(ZoomBoxBorderBrush), typeof(Brush), typeof(ZoomControl), new UIPropertyMetadata(null));
 
         public Thickness ZoomBoxBorderThickness
         {
@@ -77,9 +76,9 @@ namespace MaoTouGu.Studio.Controls
             set => SetValue(ZoomBoxBorderThicknessProperty, value);
         }
 
-        
+
         public static readonly DependencyProperty ZoomBoxBorderThicknessProperty = DependencyProperty.Register(
-            nameof(ZoomBoxBorderThickness), typeof(Thickness), typeof(ZoomControl), new UIPropertyMetadata(null));
+                                                                                                               nameof(ZoomBoxBorderThickness), typeof(Thickness), typeof(ZoomControl), new UIPropertyMetadata(null));
 
         public double ZoomBoxOpacity
         {
@@ -87,9 +86,9 @@ namespace MaoTouGu.Studio.Controls
             set => SetValue(ZoomBoxOpacityProperty, value);
         }
 
-        
+
         public static readonly DependencyProperty ZoomBoxOpacityProperty = DependencyProperty.Register(
-            nameof(ZoomBoxOpacity), typeof(double), typeof(ZoomControl), new UIPropertyMetadata(0.5));
+                                                                                                       nameof(ZoomBoxOpacity), typeof(double), typeof(ZoomControl), new UIPropertyMetadata(0.5));
 
         public Rect ZoomBox
         {
@@ -97,9 +96,9 @@ namespace MaoTouGu.Studio.Controls
             set => SetValue(ZoomBoxProperty, value);
         }
 
-        
+
         public static readonly DependencyProperty ZoomBoxProperty = DependencyProperty.Register(
-            nameof(ZoomBox), typeof(Rect), typeof(ZoomControl), new UIPropertyMetadata(new Rect()));
+                                                                                                nameof(ZoomBox), typeof(Rect), typeof(ZoomControl), new UIPropertyMetadata(new Rect()));
 
         public Point OrigoPosition => new Point(ActualWidth / 2.0, ActualHeight / 2.0);
 
@@ -113,9 +112,9 @@ namespace MaoTouGu.Studio.Controls
             }
         }
 
-        
+
         public static readonly DependencyProperty TranslateXProperty = DependencyProperty.Register(
-            nameof(TranslateX), typeof(double), typeof(ZoomControl), new UIPropertyMetadata(0.0, OnTranslateXPropertyChanged, OnTranslateXCoerce));
+                                                                                                   nameof(TranslateX), typeof(double), typeof(ZoomControl), new UIPropertyMetadata(0.0, OnTranslateXPropertyChanged, OnTranslateXCoerce));
 
         public double TranslateY
         {
@@ -127,9 +126,9 @@ namespace MaoTouGu.Studio.Controls
             }
         }
 
-        
+
         public static readonly DependencyProperty TranslateYProperty = DependencyProperty.Register(
-            nameof(TranslateY), typeof(double), typeof(ZoomControl), new UIPropertyMetadata(0.0, OnTranslateYPropertyChanged, OnTranslateYCoerce));
+                                                                                                   nameof(TranslateY), typeof(double), typeof(ZoomControl), new UIPropertyMetadata(0.0, OnTranslateYPropertyChanged, OnTranslateYCoerce));
 
         public TimeSpan AnimationLength
         {
@@ -137,9 +136,9 @@ namespace MaoTouGu.Studio.Controls
             set => SetValue(AnimationLengthProperty, value);
         }
 
-        
+
         public static readonly DependencyProperty AnimationLengthProperty = DependencyProperty.Register(
-            nameof(AnimationLength), typeof(TimeSpan), typeof(ZoomControl), new UIPropertyMetadata(TimeSpan.FromMilliseconds(500.0)));
+                                                                                                        nameof(AnimationLength), typeof(TimeSpan), typeof(ZoomControl), new UIPropertyMetadata(TimeSpan.FromMilliseconds(500.0)));
 
         public double MinZoom
         {
@@ -147,9 +146,9 @@ namespace MaoTouGu.Studio.Controls
             set => SetValue(MinZoomProperty, value);
         }
 
-        
+
         public static readonly DependencyProperty MinZoomProperty = DependencyProperty.Register(
-            nameof(MinZoom), typeof(double), typeof(ZoomControl), new UIPropertyMetadata(0.01));
+                                                                                                nameof(MinZoom), typeof(double), typeof(ZoomControl), new UIPropertyMetadata(0.01));
 
         public double MaxZoom
         {
@@ -157,9 +156,9 @@ namespace MaoTouGu.Studio.Controls
             set => SetValue(MaxZoomProperty, value);
         }
 
-        
+
         public static readonly DependencyProperty MaxZoomProperty = DependencyProperty.Register(
-            nameof(MaxZoom), typeof(double), typeof(ZoomControl), new UIPropertyMetadata(100.0));
+                                                                                                nameof(MaxZoom), typeof(double), typeof(ZoomControl), new UIPropertyMetadata(100.0));
 
         public double MaxZoomDelta
         {
@@ -167,9 +166,9 @@ namespace MaoTouGu.Studio.Controls
             set => SetValue(MaxZoomDeltaProperty, value);
         }
 
-        
+
         public static readonly DependencyProperty MaxZoomDeltaProperty = DependencyProperty.Register(
-            nameof(MaxZoomDelta), typeof(double), typeof(ZoomControl), new UIPropertyMetadata(5.0));
+                                                                                                     nameof(MaxZoomDelta), typeof(double), typeof(ZoomControl), new UIPropertyMetadata(5.0));
 
         public double ZoomDeltaMultiplier
         {
@@ -177,9 +176,9 @@ namespace MaoTouGu.Studio.Controls
             set => SetValue(ZoomDeltaMultiplierProperty, value);
         }
 
-        
+
         public static readonly DependencyProperty ZoomDeltaMultiplierProperty = DependencyProperty.Register(
-            nameof(ZoomDeltaMultiplier), typeof(double), typeof(ZoomControl), new UIPropertyMetadata(100.0));
+                                                                                                            nameof(ZoomDeltaMultiplier), typeof(double), typeof(ZoomControl), new UIPropertyMetadata(100.0));
 
         public double Zoom
         {
@@ -194,9 +193,9 @@ namespace MaoTouGu.Studio.Controls
             }
         }
 
-        
+
         public static readonly DependencyProperty ZoomProperty = DependencyProperty.Register(
-            nameof(Zoom), typeof(double), typeof(ZoomControl), new UIPropertyMetadata(1.0, OnZoomPropertyChanged));
+                                                                                             nameof(Zoom), typeof(double), typeof(ZoomControl), new UIPropertyMetadata(1.0, OnZoomPropertyChanged));
 
         private ZoomContentPresenter Presenter
         {
@@ -207,12 +206,12 @@ namespace MaoTouGu.Studio.Controls
                 if (_presenter is null)
                     return;
 
-                _transformGroup = new TransformGroup();
-                _scaleTransform = new ScaleTransform();
+                _transformGroup     = new TransformGroup();
+                _scaleTransform     = new ScaleTransform();
                 _translateTransform = new TranslateTransform();
                 _transformGroup.Children.Add(_scaleTransform);
                 _transformGroup.Children.Add(_translateTransform);
-                _presenter.RenderTransform = _transformGroup;
+                _presenter.RenderTransform       = _transformGroup;
                 _presenter.RenderTransformOrigin = new Point(0.5, 0.5);
             }
         }
@@ -223,9 +222,9 @@ namespace MaoTouGu.Studio.Controls
             set => SetValue(ModifierModeProperty, value);
         }
 
-        
+
         public static readonly DependencyProperty ModifierModeProperty = DependencyProperty.Register(
-            nameof(ModifierMode), typeof(ZoomViewModifierMode), typeof(ZoomControl), new UIPropertyMetadata(ZoomViewModifierMode.None));
+                                                                                                     nameof(ModifierMode), typeof(ZoomViewModifierMode), typeof(ZoomControl), new UIPropertyMetadata(ZoomViewModifierMode.None));
 
         public ZoomControlModes Mode
         {
@@ -233,12 +232,12 @@ namespace MaoTouGu.Studio.Controls
             set => SetValue(ModeProperty, value);
         }
 
-        
+
         public static readonly DependencyProperty ModeProperty = DependencyProperty.Register(
-            nameof(Mode), typeof(ZoomControlModes), typeof(ZoomControl), new UIPropertyMetadata(ZoomControlModes.Custom, OnModePropertyChanged));
+                                                                                             nameof(Mode), typeof(ZoomControlModes), typeof(ZoomControl), new UIPropertyMetadata(ZoomControlModes.Custom, OnModePropertyChanged));
 
         private static void OnModePropertyChanged(
-             DependencyObject d,
+            DependencyObject d,
             DependencyPropertyChangedEventArgs args)
         {
             var zoomControl = (ZoomControl)d;
@@ -274,7 +273,7 @@ namespace MaoTouGu.Studio.Controls
         }
 
         [Pure]
-        private static object OnTranslateYCoerce( DependencyObject d, object basevalue)
+        private static object OnTranslateYCoerce(DependencyObject d, object basevalue)
         {
             var zoomControl = (ZoomControl)d;
             return zoomControl.GetCoercedTranslateY((double)basevalue);
@@ -286,7 +285,7 @@ namespace MaoTouGu.Studio.Controls
             return _presenter is null ? 0.0 : baseValue;
         }
 
-        private void OnZoomControlMouseUp( object sender,  MouseButtonEventArgs args)
+        private void OnZoomControlMouseUp(object sender, MouseButtonEventArgs args)
         {
             switch (ModifierMode)
             {
@@ -296,7 +295,7 @@ namespace MaoTouGu.Studio.Controls
                 case ZoomViewModifierMode.Pan:
                 case ZoomViewModifierMode.ZoomIn:
                 case ZoomViewModifierMode.ZoomOut:
-                    ModifierMode = ZoomViewModifierMode.None;
+                    ModifierMode     =  ZoomViewModifierMode.None;
                     PreviewMouseMove -= OnZoomControlPreviewMouseMove;
                     ReleaseMouseCapture();
                     break;
@@ -313,14 +312,14 @@ namespace MaoTouGu.Studio.Controls
         public void ZoomTo(Rect rect)
         {
             DoZoom(
-                Math.Min(ActualWidth / rect.Width, ActualHeight / rect.Height),
-                OrigoPosition,
-                new Point(rect.X + rect.Width / 2.0, rect.Y + rect.Height / 2.0),
-                OrigoPosition);
+                   Math.Min(ActualWidth / rect.Width, ActualHeight / rect.Height),
+                   OrigoPosition,
+                   new Point(rect.X + rect.Width / 2.0, rect.Y + rect.Height / 2.0),
+                   OrigoPosition);
             ZoomBox = new Rect();
         }
 
-        private void OnZoomControlPreviewMouseMove( object sender,  MouseEventArgs args)
+        private void OnZoomControlPreviewMouseMove(object sender, MouseEventArgs args)
         {
             switch (ModifierMode)
             {
@@ -338,10 +337,10 @@ namespace MaoTouGu.Studio.Controls
                 case ZoomViewModifierMode.ZoomBox:
                     var position = args.GetPosition(this);
                     ZoomBox = new Rect(
-                        Math.Min(_mouseDownPos.X, position.X),
-                        Math.Min(_mouseDownPos.Y, position.Y),
-                        Math.Abs(_mouseDownPos.X - position.X),
-                        Math.Abs(_mouseDownPos.Y - position.Y));
+                                       Math.Min(_mouseDownPos.X, position.X),
+                                       Math.Min(_mouseDownPos.Y, position.Y),
+                                       Math.Abs(_mouseDownPos.X - position.X),
+                                       Math.Abs(_mouseDownPos.Y - position.Y));
                     break;
 
                 default:
@@ -349,11 +348,11 @@ namespace MaoTouGu.Studio.Controls
             }
         }
 
-        private void OnZoomControlMouseDown( object sender,  MouseButtonEventArgs args) => OnMouseDown(args, false);
+        private void OnZoomControlMouseDown(object sender, MouseButtonEventArgs args) => OnMouseDown(args, false);
 
-        private void OnZoomControlPreviewMouseDown( object sender,  MouseButtonEventArgs args) => OnMouseDown(args, true);
+        private void OnZoomControlPreviewMouseDown(object sender, MouseButtonEventArgs args) => OnMouseDown(args, true);
 
-        private void OnMouseDown( MouseButtonEventArgs args, bool isPreview)
+        private void OnMouseDown(MouseButtonEventArgs args, bool isPreview)
         {
             if (ModifierMode != ZoomViewModifierMode.None)
                 return;
@@ -378,7 +377,7 @@ namespace MaoTouGu.Studio.Controls
                     if (ModifierMode == ZoomViewModifierMode.None)
                         break;
 
-                    _mouseDownPos = args.GetPosition(this);
+                    _mouseDownPos   = args.GetPosition(this);
                     _startTranslate = new Vector(TranslateX, TranslateY);
                     Mouse.Capture(this);
                     PreviewMouseMove += OnZoomControlPreviewMouseMove;
@@ -391,7 +390,7 @@ namespace MaoTouGu.Studio.Controls
         }
 
         private static void OnTranslateXPropertyChanged(
-             DependencyObject d,
+            DependencyObject d,
             DependencyPropertyChangedEventArgs args)
         {
             var zoomControl = (ZoomControl)d;
@@ -406,7 +405,7 @@ namespace MaoTouGu.Studio.Controls
         }
 
         private static void OnTranslateYPropertyChanged(
-             DependencyObject d,
+            DependencyObject d,
             DependencyPropertyChangedEventArgs args)
         {
             var zoomControl = (ZoomControl)d;
@@ -421,7 +420,7 @@ namespace MaoTouGu.Studio.Controls
         }
 
         private static void OnZoomPropertyChanged(
-             DependencyObject d,
+            DependencyObject d,
             DependencyPropertyChangedEventArgs args)
         {
             var zoomControl = (ZoomControl)d;
@@ -437,22 +436,22 @@ namespace MaoTouGu.Studio.Controls
             var num = newValue / (double)args.OldValue;
             zoomControl.TranslateX *= num;
             zoomControl.TranslateY *= num;
-            zoomControl.Mode = ZoomControlModes.Custom;
+            zoomControl.Mode       =  ZoomControlModes.Custom;
         }
 
-        private void OnZoomControlMouseWheel( object sender,  MouseWheelEventArgs args)
+        private void OnZoomControlMouseWheel(object sender, MouseWheelEventArgs args)
         {
             if ((Keyboard.Modifiers & ModifierKeys.Control) <= ModifierKeys.None || ModifierMode != ZoomViewModifierMode.None)
                 return;
 
             args.Handled = true;
             var origoPosition = new Point(ActualWidth / 2.0, ActualHeight / 2.0);
-            var position = args.GetPosition(this);
+            var position      = args.GetPosition(this);
             DoZoom(
-                Math.Max(1.0 / MaxZoomDelta, Math.Min(MaxZoomDelta, args.Delta / 10000.0 * ZoomDeltaMultiplier + 1.0)),
-                origoPosition,
-                position,
-                position);
+                   Math.Max(1.0 / MaxZoomDelta, Math.Min(MaxZoomDelta, args.Delta / 10000.0 * ZoomDeltaMultiplier + 1.0)),
+                   origoPosition,
+                   position,
+                   position);
         }
 
         private void DoZoom(
@@ -461,11 +460,11 @@ namespace MaoTouGu.Studio.Controls
             Point startHandlePosition,
             Point targetHandlePosition)
         {
-            var zoom = Zoom;
-            var num = Math.Max(MinZoom, Math.Min(MaxZoom, zoom * deltaZoom));
-            var vector1 = new Vector(TranslateX, TranslateY);
-            var vector2 = startHandlePosition - origoPosition;
-            var vector3 = targetHandlePosition - origoPosition - ((vector2 - vector1) / zoom * num + vector1);
+            var zoom              = Zoom;
+            var num               = Math.Max(MinZoom, Math.Min(MaxZoom, zoom * deltaZoom));
+            var vector1           = new Vector(TranslateX, TranslateY);
+            var vector2           = startHandlePosition  - origoPosition;
+            var vector3           = targetHandlePosition - origoPosition - ((vector2 - vector1) / zoom * num + vector1);
             var coercedTranslateX = GetCoercedTranslateX(TranslateX + vector3.X);
             var coercedTranslateY = GetCoercedTranslateY(TranslateY + vector3.Y);
             DoZoomAnimation(num, coercedTranslateX, coercedTranslateY);
@@ -482,7 +481,7 @@ namespace MaoTouGu.Studio.Controls
             StartAnimation(ZoomProperty, targetZoom, duration);
         }
 
-        private void StartAnimation( DependencyProperty dp, double toValue, Duration duration)
+        private void StartAnimation(DependencyProperty dp, double toValue, Duration duration)
         {
             if (double.IsNaN(toValue) || double.IsInfinity(toValue))
             {
@@ -498,16 +497,16 @@ namespace MaoTouGu.Studio.Controls
                 {
                     ++_zoomAnimCount;
                     doubleAnimation.Completed += (_, _) =>
-                    {
-                        --_zoomAnimCount;
-                        if (_zoomAnimCount > 0)
-                            return;
+                                                 {
+                                                     --_zoomAnimCount;
+                                                     if (_zoomAnimCount > 0)
+                                                         return;
 
-                        var zoom = Zoom;
-                        BeginAnimation(ZoomProperty, null);
-                        SetValue(ZoomProperty, zoom);
-                        _isZooming = false;
-                    };
+                                                     var zoom = Zoom;
+                                                     BeginAnimation(ZoomProperty, null);
+                                                     SetValue(ZoomProperty, zoom);
+                                                     _isZooming = false;
+                                                 };
                 }
 
                 BeginAnimation(dp, doubleAnimation, HandoffBehavior.Compose);
@@ -531,8 +530,8 @@ namespace MaoTouGu.Studio.Controls
             return _presenter is null
                 ? default
                 : new Vector(
-                    -(_presenter.ContentSize.Width - _presenter.DesiredSize.Width) / 2.0,
-                    -(_presenter.ContentSize.Height - _presenter.DesiredSize.Height) / 2.0);
+                             -(_presenter.ContentSize.Width  - _presenter.DesiredSize.Width)  / 2.0,
+                             -(_presenter.ContentSize.Height - _presenter.DesiredSize.Height) / 2.0);
         }
 
         public void ZoomToFill() => Mode = ZoomControlModes.Fill;
@@ -543,8 +542,8 @@ namespace MaoTouGu.Studio.Controls
                 return;
 
             var targetZoom = Math.Min(
-                ActualWidth / _presenter.ContentSize.Width,
-                ActualHeight / _presenter.ContentSize.Height);
+                                      ActualWidth  / _presenter.ContentSize.Width,
+                                      ActualHeight / _presenter.ContentSize.Height);
 
             var initialTranslate = GetInitialTranslate();
             DoZoomAnimation(targetZoom, initialTranslate.X * targetZoom, initialTranslate.Y * targetZoom);
@@ -559,18 +558,18 @@ namespace MaoTouGu.Studio.Controls
             if (Presenter != null)
             {
                 Presenter.SizeChanged += (_, _) =>
-                {
-                    if (Mode != ZoomControlModes.Fill)
-                        return;
-                    DoZoomToFill();
-                };
+                                         {
+                                             if (Mode != ZoomControlModes.Fill)
+                                                 return;
+                                             DoZoomToFill();
+                                         };
 
                 Presenter.ContentSizeChanged += (_, _) =>
-                {
-                    if (Mode != ZoomControlModes.Fill)
-                        return;
-                    DoZoomToFill();
-                };
+                                                {
+                                                    if (Mode != ZoomControlModes.Fill)
+                                                        return;
+                                                    DoZoomToFill();
+                                                };
             }
 
             ZoomToFill();

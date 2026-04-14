@@ -50,52 +50,52 @@
         <!-- ============ 设定 ============-->
         <ui:IconifyTabItem ui:ControlAssist.Icon="{StaticResource FeatherIcon.People}"
                            ui:ControlAssist.IconSize="23">
-            <workspace:MonikerWorkspacePanel/>
+            <workspace:MonikerWorkspacePanel />
         </ui:IconifyTabItem>
 
         <!-- ============ 世界观 ============-->
         <ui:IconifyTabItem ui:ControlAssist.Icon="{StaticResource World}"
                            ui:ControlAssist.IconSize="23">
-            <workspace:WorldViewWorkspacePanel/>
+            <workspace:WorldViewWorkspacePanel />
         </ui:IconifyTabItem>
 
         <!-- ============ 关系 ============-->
         <ui:IconifyTabItem ui:ControlAssist.Icon="{StaticResource Timeline}"
                            ui:ControlAssist.IconSize="23"
                            ui:ControlAssist.IsFilled="True">
-            <workspace:TimelineWorkspacePanel/>
+            <workspace:TimelineWorkspacePanel />
         </ui:IconifyTabItem>
 
         <!-- ============ 团队 ============-->
         <ui:IconifyTabItem ui:ControlAssist.Icon="{StaticResource FeatherIcon.Layer}"
                            ui:ControlAssist.IconSize="23">
-            <workspace:TeamspacePanel/>
+            <workspace:TeamspacePanel />
         </ui:IconifyTabItem>
 
 
         <!-- ============ 系统 ============-->
         <ui:IconifyTabItem ui:ControlAssist.Icon="{StaticResource FeatherIcon.Book}"
                            ui:ControlAssist.IconSize="19.01">
-            <workspace:ComposeWorkspacePanel/>
+            <workspace:ComposeWorkspacePanel />
         </ui:IconifyTabItem>
 
         <!-- ============ 关系 ============-->
         <ui:IconifyTabItem ui:ControlAssist.Icon="{StaticResource Graph}"
                            ui:ControlAssist.IconSize="23">
-            <workspace:GraphingWorkspacePanel/>
+            <workspace:GraphingWorkspacePanel />
         </ui:IconifyTabItem>
 
         <!-- ============ 灵感 ============-->
         <ui:IconifyTabItem ui:ControlAssist.Icon="{StaticResource Inspiration}"
                            ui:ControlAssist.IconSize="23">
-            <workspace:InspirationWorkspacePanel/>
+            <workspace:InspirationWorkspacePanel />
         </ui:IconifyTabItem>
 
 
         <!-- ============ 碎片化叙事 ============-->
         <ui:IconifyTabItem ui:ControlAssist.Icon="{StaticResource Components}"
                            ui:ControlAssist.IconSize="23">
-            <workspace:NarrativeWorkspacePanel/>
+            <workspace:NarrativeWorkspacePanel />
         </ui:IconifyTabItem>
 
 
@@ -103,14 +103,14 @@
         <ui:IconifyTabItem ui:ControlAssist.Icon="{StaticResource Properties}"
                            ui:ControlAssist.IconSize="29"
                            ui:ControlAssist.IsFilled="False">
-            <workspace:FeatureWorkspacePanel/>
+            <workspace:FeatureWorkspacePanel />
         </ui:IconifyTabItem>
 
-        
+
         <!-- ============ 设置 ============-->
         <ui:IconifyTabItem ui:ControlAssist.Icon="{StaticResource FeatherIcon.Settings}"
                            ui:ControlAssist.IconSize="21">
-            <workspace:SystemWorkspacePanel/>
+            <workspace:SystemWorkspacePanel />
         </ui:IconifyTabItem>
     </ui:IconifyTabControl>
 </UserControl>

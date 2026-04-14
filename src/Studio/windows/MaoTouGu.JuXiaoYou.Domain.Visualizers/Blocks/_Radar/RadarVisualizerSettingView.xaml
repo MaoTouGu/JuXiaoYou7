@@ -31,7 +31,7 @@
                                             Style="{StaticResource SettingItem}">
                         <ui:SingleLine Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Delay=100}" />
                     </HeaderedContentControl>
-                    <HeaderedContentControl Header="数据来源"
+                    <HeaderedContentControl Header="喵喵咒语"
                                             Style="{StaticResource SettingItem}">
                         <ui:SingleLine Text="{Binding MetadataSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Delay=100}" />
                     </HeaderedContentControl>

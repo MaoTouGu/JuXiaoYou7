@@ -102,7 +102,7 @@ namespace MaoTouGu.JuXiaoYou.Workspaces.WorldView
         public TopClassWorkspaceItem GetTopClassWorkspaceItem(string subClassParentID)
         {
             var detph = 0;
-            
+
             while (!string.IsNullOrEmpty(subClassParentID))
             {
                 if (!_dictionary.TryGetValue(subClassParentID, out var wi))
@@ -114,7 +114,7 @@ namespace MaoTouGu.JuXiaoYou.Workspaces.WorldView
                 {
                     return tcWI;
                 }
-                
+
                 if (wi is SubClassWorkspaceItem scWI)
                 {
                     subClassParentID = scWI.ParentID;
@@ -351,7 +351,7 @@ namespace MaoTouGu.JuXiaoYou.Workspaces.WorldView
                     {
                         Uncensored.Items.Remove(subClassWI);
                     }
-                    else if(_dictionary.TryGetValue(subClassWI.ParentID, out var parent))
+                    else if (_dictionary.TryGetValue(subClassWI.ParentID, out var parent))
                     {
                         if (parent is TopClassWorkspaceItem tcWI)
                         {

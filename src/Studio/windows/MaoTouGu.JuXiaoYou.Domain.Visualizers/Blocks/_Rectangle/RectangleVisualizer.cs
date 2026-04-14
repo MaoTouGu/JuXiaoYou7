@@ -13,5 +13,8 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Blocks
         
         public override string Id   => "028015C76C9047ACA8F9ECF7F7FC4B0B";
         public override string Name => "矩形色块";
+
+        public override int MinHeight => 20;
+        public override int MinWidth => 20;
     }
 }

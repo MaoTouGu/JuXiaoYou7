@@ -40,8 +40,8 @@
                                         Padding="8 4"
                                         MinWidth="100">
                                     <DockPanel>
-                                        <CloseButton DockPanel.Dock="Right" 
-                                                     Click="Button_Remove"/>
+                                        <CloseButton DockPanel.Dock="Right"
+                                                     Click="Button_Remove" />
                                         <TextBlock Text="{Binding}"
                                                    TextAlignment="Center" />
                                     </DockPanel>

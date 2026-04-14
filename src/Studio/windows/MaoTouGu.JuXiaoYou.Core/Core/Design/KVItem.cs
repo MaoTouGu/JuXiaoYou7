@@ -20,7 +20,7 @@ namespace MaoTouGu.JuXiaoYou
             get => _value;
             set => SetValue(ref _value, value);
         }
-        
+
         /// <summary>
         /// 获取或设置 <see cref="Name"/> 属性。
         /// </summary>
@@ -34,7 +34,7 @@ namespace MaoTouGu.JuXiaoYou
     public abstract class KVItem<T> : ObservableObject
     {
         private string _name;
-        private T _value;
+        private T      _value;
 
         /// <summary>
         /// 获取或设置 <see cref="Value"/> 属性。
@@ -44,7 +44,7 @@ namespace MaoTouGu.JuXiaoYou
             get => _value;
             set => SetValue(ref _value, value);
         }
-        
+
         /// <summary>
         /// 获取或设置 <see cref="Name"/> 属性。
         /// </summary>
@@ -54,7 +54,12 @@ namespace MaoTouGu.JuXiaoYou
             set => SetValue(ref _name, value);
         }
     }
-    
-    public sealed class Int32Value : KVItem<int>{}
-    public sealed class BooleanValue : KVItem<bool>{}
+
+    public sealed class Int32Value : KVItem<int>
+    {
+    }
+
+    public sealed class BooleanValue : KVItem<bool>
+    {
+    }
 }

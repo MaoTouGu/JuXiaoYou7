@@ -181,7 +181,7 @@ namespace MaoTouGu.JuXiaoYou.AppModels
         }
 
         protected bool CanModified() => IsOwned;
-        
+
         protected bool CanModified<T>(T target) => IsOwned && target is not null;
 
         public DateTime Modified

@@ -89,7 +89,7 @@ namespace MaoTouGu.JuXiaoYou.AppModels
         protected abstract Task OnEditingItem(T target);
         protected virtual void OnRemovingItem(T target)
         {
-            
+
         }
 
         //------------------------------------------------------------

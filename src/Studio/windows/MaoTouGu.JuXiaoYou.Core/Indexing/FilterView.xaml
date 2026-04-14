@@ -13,7 +13,7 @@
             Padding="0 8">
     <UserControl.Resources>
         <DataTemplate DataType="{x:Type objects:Moniker}">
-            <this:WithStarPresenter/>
+            <this:WithStarPresenter />
         </DataTemplate>
 
         <Style TargetType="{x:Type ui:ListBoxItem}" BasedOn="{StaticResource ListBoxItem.Outline}">
@@ -24,17 +24,17 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ui:ListBoxItem}">
                         <Border x:Name="PART_Border"
-                                    Padding="{TemplateBinding Padding}"
-                                    Background="{TemplateBinding Background}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    BorderBrush="Transparent"
-                                    CornerRadius="0">
+                                Padding="{TemplateBinding Padding}"
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="Transparent"
+                                CornerRadius="0">
                             <ContentPresenter x:Name="PART_Content"
-                                                  TextElement.Foreground="{TemplateBinding Foreground}"
-                                                  Content="{TemplateBinding Content}"
-                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
-                                                  ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
-                                                  ContentStringFormat="{TemplateBinding ContentStringFormat}"/>
+                                              TextElement.Foreground="{TemplateBinding Foreground}"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                              ContentStringFormat="{TemplateBinding ContentStringFormat}" />
                         </Border>
                         <ControlTemplate.Triggers>
                             <MultiTrigger>
@@ -46,7 +46,7 @@
                             </MultiTrigger>
                             <Trigger Property="IsSelected" Value="True">
                                 <Setter Property="BorderBrush" Value="{DynamicResource Brush.HighlightB4}" TargetName="PART_Border" />
-                                <Setter Property="Background" Value="#20000000" TargetName="PART_Border"/>
+                                <Setter Property="Background" Value="#20000000" TargetName="PART_Border" />
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="False">
                                 <Setter Property="TextElement.Foreground" Value="{DynamicResource Brush.Foreground.Disabled}" TargetName="PART_Content" />
@@ -79,7 +79,7 @@
                                Command="{Binding Add}"
                                Margin="3 0"
                                Padding="32 8"
-                               Width="160"/>
+                               Width="160" />
 
             </StackPanel>
 
@@ -92,46 +92,46 @@
                                Command="{Binding Edit}"
                                CommandParameter="{Binding Moniker, Mode=OneWay}"
                                Margin="3 0"
-                               Padding="32 8"/>
+                               Padding="32 8" />
                 <ui:GhostButton ui:ControlAssist.CornerRadius="0"
                                 Content="设卡"
                                 Command="{Binding TemplateVisualize}"
                                 CommandParameter="{Binding Moniker, Mode=OneWay}"
                                 Margin="3 0"
-                                Padding="32 8"/>
+                                Padding="32 8" />
                 <ui:GhostButton ui:ControlAssist.CornerRadius="0"
-                               Content="删除"
-                               Command="{Binding Remove}"
-                               CommandParameter="{Binding Moniker, Mode=OneWay}"
-                               Margin="3 0"
-                               Padding="32 8"/>
+                                Content="删除"
+                                Command="{Binding Remove}"
+                                CommandParameter="{Binding Moniker, Mode=OneWay}"
+                                Margin="3 0"
+                                Padding="32 8" />
                 <ui:GhostButton ui:ControlAssist.CornerRadius="0"
-                                 ui:ControlAssist.Icon="{StaticResource More}"
+                                ui:ControlAssist.Icon="{StaticResource More}"
                                 ui:ControlAssist.IsFilled="True"
                                 ContextMenuAssist.UseClick="True"
-                               Content="分享"
+                                Content="分享"
                                 IconMode="Icon"
-                               Margin="3 0">
+                                Margin="3 0">
                     <ui:GhostButton.ContextMenu>
                         <ui:ContextMenu Placement="Bottom">
                             <ui:MenuItem Header="Quick"
-                                         Click="Menu_Quick"/>
+                                         Click="Menu_Quick" />
                             <ui:MenuItem Header="添加设定"
-                                         Click="Menu_AddSetting"/>
+                                         Click="Menu_AddSetting" />
                             <ui:MenuItem Header="添加头像"
-                                         Click="Menu_AddGravatar"/>
+                                         Click="Menu_AddGravatar" />
                         </ui:ContextMenu>
                     </ui:GhostButton.ContextMenu>
                 </ui:GhostButton>
             </StackPanel>
         </Grid>
-        
+
         <ui:ListBox Grid.Row="1"
                     ItemsSource="{Binding Monikers}"
                     SelectedItem="{Binding Moniker, Mode=TwoWay}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel/>
+                    <WrapPanel />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
         </ui:ListBox>

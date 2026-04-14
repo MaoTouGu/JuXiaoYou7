@@ -31,7 +31,7 @@
                             Style="{StaticResource HeaderedContentControl.DecoratedStyle1}">
         <ui:ControlAssist.ToolBar>
             <ui:GhostButton Content="添加标签"
-                            Click="Button_Add"/>
+                            Click="Button_Add" />
         </ui:ControlAssist.ToolBar>
         <ItemsControl ItemsSource="{Binding Keywords}">
             <ItemsControl.ItemsPanel>

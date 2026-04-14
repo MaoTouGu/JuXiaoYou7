@@ -47,7 +47,7 @@
                                 <DockPanel Margin="24 8">
                                     <TextBlock Text="{Binding Converter={x:Static Converters.EnumToString}}"
                                                TextWrapping="Wrap"
-                                               VerticalAlignment="Center"/>
+                                               VerticalAlignment="Center" />
                                 </DockPanel>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>

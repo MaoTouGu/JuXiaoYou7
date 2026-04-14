@@ -12,12 +12,12 @@ namespace MaoTouGu.JuXiaoYou.Common.Commands
         public override void Execute(object parameter)
         {
             var dialog = ClassStatic.CreateInstance<T>();
-            
+
             if (target is PageBase page)
             {
                 page.Flyout(dialog);
             }
-            else if(target is DialogBase dialog2)
+            else if (target is DialogBase dialog2)
             {
                 dialog2.Flyout(dialog);
             }

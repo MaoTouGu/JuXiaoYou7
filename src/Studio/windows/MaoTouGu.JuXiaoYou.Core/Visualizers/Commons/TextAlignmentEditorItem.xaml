@@ -4,9 +4,41 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:MaoTouGu.JuXiaoYou.Visualizers.Commons"
+             xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+             xmlns:ui="urn:KinonekoSoftware/ui"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        
-    </Grid>
+    <UserControl.Resources>
+        <sys:Int32 x:Key="Zero">0</sys:Int32>
+        <sys:Int32 x:Key="One">1</sys:Int32>
+        <sys:Int32 x:Key="Two">2</sys:Int32>
+        <sys:Int32 x:Key="Three">3</sys:Int32>
+        <sys:Int32 x:Key="Four">4</sys:Int32>
+        <sys:Int32 x:Key="Five">5</sys:Int32>
+    </UserControl.Resources>
+
+    <ui:ListBox x:Name="Input"
+                SelectionChanged="ListBox_OnSelectionChanged">
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <StackPanel Orientation="Horizontal" />
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ui:ListBoxItem Content="左对齐"
+                        FontWeight="Thin"
+                        Tag="{StaticResource Zero}" />
+
+        <ui:ListBoxItem Content="居中对齐"
+                        FontWeight="Light"
+                        Tag="{StaticResource One}" />
+
+        <ui:ListBoxItem Content="右对齐"
+                        FontWeight="Normal"
+                        Tag="{StaticResource Two}" />
+
+        <ui:ListBoxItem Content="两端对齐"
+                        FontWeight="Bold"
+                        Tag="{StaticResource Three}" />
+
+    </ui:ListBox>
 </UserControl>

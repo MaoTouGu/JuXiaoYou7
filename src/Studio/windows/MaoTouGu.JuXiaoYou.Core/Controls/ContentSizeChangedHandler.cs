@@ -2,14 +2,14 @@
 
 namespace MaoTouGu.Studio.Controls
 {
-    
-    
+
+
     /// <summary>
     /// Handler for a content size changed event.
     /// </summary>
     /// <param name="sender">Event sender.</param>
     /// <param name="newSize">New content size.</param>
-    public delegate void ContentSizeChangedHandler( object sender, Size newSize);
+    public delegate void ContentSizeChangedHandler(object sender, Size newSize);
 
     /// <summary>
     /// Zoom view modes.

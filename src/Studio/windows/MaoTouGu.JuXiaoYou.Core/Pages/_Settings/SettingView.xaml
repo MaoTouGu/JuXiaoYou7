@@ -29,7 +29,7 @@
                 <ui:StrikeTabItem Header="云服务">
                 </ui:StrikeTabItem>
                 <ui:StrikeTabItem Header="关于">
-                    <this:AboutUsSettingView/>
+                    <this:AboutUsSettingView />
                 </ui:StrikeTabItem>
             </ui:StrikeTabControl>
         </DockPanel>

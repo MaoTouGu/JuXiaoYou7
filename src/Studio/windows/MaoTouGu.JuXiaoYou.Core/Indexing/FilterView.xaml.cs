@@ -20,7 +20,7 @@
 
             ((WorkspaceViewModel)dc.Parent).Open(new MonikerTransitViewModel(dc.Moniker, dc.Parent));
         }
-        
+
         private async void Menu_AddSetting(object sender, RoutedEventArgs e)
         {
             var dc = ViewModel<FilterViewModel>();
@@ -47,7 +47,7 @@
 
             settings[r1.Value] = r2.Value;
         }
-        
+
         private void Menu_AddGravatar(object sender, RoutedEventArgs e)
         {
             var dc = ViewModel<FilterViewModel>();

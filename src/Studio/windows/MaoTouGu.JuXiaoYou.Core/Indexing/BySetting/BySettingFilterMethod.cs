@@ -30,20 +30,20 @@ namespace MaoTouGu.JuXiaoYou.Indexing
         protected abstract bool CanHandle(CustomFilter filter);
 
         protected abstract BySettingFilterMethod Create(CustomFilter filter);
-        
-        
+
+
         public override async Task<Moniker> AddAsync(FilterViewModel viewModel)
         {
             return await Task.FromResult<Moniker>(null);
         }
-        
+
         public override async Task RemoveAsync(FilterViewModel viewModel, Moniker x)
         {
             x.IsSoftDeleted = true;
-            x.Modified = DateTime.Now;
+            x.Modified      = DateTime.Now;
 
             await viewModel.MonikerService.Update(x);
-            
+
             viewModel.RemoveSuccess();
         }
     }
@@ -65,11 +65,11 @@ namespace MaoTouGu.JuXiaoYou.Indexing
         }
 
         public T CustomFilter { get; init; }
-        
-        
+
+
         public override string Name => CustomFilter?.Name;
     }
-    
+
     public abstract class NumericMethod<T, S> : BySettingFilterMethod<T, S> where T : CustomFilter
                                                                             where S : BySettingFilterMethod<T, S>, new()
     {

@@ -53,7 +53,7 @@ namespace MaoTouGu.JuXiaoYou.Startups
                 RaiseUpdated();
             }
         }
-        
+
         public int ImageWidth
         {
             get => _domain.ImageWidth;
@@ -63,7 +63,7 @@ namespace MaoTouGu.JuXiaoYou.Startups
                 RaiseUpdated();
             }
         }
-        
+
         public int Height
         {
             get => _domain.Height;
@@ -73,7 +73,7 @@ namespace MaoTouGu.JuXiaoYou.Startups
                 RaiseUpdated();
             }
         }
-        
+
         public int Width
         {
             get => _domain.Width;
@@ -83,7 +83,7 @@ namespace MaoTouGu.JuXiaoYou.Startups
                 RaiseUpdated();
             }
         }
-        
+
         public string Image
         {
             get => _domain.Image;
@@ -103,7 +103,7 @@ namespace MaoTouGu.JuXiaoYou.Startups
                 RaiseUpdated();
             }
         }
-        
+
         public ICommandEX Select { get; }
     }
 }

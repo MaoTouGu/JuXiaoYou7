@@ -14,7 +14,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
         private readonly Project _target;
 
         private bool _isOnline;
-        
+
         public NewProjectViewModel()
         {
             _target = new Project

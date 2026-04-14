@@ -15,12 +15,12 @@
         <LinearGradientBrush StartPoint="0 0"
                              EndPoint="0 1">
             <GradientStop Color="{Binding Settings[Color], Converter={x:Static Converters.ToColor}}"
-                          Offset="0"/>
-            <GradientStop Color="Transparent" Offset="0.9"/>
+                          Offset="0" />
+            <GradientStop Color="Transparent" Offset="0.9" />
         </LinearGradientBrush>
     </UserControl.Background>
     <DockPanel Margin="8">
-        <Border DockPanel.Dock="Top" 
+        <Border DockPanel.Dock="Top"
                 ImageSystem.Source="{Binding Gravatar, Mode=OneWay}"
                 ImageSystem.Fallback="Gravatar"
                 Height="84"
@@ -29,6 +29,6 @@
 
         <TextBlock Margin="0 8"
                    Text="{Binding FriendlyName, Mode=OneWay}"
-                   TextAlignment="Center"/>
+                   TextAlignment="Center" />
     </DockPanel>
 </UserControl>

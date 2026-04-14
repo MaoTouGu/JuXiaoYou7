@@ -7,7 +7,7 @@
 // ----------------------------------------------------------
 namespace MaoTouGu.JuXiaoYou.Visualizers.Commons
 {
-    public class FontFamilyConverter: OneWayConverter
+    public class FontFamilyConverter : OneWayConverter
     {
 
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)

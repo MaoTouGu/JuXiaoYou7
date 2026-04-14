@@ -19,7 +19,7 @@ namespace MaoTouGu.JuXiaoYou.Startups
             target.Image       = id;
             target.X           = target.Y = 0;
         }
-        
+
         protected override void OnSetImageFailed(Domain target)
         {
             target.ImageWidth  = 0;

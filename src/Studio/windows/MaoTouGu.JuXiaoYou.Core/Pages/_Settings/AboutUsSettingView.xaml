@@ -12,6 +12,6 @@
              d:DataContext="{d:DesignInstance Type={x:Type thisVM:SettingViewModel}, IsDesignTimeCreatable=True}"
              Padding="0 20 0 0">
     <Grid>
-        
+
     </Grid>
 </UserControl>

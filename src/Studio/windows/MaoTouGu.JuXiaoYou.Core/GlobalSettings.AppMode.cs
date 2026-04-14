@@ -20,9 +20,9 @@ namespace MaoTouGu.JuXiaoYou
                 AppMode = AppMode.None;
                 return;
             }
-            
+
             var maybeAppMode = args[0]?.ToString();
-                
+
             if (string.IsNullOrEmpty(maybeAppMode))
             {
                 Args    = args;
@@ -36,7 +36,7 @@ namespace MaoTouGu.JuXiaoYou
                 Args    = args;
             }
         }
-        
+
         public static object[] Args    { get; private set; }
         public static AppMode  AppMode { get; private set; }
     }

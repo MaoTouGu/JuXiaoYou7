@@ -1,5 +1,4 @@
-﻿
-global using MaoTouGu.Foundation;
+﻿global using MaoTouGu.Foundation;
 
 //
 //
@@ -16,4 +15,3 @@ global using MaoTouGu.Shells.Core;
 global using MaoTouGu.Shells.Inputs;
 global using MaoTouGu.Shells.Interops;
 global using MaoTouGu.Shells.Languages;
-

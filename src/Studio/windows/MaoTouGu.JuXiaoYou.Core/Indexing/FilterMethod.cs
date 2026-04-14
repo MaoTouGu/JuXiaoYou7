@@ -37,7 +37,7 @@ namespace MaoTouGu.JuXiaoYou.Indexing
 
             return Result<Moniker>.Success(moniker);
         }
-        
+
         public static async Task Remove(Moniker target)
         {
             await DatabaseManager.GetService<MonikerService>()
@@ -70,11 +70,11 @@ namespace MaoTouGu.JuXiaoYou.Indexing
 
             return r;
         }
-        
+
         public static async Task RemoveMonikerAndReference(Moniker x, Folder folder, ReferenceService refService = null)
         {
             refService ??= DatabaseManager.GetService<ReferenceService>();
-            
+
             await refService.Delete(x.Id, folder.Name);
             await Remove(x);
         }
@@ -105,7 +105,7 @@ namespace MaoTouGu.JuXiaoYou.Indexing
 
             return r;
         }
-        
+
         /// <summary>
         /// 添加设定并附加到标签当中去。
         /// </summary>
@@ -117,7 +117,7 @@ namespace MaoTouGu.JuXiaoYou.Indexing
 
             keywordService ??= DatabaseManager.GetService<KeywordService>();
 
-            
+
             await keywordService.Delete(x.Id, label.Name);
             await Remove(x);
         }
@@ -151,7 +151,7 @@ namespace MaoTouGu.JuXiaoYou.Indexing
 
             return r;
         }
-        
+
         public static async Task RemoveMonikerAndUniqueReference(Moniker x, TopClass topClass, SubClass subClass, UniqueReferenceService uRefService = null)
         {
 
@@ -160,9 +160,9 @@ namespace MaoTouGu.JuXiaoYou.Indexing
             await uRefService.Remove(x.Id, topClass.Id, subClass.Id);
             await Remove(x);
         }
-        
+
         public abstract Task<Moniker> AddAsync(FilterViewModel viewModel);
-        
+
         public abstract Task RemoveAsync(FilterViewModel viewModel, Moniker x);
         public abstract string Name { get; }
     }

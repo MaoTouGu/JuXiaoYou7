@@ -26,22 +26,22 @@
                 <DockPanel.ContextMenu>
                     <ui:ContextMenu>
                         <ui:MenuItem Header="添加"
-                                  Click="MenuItem_AddSubClass"
-                                  CommandParameter="{Binding}"/>
+                                     Click="MenuItem_AddSubClass"
+                                     CommandParameter="{Binding}" />
                         <ui:MenuItem Header="编辑"
-                                  Click="MenuItem_EditTopClass"
-                                  CommandParameter="{Binding}"/>
-                        <Separator/>
+                                     Click="MenuItem_EditTopClass"
+                                     CommandParameter="{Binding}" />
+                        <Separator />
                         <ui:MenuItem Header="删除"
-                                  Click="MenuItem_RemoveTopClass"
-                                  CommandParameter="{Binding}"/>
+                                     Click="MenuItem_RemoveTopClass"
+                                     CommandParameter="{Binding}" />
                     </ui:ContextMenu>
                 </DockPanel.ContextMenu>
                 <ui:Iconify Icon="{StaticResource World}"
-                            IconSize="21"/>
+                            IconSize="21" />
                 <TextBlock Margin="8 0 0 0"
-                           Text="{Binding Instance.Name, Mode=OneWay}" 
-                           VerticalAlignment="Center"/>
+                           Text="{Binding Instance.Name, Mode=OneWay}"
+                           VerticalAlignment="Center" />
             </DockPanel>
         </HierarchicalDataTemplate>
 
@@ -53,23 +53,23 @@
                 <DockPanel.ContextMenu>
                     <ui:ContextMenu>
                         <ui:MenuItem Header="添加"
-                                  Click="MenuItem_AddSubClass"
-                                  CommandParameter="{Binding}"/>
+                                     Click="MenuItem_AddSubClass"
+                                     CommandParameter="{Binding}" />
                         <ui:MenuItem Header="编辑"
-                                  Click="MenuItem_EditSubClass"
-                                  CommandParameter="{Binding}"/>
-                        <Separator/>
+                                     Click="MenuItem_EditSubClass"
+                                     CommandParameter="{Binding}" />
+                        <Separator />
                         <ui:MenuItem Header="删除"
-                                  Click="MenuItem_RemoveSubClass"
-                                  CommandParameter="{Binding}"/>
+                                     Click="MenuItem_RemoveSubClass"
+                                     CommandParameter="{Binding}" />
                     </ui:ContextMenu>
                 </DockPanel.ContextMenu>
                 <ui:Iconify Icon="{StaticResource More}"
                             IconSize="21"
                             IsFilled="True" />
                 <TextBlock Margin="8 0 0 0"
-                           Text="{Binding Instance.Name, Mode=OneWay}" 
-                           VerticalAlignment="Center"/>
+                           Text="{Binding Instance.Name, Mode=OneWay}"
+                           VerticalAlignment="Center" />
             </DockPanel>
         </HierarchicalDataTemplate>
 
@@ -80,10 +80,10 @@
                 <DockPanel.ContextMenu>
                     <ui:ContextMenu>
                         <ui:MenuItem Header="添加"
-                                  Click="MenuItem_AddTopClass"/>
-                        <Separator/>
+                                     Click="MenuItem_AddTopClass" />
+                        <Separator />
                         <ui:MenuItem Header="开发者操作">
-                            <ui:MenuItem Header="导出快照"/>
+                            <ui:MenuItem Header="导出快照" />
                         </ui:MenuItem>
                     </ui:ContextMenu>
                 </DockPanel.ContextMenu>
@@ -97,8 +97,8 @@
             </DockPanel>
         </HierarchicalDataTemplate>
     </UserControl.Resources>
-    
-    
+
+
     <!-- -->
     <!-- -->
     <!-- -->
@@ -115,14 +115,13 @@
                             ui:ControlAssist.IconSize="19"
                             IconMode="Icon"
                             Height="40"
-                            Width="40"/>
+                            Width="40" />
 
             <ui:SingleLine CornerRadius="0"
                            FontSize="14"
-                           VerticalContentAlignment="Center"/>
+                           VerticalContentAlignment="Center" />
         </DockPanel>
-                
-                
+
 
         <!-- ============ 设定 ============-->
         <ui:TreeView Grid.Row="1"

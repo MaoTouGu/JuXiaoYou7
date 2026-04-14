@@ -16,13 +16,13 @@ namespace MaoTouGu.JuXiaoYou.Core
         {
             Services = new List<DataService>(32);
         }
-        
-        
+
+
 
         public static T GetService<T>() where T : DataService
         {
             var srv = Services.OfType<T>().FirstOrDefault();
-            
+
             if (srv is null)
             {
                 srv = Ioc.GetOrRegister<T>();
@@ -35,14 +35,14 @@ namespace MaoTouGu.JuXiaoYou.Core
         public static void SetDataSource<T>() where T : DataService, IDataSource
         {
             var srv = Ioc.GetOrRegister<T>();
-            
+
             if (!Ioc.IsRegistered<T>())
             {
                 //
                 //
                 Services.Add(srv);
             }
-        } 
+        }
 
         public static IDatabaseManager Create(Project project)
         {

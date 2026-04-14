@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="MaoTouGu.JuXiaoYou.Visualizers.Commons.FontWeightEditorItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:MaoTouGu.JuXiaoYou.Visualizers.Commons"
+             xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+             xmlns:ui="urn:KinonekoSoftware/ui"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <sys:Int32 x:Key="Zero">0</sys:Int32>
+        <sys:Int32 x:Key="One">1</sys:Int32>
+        <sys:Int32 x:Key="Two">2</sys:Int32>
+        <sys:Int32 x:Key="Three">3</sys:Int32>
+        <sys:Int32 x:Key="Four">4</sys:Int32>
+        <sys:Int32 x:Key="Five">5</sys:Int32>
+    </UserControl.Resources>
+
+    <HeaderedContentControl Header="字重"
+                            Margin="0 0 0 8"
+                            Style="{StaticResource SettingItem}">
+        <ui:ListBox x:Name="Input"
+                    SelectionChanged="ListBox_OnSelectionChanged"
+                    Style="{StaticResource ListBox.Direct}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ui:ListBoxItem Content="字"
+                            FontWeight="Thin"
+                            Tag="{StaticResource Zero}" />
+
+            <ui:ListBoxItem Content="字"
+                            FontWeight="Light"
+                            Tag="{StaticResource One}" />
+
+            <ui:ListBoxItem Content="字"
+                            FontWeight="Normal"
+                            Tag="{StaticResource Two}" />
+
+            <ui:ListBoxItem Content="字"
+                            FontWeight="Bold"
+                            Tag="{StaticResource Three}" />
+
+            <ui:ListBoxItem Content="字"
+                            FontWeight="Black"
+                            Tag="{StaticResource Three}" />
+        </ui:ListBox>
+    </HeaderedContentControl>
+</UserControl>

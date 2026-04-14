@@ -236,7 +236,7 @@ namespace MaoTouGu.Studio.Controls
             {
                 return;
             }
-            
+
             // We are starting the drag
             SetIsDragging(obj, true);
 

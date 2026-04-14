@@ -10,7 +10,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Controls
     partial class VisualizerControl
     {
         private volatile ThrottleEvent _optionEvent;
-        
+
         /// <summary>
         /// 当<see cref="TypographyVisualizerVPO.Options"/>属性发生变化的时候，需要通知所有VisualizerControl变更绑定。
         /// </summary>
@@ -32,7 +32,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Controls
                     Options = o,
                     VPO     = DataContext as TypographyVisualizerVPO,
                 };
-                    
+
                 _throttleRequests.Enqueue(this);
             }
 

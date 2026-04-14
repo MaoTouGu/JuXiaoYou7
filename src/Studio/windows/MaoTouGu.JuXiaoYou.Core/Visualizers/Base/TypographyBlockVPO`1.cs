@@ -22,7 +22,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Core
             get => _instance;
             init
             {
-                Base        = value;
+                Base      = value;
                 _instance = value;
             }
         }

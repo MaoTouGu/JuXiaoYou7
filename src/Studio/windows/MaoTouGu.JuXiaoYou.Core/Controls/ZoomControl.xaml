@@ -3,16 +3,16 @@
                     xmlns:ui="urn:KinonekoSoftware/ui"
                     xmlns:ctrl="clr-namespace:MaoTouGu.Studio.Controls"
                     xmlns:graph="clr-namespace:GraphShape;assembly=KinonekoSoftware.GraphShape">
-    
+
     <ctrl:DoubleToLog10Converter x:Key="Log10Converter" />
     <ctrl:EqualityToBooleanConverter x:Key="EqualityConverter" />
-    
+
     <Geometry x:Key="ArrowLeft">M 16 8 L 16 8 0 0 128 0</Geometry>
     <Geometry x:Key="ArrowRight">M 0 8 L 0 8 128 8 112 0</Geometry>
-    
-    
+
+
     <Style TargetType="{x:Type ctrl:ZoomControl}">
-        <Setter Property="Background" Value="{DynamicResource Brush.Background.Level3}"/>
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.Level3}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ctrl:ZoomControl}">

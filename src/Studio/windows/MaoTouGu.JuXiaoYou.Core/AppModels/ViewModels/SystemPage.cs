@@ -11,7 +11,7 @@ namespace MaoTouGu.JuXiaoYou.AppModels
     {
         protected SystemPage() : base(removable: true, singleton: true)
         {
-            
+
         }
     }
 }

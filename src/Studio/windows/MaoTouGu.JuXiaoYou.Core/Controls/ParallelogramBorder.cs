@@ -13,7 +13,7 @@ namespace MaoTouGu.JuXiaoYou.Controls
 {
     public sealed class ParallelogramBorder : Border
     {
-        
+
 
         public static readonly DependencyProperty IsObtuseAngleProperty =
             DependencyProperty.Register(
@@ -55,15 +55,15 @@ namespace MaoTouGu.JuXiaoYou.Controls
                     rt = new Point(w, 0);
                     rb = new Point(w - p.Right, h);
                 }
-                
+
                 ctx.BeginFigure(lt, true, true);
                 ctx.LineTo(rt, true, false);
                 ctx.LineTo(rb, true, false);
                 ctx.LineTo(lb, true, false);
                 ctx.Close();
             }
-            
-            
+
+
             dc.DrawGeometry(Background, pen, geo);
         }
 

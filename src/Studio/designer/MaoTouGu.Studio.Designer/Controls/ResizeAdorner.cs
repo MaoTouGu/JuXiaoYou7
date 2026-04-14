@@ -187,7 +187,7 @@ namespace MaoTouGu.JuXiaoYou.Controls
             block.Width  = Math.Round(block.Width  / 20d) * 20d;
             block.Height = Math.Round(block.Height / 20d) * 20d;
             
-            if (block.Options.AdjustMode == AdjustMode.Square)
+            if (block.Options is not null && block.Options.AdjustMode == AdjustMode.Square)
             {
                 var min = Math.Min(block.Width, block.Height);
                 

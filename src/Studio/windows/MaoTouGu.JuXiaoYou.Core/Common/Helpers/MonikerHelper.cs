@@ -37,7 +37,7 @@ namespace MaoTouGu.JuXiaoYou.Common.Helpers
 
             return keyword;
         }
-        
+
         public static async Task RemoveKeyword(string id, KeywordService service = null)
         {
             service ??= DatabaseManager.GetService<KeywordService>();

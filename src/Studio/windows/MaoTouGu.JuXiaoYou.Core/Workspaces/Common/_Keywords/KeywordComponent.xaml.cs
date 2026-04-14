@@ -13,7 +13,7 @@ namespace MaoTouGu.JuXiaoYou.Workspaces.Common
         {
             InitializeComponent();
         }
-        
+
         private async void Button_Add(object sender, RoutedEventArgs e)
         {
             if (sender is not FrameworkElement { DataContext: Keyword k } fe)
@@ -30,7 +30,7 @@ namespace MaoTouGu.JuXiaoYou.Workspaces.Common
 
             await iKT.AddKeyword();
         }
-        
+
         private async void Button_Remove(object sender, RoutedEventArgs e)
         {
             if (sender is not FrameworkElement { DataContext: Keyword k } fe)

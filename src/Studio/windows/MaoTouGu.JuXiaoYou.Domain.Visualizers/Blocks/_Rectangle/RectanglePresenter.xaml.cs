@@ -23,13 +23,21 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Blocks
                 return;
             }
 
+            
+            if (string.IsNullOrEmpty(visualizer.MetadataSource))
+            {
+                Background = null;
+            }
+            else
+            {
+                var brush   = new SolidColorBrush();
+                var binding = GetBinding(m, visualizer.MetadataSource, Converters.ToColor);
 
-            var brush    = new SolidColorBrush();
-            var binding  = GetBinding(m, visualizer.MetadataSource, Converters.ToColor);
 
+                BindingOperations.SetBinding(brush, SolidColorBrush.ColorProperty, binding);
+                Background = brush;
+            }
 
-            BindingOperations.SetBinding(brush, SolidColorBrush.ColorProperty, binding);
-            Background = brush;
         }
     }
 }

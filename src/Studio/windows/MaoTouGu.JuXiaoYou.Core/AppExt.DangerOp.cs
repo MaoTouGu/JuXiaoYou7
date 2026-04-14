@@ -21,7 +21,7 @@ namespace MaoTouGu.JuXiaoYou
             {
                 description = "你无法删除这个数据，因为这不是你本人创建的！";
             }
-            
+
             target.Warning(title, description);
         }
         public static void SaveSuccess(this PageBase target, string title = null, string description = null)
@@ -38,7 +38,7 @@ namespace MaoTouGu.JuXiaoYou
             }
             target.Success(title, description);
         }
-        
+
         public static void RemoveSuccess(this PageBase target, string title = null, string description = null)
         {
 
@@ -53,7 +53,7 @@ namespace MaoTouGu.JuXiaoYou
             }
             target.Warning(title, description);
         }
-        
+
         public static async Task<bool> RemoveReference(this PageBase target, string title = null, string description = null)
         {
             if (string.IsNullOrEmpty(title))

@@ -15,7 +15,7 @@ namespace MaoTouGu.JuXiaoYou.Indexing
                             {
                                 var v = CustomFilter.Value;
                                 originalSource.AddRange(
-                                                        collection.Where(moniker => !moniker.IsSoftDeleted                                 && 
+                                                        collection.Where(moniker => !moniker.IsSoftDeleted                                 &&
                                                                                     moniker.TryGetSetting(CustomFilter.Key, out var value) &&
                                                                                     value.Contains(v, StringComparison.OrdinalIgnoreCase)));
                             });

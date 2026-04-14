@@ -23,7 +23,7 @@ namespace MaoTouGu.JuXiaoYou.Core
                 return v?.DataContext as T;
             }
         }
-        
+
         FrameworkElement IVisualConnector.Control { get; set; }
     }
 }

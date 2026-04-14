@@ -11,10 +11,10 @@ namespace MaoTouGu.JuXiaoYou.AppModels
 {
     public static class Settings
     {
-        
+
         public static RemoteApi WebApi { get; set; }
-        public static Mutex  Mutex  { get; set; }
-        
+        public static Mutex     Mutex  { get; set; }
+
         public static AppSettings     App     { get; set; }
         public static ProjectSettings Project { get; set; }
 
@@ -24,7 +24,7 @@ namespace MaoTouGu.JuXiaoYou.AppModels
 
             return JSON.FromFile<ProjectSettings>(fileName, () => new ProjectSettings
             {
-                
+
             });
         }
 

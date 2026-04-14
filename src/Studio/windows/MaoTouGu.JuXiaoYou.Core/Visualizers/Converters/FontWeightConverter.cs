@@ -20,7 +20,6 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Commons
                 2 => FontWeights.Normal,
                 3 => FontWeights.Bold,
                 4 => FontWeights.Black,
-                5 => FontWeights.UltraBlack,
                 _ => FontWeights.Thin,
             };
         }
@@ -47,11 +46,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Commons
             {
                 return 4;
             }
-            if (w == FontWeights.UltraBlack)
-            {
-                return 5;
-            }
-            
+
             return 0;
         }
 

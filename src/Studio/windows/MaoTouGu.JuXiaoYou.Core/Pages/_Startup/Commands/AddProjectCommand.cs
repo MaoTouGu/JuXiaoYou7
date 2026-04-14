@@ -19,7 +19,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
             {
                 return;
             }
-            
+
             //
             // 先反序列化，然后看看项目是否已经存在。
             var proj        = JSON.FromFile<Project>(r.Value);
@@ -28,18 +28,18 @@ namespace MaoTouGu.JuXiaoYou.Pages
 
             //
             // 文件格式有误。
-            if (proj is null ||
+            if (proj is null                  ||
                 string.IsNullOrEmpty(proj.Id) ||
                 string.IsNullOrEmpty(proj.Url))
             {
                 Context.Warning("警告", "文件格式有误。");
                 return;
             }
-            
+
             //
             // 已经添加过了这个企划。
             if (Projects.Any(x => string.Equals(
-                                                x.Url, 
+                                                x.Url,
                                                 proj.Url,
                                                 StringComparison.OrdinalIgnoreCase)))
             {
@@ -54,7 +54,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
                 projSetting.DefaultProject = proj.Id;
             }
 
-            
+
             //
             // 添加
             Context.Projects.Add(proj);
@@ -63,7 +63,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
             //
             // 选择。
             Context.Project = proj;
-                
+
             //
             //
             Context.UpdateDefaultProject();

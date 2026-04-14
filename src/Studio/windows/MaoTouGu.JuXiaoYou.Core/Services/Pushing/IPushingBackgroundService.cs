@@ -9,6 +9,6 @@ namespace MaoTouGu.JuXiaoYou.Services
 {
     public interface IPushingBackgroundService : ILifetime
     {
-        
+
     }
 }
