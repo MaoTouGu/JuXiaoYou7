@@ -16,7 +16,7 @@ namespace MaoTouGu.JuXiaoYou.Indexing
                 return;
             }
 
-            await Navigate(new SimpleMonikerSettingViewModel(target));
+            await Navigate(new MonikerEditorViewModel(target));
         }
 
         private async void DoAddCommand()
@@ -44,6 +44,16 @@ namespace MaoTouGu.JuXiaoYou.Indexing
             }
         }
 
+        private async void DoTemplateVisualizeCommand(Moniker target)
+        {
+            if (target is null)
+            {
+                return;
+            }
+
+            await Navigate(new MonikerTemplateVisualizerViewModel(target));
+        }
+        
         private async void DoRemoveCommand(Moniker target)
         {
             if (target is null)

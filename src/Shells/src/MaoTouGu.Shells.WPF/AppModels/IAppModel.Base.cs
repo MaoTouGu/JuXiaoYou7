@@ -316,7 +316,7 @@ namespace MaoTouGu.Shells.AppModels
                     
                     if (!string.IsNullOrEmpty(target.InstanceID)   &&
                         !string.IsNullOrEmpty(instance.InstanceID) &&
-                        instance.InstanceID != target.InstanceID)
+                        instance.InstanceID == target.InstanceID)
                     {
                         result = false;
                         break;

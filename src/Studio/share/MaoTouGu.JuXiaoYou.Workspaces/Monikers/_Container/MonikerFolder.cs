@@ -5,7 +5,7 @@
 //            版权所有：MaoTouGu Studio & Luoyisi
 // 
 // ----------------------------------------------------------
-namespace MaoTouGu.JuXiaoYou.Workspaces.Monikers
+namespace MaoTouGu.JuXiaoYou.Visualizers.Pages
 {
     public class MonikerFolder : WorkspaceFolder
     {

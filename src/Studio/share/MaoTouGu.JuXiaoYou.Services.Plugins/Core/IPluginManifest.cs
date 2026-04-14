@@ -9,6 +9,7 @@ namespace MaoTouGu.JuXiaoYou.Services.Plugins
 {
     public interface IPluginManifest
     {
+        [Obsolete("use RegisterVisualizers() instead of")]
         void RegisterVisualManagers();
         void RegisterFeatures();
         void RegisterVisualizers();

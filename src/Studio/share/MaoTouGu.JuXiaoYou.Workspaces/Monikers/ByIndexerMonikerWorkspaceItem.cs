@@ -7,7 +7,7 @@
 // ----------------------------------------------------------
 using NetTopologySuite.Index.HPRtree;
 
-namespace MaoTouGu.JuXiaoYou.Workspaces.Monikers
+namespace MaoTouGu.JuXiaoYou.Visualizers.Pages
 {
     public class ByIndexerMonikerWorkspaceItem : MonikerWorkspaceItem
     {

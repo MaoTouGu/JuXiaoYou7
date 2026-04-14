@@ -35,6 +35,17 @@ namespace MaoTouGu.JuXiaoYou.Workspaces
                 return;
             }
 
+
+            if (item.DataContext is SubClassWorkspaceItem subClassWI)
+            {
+                var topClassWI = viewModel.WorldView
+                                          .GetTopClassWorkspaceItem(subClassWI.ParentID);
+                
+                viewModel.Open(new FilterViewModel(topClassWI.Instance, subClassWI.Instance, viewModel));
+                return;
+            }
+
+
             if (item.DataContext is MonikerWrapperItem wrapper)
             {
                 await viewModel.Navigate(new MonikerEditorViewModel(wrapper.Moniker));

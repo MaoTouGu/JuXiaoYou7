@@ -3,6 +3,7 @@
  */
 global using MaoTouGu.Shells;
 global using MaoTouGu.Shells.Controls;
+global using MaoTouGu.Shells.Converters;
 /*
  *
  */
@@ -20,8 +21,10 @@ global using MaoTouGu.JuXiaoYou.Common.Helpers;
 global using MaoTouGu.JuXiaoYou.Core;
 global using MaoTouGu.JuXiaoYou.Startups;
 global using MaoTouGu.JuXiaoYou.Visualizers;
+global using MaoTouGu.JuXiaoYou.Visualizers.Core;
+global using MaoTouGu.JuXiaoYou.Visualizers.Controls;
+global using MaoTouGu.JuXiaoYou.Visualizers.Pages;
 global using MaoTouGu.JuXiaoYou.Workspaces;
-global using MaoTouGu.JuXiaoYou.Workspaces.Monikers;
 global using MaoTouGu.JuXiaoYou.Workspaces.WorldView;
 
 /*
@@ -42,7 +45,8 @@ global using MaoTouGu.Studio.Database.Objects;
 global using MaoTouGu.Studio.Database.References;
 global using MaoTouGu.Studio.Database.Spots;
 global using MaoTouGu.Studio.Database.Utils;
-
+global using MaoTouGu.Studio.Database.Topology;
+global using MaoTouGu.Studio.Database.Templates;
 /*
  *
  */

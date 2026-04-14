@@ -7,13 +7,6 @@
 // ----------------------------------------------------------
 global using System.Windows.Media;
 global using System.Windows.Media.Imaging;
-
-global using MaoTouGu.Studio.Database.Identity;
-global using MaoTouGu.Studio.Database.Objects;
-global using MaoTouGu.Studio.Database.Templates;
-global using MaoTouGu.Studio.Database.Topology;
-global using MaoTouGu.Studio.Database.Utils;
-
 /*
  *
  *
@@ -22,9 +15,24 @@ global using MaoTouGu.Studio.Database.Utils;
  *
  *
  *
- * 
+ *
  */
-
+global using MaoTouGu.Studio.Database;
+global using MaoTouGu.Studio.Database.Identity;
+global using MaoTouGu.Studio.Database.Objects;
+global using MaoTouGu.Studio.Database.Templates;
+global using MaoTouGu.Studio.Database.Topology;
+global using MaoTouGu.Studio.Database.Utils;
+/*
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
 global using MaoTouGu.JuXiaoYou.Core;
 global using MaoTouGu.JuXiaoYou.Services.Plugins;
 global using MaoTouGu.JuXiaoYou.Visualizers.Core;

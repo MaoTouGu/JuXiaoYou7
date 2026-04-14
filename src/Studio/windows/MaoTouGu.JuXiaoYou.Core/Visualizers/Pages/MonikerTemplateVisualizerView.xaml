@@ -1,0 +1,102 @@
+﻿<ForestPage x:Class="MaoTouGu.JuXiaoYou.Visualizers.Pages.MonikerRenderView"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:ui="urn:KinonekoSoftware/ui"
+            xmlns:this="clr-namespace:MaoTouGu.JuXiaoYou.Visualizers.Pages"
+            xmlns:thisVM="clr-namespace:MaoTouGu.JuXiaoYou.Visualizers.Pages"
+            xmlns:topology="clr-namespace:MaoTouGu.Studio.Database.Topology;assembly=MaoTouGu.Studio.Database"
+            xmlns:visualizers="clr-namespace:MaoTouGu.JuXiaoYou.Visualizers.Core"
+            xmlns:common="clr-namespace:MaoTouGu.JuXiaoYou.Visualizers.Commons"
+            mc:Ignorable="d"
+            d:DesignWidth="800" d:DesignHeight="450"
+            d:DataContext="{d:DesignInstance Type={x:Type thisVM:MonikerTemplateVisualizerViewModel}, IsDesignTimeCreatable=True}"
+            Padding="8">
+    <UserControl.Resources>
+        
+        <!-- 页面 -->
+        <DataTemplate DataType="{x:Type this:TypographyPageVPO}">
+            <ItemsControl ItemsSource="{Binding Blocks, Mode=OneWay}">
+                <ItemsControl.Resources>
+                    <DataTemplate DataType="{x:Type visualizers:TypographyVisualizerVPO}">
+                        <ContentPresenter Content="{Binding Converter={x:Static visualizers:Visualizer.View}}" />
+                    </DataTemplate>
+                </ItemsControl.Resources>
+                <ItemsControl.ItemContainerStyle>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="Canvas.Left" Value="{Binding X, Mode=OneWay}" />
+                        <Setter Property="Canvas.Top" Value="{Binding Y, Mode=OneWay}" />
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas IsItemsHost="True"
+                                Margin="8"
+                                Height="{Binding Height, Mode=OneWay}"
+                                Width="{Binding Width, Mode=OneWay}">
+                        </Canvas>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </DataTemplate>
+        
+        
+        <!-- 页面 -->
+        <DataTemplate DataType="{x:Type visualizers:TypographyVisualizerVPO}">
+            <ContentPresenter Content="{Binding Converter={x:Static visualizers:Visualizer.View}}" />
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type visualizers:TypographyVisualizerVPO}">
+            <ContentPresenter Content="{Binding Converter={x:Static visualizers:Visualizer.Setting}}" />
+        </DataTemplate>
+                                
+        <DataTemplate DataType="{x:Type visualizers:TypographyTextVPO}">
+            <common:TypographyTextView/>
+        </DataTemplate>
+                                
+        <DataTemplate DataType="{x:Type visualizers:TypographyImageVPO}">
+            <common:TypographyImageView/>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <DockPanel>
+        
+        <Grid DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0"
+                        Orientation="Horizontal">
+
+                <ui:GhostButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.Folder}"
+                                Content="打开"
+                                Command="{Binding Load}"
+                                IconMode="Both" />
+
+
+            </StackPanel>
+            
+            <StackPanel Grid.Column="2"
+                        Orientation="Horizontal">
+
+                <ui:GhostButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.Camera}"
+                                Content="截图"
+                                Command="{x:Static GUI.Snapshot}"
+                                CommandParameter="{Binding ElementName=Container, Mode=OneWay}"
+                                IconMode="Both" />
+
+
+            </StackPanel>
+        </Grid>
+        
+        <ScrollViewer>
+            <Border x:Name="Container">
+                <ItemsControl ItemsSource="{Binding Pages, Mode=OneWay}"/>
+            </Border>
+        </ScrollViewer>
+
+    </DockPanel>
+</ForestPage>

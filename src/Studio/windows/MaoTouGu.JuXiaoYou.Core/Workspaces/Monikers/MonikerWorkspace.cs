@@ -6,9 +6,10 @@
 // 
 // ----------------------------------------------------------
 using MaoTouGu.JuXiaoYou.Indexing;
+using MaoTouGu.Studio.Database;
 using Label = MaoTouGu.Studio.Database.References.Label;
 
-namespace MaoTouGu.JuXiaoYou.Workspaces.Monikers
+namespace MaoTouGu.JuXiaoYou.Visualizers.Pages
 {
     public sealed class MonikerWorkspace : SpecificWorkspace
     {
@@ -387,7 +388,7 @@ namespace MaoTouGu.JuXiaoYou.Workspaces.Monikers
 
         public void ExportFilter(WorkspaceViewModel viewModel, BySettingFilterMethodItem item)
         {
-            var r = Interop.SaveFileAsync("自定义分类|*.JSON", "JSON");
+            var r = Interop.SaveFileAsync(ExtFilters.CustomFilter, ExtFilters.CustomFilterExt);
 
             if (!r.IsFinished)
             {
@@ -400,7 +401,7 @@ namespace MaoTouGu.JuXiaoYou.Workspaces.Monikers
 
         public async Task ImportFilter(WorkspaceViewModel viewModel, BySettingFilterMethodItem item)
         {
-            var r = Interop.OpenFileAsync("自定义分类|*.JSON");
+            var r = Interop.OpenFileAsync(ExtFilters.CustomFilter);
 
             if (!r.IsFinished)
             {

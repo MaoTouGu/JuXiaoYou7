@@ -30,6 +30,10 @@ namespace MaoTouGu.Studio
         
         //
         // Symbol
-        public const string Moniker = nameof(Moniker);
+        public const string Moniker        = nameof(Moniker);
+        
+        //
+        // Visualizer
+        public const string InlineTemplate = nameof(InlineTemplate);
     }
 }

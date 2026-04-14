@@ -31,7 +31,7 @@
         </GeometryGroup>
 
         
-        <DataTemplate DataType="{x:Type feature:Feature}">
+        <DataTemplate DataType="{x:Type feature:IVisualizerGenerator}">
             <DockPanel>
                 <ui:Iconify Foreground="SlateGray"
                             IsFilled="True"

@@ -6,6 +6,7 @@
 // 
 // ----------------------------------------------------------
 using MaoTouGu.Foundation.Collections;
+using MaoTouGu.Studio.Database.Objects;
 
 namespace MaoTouGu.Studio.Database.Core
 {
@@ -17,5 +18,11 @@ namespace MaoTouGu.Studio.Database.Core
         
         //
         // Reference.* = 具体的筛选方式
+        public const string Fixed_Name     = nameof(Moniker.Name);
+        public const string Fixed_Gravatar = nameof(Moniker.Gravatar);
+        public const string Fixed_IsStar   = nameof(Moniker.IsStar);
+        
+        //
+        //
     }
 }

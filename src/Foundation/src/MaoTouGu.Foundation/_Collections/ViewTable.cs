@@ -110,16 +110,9 @@ namespace MaoTouGu.Foundation.Collections
             }
             set
             {
-                var exists   = _dictionary.ContainsKey(key);
-                var oldValue = exists ? _dictionary[key] : default;
-
                 _dictionary[key] = value;
                 OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
-
-                OnPropertyChanged(nameof(Count));
-                OnPropertyChanged("Item[]");
-                OnPropertyChanged(nameof(Keys));
-                OnPropertyChanged(nameof(Values));
+                OnPropertyChanged(key.ToString());
             }
         }
 
@@ -142,8 +135,7 @@ namespace MaoTouGu.Foundation.Collections
                                                                      NotifyCollectionChangedAction.Add,
                                                                      new KeyValuePair<TKey, TValue>(key, value),
                                                                      -1));
-            OnPropertyChanged(nameof(Count));
-            OnPropertyChanged("Item[]");
+            OnPropertyChanged(key.ToString());
         }
 
         /// <summary>
@@ -166,8 +158,7 @@ namespace MaoTouGu.Foundation.Collections
                 if (removed)
                 {
                     OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
-                    OnPropertyChanged(nameof(Count));
-                    OnPropertyChanged("Item[]");
+                    OnPropertyChanged(key.ToString());
                 }
                 return removed;
             }

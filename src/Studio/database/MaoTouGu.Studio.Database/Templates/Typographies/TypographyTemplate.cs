@@ -22,6 +22,9 @@ namespace MaoTouGu.Studio.Database.Templates
         /// </summary>
         public HashSet<string> OccupiedTable { get; init; }
         
+        /// <summary>
+        /// 
+        /// </summary>
         public Dictionary<string, string> Base64Table { get; init; }
 
         /// <summary>

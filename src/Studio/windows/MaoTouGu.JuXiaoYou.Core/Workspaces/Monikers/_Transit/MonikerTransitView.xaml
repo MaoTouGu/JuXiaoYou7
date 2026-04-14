@@ -1,0 +1,210 @@
+﻿<ForestPage x:Class="MaoTouGu.JuXiaoYou.Visualizers.Pages.MonikerTransitView"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:ui="urn:KinonekoSoftware/ui"
+            xmlns:this="clr-namespace:MaoTouGu.JuXiaoYou.Visualizers.Pages"
+            xmlns:workspaceCommon="clr-namespace:MaoTouGu.JuXiaoYou.Workspaces.Common"
+            xmlns:thisVM="clr-namespace:MaoTouGu.JuXiaoYou.Visualizers.Pages"
+            mc:Ignorable="d"
+            d:DesignWidth="800" d:DesignHeight="450"
+            d:DataContext="{d:DesignInstance Type={x:Type thisVM:MonikerTransitViewModel}, IsDesignTimeCreatable=True}"
+            Padding="8 0">
+
+    <ScrollViewer Padding="0 10">
+
+        <!-- -->
+        <!-- -->
+        <!-- -->
+        <!-- ============ 容器 ============-->
+        <DockPanel Grid.Column="0"
+                   Margin="6 0">
+            <!-- -->
+            <!-- -->
+            <!-- -->
+            <!-- ============ 顶部信息栏 ============-->
+            <Grid DockPanel.Dock="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="300" />
+                </Grid.ColumnDefinitions>
+
+                <!-- ============ 头像 ============-->
+                <Border ImageSystem.Source="{Binding Moniker.Gravatar, Mode=OneWay}"
+                        ImageSystem.Fallback="Gravatar"
+                        Height="96"
+                        Width="96">
+                    <ui:MainButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.Folder}"
+                                   Command="{Binding SelectGravatar}"
+                                   CommandParameter="{Binding Moniker}"
+                                   IconMode="Icon"
+                                   Style="{StaticResource MainButton.Overlay}" />
+
+                </Border>
+
+                <!-- ============ 顶部信息栏 ============-->
+                <DockPanel Grid.Column="1"
+                           Margin="16 0 0 0">
+
+                    <!-- ============ 顶部信息栏 ============-->
+                    <StackPanel DockPanel.Dock="Top"
+                                Orientation="Horizontal">
+                        <!-- ============ 标题 ============-->
+                        <TextBlock FontSize="32"
+                                   FontFamily="{StaticResource HeiTi}"
+                                   Text="{Binding Moniker.FriendlyName}"
+                                   Margin="0 0 16 0"
+                                   VerticalAlignment="Center" />
+                        <!-- ============ 顶部信息栏 ============-->
+                        <ui:GhostButton ui:ControlAssist.Icon="{StaticResource FeatherIcon.Edit}"
+                                        Command="{Binding AddFavorite}"
+                                        CommandParameter="{Binding Moniker}"
+                                        IconMode="Icon"
+                                        Height="36"
+                                        Width="36" />
+                        <!-- ============ 顶部信息栏 ============-->
+                        <ui:ToggleButton ui:ControlAssist.CornerRadius="0"
+                                         ui:ControlAssist.Icon="{StaticResource FeatherIcon.Star}"
+                                         Command="{Binding AddFavorite}"
+                                         CommandParameter="{Binding Moniker}"
+                                         IconMode="Icon"
+                                         IsChecked="{Binding Moniker.IsStar, Mode=OneWay}"
+                                         Height="36"
+                                         Width="36" />
+                    </StackPanel>
+
+                    <!-- ============ 标题 ============-->
+                    <TextBlock LineHeight="21"
+                               Foreground="{DynamicResource Brush.Foreground.Level2}">
+                        <Run Text="{Binding Moniker.CreatorName, Mode=OneWay, StringFormat={}作者：{0}}" />
+                        <LineBreak />
+                        <Run Text="{Binding Moniker.Created, Mode=OneWay, StringFormat={}创建时间：yyyy年MM月dd日hh点mm分}" />
+                        <LineBreak />
+                        <Run Text="{Binding Moniker.Modified, Mode=OneWay, StringFormat={}编辑时间：yyyy年MM月dd日hh点mm分}" />
+                    </TextBlock>
+                </DockPanel>
+
+                <WrapPanel Grid.Column="2"
+                           ItemHeight="36"
+                           ItemWidth="100">
+                    <ui:GhostButton Content="设定" />
+                    <ui:GhostButton Content="灵感" />
+                    <ui:GhostButton Content="视觉" />
+                    <ui:GhostButton Content="故事" />
+                    <ui:GhostButton Content="百科" />
+                </WrapPanel>
+            </Grid>
+
+            <!-- -->
+            <!-- -->
+            <!-- -->
+            <!-- ============ 底部数据栏 ============-->
+            <Grid ShowGridLines="False">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Margin="6 0">
+                    <workspaceCommon:KeywordComponent Margin="0 8" />
+
+                    <HeaderedContentControl Header="基础数据"
+                                            Margin="0 8"
+                                            Style="{StaticResource HeaderedContentControl.DecoratedStyle1}">
+                    </HeaderedContentControl>
+                    <HeaderedContentControl Header="立绘"
+                                            Margin="0 8"
+                                            Style="{StaticResource HeaderedContentControl.DecoratedStyle1}">
+                    </HeaderedContentControl>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1"
+                            Margin="6 0">
+                    <HeaderedContentControl Header="喵喵咒语"
+                                            Margin="0 8"
+                                            Style="{StaticResource HeaderedContentControl.DecoratedStyle1}">
+                        <ItemsControl Grid.IsSharedSizeScope="True"
+                                      ItemsSource="{Binding Moniker.Settings, Mode=OneWay}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel ItemWidth="320" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="0 0 0 4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" SharedSizeGroup="Key" />
+                                            <ColumnDefinition Width="1*" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock FontSize="13"
+                                                   FontFamily="{StaticResource SongTi}"
+                                                   Text="{Binding Key}"
+                                                   TextAlignment="Left"
+                                                   VerticalAlignment="Center" />
+
+                                        <TextBlock Grid.Column="1"
+                                                   FontSize="12"
+                                                   FontFamily="{StaticResource SongTi}"
+                                                   Foreground="{DynamicResource Brush.Foreground.Level2}"
+                                                   Margin="16 0 0 0"
+                                                   Text="{Binding Value}"
+                                                   TextAlignment="Center"
+                                                   VerticalAlignment="Center" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </HeaderedContentControl>
+
+                    <HeaderedContentControl Header="默认操作"
+                                            Margin="0 8"
+                                            Style="{StaticResource HeaderedContentControl.DecoratedStyle1}">
+                        <StackPanel>
+                            <TextBlock FontSize="13"
+                                       Foreground="{DynamicResource Brush.Foreground.Level2}"
+                                       Text="下次双击设定时，您期待的操作为："
+                                       VerticalAlignment="Center" />
+
+
+                            <ui:OptionListBox DockPanel.Dock="Right"
+                                              Margin="0 8">
+                                <ui:OptionListBoxItem Content="跳转到中转页" />
+                                <ui:OptionListBoxItem Content="跳转到设定页" />
+                                <ui:OptionListBoxItem Content="跳转到灵感页" />
+                                <ui:OptionListBoxItem Content="跳转到视觉页" />
+                                <ui:OptionListBoxItem Content="跳转到作品页" />
+                                <ui:OptionListBoxItem Content="跳转到百科页" />
+                            </ui:OptionListBox>
+
+                            <HeaderedContentControl Header="应用到当前世界?"
+                                                    BorderThickness="0"
+                                                    HorizontalAlignment="Left"
+                                                    Style="{StaticResource PropertyItem2}">
+                                <ui:ToggleSwitch />
+                            </HeaderedContentControl>
+
+                            <HeaderedContentControl Header="应用到当前标签?"
+                                                    BorderThickness="0"
+                                                    HorizontalAlignment="Left"
+                                                    Style="{StaticResource PropertyItem2}">
+                                <ui:ToggleSwitch />
+                            </HeaderedContentControl>
+
+
+                            <HeaderedContentControl Header="应用到当前目录?"
+                                                    BorderThickness="0"
+                                                    HorizontalAlignment="Left"
+                                                    Style="{StaticResource PropertyItem2}">
+                                <ui:ToggleSwitch />
+                            </HeaderedContentControl>
+                        </StackPanel>
+                    </HeaderedContentControl>
+
+                </StackPanel>
+            </Grid>
+        </DockPanel>
+    </ScrollViewer>
+
+</ForestPage>

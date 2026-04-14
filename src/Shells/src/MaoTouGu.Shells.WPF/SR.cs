@@ -6,6 +6,7 @@ namespace MaoTouGu.Shells
     {
         public const string Image_All = "支持的图片文件|*.png;*.jpg;*.jpeg;*.bmp";
         public const string Image_Png = "PNG图片文件|*.png";
+        public const string Image_PngExt = "png";
         
         public static string Title_Success    => I18N.GetText("txt.Title.Success");
         public static string Title_Info       => I18N.GetText("txt.Title.Info");

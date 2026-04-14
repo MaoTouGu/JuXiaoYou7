@@ -14,9 +14,6 @@ namespace MaoTouGu.Studio.Database.Objects
     [DebuggerDisplay("Name = {Name}, Id = {Id}")]
     public sealed class Moniker : Authorable, IGravatarTarget
     {
-        private string _name;
-        private string _gravatar;
-
         public static Moniker Create(string name, User user)
         {
             var time = DateTime.Now;

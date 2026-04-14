@@ -32,7 +32,6 @@
       <Compile Include="..\..\..\..\scaffolds\Usings\Usings_MaoTouGu.Shells.cs">
         <Link>Properties\Usings_MaoTouGu.Shells.cs</Link>
       </Compile>
-      <Compile Remove="Blocks\_Radar\**" />
       <Compile Remove="Blocks\_TextGroup\**" />
       <Compile Remove="Blocks\Radars\**" />
     </ItemGroup>
@@ -40,26 +39,27 @@
     <ItemGroup>
       <Folder Include="Blocks\_Image\" />
       <Folder Include="Blocks\_Rectangle\" />
+      <Folder Include="Commons\" />
       <Folder Include="Documents\" />
       <Folder Include="GravatarWide\WithName\" />
       <Folder Include="GravatarWide\WithRarity\" />
       <Folder Include="GravatarWide\WithTitle\" />
+      <Folder Include="Inlines\_Geometry\" />
+      <Folder Include="Inlines\_Text\" />
+      <Folder Include="Pages\_Render\" />
     </ItemGroup>
 
     <ItemGroup>
-      <EmbeddedResource Remove="Blocks\_Radar\**" />
       <EmbeddedResource Remove="Blocks\_TextGroup\**" />
       <EmbeddedResource Remove="Blocks\Radars\**" />
     </ItemGroup>
 
     <ItemGroup>
-      <Page Remove="Blocks\_Radar\**" />
       <Page Remove="Blocks\_TextGroup\**" />
       <Page Remove="Blocks\Radars\**" />
     </ItemGroup>
 
     <ItemGroup>
-      <None Remove="Blocks\_Radar\**" />
       <None Remove="Blocks\_TextGroup\**" />
       <None Remove="Blocks\Radars\**" />
     </ItemGroup>

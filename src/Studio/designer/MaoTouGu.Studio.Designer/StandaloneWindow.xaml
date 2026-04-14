@@ -8,7 +8,7 @@
            xmlns:thisVM="clr-namespace:MaoTouGu.Shells.AppModels;assembly=MaoTouGu.Shells.WPF"
            xmlns:appModels="clr-namespace:MaoTouGu.JuXiaoYou.AppModels;assembly=MaoTouGu.JuXiaoYou.Core"
            mc:Ignorable="d"
-           Icon="pack://application:,,,/MaoTouGu.JuXiaoYou;component/JuXiaoYou4.ico"
+           Icon="pack://application:,,,/MaoTouGu.Studio.Designer;component/JuXiaoYou4.ico"
            UseLayoutRounding="True"
            SnapsToDevicePixels="True"
            MinHeight="640"

@@ -1,6 +1,7 @@
 ﻿
 global using LiteDB;
 global using MaoTouGu.Foundation;
+global using MaoTouGu.Studio.Database;   
 
 global using System.Collections;
 global using System.Collections.Concurrent;

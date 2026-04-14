@@ -106,10 +106,18 @@
                     Width="{Binding Width, Mode=TwoWay}" />
         </DataTemplate>
 
-        <HierarchicalDataTemplate DataType="{x:Type this:TypographyLayerVPO}"
-                                  ItemsSource="{Binding Blocks,Mode=OneWay}">
+        <DataTemplate DataType="{x:Type this:TypographyLayerVPO}">
             <TextBlock Text="{Binding Layer.Name, Mode=OneWay}" />
-        </HierarchicalDataTemplate>
+        </DataTemplate>
+
+
+        <DataTemplate DataType="{x:Type TypographyTextVPO}">
+            <TypographyTextView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type TypographyImageVPO}">
+            <TypographyImageView />
+        </DataTemplate>
     </UserControl.Resources>
 
     <DockPanel>
@@ -150,6 +158,7 @@
                                     Grid.Column="0"
                                     Foreground="{DynamicResource Brush.Success200}"
                                     Content="保存模板"
+                                    Command="{Binding Save}"
                                     IconMode="Both" />
 
                     <Rectangle Grid.Column="1"
@@ -303,10 +312,11 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="200" />
                         <ColumnDefinition Width="200" />
+                        <ColumnDefinition Width="200" />
                         <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="384" />
                     </Grid.ColumnDefinitions>
 
+                    <!-- ============ 帮助面板 ============-->
                     <HeaderedContentControl Grid.Column="0"
                                             Header="页面属性"
                                             Margin="8 2"
@@ -327,21 +337,34 @@
                         </StackPanel>
                     </HeaderedContentControl>
 
+                    <!-- ============ 帮助面板 ============-->
                     <HeaderedContentControl Grid.Column="1"
                                             Header="页面宽度"
                                             Margin="8 2"
                                             Style="{StaticResource SettingItem}"
                                             VerticalAlignment="Top">
-                        <DockPanel>
-                            <ui:SingleLine DockPanel.Dock="Bottom"
-                                           IsEnabled="{Binding IsCustomSize, Mode=OneWay}"
-                                           CornerRadius="0"
-                                           Margin="0 4"
-                                           Text="{Binding PageWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Delay=100}"
-                                           Watermark="自定义（1000px~2000px）" />
-                        </DockPanel>
+                        <ui:SingleLine IsEnabled="{Binding IsCustomSize, Mode=OneWay}"
+                                       CornerRadius="0"
+                                       Margin="0 4"
+                                       Text="{Binding PageWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Delay=100}"
+                                       Watermark="自定义（1000px~2000px）" />
                     </HeaderedContentControl>
+                    <!-- ============ 帮助面板 ============-->
                     <HeaderedContentControl Grid.Column="2"
+                                            Header="页面高度"
+                                            Margin="8 2"
+                                            Style="{StaticResource SettingItem}"
+                                            VerticalAlignment="Top">
+                        <ui:SingleLine CornerRadius="0"
+                                       Margin="0 4"
+                                       Text="{Binding PageHeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Delay=100}"
+                                       Watermark="自定义（200px~2000px）" />
+
+                    </HeaderedContentControl>
+
+                    <!-- ============ 帮助面板 ============-->
+
+                    <HeaderedContentControl Grid.Column="3"
                                             Header="模板宽度"
                                             Margin="8 2"
                                             Style="{StaticResource SettingItem}">
@@ -364,37 +387,13 @@
                         </ui:ListBox>
                     </HeaderedContentControl>
 
-                    <HeaderedContentControl Grid.Column="3"
-                                            Header="样例设定"
-                                            Margin="8 2"
-                                            Style="{StaticResource SettingItem}">
-
-                        <WrapPanel Grid.Column="6"
-                                   Margin="8 4"
-                                   ItemHeight="32"
-                                   ItemWidth="160"
-                                   Orientation="Vertical">
-                            <ui:GhostButton ui:ControlAssist.CornerRadius="0"
-                                            ui:ControlAssist.Icon="{StaticResource FeatherIcon.Edit}"
-                                            Content="编辑"
-                                            IconMode="Both" />
-
-                            <ui:GhostButton ui:ControlAssist.CornerRadius="0"
-                                            ui:ControlAssist.Icon="{StaticResource FeatherIcon.Image}"
-                                            Content="导入"
-                                            IconMode="Both" />
-                            <ui:GhostButton ui:ControlAssist.CornerRadius="0"
-                                            ui:ControlAssist.Icon="{StaticResource FeatherIcon.Image}"
-                                            Content="导出"
-                                            IconMode="Both" />
-                        </WrapPanel>
-
-                    </HeaderedContentControl>
                 </Grid>
             </ui:SinkTabItem>
-            
+
             <!-- ============ 帮助面板 ============-->
-            <ui:SinkTabItem Header="设定" />
+            <ui:SinkTabItem Header="设定">
+
+            </ui:SinkTabItem>
 
             <!-- ============ 帮助面板 ============-->
             <ui:SinkTabItem Header="帮助" />
@@ -438,13 +437,13 @@
                             SelectionChanged="Selection_RenderCanvas">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Border Background="Gray"
+                            <Border Background="#10808080"
                                     Height="90"
                                     Width="160">
                                 <Border Height="90"
                                         Width="160">
                                     <Border.Background>
-                                        <ImageBrush ImageSource="{Binding Bitmap, Mode=OneWay}"/>
+                                        <ImageBrush ImageSource="{Binding Bitmap, Mode=OneWay}" />
                                     </Border.Background>
                                 </Border>
                             </Border>
@@ -497,8 +496,8 @@
                             <ItemsControl x:Name="Items"
                                           ItemsSource="{Binding ObservableBlocks, Mode=OneWay}">
                                 <ItemsControl.Resources>
-                                    <DataTemplate DataType="{x:Type visualizers:TypographyVisualizerVPO}">
-                                        <ContentPresenter Content="{Binding Converter={x:Static visualizers:Visualizer.View}}" />
+                                    <DataTemplate DataType="{x:Type TypographyVisualizerVPO}">
+                                        <ContentPresenter Content="{Binding Converter={x:Static Visualizer.View}}" />
                                     </DataTemplate>
                                 </ItemsControl.Resources>
                                 <ItemsControl.ItemContainerStyle>
@@ -572,10 +571,10 @@
                                                 Height="32"
                                                 Width="32" />
                             </StackPanel>
-                            <ui:TreeView ItemsSource="{Binding Layers}"
-                                         BindableSelectedItem="{Binding Layer, Mode=TwoWay}">
+                            <ui:ListBox ItemsSource="{Binding Layers}"
+                                        SelectedItem="{Binding Layer, Mode=TwoWay}">
 
-                            </ui:TreeView>
+                            </ui:ListBox>
                         </DockPanel>
                     </HeaderedContentControl>
                 </ui:SinkTabItem>
@@ -685,18 +684,24 @@
                 <ui:SinkTabItem Header="属性">
                     <ScrollViewer>
                         <ContentControl Content="{Binding Block, Mode=OneWay}">
-
                             <ContentControl.Resources>
-                                <DataTemplate DataType="{x:Type visualizers:TypographyVisualizerVPO}">
-                                    <ContentPresenter Content="{Binding Converter={x:Static visualizers:Visualizer.Setting}}" />
+                                <DataTemplate DataType="{x:Type TypographyVisualizerVPO}">
+                                    <ContentPresenter Content="{Binding Converter={x:Static Visualizer.Setting}}" />
+                                </DataTemplate>
+
+                                <DataTemplate DataType="{x:Type TypographyTextVPO}">
+                                    <TypographyTextSettingView />
+                                </DataTemplate>
+
+                                <DataTemplate DataType="{x:Type TypographyImageVPO}">
+                                    <TypographyImageSettingView />
                                 </DataTemplate>
                             </ContentControl.Resources>
                         </ContentControl>
                     </ScrollViewer>
                 </ui:SinkTabItem>
                 <ui:SinkTabItem Header="设定">
-                    <HeaderedContentControl Grid.Column="2"
-                                            Header="设定"
+                    <HeaderedContentControl Header="设定"
                                             Margin="8 2"
                                             Style="{StaticResource SettingItem}">
                         <ui:ControlAssist.ToolBar>

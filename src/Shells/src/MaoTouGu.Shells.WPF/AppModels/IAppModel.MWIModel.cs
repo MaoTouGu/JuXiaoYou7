@@ -72,7 +72,7 @@
 
         public override async Task<bool> Navigate(PageBase page, params object[] args)
         {
-            if (!await page.ReceiveInternal(args))
+            if (!await page.Receive(args))
             {
                 return false;
             }

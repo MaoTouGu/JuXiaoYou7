@@ -11,10 +11,10 @@ namespace MaoTouGu.JuXiaoYou.Workspaces
     {
         public VisualManagerWorkspaceItem()
         {
-            Items = FeatureManager.VisualManagers;
+            Items = new ViewList<IVisualizerGenerator>(FeatureManager.Visualizers.Values);
         }
 
-        public ViewList<Feature> Items { get; }
+        public ViewList<IVisualizerGenerator> Items { get; }
 
     }
 }

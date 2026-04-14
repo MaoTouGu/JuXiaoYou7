@@ -9,7 +9,7 @@
 
 using MaoTouGu.Studio;
 
-namespace MaoTouGu.JuXiaoYou.Workspaces.Monikers
+namespace MaoTouGu.JuXiaoYou.Visualizers.Pages
 {
     public sealed class FavoriteMonikerWorkspaceItem : MonikerWorkspaceContainer
     {

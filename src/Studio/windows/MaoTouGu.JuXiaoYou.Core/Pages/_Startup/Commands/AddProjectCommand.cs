@@ -5,13 +5,15 @@
 //            版权所有：MaoTouGu Studio & Luoyisi
 // 
 // ----------------------------------------------------------
+using MaoTouGu.Studio.Database;
+
 namespace MaoTouGu.JuXiaoYou.Pages
 {
     sealed class AddProjectCommand(StartupViewModel target) : ContextCommand<StartupViewModel>(target)
     {
         public override void Execute(object parameter)
         {
-            var r = Interop.OpenFileAsync("企划文件|*.mkProj");
+            var r = Interop.OpenFileAsync(ExtFilters.Project);
 
             if (!r.IsFinished)
             {

@@ -12,6 +12,10 @@ namespace MaoTouGu.JuXiaoYou.Indexing
 {
     partial class FilterViewModel
     {
+        public FilterViewModel(TopClass topClass, SubClass subClass, JuXiaoYouPage parent) : this($"{topClass.Id}+{subClass.Id}", parent)
+        {
+            Method = new ByWorldFilterMethod { TopClass = topClass, SubClass = subClass };
+        }
 
         public FilterViewModel(CustomFilter filter, JuXiaoYouPage parent) : this(filter.Id, parent)
         {
@@ -36,13 +40,14 @@ namespace MaoTouGu.JuXiaoYou.Indexing
 
             MonikerService = GetService<MonikerService>();
 
-            Add  = new DelegateCommand(DoAddCommand);
-            Edit = new DelegateCommand<Moniker>(DoEditCommand, DBHelper.NotNull);
+            Add    = new DelegateCommand(DoAddCommand);
+            Edit   = new DelegateCommand<Moniker>(DoEditCommand, DBHelper.NotNull);
             Remove = new DelegateCommand<Moniker>(DoRemoveCommand, DBHelper.NotNull);
 
-            SetGravatar = new SelectGravatarCommand(this);
+            SetGravatar       = new SelectGravatarCommand(this);
+            TemplateVisualize = new DelegateCommand<Moniker>(DoTemplateVisualizeCommand, DBHelper.NotNull);
         }
-        
+
         protected override async void OnStart()
         {
             // MonikerService.Subject

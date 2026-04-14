@@ -17,8 +17,13 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.GravatarWide
             InitializeComponent();
         }
 
+        protected override void Setup(Moniker m, IVisualizerOptions options)
+        {
+            OptionChangedOverride(m, options);
+        }
 
-        protected override void OnBuildExpression(Moniker m, IVisualizerOptions options)
+
+        protected override void OptionChangedOverride(Moniker m, IVisualizerOptions options)
         {
             if (options is not WithRarityGravatarVisualizer visualizer)
             {
@@ -39,10 +44,14 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.GravatarWide
             brush.EndPoint   = new Point(0, 1);
 
             BindingOperations.SetBinding(stop1, GradientStop.ColorProperty, binding);
+            
+            //
+            //
             Name.SetBinding(TextBlock.TextProperty, binding2);
-
             Border.SetBinding(ImageSystem.SourceProperty, binding3);
 
+            //
+            //
             Background = brush;
         }
     }

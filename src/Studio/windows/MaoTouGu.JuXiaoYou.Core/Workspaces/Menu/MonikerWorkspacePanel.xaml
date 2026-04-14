@@ -8,7 +8,7 @@
              xmlns:this="clr-namespace:MaoTouGu.JuXiaoYou.Workspaces"
              xmlns:thisVM="clr-namespace:MaoTouGu.JuXiaoYou.Workspaces"
              xmlns:workspace="clr-namespace:MaoTouGu.JuXiaoYou.Workspaces.WorldView;assembly=MaoTouGu.JuXiaoYou.Workspaces"
-             xmlns:monikers="clr-namespace:MaoTouGu.JuXiaoYou.Workspaces.Monikers;assembly=MaoTouGu.JuXiaoYou.Workspaces"
+             xmlns:monikers="clr-namespace:MaoTouGu.JuXiaoYou.Visualizers.Pages;assembly=MaoTouGu.JuXiaoYou.Workspaces"
              mc:Ignorable="d"
              d:DesignWidth="800" d:DesignHeight="450"
              d:DataContext="{d:DesignInstance Type={x:Type thisVM:WorkspaceViewModel}, IsDesignTimeCreatable=True}">
@@ -30,28 +30,14 @@
                     <ui:ContextMenu>
 
                         <ui:MenuItem Header="添加"
-                                     Click="MenuItem_Add"
+                                     Click="MenuItem_AddSubClass"
                                      CommandParameter="{Binding}" />
                         <ui:MenuItem Header="编辑"
-                                     Click="MenuItem_Edit"
+                                     Click="MenuItem_EditTopClass"
                                      CommandParameter="{Binding}" />
-
-                        <ui:MenuItem Header="世界">
-                            <ui:MenuItem Header="添加"
-                                         Click="MenuItem_AddSubClass"
-                                         CommandParameter="{Binding}" />
-                            <ui:MenuItem Header="编辑"
-                                         Click="MenuItem_EditTopClass"
-                                         CommandParameter="{Binding}" />
-                            <Separator />
-                            <ui:MenuItem Header="删除"
-                                         Click="MenuItem_RemoveTopClass"
-                                         CommandParameter="{Binding}" />
-                        </ui:MenuItem>
-                        <Separator />
                         <Separator />
                         <ui:MenuItem Header="删除"
-                                     Click="MenuItem_Remove"
+                                     Click="MenuItem_RemoveTopClass"
                                      CommandParameter="{Binding}" />
                     </ui:ContextMenu>
                 </DockPanel.ContextMenu>
@@ -71,28 +57,28 @@
                 <DockPanel.ContextMenu>
                     <ui:ContextMenu>
 
-                        <ui:MenuItem Header="添加"
+                        <ui:MenuItem Header="添加设定"
                                      Click="MenuItem_Add"
                                      CommandParameter="{Binding}" />
-                        <ui:MenuItem Header="编辑"
+                        <ui:MenuItem Header="编辑设定"
                                      Click="MenuItem_Edit"
                                      CommandParameter="{Binding}" />
 
                         <ui:MenuItem Header="世界">
-                            <ui:MenuItem Header="添加"
+                            <ui:MenuItem Header="添加小世界"
                                          Click="MenuItem_AddSubClass"
                                          CommandParameter="{Binding}" />
-                            <ui:MenuItem Header="编辑"
+                            <ui:MenuItem Header="编辑小世界"
                                          Click="MenuItem_EditSubClass"
                                          CommandParameter="{Binding}" />
                             <Separator />
-                            <ui:MenuItem Header="删除"
+                            <ui:MenuItem Header="删除小世界"
                                          Click="MenuItem_RemoveSubClass"
                                          CommandParameter="{Binding}" />
                         </ui:MenuItem>
                         <Separator />
                         <Separator />
-                        <ui:MenuItem Header="删除"
+                        <ui:MenuItem Header="删除设定"
                                      Click="MenuItem_Remove"
                                      CommandParameter="{Binding}" />
                     </ui:ContextMenu>

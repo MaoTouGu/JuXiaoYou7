@@ -18,19 +18,13 @@ namespace MaoTouGu.JuXiaoYou.Controls
 {
     public class ResizeAdorner : Adorner
     {
-        private readonly Thumb _leftTopThumb;
-        private readonly Thumb _leftBottomThumb;
-        private readonly Thumb _rightTopThumb;
-        private readonly Thumb _rightBottomThumb;
-        private readonly Thumb _translateThumb;
-
-        private readonly VisualCollection _visual;
 
         private static readonly ControlTemplate OutlineNWSETemplate;
         private static readonly ControlTemplate OutlineNESWTemplate;
         private static readonly ControlTemplate EmptyTemplate;
         private static readonly Thickness       One = new Thickness(2);
 
+        
 
         static ResizeAdorner()
         {
@@ -62,8 +56,32 @@ namespace MaoTouGu.JuXiaoYou.Controls
             EmptyTemplate       = template;
         }
 
-        private readonly FrameworkElement _Parent;
 
+        /*******************************************************************
+         *
+         *
+         *
+         *
+         *
+         *******************************************************************/
+
+        private readonly Thumb _leftTopThumb;
+        private readonly Thumb _leftBottomThumb;
+        private readonly Thumb _rightTopThumb;
+        private readonly Thumb _rightBottomThumb;
+        private readonly Thumb _translateThumb;
+
+        private readonly VisualCollection _visual;
+        private readonly FrameworkElement _Parent;
+        
+
+        /*******************************************************************
+         *
+         *
+         *
+         *
+         *
+         *******************************************************************/
         public ResizeAdorner(UIElement adornedElement) : base(adornedElement)
         {
             _leftTopThumb     = new Thumb { Template = OutlineNWSETemplate };
@@ -103,141 +121,16 @@ namespace MaoTouGu.JuXiaoYou.Controls
             _rightBottomThumb.DragCompleted += DragDelta_Completed_AdjustSize;
         }
 
-        void AdjustX(TypographyBlockVPO block, double xAdjust)
-        {
+        //
+        // TODO: 对角为原点，原点不动，其他的变动。
 
-            if (block.X + xAdjust < _Parent.ActualWidth - block.Width &&
-                block.X + xAdjust >= 0)
-            {
-                block.X += xAdjust;
-            }
-        }
-
-        void AdjustY(TypographyBlockVPO block, double yAdjust)
-        {
-            if (block.Y + yAdjust < _Parent.ActualHeight - block.Height &&
-                block.Y + yAdjust >= 0)
-            {
-                block.Y += yAdjust;
-            }
-        }
-
-        private void DragDelta_Move(object sender, DragDeltaEventArgs e)
-        {
-            var yAdjust = e.VerticalChange;
-            var xAdjust = e.HorizontalChange;
-
-            if (AdornedElement is not FrameworkElement { DataContext: TypographyBlockVPO block })
-            {
-                return;
-                //
-                // block.X += (int)(xAdjust / 20) * 20;
-                // block.Y += (int)(yAdjust / 20) * 20;
-            }
-            // 更新元素位置（会同步到绑定的数据源，因为 X, Y 是 TwoWay）
-
-            AdjustX(block, xAdjust);
-            AdjustY(block, yAdjust);
-        }
-
-        private void DragDelta_Move_RightTopAdjust(object sender, DragDeltaEventArgs e)
-        {
-
-            var yAdjust = e.VerticalChange;
-            var xAdjust = e.HorizontalChange;
-
-            if (AdornedElement is not FrameworkElement { DataContext: TypographyBlockVPO block })
-            {
-                return;
-            }
-
-            block.Width = Math.Clamp(block.Width + xAdjust, 60, _Parent.ActualWidth - block.X);
-        }
-
-        private void DragDelta_Move_AdjustSize(object sender, DragDeltaEventArgs e)
-        {
-            var yAdjust = e.VerticalChange;
-            var xAdjust = e.HorizontalChange;
-
-            if (AdornedElement is not FrameworkElement { DataContext: TypographyBlockVPO block })
-            {
-                return;
-            }
-
-
-
-            // 更新元素位置（会同步到绑定的数据源，因为 X, Y 是 TwoWay）
-            block.Width  = Math.Clamp(block.Width  + xAdjust, 60, _Parent.ActualWidth  - block.X);
-            block.Height = Math.Clamp(block.Height + yAdjust, 60, _Parent.ActualHeight - block.Y);
-
-        }
-
-        private void DragDelta_Move_LeftTopAdjust(object sender, DragDeltaEventArgs e)
-        {
-            var yAdjust = e.VerticalChange;
-            var xAdjust = e.HorizontalChange;
-
-            if (AdornedElement is not FrameworkElement { DataContext: TypographyBlockVPO block })
-            {
-                return;
-            }
-
-            block.Width  = Math.Clamp(block.Width  - xAdjust, 60, _Parent.ActualWidth  - block.X);
-            block.Height = Math.Clamp(block.Height - yAdjust, 60, _Parent.ActualHeight - block.Y);
-
-            DragDelta_Move(sender, e);
-        }
-
-        private void DragDelta_Move_LeftBottomAdjust(object sender, DragDeltaEventArgs e)
-        {
-            var yAdjust = e.VerticalChange;
-            var xAdjust = e.HorizontalChange;
-
-            if (AdornedElement is not FrameworkElement { DataContext: TypographyBlockVPO block })
-            {
-                return;
-            }
-
-            block.Width  = Math.Clamp(block.Width  + xAdjust, 60, _Parent.ActualWidth  - block.X);
-            block.Height = Math.Clamp(block.Height + yAdjust, 60, _Parent.ActualHeight - block.Y);
-
-            DragDelta_Move(sender, e);
-        }
-
-        private void DragDelta_Completed_AdjustCoordinates(object sender, DragCompletedEventArgs e)
-        {
-            if (AdornedElement is not FrameworkElement { DataContext: TypographyBlockVPO block })
-            {
-                return;
-                //
-                // block.X += (int)(xAdjust / 20) * 20;
-                // block.Y += (int)(yAdjust / 20) * 20;
-            }
-
-            // 更新元素位置（会同步到绑定的数据源，因为 X, Y 是 TwoWay）
-            block.X = Math.Round(block.X / 20d) * 20d;
-            block.Y = Math.Round(block.Y / 20d) * 20d;
-
-        }
-
-        private void DragDelta_Completed_AdjustSize(object sender, DragCompletedEventArgs e)
-        {
-            if (AdornedElement is not FrameworkElement { DataContext: TypographyBlockVPO block })
-            {
-                return;
-                //
-                // block.X += (int)(xAdjust / 20) * 20;
-                // block.Y += (int)(yAdjust / 20) * 20;
-            }
-
-            // 更新元素位置（会同步到绑定的数据源，因为 X, Y 是 TwoWay）
-            block.Width  = Math.Round(block.Width  / 20d) * 20d;
-            block.Height = Math.Round(block.Height / 20d) * 20d;
-
-        }
-
-        private static bool IsCorrect(double v) => !double.IsInfinity(v) && !double.IsNaN(v);
-
+        /*******************************************************************
+         *
+         *
+         *
+         *
+         *
+         *******************************************************************/
         static ControlTemplate GetThumbControlTemplate(Cursor cursor)
         {
             var factory = new FrameworkElementFactory(typeof(Border));
@@ -267,6 +160,183 @@ namespace MaoTouGu.JuXiaoYou.Controls
 
             return template;
         }
+        
+        static bool IsCorrect(double v) => !double.IsInfinity(v) && !double.IsNaN(v);
+
+        void AdjustX(TypographyBlockVPO block, double xAdjust)
+        {
+
+            if (block.X + xAdjust < _Parent.ActualWidth - block.Width &&
+                block.X + xAdjust >= 0)
+            {
+                block.X += xAdjust;
+            }
+        }
+
+        void AdjustY(TypographyBlockVPO block, double yAdjust)
+        {
+            if (block.Y + yAdjust < _Parent.ActualHeight - block.Height &&
+                block.Y + yAdjust >= 0)
+            {
+                block.Y += yAdjust;
+            }
+        }
+
+        void AdjustSize(TypographyBlockVPO block)
+        {
+            block.Width  = Math.Round(block.Width  / 20d) * 20d;
+            block.Height = Math.Round(block.Height / 20d) * 20d;
+            
+            if (block.Options.AdjustMode == AdjustMode.Square)
+            {
+                var min = Math.Min(block.Width, block.Height);
+                
+                block.Width  = min;
+                block.Height = min;
+            }
+        }
+
+        /*******************************************************************
+         *
+         *
+         *
+         *
+         *
+         *******************************************************************/
+        private void DragDelta_Move(object sender, DragDeltaEventArgs e)
+        {
+            var yAdjust = e.VerticalChange;
+            var xAdjust = e.HorizontalChange;
+
+            if (AdornedElement is not FrameworkElement { DataContext: TypographyBlockVPO block } || block.IsLock)
+            {
+                return;
+                //
+                // block.X += (int)(xAdjust / 20) * 20;
+                // block.Y += (int)(yAdjust / 20) * 20;
+            }
+            // 更新元素位置（会同步到绑定的数据源，因为 X, Y 是 TwoWay）
+
+            AdjustX(block, xAdjust);
+            AdjustY(block, yAdjust);
+        }
+
+        private void DragDelta_Move_RightTopAdjust(object sender, DragDeltaEventArgs e)
+        {
+
+            var yAdjust = e.VerticalChange;
+            var xAdjust = e.HorizontalChange;
+
+            if (AdornedElement is not FrameworkElement { DataContext: TypographyBlockVPO block } || block.IsLock)
+            {
+                return;
+            }
+
+            block.Width = Math.Clamp(block.Width + xAdjust, 60, _Parent.ActualWidth - block.X);
+        }
+
+        private void DragDelta_Move_AdjustSize(object sender, DragDeltaEventArgs e)
+        {
+            var yAdjust = e.VerticalChange;
+            var xAdjust = e.HorizontalChange;
+
+            if (AdornedElement is not FrameworkElement { DataContext: TypographyBlockVPO block } || block.IsLock)
+            {
+                return;
+            }
+
+
+
+            // 更新元素位置（会同步到绑定的数据源，因为 X, Y 是 TwoWay）
+            block.Width  = Math.Clamp(block.Width  + xAdjust, 60, _Parent.ActualWidth  - block.X);
+            block.Height = Math.Clamp(block.Height + yAdjust, 60, _Parent.ActualHeight - block.Y);
+
+        }
+
+        private void DragDelta_Move_LeftTopAdjust(object sender, DragDeltaEventArgs e)
+        {
+            var yAdjust = e.VerticalChange;
+            var xAdjust = e.HorizontalChange;
+
+            if (AdornedElement is not FrameworkElement { DataContext: TypographyBlockVPO block } || block.IsLock)
+            {
+                return;
+            }
+
+            block.Width  = Math.Clamp(block.Width  - xAdjust, 60, _Parent.ActualWidth  - block.X);
+            block.Height = Math.Clamp(block.Height - yAdjust, 60, _Parent.ActualHeight - block.Y);
+
+            DragDelta_Move(sender, e);
+        }
+
+        private void DragDelta_Move_LeftBottomAdjust(object sender, DragDeltaEventArgs e)
+        {
+            var yAdjust = e.VerticalChange;
+            var xAdjust = e.HorizontalChange;
+
+            if (AdornedElement is not FrameworkElement { DataContext: TypographyBlockVPO block } || block.IsLock)
+            {
+                return;
+            }
+
+            if(xAdjust < 0)
+            {
+                AdjustX(block, xAdjust);
+                block.Width = Math.Clamp(block.Width - xAdjust, 60, _Parent.ActualWidth - block.X);
+            }
+            else
+            {
+                AdjustX(block, xAdjust);
+                block.Width = Math.Clamp(block.Width - xAdjust, 60, _Parent.ActualWidth - block.X);
+            }
+            block.Height = Math.Clamp(block.Height + yAdjust, 60, _Parent.ActualHeight - block.Y);
+        }
+
+        /*******************************************************************
+         *
+         *
+         *
+         *
+         *
+         *******************************************************************/
+        private void DragDelta_Completed_AdjustCoordinates(object sender, DragCompletedEventArgs e)
+        {
+            if (AdornedElement is not FrameworkElement { DataContext: TypographyBlockVPO block } || block.IsLock)
+            {
+                return;
+                //
+                // block.X += (int)(xAdjust / 20) * 20;
+                // block.Y += (int)(yAdjust / 20) * 20;
+            }
+
+            // 更新元素位置（会同步到绑定的数据源，因为 X, Y 是 TwoWay）
+            block.X = Math.Round(block.X / 20d) * 20d;
+            block.Y = Math.Round(block.Y / 20d) * 20d;
+
+        }
+
+        private void DragDelta_Completed_AdjustSize(object sender, DragCompletedEventArgs e)
+        {
+            if (AdornedElement is not FrameworkElement { DataContext: TypographyBlockVPO block } || block.IsLock)
+            {
+                return;
+                //
+                // block.X += (int)(xAdjust / 20) * 20;
+                // block.Y += (int)(yAdjust / 20) * 20;
+            }
+
+            // 更新元素位置（会同步到绑定的数据源，因为 X, Y 是 TwoWay）
+            AdjustSize(block);
+        }
+
+
+        /*******************************************************************
+         *
+         *
+         *
+         *
+         *
+         *******************************************************************/
 
         protected override Size MeasureOverride(Size constraint)
         {

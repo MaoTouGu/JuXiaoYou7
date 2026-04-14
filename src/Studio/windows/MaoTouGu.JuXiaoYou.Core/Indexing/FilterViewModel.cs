@@ -47,7 +47,8 @@ namespace MaoTouGu.JuXiaoYou.Indexing
         public ICommandEX Edit   { get; }
         public ICommandEX Remove { get; }
 
-        public ICommandEX SetGravatar { get; }
+        public ICommandEX TemplateVisualize { get; }
+        public ICommandEX SetGravatar       { get; }
 
         public Moniker Moniker
         {
@@ -55,8 +56,12 @@ namespace MaoTouGu.JuXiaoYou.Indexing
             set
             {
                 SetValue(ref _moniker, value);
+
+                //
+                //
                 Edit.RaiseUpdate();
                 Remove.RaiseUpdate();
+                TemplateVisualize.RaiseUpdate();
             }
         }
     }

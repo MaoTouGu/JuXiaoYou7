@@ -17,7 +17,6 @@ namespace MaoTouGu.Shells.Controls
         protected override void OnLoaded()
         {
             Input.Focus();
-            Input.CaptureMouse();
         }
 
         private void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)

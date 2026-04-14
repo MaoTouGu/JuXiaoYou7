@@ -24,7 +24,7 @@ namespace MaoTouGu.Shells
                 return;
             }
         
-            var r = Interop.SaveFileAsync("PNG图片|*.png", "png");
+            var r = Interop.SaveFileAsync(SR.Image_Png, SR.Image_PngExt);
         
             if (!r.IsFinished)
             {

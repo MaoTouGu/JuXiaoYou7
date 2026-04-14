@@ -152,7 +152,7 @@ namespace MaoTouGu.JuXiaoYou.Indexing
             return r;
         }
         
-        public static async Task AddMonikerAndUniqueReference(Moniker x, TopClass topClass, SubClass subClass, UniqueReferenceService uRefService = null)
+        public static async Task RemoveMonikerAndUniqueReference(Moniker x, TopClass topClass, SubClass subClass, UniqueReferenceService uRefService = null)
         {
 
             uRefService ??= DatabaseManager.GetService<UniqueReferenceService>();

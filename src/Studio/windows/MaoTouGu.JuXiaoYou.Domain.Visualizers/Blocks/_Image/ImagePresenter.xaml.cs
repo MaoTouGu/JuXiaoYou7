@@ -17,7 +17,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Blocks
             InitializeComponent();
         }
 
-        protected override void OnBuildExpression(Moniker m, IVisualizerOptions options)
+        protected override void OptionChangedOverride(Moniker m, IVisualizerOptions options)
         {
             if (options is not ImageVisualizer visualizer)
             {

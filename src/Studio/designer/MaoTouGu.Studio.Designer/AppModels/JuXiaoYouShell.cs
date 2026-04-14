@@ -1,4 +1,5 @@
-﻿using System.Windows.Media.Imaging;
+﻿using System.Windows;
+using System.Windows.Media.Imaging;
 using MaoTouGu.JuXiaoYou.Core;
 using MaoTouGu.JuXiaoYou.Pages;
 using MaoTouGu.JuXiaoYou.Services.Imaging;
@@ -81,6 +82,71 @@ namespace MaoTouGu.JuXiaoYou.AppModels
             // Navigate<PaintingLevelSettingDetailsViewModel>();
             // Navigate<VisualLevelSettingDetailsViewModel>();
             // Navigate<GeometryPrototypingViewModel>();
+        }
+
+        public override async Task<bool> Navigate(PageBase page, params object[] args)
+        {
+            if (!await page.Receive(args))
+            {
+                return false;
+            }
+            
+            if (!CanNavigateFixed(page, out var theSameOne))
+            {
+                if (InstanceTable.TryGetValue(theSameOne.GetHashCode(), out var ctx))
+                {
+                    var wnd = ctx.Window;
+
+                    if (WindowTable.TryGetValue(wnd.GetHashCode(), out var ctx2))
+                    {
+                        ctx2.SetPage(theSameOne, false);
+                    }
+
+                    var last = wnd.WindowState;
+                    wnd.WindowState = WindowState.Minimized;
+                    wnd.Activate();
+                    wnd.WindowState = last;
+                }
+
+                page.Dispose();
+                return false;
+            }
+            
+            GUI.RunOnUIThread(() =>
+                              {
+                                  MultipleWindowContext ctx;
+
+                                  if (page is IHostedWindowNavigation)
+                                  {
+                                      ctx = FindMainWindowContentHost();
+
+                                  }
+                                  else
+                                  {
+                                      ctx = FindActivatedWindowContentHost();
+                                  }
+
+                                  if (ctx is null)
+                                  {
+                                      //
+                                      // 等待窗口创建完成后自动完成导航。
+                                      PendingQueue.Enqueue(page);
+                
+                                      //
+                                      // 创建一个新的WindowContentHost
+                                      var window = CreateNewWindowContentHost();
+                                      window.Show();
+                                  }
+                                  else
+                                  {
+                                      
+                                      ctx.SetPage(page);
+                                      ctx.Tabs.Add(page);
+                                  }
+
+                              });
+
+            return true;
         }
     }
 }

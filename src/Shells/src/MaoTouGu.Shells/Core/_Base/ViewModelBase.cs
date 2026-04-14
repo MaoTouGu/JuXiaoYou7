@@ -53,7 +53,7 @@ namespace MaoTouGu.Shells
 
         #region Navigate
 
-        internal Task<bool> ReceiveInternal(object[] args) => OnReceive(args);
+        public Task<bool> Receive(object[] args) => OnReceive(args);
 
         public Task<bool> Navigate<T>() where T : PageBase => Navigate<T>(null);
         

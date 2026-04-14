@@ -18,37 +18,9 @@ namespace MaoTouGu.JuXiaoYou.Services.Plugins
             VisualManagers = new ViewList<Feature>();
             Manifests      = new ViewList<IPluginManifest>();
 
-            Visualizers    = new();
+            Visualizers = new();
 
             _Logger = LoggerExt.GetLogger(nameof(FeatureManager));
-        }
-
-
-        public static IVisualManager GetVisualManager(string id)
-        {
-            if (VisualManagers.FirstOrDefault(x => x.Id == id) is {} provider)
-            {
-                return Activator.CreateInstance(provider.Type) as IVisualManager;
-            }
-
-            return null;
-        }
-
-        public static void AsVisualManager<T>(string id, string name) where T : IVisualManager
-        {
-            //
-            // 一般来说VisualProvider本身也是一个feature
-            //
-            // 但是
-
-            var f = new Feature
-            {
-                Id   = id,
-                Type = typeof(T),
-                Name = name,
-            };
-
-            VisualManagers.Add(f);
         }
 
 
@@ -91,6 +63,6 @@ namespace MaoTouGu.JuXiaoYou.Services.Plugins
         /// </summary>
         public static ViewList<Feature> VisualManagers { get; }
 
-        public static Dictionary<string, IVisualizerGenerator> Visualizers    { get; }
+        public static Dictionary<string, IVisualizerGenerator> Visualizers { get; }
     }
 }

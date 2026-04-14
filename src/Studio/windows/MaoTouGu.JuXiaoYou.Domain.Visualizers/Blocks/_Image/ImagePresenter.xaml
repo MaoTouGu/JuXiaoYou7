@@ -1,4 +1,4 @@
-﻿<core:VisualizerControl x:Class="MaoTouGu.JuXiaoYou.Visualizers.Blocks.ImagePresenter"
+﻿<VisualizerControl x:Class="MaoTouGu.JuXiaoYou.Visualizers.Blocks.ImagePresenter"
                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -15,4 +15,4 @@
            ImageSystem.Type="Image"
            ImageSystem.Thumbnail="Of720p"
            Stretch="Uniform"/>
-</core:VisualizerControl>
+</VisualizerControl>

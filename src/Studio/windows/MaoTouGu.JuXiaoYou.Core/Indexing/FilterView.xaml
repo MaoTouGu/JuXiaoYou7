@@ -70,7 +70,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0"
                         Orientation="Horizontal">
@@ -93,6 +93,12 @@
                                CommandParameter="{Binding Moniker, Mode=OneWay}"
                                Margin="3 0"
                                Padding="32 8"/>
+                <ui:GhostButton ui:ControlAssist.CornerRadius="0"
+                                Content="设卡"
+                                Command="{Binding TemplateVisualize}"
+                                CommandParameter="{Binding Moniker, Mode=OneWay}"
+                                Margin="3 0"
+                                Padding="32 8"/>
                 <ui:GhostButton ui:ControlAssist.CornerRadius="0"
                                Content="删除"
                                Command="{Binding Remove}"

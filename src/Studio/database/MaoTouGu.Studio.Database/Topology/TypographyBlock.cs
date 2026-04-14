@@ -13,8 +13,14 @@ namespace MaoTouGu.Studio.Database.Topology
         private double _height;
         private double _y;
         private double _x;
+        private bool   _isLock;
+        private double _opacity;
 
-        private bool _isLock;
+        public double Opacity
+        {
+            get => _opacity;
+            set => SetValue(ref _opacity, value);
+        }
 
         public bool IsLock
         {
@@ -51,6 +57,6 @@ namespace MaoTouGu.Studio.Database.Topology
                 SetValue(ref _x, value);
             }
         }
-        
+
     }
 }

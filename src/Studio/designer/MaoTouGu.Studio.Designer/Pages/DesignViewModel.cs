@@ -32,15 +32,21 @@ namespace MaoTouGu.JuXiaoYou.Pages
         private TypographyLayerVPO _layer;
         private TypographyPage     _page;
 
-        public DesignViewModel(TypographyTemplate template = null)
+        public DesignViewModel(TemplateProject project, TypographyTemplate template) : this(template)
+        {
+            _templateProject = project;
+        }
+
+        public DesignViewModel(TypographyTemplate template = null) : base(true, false)
         {
             _template = template ??
                         new TypographyTemplate
                         {
+                            Id            = ID.Get(),
                             Pages         = new ViewList<TypographyPage>(),
                             OccupiedTable = new HashSet<string>(),
                             Base64Table   = new Dictionary<string, string>(),
-                            Width = (int)TypographyPageSize.Regular,
+                            Width         = (int)TypographyPageSize.Regular,
                         };
 
             Pages      = new ViewList<TypographyPage>();
@@ -62,12 +68,22 @@ namespace MaoTouGu.JuXiaoYou.Pages
 
             LayerBlockOnly = true;
 
+            InstanceID = _template.Id;
+
             AddPage    = new AddPageCommand(this);
+            ExportPage = null;
+            ImportPage = null;
+            RenamePage = null;
             RemovePage = new RemovePageCommand(this);
 
-            AddLayer = new AddLayerCommand(this);
-
+            AddLayer    = new AddLayerCommand(this);
+            RenameLayer = null;
+            ExportLayer = null;
+            ImportLayer = null;
+            RemoveLayer = null;
+            
             AddVisualizer = new AddVisualizerCommand(this);
+            AddTextBlock  = new AddTextCommand(this);
 
             AddSetting    = new AddSettingCommand(this);
             UpdateSetting = new UpdateSettingCommand(this);
@@ -113,6 +129,8 @@ namespace MaoTouGu.JuXiaoYou.Pages
                     }
                 }
             }
+
+            Page = Pages.FirstOrDefault();
 
             PageWidth = _template.Width;
 
@@ -197,7 +215,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
                 else
                 {
                     IsCustomSize = false;
-                    PageWidth = (int)_pageSize;
+                    PageWidth    = (int)_pageSize;
                 }
             }
         }
@@ -212,14 +230,11 @@ namespace MaoTouGu.JuXiaoYou.Pages
             {
                 SetValue(ref _layerBlockOnly, value);
 
-                if (value)
-                {
-                    RaiseUpdated(nameof(ObservableBlocks));
-                }
-                else
+                if (!value)
                 {
                     Layer = null;
                 }
+                RaiseUpdated(nameof(ObservableBlocks));
             }
         }
 

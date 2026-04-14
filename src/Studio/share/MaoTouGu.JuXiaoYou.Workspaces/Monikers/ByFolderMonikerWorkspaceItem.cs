@@ -6,7 +6,7 @@
 // 
 // ----------------------------------------------------------
 
-namespace MaoTouGu.JuXiaoYou.Workspaces.Monikers
+namespace MaoTouGu.JuXiaoYou.Visualizers.Pages
 {
     public class ByFolderMonikerWorkspaceItem : MonikerWorkspaceContainer
     {

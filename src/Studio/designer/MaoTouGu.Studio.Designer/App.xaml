@@ -29,9 +29,6 @@
                 Mauris fermentum diam scelerisque molestie cursus. Praesent mauris quam, mollis et lacinia id, interdum aliquam nisi. Quisque vestibulum vel lacus vitae pulvinar. Maecenas feugiat purus at purus laoreet, in placerat sem porta. Morbi et auctor sapien. Phasellus rhoncus eleifend elit eu sagittis. Sed vestibulum nunc sed lacus tempor sodales rhoncus quis neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc luctus pretium orci, eu lobortis leo porttitor vitae. Curabitur lobortis libero sed convallis imperdiet. Ut sit amet consequat massa. Fusce non ipsum a lorem mollis tempus at posuere magna.
             </sys:String>
 
-            <BitmapImage x:Key="AppIcon" UriSource="pack://application:,,,/MaoTouGu.Studio;component/Assets/JuXiaoYou4.ico" />
-            <BitmapImage x:Key="AppImage" UriSource="pack://application:,,,/MaoTouGu.Studio;component/Assets/Sprite.png" />
-
             <!-- Geometry -->
             <!-- Geometry -->
             <!-- Geometry -->

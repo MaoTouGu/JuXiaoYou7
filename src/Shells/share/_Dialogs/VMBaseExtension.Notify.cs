@@ -19,7 +19,7 @@
 
         public static Task<bool> Receive(this PageBase target, params object[] args)
         {
-            return target.ReceiveInternal(args);
+            return target.Receive(args);
         }
 
         public static void Obsoleted(this ViewModelBase target, string title, string description, int duration = 10)

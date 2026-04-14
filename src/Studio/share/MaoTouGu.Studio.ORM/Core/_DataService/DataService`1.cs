@@ -71,22 +71,25 @@ namespace MaoTouGu.Studio.Database.Core
 
             //
             //
-            if (!api.IsOnline)
+            if (api.IsOnline)
             {
-                return;
+                //
+                // 在访问前，初始化集合。
+                var r = await api.GetCollectionAsync(DatabaseName, CollectionName);
+
+                if (r is null)
+                {
+                    return;
+                }
+
+                DbSet.DeleteAll();
+                DbSet.Insert(r.Value);
             }
 
-            //
-            // 在访问前，初始化集合。
-            var r = await api.GetCollectionAsync(DatabaseName, CollectionName);
-
-            if (r is null)
+            if (Count == 0)
             {
-                return;
+                await OnCollectionSetupAsync(); 
             }
-
-            DbSet.DeleteAll();
-            DbSet.Insert(r.Value);
         }
 
         protected override Task StopAfter()
@@ -102,6 +105,11 @@ namespace MaoTouGu.Studio.Database.Core
          *
          *
          *******************************************************************/
+
+        protected virtual Task OnCollectionSetupAsync()
+        {
+            return Task.CompletedTask;
+        }
 
         /// <summary>
         /// 

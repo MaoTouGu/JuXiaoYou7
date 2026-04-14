@@ -5,46 +5,57 @@
 //            版权所有：MaoTouGu Studio & Luoyisi
 // 
 // ----------------------------------------------------------
+using MaoTouGu.Studio.Database;
+
 namespace MaoTouGu.JuXiaoYou.Pages
 {
     partial class DesignViewModel
     {
+        private readonly TemplateProject _templateProject;
+
+        private string _fileName;
+
         void DoSaveCommand()
         {
-            if (string.IsNullOrEmpty(FileName))
+            if (_templateProject is not null)
             {
-                var r = Interop.SaveFileAsync("模板文件|*.template", "template", _template.Name);
+                _fileName             = _templateProject.FileName;
+                _templateProject.Name = _template.Name;
+            }
+
+            if (string.IsNullOrEmpty(_fileName))
+            {
+                var r = Interop.SaveFileAsync(ExtFilters.TypographyTemplate, ExtFilters.TypographyTemplateExt, _template.Name);
 
                 if (!r.IsFinished)
                 {
                     return;
                 }
-                
-                FileName = r.Value;
+
+                _fileName = r.Value;
+
+                if (_templateProject is not null)
+                {
+                    _templateProject.FileName = r.Value;
+                    GlobalSettings.Save();
+                }
             }
-            
-            JSON2.ToFile(FileName, _template);
+
+            JSON2.ToFile(_fileName, _template);
+
         }
-        
+
         void DoSaveAsCommand()
         {
-            var r = Interop.SaveFileAsync("模板文件|*.template", "template", _template.Name);
+            var r = Interop.SaveFileAsync(ExtFilters.TypographyTemplate, ExtFilters.TypographyTemplateExt, _template.Name);
 
             if (!r.IsFinished)
             {
                 return;
             }
 
-            
+
             JSON2.ToFile(r.Value, _template);
-        }
-
-        private string _fileName;
-
-        public string FileName
-        {
-            get => _fileName;
-            set => SetValue(ref _fileName, value);
         }
     }
 }

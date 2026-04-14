@@ -6,7 +6,7 @@
 // 
 // ----------------------------------------------------------
 
-using MaoTouGu.JuXiaoYou.Workspaces.Monikers;
+using MaoTouGu.JuXiaoYou.Visualizers.Pages;
 
 namespace MaoTouGu.JuXiaoYou.Core
 {

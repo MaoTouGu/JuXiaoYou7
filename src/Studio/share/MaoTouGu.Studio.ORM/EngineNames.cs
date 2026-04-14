@@ -9,8 +9,9 @@ namespace MaoTouGu.Studio
 {
     public static class EngineNames
     {
-        internal const string System    = nameof(System);
-        internal const string Symbol    = nameof(Symbol);
-        internal const string Reference = nameof(Reference);
+        internal const string System     = nameof(System);
+        internal const string Symbol     = nameof(Symbol);
+        internal const string Reference  = nameof(Reference);
+        internal const string Visualizer = nameof(Visualizer);
     }
 }

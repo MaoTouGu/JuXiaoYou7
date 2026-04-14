@@ -10,6 +10,9 @@
             d:DesignWidth="800" d:DesignHeight="450"
             d:DataContext="{d:DesignInstance Type={x:Type thisVM:LauncherViewModel}, IsDesignTimeCreatable=True}"
             Padding="16">
+    <UserControl.Resources>
+        <BindingProxy x:Key="ViewModel" ViewModel="{Binding}"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
@@ -21,54 +24,73 @@
                                 ui:ControlAssist.FontSize="31"
                                 Header="最近修改"
                                 Style="{StaticResource SettingItem}">
-            <DockPanel>
-                <ItemsControl>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Grid Height="84"
-                                  Margin="0 0 0 8">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1*" />
-                                    <ColumnDefinition Width="96" />
-                                </Grid.ColumnDefinitions>
+            <ui:ControlAssist.ToolBar>
+                <StackPanel Orientation="Horizontal">
+                    
+                    <ui:GhostButton ui:ControlAssist.CornerRadius="0"
+                                    ui:ControlAssist.Icon="{StaticResource FeatherIcon.PlusCircle}"
+                                    Command="{Binding Create}"
+                                    IconMode="Icon"
+                                    Padding="0"
+                                    Height="32"
+                                    Width="32" />
+                    
+                    <ui:GhostButton ui:ControlAssist.CornerRadius="0"
+                                    ui:ControlAssist.Icon="{StaticResource FeatherIcon.Folder}"
+                                    Command="{Binding Load}"
+                                    IconMode="Icon"
+                                    Padding="0"
+                                    Height="32"
+                                    Width="32" />
+                </StackPanel>
+            </ui:ControlAssist.ToolBar>
+            <ItemsControl ItemsSource="{Binding Projects, Mode=OneWay}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type thisVM:TemplateProject}">
+                        <Grid Height="84"
+                              Margin="0 0 0 8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="96" />
+                            </Grid.ColumnDefinitions>
 
-                                <ui:GhostButton Grid.Column="0"
-                                                HorizontalContentAlignment="Stretch"
-                                                VerticalContentAlignment="Stretch">
-                                    <DockPanel>
-                                        <TextBlock DockPanel.Dock="Top"
-                                                   FontFamily="{StaticResource HeiTi}"
-                                                   FontSize="24"
-                                                   Text="标题"
-                                                   Margin="0 8"/>
-                                        <TextBlock FontFamily="{StaticResource SongTi}"
-                                                   Foreground="{DynamicResource Brush.Foreground.Level2}"
-                                                   FontSize="12"
-                                                   Text="E:\Github\WPF-Samples\Drag and Drop\DragDropThumbOps"/>
-                                    </DockPanel>
-                                </ui:GhostButton>
+                            <ui:GhostButton Grid.Column="0"
+                                            Command="{Binding Source={StaticResource ViewModel}, Path=ViewModel.Open}"
+                                            CommandParameter="{Binding}"
+                                            HorizontalContentAlignment="Stretch"
+                                            VerticalContentAlignment="Stretch">
+                                <DockPanel>
+                                    <TextBlock DockPanel.Dock="Top"
+                                               FontFamily="{StaticResource HeiTi}"
+                                               FontSize="24"
+                                               Text="{Binding Name, Mode=OneWay}" 
+                                               Margin="0 8" />
+                                    
+                                    <TextBlock FontFamily="{StaticResource SongTi}"
+                                               Foreground="{DynamicResource Brush.Foreground.Level2}"
+                                               FontSize="12"
+                                               Text="{Binding FileName, Mode=OneWay}" />
+                                </DockPanel>
+                            </ui:GhostButton>
 
 
-                                <ui:GhostButton Grid.Column="1"
-                                                ui:ControlAssist.CornerRadius="0"
-                                                ui:ControlAssist.Icon="{StaticResource FeatherIcon.Trash}"
-                                                ui:ControlAssist.IconSize="31"
-                                                ui:ControlAssist.IconDock="Top"
-                                                ui:ControlAssist.IconMargin="0 8"
-                                                Content="删除页面"
-                                                Foreground="{DynamicResource Brush.Error400}"
-                                                IconMode="Both"
-                                                Height="84"
-                                                Width="84"/>
-                            </Grid>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-
-                    <Thickness />
-                    <Thickness />
-                    <Thickness />
-                </ItemsControl>
-            </DockPanel>
+                            <ui:GhostButton Grid.Column="1"
+                                            ui:ControlAssist.CornerRadius="0"
+                                            ui:ControlAssist.Icon="{StaticResource FeatherIcon.Trash}"
+                                            ui:ControlAssist.IconSize="31"
+                                            ui:ControlAssist.IconDock="Top"
+                                            ui:ControlAssist.IconMargin="0 8"
+                                            Content="删除页面"
+                                            Command="{Binding Source={StaticResource ViewModel}, Path=ViewModel.Remove}"
+                                            CommandParameter="{Binding}"
+                                            Foreground="{DynamicResource Brush.Error400}"
+                                            IconMode="Both"
+                                            Height="84"
+                                            Width="84" />
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </HeaderedContentControl>
     </Grid>
 </ForestPage>

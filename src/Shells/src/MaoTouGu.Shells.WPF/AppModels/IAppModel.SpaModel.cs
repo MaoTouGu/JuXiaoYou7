@@ -66,7 +66,7 @@
                 return false;
             }
             
-            if (!await page.ReceiveInternal(args))
+            if (!await page.Receive(args))
             {
                 return false;
             }

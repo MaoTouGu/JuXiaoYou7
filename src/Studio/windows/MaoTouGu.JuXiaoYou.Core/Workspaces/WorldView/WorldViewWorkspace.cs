@@ -153,13 +153,15 @@ namespace MaoTouGu.JuXiaoYou.Workspaces.WorldView
                 Name  = r.Value,
                 Index = Worlds.Items.Count,
             };
-
             var topClassWI = new TopClassWorkspaceItem { Instance = topClass };
 
-            await _topClassService.Add(topClass);
+            if (_dictionary.TryAdd(topClass.Id, topClassWI))
+            {
+                await _topClassService.Add(topClass);
+                Worlds.Items.Add(topClassWI);
+                viewModel.SaveSuccess();
+            }
 
-            Worlds.Items.Add(topClassWI);
-            viewModel.SaveSuccess();
         }
 
         public async Task EditTopClass(WorkspaceViewModel viewModel, WorldViewWorkspaceItem item)
@@ -199,11 +201,14 @@ namespace MaoTouGu.JuXiaoYou.Workspaces.WorldView
             try
             {
 
-                await _topClassService.Remove(topClassWI.Instance);
+                if (_dictionary.Remove(topClassWI.Id))
+                {
+                    await _topClassService.Remove(topClassWI.Instance);
 
-                Worlds.Items.Remove(topClassWI);
+                    Worlds.Items.Remove(topClassWI);
 
-                viewModel.RemoveSuccess();
+                    viewModel.RemoveSuccess();
+                }
             }
             catch(Exception e)
             {
@@ -238,23 +243,26 @@ namespace MaoTouGu.JuXiaoYou.Workspaces.WorldView
 
             var subClassWI = new SubClassWorkspaceItem { Instance = subClass };
 
-            if (target is null)
+            if (_dictionary.TryAdd(subClassWI.Id, subClassWI))
             {
-                Uncensored.Items.Add(subClassWI);
-            }
-            else
-            {
-                //
-                //
-                subClass.Index = target.Children.Count;
+                if (target is null)
+                {
+                    Uncensored.Items.Add(subClassWI);
+                }
+                else
+                {
+                    //
+                    //
+                    subClass.Index = target.Children.Count;
 
-                //
-                // 添加父级。
-                target.Children.Add(subClassWI);
-            }
+                    //
+                    // 添加父级。
+                    target.Children.Add(subClassWI);
+                }
 
-            await _subClassService.Add(subClass);
-            viewModel.SaveSuccess();
+                await _subClassService.Add(subClass);
+                viewModel.SaveSuccess();
+            }
         }
 
         public async Task AddSubClass(WorkspaceViewModel viewModel, SubClassWorkspaceItem target)
@@ -275,24 +283,27 @@ namespace MaoTouGu.JuXiaoYou.Workspaces.WorldView
 
             var subClassWI = new SubClassWorkspaceItem { Instance = subClass };
 
-            if (target is null)
+            if (_dictionary.TryAdd(subClassWI.Id, subClassWI))
             {
-                Uncensored.Items.Add(subClassWI);
+                if (target is null)
+                {
+                    Uncensored.Items.Add(subClassWI);
+                }
+                else
+                {
+                    //
+                    //
+                    subClass.Index = target.Children.Count;
+
+                    //
+                    // 添加父级。
+                    target.Children.Add(subClassWI);
+                }
+
+                await _subClassService.Add(subClass);
+
+                viewModel.SaveSuccess();
             }
-            else
-            {
-                //
-                //
-                subClass.Index = target.Children.Count;
-
-                //
-                // 添加父级。
-                target.Children.Add(subClassWI);
-            }
-
-            await _subClassService.Add(subClass);
-
-            viewModel.SaveSuccess();
         }
 
         public async Task EditSubClass(WorkspaceViewModel viewModel, WorldViewWorkspaceItem item)
@@ -332,25 +343,28 @@ namespace MaoTouGu.JuXiaoYou.Workspaces.WorldView
             try
             {
 
-                await _subClassService.Remove(subClassWI.Instance);
-
-                if (string.IsNullOrEmpty(subClassWI.ParentID))
+                if (_dictionary.Remove(subClassWI.Id))
                 {
-                    Uncensored.Items.Remove(subClassWI);
-                }
-                else if(_dictionary.TryGetValue(subClassWI.ParentID, out var parent))
-                {
-                    if (parent is TopClassWorkspaceItem tcWI)
-                    {
-                        tcWI.Children.Remove(subClassWI);
-                    }
-                    else if (parent is SubClassWorkspaceItem scWI)
-                    {
-                        scWI.Children.Remove(subClassWI);
-                    }
-                }
+                    await _subClassService.Remove(subClassWI.Instance);
 
-                viewModel.RemoveSuccess();
+                    if (string.IsNullOrEmpty(subClassWI.ParentID))
+                    {
+                        Uncensored.Items.Remove(subClassWI);
+                    }
+                    else if(_dictionary.TryGetValue(subClassWI.ParentID, out var parent))
+                    {
+                        if (parent is TopClassWorkspaceItem tcWI)
+                        {
+                            tcWI.Children.Remove(subClassWI);
+                        }
+                        else if (parent is SubClassWorkspaceItem scWI)
+                        {
+                            scWI.Children.Remove(subClassWI);
+                        }
+                    }
+
+                    viewModel.RemoveSuccess();
+                }
             }
             catch(Exception e)
             {

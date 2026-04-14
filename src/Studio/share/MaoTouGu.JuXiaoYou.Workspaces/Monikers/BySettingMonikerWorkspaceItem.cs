@@ -5,9 +5,9 @@
 //            版权所有：MaoTouGu Studio & Luoyisi
 // 
 // ----------------------------------------------------------
-using MaoTouGu.JuXiaoYou.Workspaces.Monikers;
+using MaoTouGu.JuXiaoYou.Visualizers.Pages;
 
-namespace MaoTouGu.JuXiaoYou.Workspaces.Monikers
+namespace MaoTouGu.JuXiaoYou.Visualizers.Pages
 {
     public class BySettingMonikerWorkspaceItem : MonikerWorkspaceContainer
     {
