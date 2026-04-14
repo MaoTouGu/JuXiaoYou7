@@ -43,6 +43,13 @@ namespace MaoTouGu.JuXiaoYou.Pages.Commands
             {
                 var buffer = await File.ReadAllBytesAsync(r.Value);
                 var base64 = Convert.ToBase64String(buffer);
+                var bi     = Xaml.ToBitmap(buffer);
+
+                Context.Bitmaps.Add(new NamedBitmap
+                {
+                    Image = bi,
+                    Name  = visualizer.Source,
+                });
 
                 if (Context.Template
                            .Base64Table

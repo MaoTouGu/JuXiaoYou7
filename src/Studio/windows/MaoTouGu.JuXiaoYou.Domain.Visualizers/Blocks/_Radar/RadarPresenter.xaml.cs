@@ -133,11 +133,11 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Blocks
 
                     if (_map.TryAdd(item.MetadataSource, series))
                     {
-                        _series.Add(series);
                     }
                 }
                 
                 _axis.Add(axis);
+                _series.Add(series);
             }
         }
     }

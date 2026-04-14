@@ -15,6 +15,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
     public partial class DesignView : ForestPage
     {
         private ResizeAdorner _adorner;
+        private TabPanel      _tabPanel;
 
         public DesignView()
         {
@@ -26,7 +27,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
         {
             //
             // 如果锁定了当前选择的元素。
-            if (sender is not FrameworkElement { DataContext: DesignViewModel{ Block : TypographyBlockVPO { IsLock: true } a }})
+            if (sender is not FrameworkElement { DataContext: DesignViewModel { Block : TypographyBlockVPO { IsLock: true } a } })
             {
                 return;
             }
@@ -50,24 +51,32 @@ namespace MaoTouGu.JuXiaoYou.Pages
 
         private void Control_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (sender is not FrameworkElement fe || e.ClickCount < 2)
-            {
-                return;
-            }
+            AdornerLayer layer;
+            var          dc = ViewModel<DesignViewModel>();
 
-            if (fe.DataContext is not TypographyBlockVPO { IsLock: false } block)
+            if (sender is not FrameworkElement fe || e.ClickCount < 2 || fe.DataContext is not TypographyBlockVPO { IsLock: false } block)
             {
+                layer = AdornerLayer.GetAdornerLayer(Items);
+
+                if (layer is null || _adorner is null)
+                {
+                    return;
+                }
+
+                layer.Remove(_adorner);
+                dc.Block = null;
                 return;
             }
 
             //
             //
-            ViewModel<DesignViewModel>().Block = block;
+            dc.Block = block;
 
             //
             //
             var resizeAdorner = new ResizeAdorner(fe);
-            var layer         = AdornerLayer.GetAdornerLayer(Items);
+
+            layer = AdornerLayer.GetAdornerLayer(Items);
 
             if (layer is null)
             {
@@ -84,7 +93,6 @@ namespace MaoTouGu.JuXiaoYou.Pages
 
         }
 
-        private TabPanel _tabPanel;
 
         private void TabControl_OnSizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -113,6 +121,39 @@ namespace MaoTouGu.JuXiaoYou.Pages
             grid.Margin    =  margin;
             fe.SizeChanged -= TabControl_OnSizeChanged;
 
+        }
+        private void ScrollViewer_OnMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            var viewer = (ScrollViewer)sender;
+
+            if (Keyboard.Modifiers == ModifierKeys.Control)
+            {
+                viewer.ScrollToVerticalOffset(e.Delta + viewer.VerticalOffset);
+                e.Handled = true;
+            }
+            else if(Keyboard.Modifiers == ModifierKeys.Shift)
+            {
+                viewer.ScrollToHorizontalOffset(e.Delta + viewer.HorizontalOffset);
+                e.Handled = true;
+            }
+            
+        }
+
+
+        private void CommandBinding_IncreaseZoom(object sender, ExecutedRoutedEventArgs e)
+        {
+            var dc        = ViewModel<DesignViewModel>();
+            var baseScale = (int)(dc.IntScale / 10d * 10);
+
+            dc.IntScale = Math.Clamp(baseScale + 10, 0, 400);
+        }
+
+        private void CommandBinding_DecreaseZoom(object sender, ExecutedRoutedEventArgs e)
+        {
+            var dc        = ViewModel<DesignViewModel>();
+            var baseScale = (int)(dc.IntScale / 10d * 10);
+
+            dc.IntScale = Math.Clamp(baseScale - 10, 0, 400);
         }
     }
 }

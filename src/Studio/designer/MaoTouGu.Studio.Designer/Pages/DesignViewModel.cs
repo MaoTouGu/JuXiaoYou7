@@ -109,7 +109,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
         {
             foreach (var (id, base64) in _template.Base64Table)
             {
-                var buffer = Convert.FromBase64String(base64);
+                var buffer = System.Convert.FromBase64String(base64);
                 var bi     = Xaml.ToBitmap(buffer);
 
                 Bitmaps.Add(new NamedBitmap
@@ -177,9 +177,11 @@ namespace MaoTouGu.JuXiaoYou.Pages
          *******************************************************************/
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return 
+            var v = value?.ToString();
+            return Bitmaps.FirstOrDefault(x => x.Name == v)?.Image;
         }
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => throw new NotImplementedException();
+        
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => throw new NotSupportedException();
         /*******************************************************************
          *
          *

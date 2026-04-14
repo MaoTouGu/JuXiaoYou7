@@ -7,6 +7,7 @@
 // ----------------------------------------------------------
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace MaoTouGu.JuXiaoYou.Pages
 {
@@ -22,6 +23,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
             {
                 return;
             }
+            
 
             page.Bitmap = Xaml.Capture(Items, dpi);
         }

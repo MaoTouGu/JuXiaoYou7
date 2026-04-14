@@ -73,6 +73,7 @@ namespace MaoTouGu.JuXiaoYou.Controls
 
         private readonly VisualCollection _visual;
         private readonly FrameworkElement _Parent;
+        private readonly FrameworkElement _Element;
         
 
         /*******************************************************************
@@ -91,6 +92,7 @@ namespace MaoTouGu.JuXiaoYou.Controls
             _translateThumb   = new Thumb { Template = EmptyTemplate };
             _visual           = new VisualCollection(this);
             _Parent           = Xaml.FindVisualParent<Canvas>(adornedElement);
+            _Element          = adornedElement as FrameworkElement;
 
             _visual.Add(_translateThumb);
             _visual.Add(_leftTopThumb);
@@ -175,8 +177,7 @@ namespace MaoTouGu.JuXiaoYou.Controls
 
         void AdjustY(TypographyBlockVPO block, double yAdjust)
         {
-            if (block.Y + yAdjust < _Parent.ActualHeight - block.Height &&
-                block.Y + yAdjust >= 0)
+            if (block.Y + yAdjust < _Parent.ActualHeight - block.Height && block.Y + yAdjust >= 0)
             {
                 block.Y += yAdjust;
             }

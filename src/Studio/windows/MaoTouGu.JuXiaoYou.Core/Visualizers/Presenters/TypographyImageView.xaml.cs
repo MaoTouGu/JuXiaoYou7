@@ -12,6 +12,27 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Commons
         public TypographyImageView()
         {
             InitializeComponent();
+
+            Loaded += OnLoaded;
+        }
+
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            var page = Xaml.FindVisualParent<ForestPage>(this);
+
+
+            if (page is not ForestPage { DataContext: IValueConverter converter })
+            {
+                return;
+            }
+
+            Image.SetBinding(Image.SourceProperty, new Binding
+            {
+                Source    = DataContext,
+                Converter = converter,
+                Path      = new PropertyPath(nameof(TypographyImageVPO.Source)),
+                Mode      = BindingMode.OneWay,
+            });
         }
     }
 }
