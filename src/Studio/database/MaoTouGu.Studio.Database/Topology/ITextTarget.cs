@@ -9,15 +9,27 @@ using MaoTouGu.Foundation;
 
 namespace MaoTouGu.Studio.Database.Topology
 {
+    public interface ICornerRadiusTarget : INotifyPropertyChangedEX
+    {
+        Int32CornerRadius CornerRadius { get; set; }
+    }
+
+    public interface IPaddingTarget : INotifyPropertyChangedEX
+    {
+        Int32Thickness Padding { get; set; }
+    }
+
+    public interface IBorderThicknessTarget : INotifyPropertyChangedEX
+    {
+        Int32Thickness BorderThickness { get; set; }
+    }
+
     public interface ITextTarget : INotifyPropertyChangedEX
     {
-        public Int32Thickness Padding { get; set; }
-
-        public Int32Thickness BorderThickness { get; set; }
-        
-        public string BorderBrush { get; set; }
-
-        public Int32CornerRadius CornerRadius { get; set; }
+        Int32CornerRadius CornerRadius    { get; set; }
+        Int32Thickness    Padding         { get; set; }
+        Int32Thickness    BorderThickness { get; set; }
+        string            BorderBrush     { get; set; }
 
         /// <summary>
         /// 
@@ -38,7 +50,7 @@ namespace MaoTouGu.Studio.Database.Topology
         /// <para>2，代表Right</para>
         /// </remarks>
         public int HorizontalAlignment { get; set; }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -63,8 +75,8 @@ namespace MaoTouGu.Studio.Database.Topology
         /// </remarks>
         public int FontWeight { get; set; }
 
-        public int FontSize  { get; set; }
-        public bool IsBold { get; set; }
+        public int  FontSize { get; set; }
+        public bool IsBold   { get; set; }
 
         public string FontFamily { get; set; }
 

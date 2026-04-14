@@ -1,24 +1,24 @@
 ﻿// ----------------------------------------------------------
 //            文件：AddImageCommand.cs
 //            作者：Luoyisi<acorisbk@qq.com>
-//            创建时间：2026年04月12日 12:44
+//            创建时间：2026年04月14日 17:15
 //            版权所有：MaoTouGu Studio & Luoyisi
 // 
 // ----------------------------------------------------------
+using System.IO;
+
 namespace MaoTouGu.JuXiaoYou.Pages.Commands
 {
     sealed class AddImageCommand(DesignViewModel target) : VisualizerCommand(target)
     {
-        
         public override async void Execute(object parameter)
         {
             if (!Verify())
             {
                 return;
             }
-            
-            var picker = new GlobalObjectPicker<IVisualizerGenerator>(FeatureManager.Visualizers.Values, nameof(IBlockWideVisualizer.Name));
-            var r      = await Context.Object(picker);
+
+            var r = Interop.OpenFileAsync(SR.Image_Png);
 
             if (!r.IsFinished)
             {
@@ -27,15 +27,46 @@ namespace MaoTouGu.JuXiaoYou.Pages.Commands
 
             //
             //
-            var visualizer = r.Value;
-            
-            //
-            //
-            GenerateVisualizer(visualizer);
+            var visualizer = new TypographyImage
+            {
+                Id     = ID.Get(),
+                Name   = "文本",
+                Width  = 100,
+                Height = 100,
+                Source = ID.Get(),
+            };
 
 
             //
             //
+            try
+            {
+                var buffer = await File.ReadAllBytesAsync(r.Value);
+                var base64 = Convert.ToBase64String(buffer);
+                var bi     = Xaml.ToBitmap(buffer);
+
+                Context.Bitmaps.Add(new NamedBitmap
+                {
+                    Image = bi,
+                    Name  = visualizer.Source,
+                });
+
+                if (Context.Template
+                           .Base64Table
+                           .TryAdd(visualizer.Source, base64))
+                {
+                    //
+                    //
+                    AppendVisualizer(visualizer);
+                }
+
+
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
     }
 }

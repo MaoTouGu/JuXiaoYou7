@@ -55,7 +55,7 @@ namespace MaoTouGu.JuXiaoYou.AppModels
                                    {
                                        GUI.RunOnUIThread(() =>
                                                          {
-                                                             Navigate(new DesignViewModel());
+                                                             // Navigate(new DesignViewModel());
                                                              Navigate<LauncherViewModel>();
                                                              Close<LauncherViewModel>();
                                                          });

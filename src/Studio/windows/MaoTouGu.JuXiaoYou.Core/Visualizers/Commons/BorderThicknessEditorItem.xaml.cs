@@ -19,16 +19,27 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Commons
 
         private void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if (e.NewValue is not ITextTarget target)
+            if (e.NewValue is ITextTarget target)
             {
-                return;
+
+                Left.Text   = target.BorderThickness.Left.ToString();
+                Right.Text  = target.BorderThickness.Right.ToString();
+                Top.Text    = target.BorderThickness.Top.ToString();
+                Bottom.Text = target.BorderThickness.Bottom.ToString();
 
             }
+            else if (e.NewValue is IBorderThicknessTarget target2)
+            {
+                Left.Text   = target2.BorderThickness.Left.ToString();
+                Right.Text  = target2.BorderThickness.Right.ToString();
+                Top.Text    = target2.BorderThickness.Top.ToString();
+                Bottom.Text = target2.BorderThickness.Bottom.ToString();
+            }
+        }
 
-            Left.Text   = target.BorderThickness.Left.ToString();
-            Right.Text  = target.BorderThickness.Right.ToString();
-            Top.Text    = target.BorderThickness.Top.ToString();
-            Bottom.Text = target.BorderThickness.Bottom.ToString();
+        void Update()
+        {
+            (DataContext as INotifyPropertyChangedEX)?.RaisePropertyChanged(nameof(ITextTarget.BorderThickness));
         }
 
         private void Left_OnTextChanged(object sender, TextChangedEventArgs e)
@@ -39,7 +50,16 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Commons
                 c.Left = int.TryParse(Left.Text, out var b) ? b : 0;
 
                 target.BorderThickness = c;
-                target.RaisePropertyChanged(nameof(ITextTarget.BorderThickness));
+                Update();
+            }
+            else if (DataContext is IBorderThicknessTarget target2)
+            {
+                
+                var c = target2.BorderThickness;
+                c.Left = int.TryParse(Left.Text, out var b) ? b : 0;
+
+                target2.BorderThickness = c;
+                Update();
             }
         }
 
@@ -51,7 +71,16 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Commons
                 c.Right = int.TryParse(Right.Text, out var b) ? b : 0;
 
                 target.BorderThickness = c;
-                target.RaisePropertyChanged(nameof(ITextTarget.BorderThickness));
+                Update();
+            }
+            else if (DataContext is IBorderThicknessTarget target2)
+            {
+                
+                var c = target2.BorderThickness;
+                c.Right = int.TryParse(Right.Text, out var b) ? b : 0;
+
+                target2.BorderThickness = c;
+                Update();
             }
         }
 
@@ -63,7 +92,16 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Commons
                 c.Top = int.TryParse(Top.Text, out var b) ? b : 0;
 
                 target.BorderThickness = c;
-                target.RaisePropertyChanged(nameof(ITextTarget.BorderThickness));
+                Update();
+            }
+            else if (DataContext is IBorderThicknessTarget target2)
+            {
+                
+                var c = target2.BorderThickness;
+                c.Top = int.TryParse(Top.Text, out var b) ? b : 0;
+
+                target2.BorderThickness = c;
+                Update();
             }
         }
 
@@ -75,7 +113,16 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Commons
                 c.Bottom = int.TryParse(Bottom.Text, out var b) ? b : 0;
 
                 target.BorderThickness = c;
-                target.RaisePropertyChanged(nameof(ITextTarget.BorderThickness));
+                Update();
+            }
+            else if (DataContext is IBorderThicknessTarget target2)
+            {
+                
+                var c = target2.BorderThickness;
+                c.Bottom = int.TryParse(Bottom.Text, out var b) ? b : 0;
+
+                target2.BorderThickness = c;
+                Update();
             }
         }
     }

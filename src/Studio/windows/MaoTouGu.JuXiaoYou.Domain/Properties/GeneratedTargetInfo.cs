@@ -1,1 +1,1 @@
-﻿[assembly: GeneratedTarget("Domain")]
+﻿// [assembly: GeneratedTarget("Domain")]

@@ -9,9 +9,9 @@ namespace MaoTouGu.JuXiaoYou.Pages.Commands
 {
     sealed class AddLayerCommand(DesignViewModel target) : ContextCommand<DesignViewModel>(target)
     {
-        public override async void Execute(object parameter)
+        public override void Execute(object parameter)
         {
-            var name = $"页面{Context.Pages.Count + 1}";
+            var name = $"图层{Context.Pages.Count + 1}";
             var layer = new TypographyLayer
             {
                 Id   = ID.Get(),

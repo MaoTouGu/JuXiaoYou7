@@ -12,7 +12,7 @@
              Height="{Binding Height, Mode=OneWay}">
     <Border Background="{Binding Background, Mode=OneWay, Converter={x:Static Converters.ToBrush}}"
             BorderBrush="{Binding BorderBrush, Mode=OneWay, Converter={x:Static Converters.ToBrush}}"
-            BorderThickness="{Binding BorderThickness, Mode=OneWay}"
+            BorderThickness="{Binding BorderThickness, Mode=OneWay, Converter={x:Static local:Visualizer.Thickness}}"
             CornerRadius="{Binding CornerRadius, Mode=OneWay, Converter={x:Static local:Visualizer.CornerRadius}}"
             Padding="{Binding Padding, Mode=OneWay, Converter={x:Static local:Visualizer.Thickness}}">
         <TextBlock FontSize="{Binding FontSize, Mode=OneWay}"

@@ -20,16 +20,26 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Commons
 
         private void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if (e.NewValue is not ITextTarget target)
+            if (e.NewValue is ITextTarget target)
             {
-                return;
-
+                Left.Text   = target.Padding.Left.ToString();
+                Right.Text  = target.Padding.Right.ToString();
+                Top.Text    = target.Padding.Top.ToString();
+                Bottom.Text = target.Padding.Bottom.ToString();
             }
+            else if (e.NewValue is IPaddingTarget target2)
+            {
+                Left.Text   = target2.Padding.Left.ToString();
+                Right.Text  = target2.Padding.Right.ToString();
+                Top.Text    = target2.Padding.Top.ToString();
+                Bottom.Text = target2.Padding.Bottom.ToString();
+            }
+        }
 
-            Left.Text   = target.Padding.Left.ToString();
-            Right.Text  = target.Padding.Right.ToString();
-            Top.Text    = target.Padding.Top.ToString();
-            Bottom.Text = target.Padding.Bottom.ToString();
+
+        void Update()
+        {
+            (DataContext as INotifyPropertyChangedEX)?.RaisePropertyChanged(nameof(ITextTarget.Padding));
         }
 
         private void Left_OnTextChanged(object sender, TextChangedEventArgs e)
@@ -40,7 +50,16 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Commons
                 c.Left = int.TryParse(Left.Text, out var b) ? b : 0;
 
                 target.Padding = c;
-                target.RaisePropertyChanged(nameof(ITextTarget.Padding));
+                Update();
+            }
+            else if (DataContext is IPaddingTarget target2)
+            {
+                
+                var c = target2.Padding;
+                c.Left = int.TryParse(Left.Text, out var b) ? b : 0;
+
+                target2.Padding = c;
+                Update();
             }
         }
 
@@ -52,7 +71,16 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Commons
                 c.Right = int.TryParse(Right.Text, out var b) ? b : 0;
 
                 target.Padding = c;
-                target.RaisePropertyChanged(nameof(ITextTarget.Padding));
+                Update();
+            }
+            else if (DataContext is IPaddingTarget target2)
+            {
+                
+                var c = target2.Padding;
+                c.Right = int.TryParse(Right.Text, out var b) ? b : 0;
+
+                target2.Padding = c;
+                Update();
             }
         }
 
@@ -64,7 +92,16 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Commons
                 c.Top = int.TryParse(Top.Text, out var b) ? b : 0;
 
                 target.Padding = c;
-                target.RaisePropertyChanged(nameof(ITextTarget.Padding));
+                Update();
+            }
+            else if (DataContext is IPaddingTarget target2)
+            {
+                
+                var c = target2.Padding;
+                c.Top = int.TryParse(Top.Text, out var b) ? b : 0;
+
+                target2.Padding = c;
+                Update();
             }
         }
 
@@ -76,7 +113,16 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Commons
                 c.Bottom = int.TryParse(Bottom.Text, out var b) ? b : 0;
 
                 target.Padding = c;
-                target.RaisePropertyChanged(nameof(ITextTarget.Padding));
+                Update();
+            }
+            else if (DataContext is IPaddingTarget target2)
+            {
+                
+                var c = target2.Padding;
+                c.Bottom = int.TryParse(Bottom.Text, out var b) ? b : 0;
+
+                target2.Padding = c;
+                Update();
             }
         }
     }

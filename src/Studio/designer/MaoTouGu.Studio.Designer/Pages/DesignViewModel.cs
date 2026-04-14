@@ -44,8 +44,26 @@ namespace MaoTouGu.JuXiaoYou.Pages
             _template = template ??
                         new TypographyTemplate
                         {
-                            Id            = ID.Get(),
-                            Pages         = new ViewList<TypographyPage>(),
+                            Id = ID.Get(),
+                            Pages = new ViewList<TypographyPage>
+                            {
+                                new TypographyPage
+                                {
+                                    Id     = ID.Get(),
+                                    Blocks = new ViewList<TypographyBlock>(),
+                                    Layers = new ViewList<TypographyLayer>
+                                    {
+                                        new TypographyLayer
+                                        {
+                                            Id     = ID.Get(),
+                                            Name   = "图层1",
+                                            Blocks = new List<string>(),
+
+                                        }
+                                    },
+                                    Name = "页面1",
+                                },
+                            },
                             OccupiedTable = new HashSet<string>(),
                             Base64Table   = new Dictionary<string, string>(),
                             Width         = (int)TypographyPageSize.Regular,
@@ -58,9 +76,9 @@ namespace MaoTouGu.JuXiaoYou.Pages
             Bitmaps    = new ViewList<NamedBitmap>();
             PageSizes  = new List<TypographyPageSize>(ClassStatic.GetEnums<TypographyPageSize>());
 
-            Moniker                   = Moniker.Create(string.Empty, new User { Id = ID.Get(), DisplayName = "Test" });
-            Moniker.Name              = "测试";
-            Moniker.Gravatar          = @"C:\Users\Luoyisi\Pictures\Character.png";
+            Moniker      = Moniker.Create(string.Empty, new User { Id = ID.Get(), DisplayName = "Test" });
+            Moniker.Name = "测试";
+
             Moniker.Settings["Color"] = "#007ACC";
 
             //
@@ -83,10 +101,11 @@ namespace MaoTouGu.JuXiaoYou.Pages
             ExportLayer = null;
             ImportLayer = null;
             RemoveLayer = new RemoveLayerCommand(this);
-            
+
             AddVisualizer = new AddVisualizerCommand(this);
-            AddImageBlock = new AddImageBlockCommand(this);
-            AddTextBlock  = new AddTextCommand(this);
+            AddImage      = new AddImageCommand(this);
+            AddRectangle  = new AddRectangleCommand(this);
+            AddText       = new AddTextCommand(this);
             RemoveBlock   = new RemoveBlockCommand(this);
 
             AddSetting    = new AddSettingCommand(this);
@@ -180,7 +199,7 @@ namespace MaoTouGu.JuXiaoYou.Pages
             var v = value?.ToString();
             return Bitmaps.FirstOrDefault(x => x.Name == v)?.Image;
         }
-        
+
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => throw new NotSupportedException();
         /*******************************************************************
          *
@@ -365,8 +384,9 @@ namespace MaoTouGu.JuXiaoYou.Pages
          *
          *
          *******************************************************************/
-        public ICommandEX AddTextBlock  { get; }
-        public ICommandEX AddImageBlock { get; }
+        public ICommandEX AddText       { get; }
+        public ICommandEX AddImage      { get; }
+        public ICommandEX AddRectangle  { get; }
         public ICommandEX AddVisualizer { get; }
         public ICommandEX RemoveBlock   { get; }
 

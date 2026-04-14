@@ -18,6 +18,7 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Core
             new TypographyVisualizerVPO { Moniker = null },
             new TypographyImageVPO { Moniker      = null },
             new TypographyTextVPO { Moniker       = null },
+            new TypographyRectangleVPO { Moniker       = null },
         };
 
 
@@ -42,6 +43,16 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Core
         public TypographyBlock Base { get; protected init; }
 
         public required Moniker Moniker { get; init; }
+
+        public string Name
+        {
+            get => Base.Name;
+            set
+            {
+                Base.Name = value;
+                RaiseUpdated();
+            }
+        }
 
         public double Height
         {

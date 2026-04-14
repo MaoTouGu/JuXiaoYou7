@@ -15,6 +15,11 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Commons
             DataContextChanged += OnDataContextChanged;
         }
 
+        void Update()
+        {
+            (DataContext as INotifyPropertyChangedEX)?.RaisePropertyChanged(nameof(ICornerRadiusTarget.CornerRadius));
+        }
+
         private void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (e.NewValue is ITextTarget target)
@@ -23,6 +28,13 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Commons
                 RightTop.Text    = target.CornerRadius.RightTop.ToString();
                 RightBottom.Text = target.CornerRadius.RightBottom.ToString();
                 LeftBottom.Text  = target.CornerRadius.LeftBottom.ToString();
+            }
+            else if (e.NewValue is ICornerRadiusTarget target2)
+            {
+                LeftTop.Text     = target2.CornerRadius.LeftTop.ToString();
+                RightTop.Text    = target2.CornerRadius.RightTop.ToString();
+                RightBottom.Text = target2.CornerRadius.RightBottom.ToString();
+                LeftBottom.Text  = target2.CornerRadius.LeftBottom.ToString();
             }
         }
 
@@ -34,7 +46,16 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Commons
                 c.LeftTop = int.TryParse(LeftTop.Text, out var b) ? b : 0;
 
                 target.CornerRadius = c;
-                target.RaisePropertyChanged(nameof(ITextTarget.CornerRadius));
+                Update();
+            }
+            else if (DataContext is ICornerRadiusTarget target2)
+            {
+                
+                var c = target2.CornerRadius;
+                c.LeftTop = int.TryParse(LeftTop.Text, out var b) ? b : 0;
+
+                target2.CornerRadius = c;
+                Update();
             }
         }
 
@@ -46,7 +67,16 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Commons
                 c.RightTop = int.TryParse(RightTop.Text, out var b) ? b : 0;
 
                 target.CornerRadius = c;
-                target.RaisePropertyChanged(nameof(ITextTarget.CornerRadius));
+                Update();
+            }
+            else if (DataContext is ICornerRadiusTarget target2)
+            {
+                
+                var c = target2.CornerRadius;
+                c.RightTop = int.TryParse(RightTop.Text, out var b) ? b : 0;
+
+                target2.CornerRadius = c;
+                Update();
             }
         }
 
@@ -58,7 +88,16 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Commons
                 c.RightBottom = int.TryParse(RightBottom.Text, out var b) ? b : 0;
 
                 target.CornerRadius = c;
-                target.RaisePropertyChanged(nameof(ITextTarget.CornerRadius));
+                Update();
+            }
+            else if (DataContext is ICornerRadiusTarget target2)
+            {
+                
+                var c = target2.CornerRadius;
+                c.RightBottom = int.TryParse(RightBottom.Text, out var b) ? b : 0;
+
+                target2.CornerRadius = c;
+                Update();
             }
         }
 
@@ -70,7 +109,16 @@ namespace MaoTouGu.JuXiaoYou.Visualizers.Commons
                 c.LeftBottom = int.TryParse(LeftBottom.Text, out var b) ? b : 0;
 
                 target.CornerRadius = c;
-                target.RaisePropertyChanged(nameof(ITextTarget.CornerRadius));
+                Update();
+            }
+            else if (DataContext is ICornerRadiusTarget target2)
+            {
+                
+                var c = target2.CornerRadius;
+                c.LeftBottom = int.TryParse(LeftBottom.Text, out var b) ? b : 0;
+
+                target2.CornerRadius = c;
+                Update();
             }
         }
     }

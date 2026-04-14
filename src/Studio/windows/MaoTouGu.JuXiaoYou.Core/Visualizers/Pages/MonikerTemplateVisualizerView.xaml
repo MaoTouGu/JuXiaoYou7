@@ -43,8 +43,12 @@
 
 
         <!-- 页面 -->
-        <DataTemplate DataType="{x:Type visualizers:TypographyVisualizerVPO}">
-            <ContentPresenter Content="{Binding Converter={x:Static visualizers:Visualizer.View}}" />
+        <DataTemplate DataType="{x:Type visualizers:TypographyRectangleVPO}">
+            <Border Background="{Binding Background, Mode=OneWay, Converter={x:Static Converters.ToBrush}}"
+                    BorderBrush="{Binding BorderBrush, Mode=OneWay, Converter={x:Static Converters.ToBrush}}"
+                    BorderThickness="{Binding BorderThickness, Mode=OneWay, Converter={x:Static visualizers:Visualizer.Thickness}}"
+                    CornerRadius="{Binding CornerRadius, Mode=OneWay, Converter={x:Static visualizers:Visualizer.CornerRadius}}">
+            </Border>
         </DataTemplate>
 
         <DataTemplate DataType="{x:Type visualizers:TypographyVisualizerVPO}">

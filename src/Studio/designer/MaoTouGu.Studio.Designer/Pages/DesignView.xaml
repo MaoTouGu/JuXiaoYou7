@@ -23,7 +23,7 @@
         <KeyBinding Gesture="Ctrl+Shift+S" Command="{Binding SaveAs}" />
         <KeyBinding Gesture="Ctrl+OemPlus" Command="{x:Static NavigationCommands.IncreaseZoom}" />
         <KeyBinding Gesture="Ctrl+OemMinus" Command="{x:Static NavigationCommands.DecreaseZoom}" />
-        <KeyBinding Gesture="Ctrl+Add" Key="NumPad9"  Command="{x:Static NavigationCommands.IncreaseZoom}" />
+        <KeyBinding Gesture="Ctrl+Add"  Command="{x:Static NavigationCommands.IncreaseZoom}" />
         <KeyBinding Gesture="Ctrl+Subtract" Command="{x:Static NavigationCommands.DecreaseZoom}" />
     </UserControl.InputBindings>
     <UserControl.Resources>
@@ -58,7 +58,6 @@
                             </Border>
 
                             <Border x:Name="Border"
-                                    Grid.Row="1"
                                     Background="{TemplateBinding Background}"
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="{TemplateBinding BorderThickness}"
@@ -106,10 +105,14 @@
             </Setter>
         </Style>
 
-        <DataTemplate DataType="{x:Type topology:TypographyPlaceholder}">
-            <Border Background="Gray"
-                    Height="{Binding Height, Mode=TwoWay}"
-                    Width="{Binding Width, Mode=TwoWay}" />
+        <DataTemplate DataType="{x:Type TypographyRectangleVPO}">
+            <Border Background="{Binding Background, Mode=OneWay, Converter={x:Static Converters.ToBrush}}"
+                    BorderBrush="{Binding BorderBrush, Mode=OneWay, Converter={x:Static Converters.ToBrush}}"
+                    BorderThickness="{Binding BorderThickness, Mode=OneWay, Converter={x:Static Visualizer.Thickness}}"
+                    CornerRadius="{Binding CornerRadius, Mode=OneWay, Converter={x:Static Visualizer.CornerRadius}}"
+                    Width="{Binding Width, Mode=OneWay}"
+                    Height="{Binding Height, Mode=OneWay}">
+            </Border>
         </DataTemplate>
 
         <DataTemplate DataType="{x:Type this:TypographyLayerVPO}">
@@ -205,6 +208,7 @@
                                         Height="32"
                                         HorizontalContentAlignment="Left"
                                         IconMode="Both"
+                                        IsEnabled="False"
                                         Width="144" />
 
                         <ui:GhostButton ui:ControlAssist.CornerRadius="0"
@@ -213,6 +217,7 @@
                                         Height="32"
                                         HorizontalContentAlignment="Left"
                                         IconMode="Both"
+                                        IsEnabled="False"
                                         Width="144" />
 
                         <ui:GhostButton ui:ControlAssist.CornerRadius="0"
@@ -221,6 +226,7 @@
                                         Height="32"
                                         HorizontalContentAlignment="Left"
                                         IconMode="Both"
+                                        IsEnabled="False"
                                         Width="144" />
                         <ui:GhostButton ui:ControlAssist.CornerRadius="0"
                                         ui:ControlAssist.Icon="{StaticResource FeatherIcon.Download}"
@@ -228,6 +234,7 @@
                                         Height="32"
                                         HorizontalContentAlignment="Left"
                                         IconMode="Both"
+                                        IsEnabled="False"
                                         Width="144" />
                     </WrapPanel>
 
@@ -245,7 +252,7 @@
                                         ui:ControlAssist.Icon="{StaticResource Text}"
                                         ui:ControlAssist.IsFilled="True"
                                         Content="添加装饰文本"
-                                        Command="{Binding AddTextBlock}"
+                                        Command="{Binding AddText}"
                                         Height="48"
                                         HorizontalContentAlignment="Left"
                                         IconMode="Both" />
@@ -253,7 +260,14 @@
                         <ui:GhostButton ui:ControlAssist.CornerRadius="0"
                                         ui:ControlAssist.Icon="{StaticResource FeatherIcon.Image}"
                                         Content="添加装饰图片"
-                                        Command="{Binding AddImageBlock}"
+                                        Command="{Binding AddImage}"
+                                        Height="48"
+                                        HorizontalContentAlignment="Left"
+                                        IconMode="Both" />
+                        <ui:GhostButton ui:ControlAssist.CornerRadius="0"
+                                        ui:ControlAssist.Icon="{StaticResource FeatherIcon.Box}"
+                                        Content="添加装饰矩形"
+                                        Command="{Binding AddRectangle}"
                                         Height="48"
                                         HorizontalContentAlignment="Left"
                                         IconMode="Both" />
@@ -263,6 +277,7 @@
                                         Content="添加水平装饰"
                                         Height="48"
                                         HorizontalContentAlignment="Left"
+                                        IsEnabled="False"
                                         IconMode="Both" />
 
 
@@ -271,6 +286,7 @@
                                         Content="添加垂直装饰"
                                         Height="48"
                                         HorizontalContentAlignment="Left"
+                                        IsEnabled="False"
                                         IconMode="Both" />
 
                         <ui:GhostButton ui:ControlAssist.CornerRadius="0"
@@ -278,6 +294,7 @@
                                         Content="添加对角装饰（\）"
                                         Height="48"
                                         HorizontalContentAlignment="Left"
+                                        IsEnabled="False"
                                         IconMode="Both" />
 
                         <ui:GhostButton ui:ControlAssist.CornerRadius="0"
@@ -285,6 +302,7 @@
                                         Content="添加对角装饰（/）"
                                         Height="48"
                                         HorizontalContentAlignment="Left"
+                                        IsEnabled="False"
                                         IconMode="Both" />
 
                         <ui:GhostButton ui:ControlAssist.CornerRadius="0"
@@ -292,6 +310,7 @@
                                         Content="添加四角装饰"
                                         Height="48"
                                         HorizontalContentAlignment="Left"
+                                        IsEnabled="False"
                                         IconMode="Both" />
                     </WrapPanel>
 
@@ -437,6 +456,7 @@
                                         Width="32" />
                         <ui:ToggleButton ui:ControlAssist.CornerRadius="0"
                                          ui:ControlAssist.Icon="{StaticResource FeatherIcon.Lock}"
+                                         IsEnabled="{Binding Page, Mode=OneWay, Converter={x:Static Converters.TrueToVisibility}}"
                                          IconMode="Icon"
                                          Padding="0"
                                          Height="32"
@@ -668,14 +688,14 @@
                                     <ui:GhostButton ui:ControlAssist.CornerRadius="0"
                                                     ui:ControlAssist.Icon="{StaticResource Text}"
                                                     ui:ControlAssist.IsFilled="True"
-                                                    Command="{Binding AddTextBlock}"
+                                                    Command="{Binding AddText}"
                                                     IconMode="Icon"
                                                     Padding="0"
                                                     Height="32"
                                                     Width="32" />
                                     <ui:GhostButton ui:ControlAssist.CornerRadius="0"
                                                     ui:ControlAssist.Icon="{StaticResource FeatherIcon.Image}"
-                                                    Command="{Binding AddImageBlock}"
+                                                    Command="{Binding AddImage}"
                                                     IconMode="Icon"
                                                     Padding="0"
                                                     Height="32"
@@ -718,6 +738,9 @@
 
                                 <DataTemplate DataType="{x:Type TypographyImageVPO}">
                                     <TypographyImageSettingView />
+                                </DataTemplate>
+                                <DataTemplate DataType="{x:Type TypographyRectangleVPO}">
+                                    <TypographyRectangleSettingView/>
                                 </DataTemplate>
                             </ContentControl.Resources>
                         </ContentControl>

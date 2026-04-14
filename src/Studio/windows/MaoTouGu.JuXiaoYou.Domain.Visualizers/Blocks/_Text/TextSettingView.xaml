@@ -26,7 +26,7 @@
                                     Width="40" />
         </HeaderedContentControl>
 
-        <HeaderedContentControl Header="边框"
+        <HeaderedContentControl Header="边框色"
                                 Margin="0 0 0 8"
                                 Style="{StaticResource SettingItem}">
             <ux:PortableColorPicker SelectedColor="{Binding BorderBrush, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={x:Static Converters.ToColor}}"

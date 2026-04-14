@@ -11,7 +11,7 @@ namespace MaoTouGu.JuXiaoYou.Pages.Commands
     {
         public override async void Execute(object parameter)
         {
-            var r = await Context.SingleLine("Add", string.Empty);
+            var r = await Context.SingleLine("添加喵喵咒语", string.Empty);
 
             if (!r.IsFinished)
             {
@@ -22,6 +22,15 @@ namespace MaoTouGu.JuXiaoYou.Pages.Commands
             {
                 Context.Setting = r.Value;
             }
+
+            var r2 = await Context.SingleLine("填写数值", string.Empty);
+
+            if (!r2.IsFinished)
+            {
+                return;
+            }
+
+            Context.Moniker.Settings[r.Value] = r2.Value;
         }
     }
 }
